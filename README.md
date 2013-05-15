@@ -12,7 +12,7 @@ Rather than submitting modules to the core Homebrew Nginx Forumla this repo will
 
 ## What about conflicts?
 
-I've named the forumlae in this tap differently so you can easily have multiple versions of Nginx installed side by side.
+I've named the formulae in this tap differently so you can easily have multiple versions of Nginx installed side by side.
 
 ## Credits
 
