@@ -14,10 +14,6 @@ Rather than submitting modules to the core Homebrew Nginx Forumla this repo will
 
 I've named the forumlae in this tap differently so you can easily have multiple versions of Nginx installed side by side.
 
-## Contributing
-
-I will accept any modules, but please test them to make sure they fully compile first.
-
 ## Credits
 
 Credit for the original base forumla comes from https://github.com/mxcl/homebrew/blob/master/Library/Formula/nginx.rb and I will keep this formula up to date with any changes made there.
