@@ -2,7 +2,7 @@
 
 This tap is designed specifically for custom builds of Nginx with added modules.
 
-## Instalation
+## Installation
 
     brew tap marcqualie/nginx
 
