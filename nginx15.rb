@@ -11,6 +11,8 @@ class Nginx15 < Formula
   env :userpaths
 
   depends_on 'pcre'
+  depends_on 'ngx-devel-kit' if build.include? 'with-luajit'
+  depends_on 'lua-nginx-module' if build.include? 'with-luajit'
 
   option 'with-passenger', 'Compile with support for Phusion Passenger module'
   option 'with-webdav', 'Compile with support for WebDAV module'
@@ -21,6 +23,7 @@ class Nginx15 < Formula
   option 'with-status', 'Compile with support for stub status module'
   option 'with-mp4', 'Compile with support for mp4 module'
   option 'with-realip', 'Compile with support for real IP module'
+  option 'with-luajit', 'Compile with support for LUA module'
 
   skip_clean 'logs'
 
@@ -71,6 +74,15 @@ class Nginx15 < Formula
     args << "--with-http_stub_status_module" if build.include? 'with-status'
     args << "--with-http_mp4_module" if build.include? 'with-mp4'
     args << "--with-http_realip_module" if build.include? 'with-realip'
+
+    # Install LuaJit
+    if build.include? 'with-luajit'
+      luajit_path = `brew --prefix luajit`.chomp
+      ENV['LUAJIT_LIB'] = "#{luajit_path}/lib"
+      ENV['LUAJIT_INC'] = "#{luajit_path}/include/luajit-2.0"
+      args << "--add-module=/usr/local/share/ngx-devel-kit"
+      args << "--add-module=/usr/local/share/lua-nginx-module"
+    end
 
     if build.head?
       system "./auto/configure", *args
