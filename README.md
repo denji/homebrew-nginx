@@ -2,6 +2,10 @@
 
 This tap is designed specifically for custom builds of Nginx with added modules.
 
+## Instalation
+
+    brew tap marcqualie/nginx
+
 ## Why submit modules here?
 
 Rather than submitting modules to the core Homebrew Nginx Forumla this repo will serve as a place where any module can be added and configured for custom purposes.
