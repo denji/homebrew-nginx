@@ -24,6 +24,7 @@ class Nginx14 < Formula
   option 'with-mp4', 'Compile with support for mp4 module'
   option 'with-realip', 'Compile with support for real IP module'
   option 'with-luajit', 'Compile with support for LUA module'
+  option 'with-perl', 'Compile with support for Perl module'
 
   skip_clean 'logs'
 
@@ -74,6 +75,7 @@ class Nginx14 < Formula
     args << "--with-http_stub_status_module" if build.include? 'with-status'
     args << "--with-http_mp4_module" if build.include? 'with-mp4'
     args << "--with-http_realip_module" if build.include? 'with-realip'
+    args << "--with-http_perl_module" if build.include? 'with-perl'
 
     # Install LuaJit
     if build.include? 'with-luajit'
