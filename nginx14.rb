@@ -17,13 +17,13 @@ class Nginx14 < Formula
   option 'with-passenger', 'Compile with support for Phusion Passenger module'
   option 'with-webdav', 'Compile with support for WebDAV module'
   option 'with-debug', 'Compile with support for debug log'
-  option 'with-spdy', 'Compile with support for SPDY module'
   option 'with-gunzip', 'Compile with support for gunzip module'
   option 'with-secure-link', 'Compile with support for secure link module'
   option 'with-status', 'Compile with support for stub status module'
   option 'with-mp4', 'Compile with support for mp4 module'
   option 'with-realip', 'Compile with support for real IP module'
   option 'with-luajit', 'Compile with support for LUA module'
+  option 'with-perl', 'Compile with support for Perl module'
 
   skip_clean 'logs'
 
@@ -68,12 +68,12 @@ class Nginx14 < Formula
     args << passenger_config_args if build.include? 'with-passenger'
     args << "--with-http_dav_module" if build.include? 'with-webdav'
     args << "--with-debug" if build.include? 'with-debug'
-    args << "--with-http_spdy_module" if build.include? 'with-spdy'
     args << "--with-http_gunzip_module" if build.include? 'with-gunzip'
     args << "--with-http_secure_link_module" if build.include? 'with-secure-link'
     args << "--with-http_stub_status_module" if build.include? 'with-status'
     args << "--with-http_mp4_module" if build.include? 'with-mp4'
     args << "--with-http_realip_module" if build.include? 'with-realip'
+    args << "--with-http_perl_module" if build.include? 'with-perl'
 
     # Install LuaJit
     if build.include? 'with-luajit'
