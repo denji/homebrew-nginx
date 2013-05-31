@@ -6,7 +6,7 @@ class Nginx14 < Formula
   url 'http://nginx.org/download/nginx-1.4.1.tar.gz'
   sha1 '9c72838973572323535dae10f4e412d671b27a7e'
 
-  head 'svn://svn.nginx.org/nginx/trunk/'
+  head 'http://hg.nginx.org/nginx/', :using => :hg
 
   env :userpaths
 

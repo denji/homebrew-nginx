@@ -6,7 +6,7 @@ class Nginx15 < Formula
   url 'http://nginx.org/download/nginx-1.5.0.tar.gz'
   sha1 '4f61368d6a0e340d04d116400616bf3179463df2'
 
-  head 'svn://svn.nginx.org/nginx/trunk/'
+  head 'http://hg.nginx.org/nginx/', :using => :hg
 
   env :userpaths
 
