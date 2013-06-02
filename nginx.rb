@@ -19,19 +19,31 @@ class Nginx < Formula
   depends_on 'ngx-devel-kit' if build.include? 'with-luajit'
   depends_on 'lua-nginx-module' if build.include? 'with-luajit'
 
-  option 'with-passenger', 'Compile with support for Phusion Passenger module'
-  option 'with-webdav', 'Compile with support for WebDAV module'
-  option 'with-debug', 'Compile with support for debug log'
-  option 'with-spdy', 'Compile with support for SPDY module'
-  option 'with-gunzip', 'Compile with support for gunzip module'
-  option 'with-secure-link', 'Compile with support for secure link module'
-  option 'with-status', 'Compile with support for stub status module'
-  option 'with-mp4', 'Compile with support for mp4 module'
-  option 'with-realip', 'Compile with support for real IP module'
-  option 'with-luajit', 'Compile with support for LUA module'
-  option 'with-perl', 'Compile with support for Perl module'
-
   skip_clean 'logs'
+
+  # Options
+  def options_array
+    option_data = [
+      ['with-passenger',   nil,                            'Compile with support for Phusion Passenger module'],
+      ['with-luajit',      nil,                            'Compile with support for LUA module'],
+      ['with-webdav',      'with-http_dav_module',         'Compile with support for WebDAV module'],
+      ['with-debug',       'with-debug',                   'Compile with support for debug log'],
+      ['with-spdy',        'with-http_spdy_module',        'Compile with support for SPDY module'],
+      ['with-gunzip',      'with-http_gunzip_module',      'Compile with support for gunzip module'],
+      ['with-secure-link', 'with-http_secure_link_module', 'Compile with support for secure link module'],
+      ['with-status',      'with-http_stub_status_module', 'Compile with support for stub status module'],
+      ['with-mp4',         'with-http_mp4_module',         'Compile with support for mp4 module'],
+      ['with-realip',      'with-http_realip_module',      'Compile with support for real IP module'],
+      ['with-perl',        'with-http_perl_module',        'Compile with support for Perl module']
+    ]
+  end
+  def options
+    options = []
+    options_array.each do |arr|
+      options << ["--#{arr[0]}", arr[2]]
+    end
+    options
+  end
 
   # Changes default port to 8080
   def patches
@@ -71,19 +83,20 @@ class Nginx < Formula
             "--with-http_gzip_static_module"
           ]
 
+    # Optional Arguments
+    ohai 'Configuring Arguments'
+    options_array.each do |arr|
+      next unless arr[1]
+      ohai "--#{arr[1]}" if build.include? arr[0]
+      args << "--#{arr[1]}" if build.include? arr[0]
+    end
+
+    # Passenger
     args << passenger_config_args if build.include? 'with-passenger'
-    args << "--with-http_dav_module" if build.include? 'with-webdav'
-    args << "--with-debug" if build.include? 'with-debug'
-    args << "--with-http_spdy_module" if build.include? 'with-spdy'
-    args << "--with-http_gunzip_module" if build.include? 'with-gunzip'
-    args << "--with-http_secure_link_module" if build.include? 'with-secure-link'
-    args << "--with-http_stub_status_module" if build.include? 'with-status'
-    args << "--with-http_mp4_module" if build.include? 'with-mp4'
-    args << "--with-http_realip_module" if build.include? 'with-realip'
-    args << "--with-http_perl_module" if build.include? 'with-perl'
 
     # Install LuaJit
     if build.include? 'with-luajit'
+      ohai "Configuring LuaJit"
       luajit_path = `brew --prefix luajit`.chomp
       ENV['LUAJIT_LIB'] = "#{luajit_path}/lib"
       ENV['LUAJIT_INC'] = "#{luajit_path}/include/luajit-2.0"
