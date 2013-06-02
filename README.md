@@ -1,10 +1,11 @@
 # Nginx Homebrew Tap
 
-This tap is designed specifically for custom builds of Nginx with added modules.
+This tap is designed specifically for a custom build of Nginx with more module options.
 
 ## Installation
 
     brew tap marcqualie/nginx
+    brew install marcqualie/nginx/nginx
 
 ## Why submit modules here?
 
@@ -12,7 +13,7 @@ Rather than submitting modules to the core Homebrew Nginx Forumla this repo will
 
 ## What about conflicts?
 
-I've named the formulae in this tap differently so you can easily have multiple versions of Nginx installed side by side.
+You cannot install this Formula and `mxcl/master/nginx` at the same time. If there is enough demand I will change this in the future
 
 ## Credits
 
