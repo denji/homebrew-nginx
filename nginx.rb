@@ -30,6 +30,7 @@ class Nginx < Formula
     option_data = [
       ['with-passenger',   nil,                            'Compile with support for Phusion Passenger module'],
       ['with-luajit',      nil,                            'Compile with support for LUA module'],
+      ['with-echo-module', nil,                            'Compile with support for Echo Module'],
       ['with-webdav',      'with-http_dav_module',         'Compile with support for WebDAV module'],
       ['with-debug',       'with-debug',                   'Compile with support for debug log'],
       ['with-spdy',        'with-http_spdy_module',        'Compile with support for SPDY module'],
@@ -116,6 +117,9 @@ class Nginx < Formula
       args << "--add-module=/usr/local/share/ngx-devel-kit"
       args << "--add-module=/usr/local/share/lua-nginx-module"
     end
+
+    # Echo module
+    args << "--add-module=/usr/local/share/echo-nginx-module" if build.include? 'with-echo-module'
 
     if build.head?
       system "./auto/configure", *args
