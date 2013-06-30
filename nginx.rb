@@ -22,6 +22,8 @@ class Nginx < Formula
   depends_on 'openssl' if build.with? 'spdy'
   depends_on 'ngx-devel-kit' if build.include? 'with-luajit'
   depends_on 'lua-nginx-module' if build.include? 'with-luajit'
+  depends_on 'echo-nginx-module' if build.include? 'with-echo-module'
+  depends_on 'auth-digest-nginx-module' if build.include? 'with-auth-digest'
 
   skip_clean 'logs'
 
@@ -31,6 +33,7 @@ class Nginx < Formula
       ['with-passenger',   nil,                            'Compile with support for Phusion Passenger module'],
       ['with-luajit',      nil,                            'Compile with support for LUA module'],
       ['with-echo-module', nil,                            'Compile with support for Echo Module'],
+      ['with-auth-digest', nil,                            'Compile with support for Auth Digest Module'],
       ['with-webdav',      'with-http_dav_module',         'Compile with support for WebDAV module'],
       ['with-debug',       'with-debug',                   'Compile with support for debug log'],
       ['with-spdy',        'with-http_spdy_module',        'Compile with support for SPDY module'],
@@ -120,6 +123,9 @@ class Nginx < Formula
 
     # Echo module
     args << "--add-module=/usr/local/share/echo-nginx-module" if build.include? 'with-echo-module'
+
+    # Auth Digest Module
+    args << "--add-module=/usr/local/share/auth-digest-nginx-module" if build.include? "with-auth-digest"
 
     if build.head?
       system "./auto/configure", *args
