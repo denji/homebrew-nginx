@@ -1,6 +1,6 @@
 require 'formula'
 
-class Nginx < Formula
+class NginxFull < Formula
 
   homepage 'http://nginx.org/'
   url 'http://nginx.org/download/nginx-1.4.1.tar.gz'

@@ -2,18 +2,25 @@
 
 This tap is designed specifically for a custom build of Nginx with more module options.
 
+
 ## Installation
 
     brew tap marcqualie/nginx
-    brew install marcqualie/nginx/nginx
+    brew install nginx-full
+
 
 ## Why submit modules here?
 
 Rather than submitting modules to the core Homebrew Nginx Forumla this repo will serve as a place where any module can be added and configured for custom purposes.
 
+
 ## What about conflicts?
 
-You cannot install this Formula and `mxcl/master/nginx` at the same time. If there is enough demand I will change this in the future
+This version of Nginx is designed to be installed alongside a current install of Nginx from `mxcl/homebrew`. However, they cannot be linked at the same time. To switch between them use brew's built in linking system.
+
+    brew unlink nginx
+    brew link nginx-full
+
 
 ## Credits
 
