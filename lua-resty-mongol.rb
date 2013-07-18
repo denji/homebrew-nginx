@@ -8,11 +8,11 @@ class LuaRestyMongol < Formula
   version 'devel'
 
   depends_on "luajit"
+  depends_on "openresty"
 
   def install
-    dir = (share + '/lua-resty-mongol')
-    dir.mkpath
-    system "make install PREFIX=#{share}/lua-resty-mongol"
+    openresty_prefix = Formula.factory("openresty").opt_prefix
+    system "make install PREFIX=#{openresty_prefix}"
   end
 
 end
