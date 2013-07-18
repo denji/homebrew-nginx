@@ -10,7 +10,9 @@ class LuaRestyMongol < Formula
   depends_on "luajit"
 
   def install
-    system "make install PREFIX=/usr/local/opt/nginx-full"
+    dir = (share + '/lua-resty-mongol')
+    dir.mkpath
+    system "make install PREFIX=#{share}/lua-resty-mongol"
   end
 
 end
