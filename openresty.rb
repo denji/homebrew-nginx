@@ -13,18 +13,20 @@ class Openresty < Formula
   def install
 
     # Logs
-    log_path = '/var/log/openresty'
-    Dir.mkdir log_path, 0755
+    log = '/var/log/openresty'
+    Dir.mkdir log, 0755 unless File.exists? log
 
     # Configure
     cc_opt = "-I#{HOMEBREW_PREFIX}/include"
     ld_opt = "-L#{HOMEBREW_PREFIX}/lib"
     args = [
       "--prefix=#{prefix}",
+      "--pid-path=#{var}/run/openresty.pid",
+      "--lock-path=#{var}/run/openresty.lock",
       "--sbin-path=#{bin}/openresty",
       "--conf-path=#{etc}/openresty/nginx.conf",
-      "--error-log-path=#{log_path}/error.log",
-      "--http-log-path=#{log_path}/access.log",
+      "--error-log-path=#{log}/error.log",
+      "--http-log-path=#{log}/access.log",
       "--with-luajit",
       "--with-cc-opt=#{cc_opt}",
       "--with-ld-opt=#{ld_opt}"
