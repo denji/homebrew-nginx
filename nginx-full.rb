@@ -22,7 +22,6 @@ class NginxFull < Formula
   depends_on 'openssl' if build.with? 'spdy'
   depends_on 'ngx-devel-kit' if build.include? 'with-luajit'
   depends_on 'lua-nginx-module' if build.include? 'with-luajit'
-  depends_on 'lua-resty-mongol' if build.include? 'with-lua-mongol'
   depends_on 'echo-nginx-module' if build.include? 'with-echo-module'
   depends_on 'auth-digest-nginx-module' if build.include? 'with-auth-digest'
 
@@ -35,7 +34,6 @@ class NginxFull < Formula
       ['with-luajit',      nil,                            'Compile with support for LUA module'],
       ['with-echo-module', nil,                            'Compile with support for Echo Module'],
       ['with-auth-digest', nil,                            'Compile with support for Auth Digest Module'],
-      ['with-lua-mongol',  nil,                            'Compile with support for LUA Resty Mongol Module'],
       ['with-webdav',      'with-http_dav_module',         'Compile with support for WebDAV module'],
       ['with-debug',       'with-debug',                   'Compile with support for debug log'],
       ['with-spdy',        'with-http_spdy_module',        'Compile with support for SPDY module'],
@@ -114,7 +112,7 @@ class NginxFull < Formula
     args << passenger_config_args if build.include? 'with-passenger'
 
     # Install LuaJit
-    if build.include?('with-luajit') || build.include?('with-lua-mongol')
+    if build.include? 'with-luajit'
       ohai "Configuring LuaJit"
       luajit_path = `brew --prefix luajit`.chomp
       ENV['LUAJIT_LIB'] = "#{luajit_path}/lib"
