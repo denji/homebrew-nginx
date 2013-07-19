@@ -10,7 +10,4 @@ class EchoNginxModule < Formula
     (share+'echo-nginx-module').install Dir['*']
   end
 
-  test do
-    system "false"
-  end
 end
