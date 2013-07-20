@@ -25,6 +25,7 @@ class NginxFull < Formula
   depends_on 'echo-nginx-module' if build.include? 'with-echo-module'
   depends_on 'auth-digest-nginx-module' if build.include? 'with-auth-digest'
   depends_on 'set-misc-nginx-module' if build.include? 'with-set-misc-module'
+  depends_on 'redis2-nginx-module' if build.include? 'with-redis2-module'
 
   skip_clean 'logs'
 
@@ -36,6 +37,7 @@ class NginxFull < Formula
       ['with-echo-module',     nil,                            'Compile with support for Echo Module'],
       ['with-auth-digest',     nil,                            'Compile with support for Auth Digest Module'],
       ['with-set-misc-module', nil,                            'Compile with support for Set Misc Module'],
+      ['with-redis2-module',   nil,                            'Compile with support for Redis2 Module'],
       ['with-webdav',          'with-http_dav_module',         'Compile with support for WebDAV module'],
       ['with-debug',           'with-debug',                   'Compile with support for debug log'],
       ['with-spdy',            'with-http_spdy_module',        'Compile with support for SPDY module'],
@@ -128,6 +130,9 @@ class NginxFull < Formula
 
     # Set-Misc module
     args << "--add-module=/usr/local/share/set-misc-nginx-module" if build.include? 'with-set-misc-module'
+
+    # Redis2 module
+    args << "--add-module=/usr/local/share/redis2-nginx-module" if build.include? 'with-redis2-module'
 
     # Auth Digest Module
     args << "--add-module=/usr/local/share/auth-digest-nginx-module" if build.include? "with-auth-digest"
