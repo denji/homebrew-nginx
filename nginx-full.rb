@@ -24,25 +24,27 @@ class NginxFull < Formula
   depends_on 'lua-nginx-module' if build.include? 'with-luajit'
   depends_on 'echo-nginx-module' if build.include? 'with-echo-module'
   depends_on 'auth-digest-nginx-module' if build.include? 'with-auth-digest'
+  depends_on 'set-misc-nginx-module' if build.include? 'with-set-misc-module'
 
   skip_clean 'logs'
 
   # Options
   def options_array
     option_data = [
-      ['with-passenger',   nil,                            'Compile with support for Phusion Passenger module'],
-      ['with-luajit',      nil,                            'Compile with support for LUA module'],
-      ['with-echo-module', nil,                            'Compile with support for Echo Module'],
-      ['with-auth-digest', nil,                            'Compile with support for Auth Digest Module'],
-      ['with-webdav',      'with-http_dav_module',         'Compile with support for WebDAV module'],
-      ['with-debug',       'with-debug',                   'Compile with support for debug log'],
-      ['with-spdy',        'with-http_spdy_module',        'Compile with support for SPDY module'],
-      ['with-gunzip',      'with-http_gunzip_module',      'Compile with support for gunzip module'],
-      ['with-secure-link', 'with-http_secure_link_module', 'Compile with support for secure link module'],
-      ['with-status',      'with-http_stub_status_module', 'Compile with support for stub status module'],
-      ['with-mp4',         'with-http_mp4_module',         'Compile with support for mp4 module'],
-      ['with-realip',      'with-http_realip_module',      'Compile with support for real IP module'],
-      ['with-perl',        'with-http_perl_module',        'Compile with support for Perl module']
+      ['with-passenger',       nil,                            'Compile with support for Phusion Passenger module'],
+      ['with-luajit',          nil,                            'Compile with support for LUA module'],
+      ['with-echo-module',     nil,                            'Compile with support for Echo Module'],
+      ['with-auth-digest',     nil,                            'Compile with support for Auth Digest Module'],
+      ['with-set-misc-module', nil,                            'Compile with support for Set Misc Module'],
+      ['with-webdav',          'with-http_dav_module',         'Compile with support for WebDAV module'],
+      ['with-debug',           'with-debug',                   'Compile with support for debug log'],
+      ['with-spdy',            'with-http_spdy_module',        'Compile with support for SPDY module'],
+      ['with-gunzip',          'with-http_gunzip_module',      'Compile with support for gunzip module'],
+      ['with-secure-link',     'with-http_secure_link_module', 'Compile with support for secure link module'],
+      ['with-status',          'with-http_stub_status_module', 'Compile with support for stub status module'],
+      ['with-mp4',             'with-http_mp4_module',         'Compile with support for mp4 module'],
+      ['with-realip',          'with-http_realip_module',      'Compile with support for real IP module'],
+      ['with-perl',            'with-http_perl_module',        'Compile with support for Perl module']
     ]
   end
   def options
@@ -123,6 +125,9 @@ class NginxFull < Formula
 
     # Echo module
     args << "--add-module=/usr/local/share/echo-nginx-module" if build.include? 'with-echo-module'
+
+    # Set-Misc module
+    args << "--add-module=/usr/local/share/set-misc-nginx-module" if build.include? 'with-set-misc-module'
 
     # Auth Digest Module
     args << "--add-module=/usr/local/share/auth-digest-nginx-module" if build.include? "with-auth-digest"
