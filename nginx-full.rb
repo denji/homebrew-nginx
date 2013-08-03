@@ -20,8 +20,8 @@ class NginxFull < Formula
   # https://tools.ietf.org/agenda/82/slides/tls-3.pdf
   # http://www.openssl.org/news/changelog.html
   depends_on 'openssl' if build.with? 'spdy'
-  depends_on 'ngx-devel-kit' if build.include? 'with-luajit'
-  depends_on 'lua-nginx-module' if build.include? 'with-luajit'
+  depends_on 'ngx-devel-kit' if build.include? 'with-lua-module'
+  depends_on 'lua-nginx-module' if build.include? 'with-lua-module'
   depends_on 'echo-nginx-module' if build.include? 'with-echo-module'
   depends_on 'auth-digest-nginx-module' if build.include? 'with-auth-digest'
   depends_on 'set-misc-nginx-module' if build.include? 'with-set-misc-module'
@@ -33,7 +33,7 @@ class NginxFull < Formula
   def options_array
     option_data = [
       ['with-passenger',       nil,                            'Compile with support for Phusion Passenger module'],
-      ['with-luajit',          nil,                            'Compile with support for LUA module'],
+      ['with-lua-module',      'with-http_lua_module',         'Compile with support for LUA module'],
       ['with-echo-module',     nil,                            'Compile with support for Echo Module'],
       ['with-auth-digest',     nil,                            'Compile with support for Auth Digest Module'],
       ['with-set-misc-module', nil,                            'Compile with support for Set Misc Module'],
@@ -117,7 +117,7 @@ class NginxFull < Formula
     args << passenger_config_args if build.include? 'with-passenger'
 
     # Install LuaJit
-    if build.include? 'with-luajit'
+    if build.include? 'with-lua_http_module'
       ohai "Configuring LuaJit"
       luajit_path = `brew --prefix luajit`.chomp
       ENV['LUAJIT_LIB'] = "#{luajit_path}/lib"
