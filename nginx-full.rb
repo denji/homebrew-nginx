@@ -33,7 +33,7 @@ class NginxFull < Formula
   def options_array
     option_data = [
       ['with-passenger',       nil,                            'Compile with support for Phusion Passenger module'],
-      ['with-lua-module',      'with-http_lua_module',         'Compile with support for LUA module'],
+      ['with-lua-module',      nil,                            'Compile with support for LUA module'],
       ['with-echo-module',     nil,                            'Compile with support for Echo Module'],
       ['with-auth-digest',     nil,                            'Compile with support for Auth Digest Module'],
       ['with-set-misc-module', nil,                            'Compile with support for Set Misc Module'],
@@ -117,7 +117,7 @@ class NginxFull < Formula
     args << passenger_config_args if build.include? 'with-passenger'
 
     # Install LuaJit
-    if build.include? 'with-lua_http_module'
+    if build.include? 'with-lua-module'
       ohai "Configuring LuaJit"
       luajit_path = `brew --prefix luajit`.chomp
       ENV['LUAJIT_LIB'] = "#{luajit_path}/lib"
