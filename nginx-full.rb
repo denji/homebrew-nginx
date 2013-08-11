@@ -167,7 +167,7 @@ class NginxFull < Formula
     # and Homebrew used to suggest the user copy the plist for nginx to their
     # ~/Library/LaunchAgents directory. So we need to have a symlink there
     # for such cases
-    if (HOMEBREW_CELLAR/'nginx').subdirs.any?{|d| (d/:sbin).directory? }
+    if (HOMEBREW_CELLAR/'nginx-full').subdirs.any?{|d| (d/:sbin).directory? }
       sbin.mkpath
       sbin.cd do
         (sbin/'nginx').make_relative_symlink(bin/'nginx')
