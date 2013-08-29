@@ -25,3 +25,7 @@ You are free to install this version alongside a current install of Nginx from `
 ## Credits
 
 Credit for the original base forumla comes from https://github.com/mxcl/homebrew/blob/master/Library/Formula/nginx.rb and I will keep this formula up to date with any changes made there.
+
+
+[![Bitdeli Badge](https://d2weczhvl823v0.cloudfront.net/marcqualie/homebrew-nginx/trend.png)](https://bitdeli.com/free "Bitdeli Badge")
+
