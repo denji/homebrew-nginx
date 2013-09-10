@@ -9,6 +9,7 @@ class Openresty < Formula
 
   depends_on "luajit"
   depends_on "pcre"
+  depends_on 'set-misc-nginx-module'
 
   def install
 
