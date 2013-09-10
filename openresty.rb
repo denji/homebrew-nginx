@@ -28,8 +28,7 @@ class Openresty < Formula
       "--with-http_postgres_module",
       "--with-cc-opt=#{cc_opt}",
       "--with-ld-opt=#{ld_opt}",
-      "--add-module=/usr/local/share/set-misc-nginx-module",
-      "--with-set-misc-module"
+      "--add-module=/usr/local/share/set-misc-nginx-module"
       ]
     system "./configure", *args
 
