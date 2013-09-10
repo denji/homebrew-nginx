@@ -9,6 +9,8 @@ class Openresty < Formula
 
   depends_on "luajit"
   depends_on "pcre"
+  depends_on 'ngx-devel-kit'
+  depends_on 'set-misc-nginx-module'
 
   def install
 
@@ -24,8 +26,11 @@ class Openresty < Formula
       "--http-log-path=#{var}/log/nginx/access.log",
       "--error-log-path=#{var}/log/nginx/error.log",
       "--with-luajit",
+      "--with-http_postgres_module",
       "--with-cc-opt=#{cc_opt}",
-      "--with-ld-opt=#{ld_opt}"
+      "--with-ld-opt=#{ld_opt}",
+      "--add-module=/usr/local/share/ngx-devel-kit",
+      "--add-module=/usr/local/share/set-misc-nginx-module"
       ]
     system "./configure", *args
 
