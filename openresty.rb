@@ -9,7 +9,6 @@ class Openresty < Formula
 
   depends_on "luajit"
   depends_on "pcre"
-  depends_on 'set-misc-nginx-module'
 
   def install
 
@@ -26,7 +25,7 @@ class Openresty < Formula
       "--error-log-path=#{var}/log/nginx/error.log",
       "--with-luajit",
       "--with-http_postgres_module",
-      "--with-set-misc-module",
+      "--add-module=../set-misc-nginx-module-0.22rc8",
       "--with-cc-opt=#{cc_opt}",
       "--with-ld-opt=#{ld_opt}"
       ]
