@@ -16,6 +16,7 @@ class Openresty < Formula
     cc_opt = "-I#{HOMEBREW_PREFIX}/include"
     ld_opt = "-L#{HOMEBREW_PREFIX}/lib"
     args = [
+      "--add-module=bundle/set-misc-nginx-module-0.22rc8",
       "--prefix=#{prefix}",
       "--pid-path=#{var}/run/openresty.pid",
       "--lock-path=#{var}/run/openresty.lock",
@@ -25,7 +26,6 @@ class Openresty < Formula
       "--error-log-path=#{var}/log/nginx/error.log",
       "--with-luajit",
       "--with-http_postgres_module",
-      "--add-module=../set-misc-nginx-module-0.22rc8",
       "--with-cc-opt=#{cc_opt}",
       "--with-ld-opt=#{ld_opt}"
       ]
