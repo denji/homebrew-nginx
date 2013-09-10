@@ -25,6 +25,7 @@ class Openresty < Formula
       "--error-log-path=#{var}/log/nginx/error.log",
       "--with-luajit",
       "--with-http_postgres_module",
+      "--set-misc-nginx-module",
       "--with-cc-opt=#{cc_opt}",
       "--with-ld-opt=#{ld_opt}"
       ]
