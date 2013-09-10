@@ -9,6 +9,7 @@ class Openresty < Formula
 
   depends_on "luajit"
   depends_on "pcre"
+  depends_on 'set-misc-nginx-module'
 
   def install
 
@@ -16,7 +17,7 @@ class Openresty < Formula
     cc_opt = "-I#{HOMEBREW_PREFIX}/include"
     ld_opt = "-L#{HOMEBREW_PREFIX}/lib"
     args = [
-      "--add-module=bundle/set-misc-nginx-module-0.22rc8",
+      "--add-module=/usr/local/share/set-misc-nginx-module",
       "--prefix=#{prefix}",
       "--pid-path=#{var}/run/openresty.pid",
       "--lock-path=#{var}/run/openresty.lock",
