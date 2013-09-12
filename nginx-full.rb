@@ -46,7 +46,8 @@ class NginxFull < Formula
       ['with-status',          'with-http_stub_status_module', 'Compile with support for stub status module'],
       ['with-mp4',             'with-http_mp4_module',         'Compile with support for mp4 module'],
       ['with-realip',          'with-http_realip_module',      'Compile with support for real IP module'],
-      ['with-perl',            'with-http_perl_module',        'Compile with support for Perl module']
+      ['with-perl',            'with-http_perl_module',        'Compile with support for Perl module'],
+      ['with-sub',             'with-http_sub_module',         'Compile with support for HTTP Sub module']
     ]
   end
   def options
