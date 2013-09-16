@@ -20,6 +20,7 @@ class NginxFull < Formula
   # https://tools.ietf.org/agenda/82/slides/tls-3.pdf
   # http://www.openssl.org/news/changelog.html
   depends_on 'openssl' if build.with? 'spdy'
+  depends_on 'geoip' if build.with? 'geoip'
   depends_on 'ngx-devel-kit' if build.include? 'with-lua-module'
   depends_on 'lua-nginx-module' if build.include? 'with-lua-module'
   depends_on 'echo-nginx-module' if build.include? 'with-echo-module'
@@ -32,23 +33,35 @@ class NginxFull < Formula
   # Options
   def options_array
     option_data = [
-      ['with-passenger',       nil,                            'Compile with support for Phusion Passenger module'],
-      ['with-lua-module',      nil,                            'Compile with support for LUA module'],
-      ['with-echo-module',     nil,                            'Compile with support for Echo Module'],
-      ['with-auth-digest',     nil,                            'Compile with support for Auth Digest Module'],
-      ['with-set-misc-module', nil,                            'Compile with support for Set Misc Module'],
-      ['with-redis2-module',   nil,                            'Compile with support for Redis2 Module'],
-      ['with-webdav',          'with-http_dav_module',         'Compile with support for WebDAV module'],
-      ['with-debug',           'with-debug',                   'Compile with support for debug log'],
-      ['with-spdy',            'with-http_spdy_module',        'Compile with support for SPDY module'],
-      ['with-gunzip',          'with-http_gunzip_module',      'Compile with support for gunzip module'],
-      ['with-secure-link',     'with-http_secure_link_module', 'Compile with support for secure link module'],
-      ['with-status',          'with-http_stub_status_module', 'Compile with support for stub status module'],
-      ['with-mp4',             'with-http_mp4_module',         'Compile with support for mp4 module'],
-      ['with-realip',          'with-http_realip_module',      'Compile with support for real IP module'],
-      ['with-perl',            'with-http_perl_module',        'Compile with support for Perl module'],
-      ['with-sub',             'with-http_sub_module',         'Compile with support for HTTP Sub module'],
-      ['with-addition',        'with-http_addition_module',    'Compile with support for HTTP Addition module']
+      ['with-passenger',        nil,                            'Compile with support for Phusion Passenger module'],
+      ['with-lua-module',       nil,                            'Compile with support for LUA module'],
+      ['with-echo-module',      nil,                            'Compile with support for Echo Module'],
+      ['with-auth-digest',      nil,                            'Compile with support for Auth Digest Module'],
+      ['with-set-misc-module',  nil,                            'Compile with support for Set Misc Module'],
+      ['with-redis2-module',    nil,                            'Compile with support for Redis2 Module'],
+      ['with-webdav',           'with-http_dav_module',         'Compile with support for WebDAV module'],
+      ['with-debug',            'with-debug',                   'Compile with support for debug log'],
+      ['with-spdy',             'with-http_spdy_module',        'Compile with support for SPDY module'],
+      ['with-gunzip',           'with-http_gunzip_module',      'Compile with support for gunzip module'],
+      ['with-secure-link',      'with-http_secure_link_module', 'Compile with support for secure link module'],
+      ['with-status',           'with-http_stub_status_module', 'Compile with support for stub status module'],
+      ['with-mp4',              'with-http_mp4_module',         'Compile with support for mp4 module'],
+      ['with-realip',           'with-http_realip_module',      'Compile with support for real IP module'],
+      ['with-perl',             'with-http_perl_module',        'Compile with support for Perl module'],
+      ['with-sub',              'with-http_sub_module',         'Compile with support for HTTP Sub module'],
+      ['with-addition',         'with-http_addition_module',    'Compile with support for HTTP Addition module'],
+      ['with-degredation',      'with-http_degradation_module', 'Compile with http degredation module'],
+      ['with-flv',              'with-flv',                     'Compile with flv module'],
+      ['with-geoip',            'with-geoip',                   'Compile with geoip module'],
+      ['with-google-perftools', 'with-google-pertools',         'Compile with Google Performance tools module'],
+      ['with-gzip-static',      'with-gzip-static',             'Compile with gzip static module'],
+      ['with-image-filter',     'with-image-filter',            'Compile with Image Filter module'],
+      ['with-mp4',              'with-mp4',                     'Compile with mp4 module'],
+      ['with-random-index',     'with-random-index',            'Compile with random index module'],
+    #  ['with-ssl',              'with-http_ssl_module',         'Compile with support for SSL module'],
+      ['with-stub',             'with-stub-status',             'Compile with stub status module'],
+      ['with-sub',              'with-sub',                     'Compile with Substitution module'],
+      ['with-xslt',             'with-xslt',                    'Compile with XSLT module']
     ]
   end
   def options
