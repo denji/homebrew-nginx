@@ -28,8 +28,9 @@ class NginxFull < Formula
   depends_on 'auth-digest-nginx-module' if build.include? 'with-auth-digest'
   depends_on 'set-misc-nginx-module' if build.include? 'with-set-misc-module'
   depends_on 'redis2-nginx-module' if build.include? 'with-redis2-module'
-  depends_on 'accept-language-nginx-module' if build.include? 'with-accept-language-module'
+  depends_on 'accept-language-nginx-module' if build.include? 'with-accept-language'
   depends_on 'accesskey-nginx-module' if build.include? 'with-accesskey-module'
+  depends_on 'auth-ldap-nginx-module' if build.include? 'with-auth-ldap'
 
   skip_clean 'logs'
 
@@ -37,14 +38,15 @@ class NginxFull < Formula
   def options_array
     option_data = [
       # 3rd party modules
-      ['with-passenger',               nil,                     'Compile with support for Phusion Passenger module'],
-      ['with-lua-module',              nil,                     'Compile with support for LUA module'],
-      ['with-echo-module',             nil,                     'Compile with support for Echo Module'],
-      ['with-auth-digest',             nil,                     'Compile with support for Auth Digest Module'],
-      ['with-set-misc-module',         nil,                     'Compile with support for Set Misc Module'],
-      ['with-redis2-module',           nil,                     'Compile with support for Redis2 Module'],
-      ['with-accept-language-module',  nil,                     'Compile with support for Accept Language Module'],
-      ['with-accesskey-module',        nil,                     'Compile with support for HTTP Access Key Module'],
+      ['with-passenger',         nil,                           'Compile with support for Phusion Passenger module'],
+      ['with-lua-module',        nil,                           'Compile with support for LUA module'],
+      ['with-echo-module',       nil,                           'Compile with support for Echo Module'],
+      ['with-auth-digest',       nil,                           'Compile with support for Auth Digest Module'],
+      ['with-set-misc-module',   nil,                           'Compile with support for Set Misc Module'],
+      ['with-redis2-module',     nil,                           'Compile with support for Redis2 Module'],
+      ['with-accept-language',   nil,                           'Compile with support for Accept Language Module'],
+      ['with-accesskey-module',  nil,                           'Compile with support for HTTP Access Key Module'],
+      ['with-auth-ldap',         nil,                           'Compile with support for Auth LDAP Module'],
       # Internal modules
       ['with-webdav',           'with-http_dav_module',         'Compile with support for WebDAV module'],
       ['with-debug',            'with-debug',                   'Compile with support for debug log'],
@@ -157,10 +159,13 @@ class NginxFull < Formula
     args << "--add-module=/usr/local/share/redis2-nginx-module" if build.include? 'with-redis2-module'
 
     # Accept Language module
-    args << "--add-module=/usr/local/share/accept-language-nginx-module" if build.include? "with-accept-language-module"
+    args << "--add-module=/usr/local/share/accept-language-nginx-module" if build.include? "with-accept-language"
 
     # HTTP Access Key module
     args << "--add-module=/usr/local/share/accesskey-nginx-module" if build.include? "with-accesskey-module"
+
+    # Auth LDAP Module
+    args << "--add-module=/usr/local/share/auth-ldap-nginx-module" if build.include? "with-auth-ldap"
 
     # Auth Digest Module
     args << "--add-module=/usr/local/share/auth-digest-nginx-module" if build.include? "with-auth-digest"
