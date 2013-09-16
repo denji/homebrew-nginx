@@ -43,6 +43,8 @@ class NginxFull < Formula
   depends_on 'fancyindex-nginx-module' if build.include? 'with-fancyindex-module'
   depends_on 'mogilefs-nginx-module' if build.include? 'with-mogilefs-module'
   depends_on 'mp4-h264-nginx-module' if build.include? 'with-mp4-h264-module'
+  depends_on 'notice-nginx-module' if build.include? 'with-notice-module'
+  depends_on 'subs-filter-nginx-module' if build.include? 'with-subs-filter-module'
 
   skip_clean 'logs'
 
@@ -68,6 +70,8 @@ class NginxFull < Formula
       ['with-fancyindex-module', nil,                           'Compile with support for Fancy Index Module'],
       ['with-mogilefs-module',   nil,                           'Compile with support for HTTP MogileFS Module'],
       ['with-mp4-h264-module',   nil,                           'Compile with support for HTTP MP4/H264 Module'],
+      ['with-notice-module',     nil,                           'Compile with support for HTTP Notice Module'],
+      ['with-subs-filter',       nil,                           'Compile with support for Substitutions Filter Module'],
       # Internal modules
       ['with-webdav',           'with-http_dav_module',         'Compile with support for WebDAV module'],
       ['with-debug',            'with-debug',                   'Compile with support for debug log'],
@@ -88,7 +92,6 @@ class NginxFull < Formula
       ['with-image-filter',     'with-http_image_filter_module','Compile with support for Image Filter module'],
       ['with-random-index',     'with-http_random_index_module','Compile with support for Random Index module'],
     #  ['with-ssl',              'with-http_ssl_module',         'Compile with support for SSL module'],
-      ['with-stub',             'with-http_stub_status_module', 'Compile with support for Stub Status module'],
       ['with-xslt',             'with-http_xslt_module',        'Compile with support for XSLT module'],
       ['with-pcre-jit',         'with-pcre-jit',                'Compile with support for JIT in PCRE'],
       ['with-auth-req',         'with-http_auth_request_module','Compile with support for HTTP Auth Request Module']
@@ -218,6 +221,12 @@ class NginxFull < Formula
 
     # HTTP MP4/H264 Module
     args << "--add-module=/usr/local/share/mp4-h264-nginx-module" if build.include? "with-mp4-h264-module"
+
+    # HTTP Notice Module
+    args << "--add-module=/usr/local/share/notice-nginx-module" if build.include? "with-notice-module"
+
+    # Substitutions Filter Module
+    args << "--add-module=/usr/local/share/subs-filter-nginx-module" if build.include? "with-subs-filter-module"
 
     if build.head?
       system "./auto/configure", *args
