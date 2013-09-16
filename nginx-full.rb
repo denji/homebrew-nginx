@@ -42,6 +42,7 @@ class NginxFull < Formula
   depends_on 'eval-nginx-module' if build.include? 'with-eval-module'
   depends_on 'fancyindex-nginx-module' if build.include? 'with-fancyindex-module'
   depends_on 'mogilefs-nginx-module' if build.include? 'with-mogilefs-module'
+  depends_on 'mp4-h264-nginx-module' if build.include? 'with-mp4-h264-module'
 
   skip_clean 'logs'
 
@@ -65,7 +66,8 @@ class NginxFull < Formula
       ['with-dav-ext-module',    nil,                           'Compile with support for HTTP WebDav Extended Module'],
       ['with-eval-module',       nil,                           'Compile with support for Eval Module'],
       ['with-fancyindex-module', nil,                           'Compile with support for Fancy Index Module'],
-      ['with-mogilefs-module',   nil,                           'Compile with support for MogileFS Client Module'],
+      ['with-mogilefs-module',   nil,                           'Compile with support for HTTP MogileFS Module'],
+      ['with-mp4-h264-module',   nil,                           'Compile with support for HTTP MP4/H264 Module'],
       # Internal modules
       ['with-webdav',           'with-http_dav_module',         'Compile with support for WebDAV module'],
       ['with-debug',            'with-debug',                   'Compile with support for debug log'],
@@ -211,8 +213,11 @@ class NginxFull < Formula
     # Fancy Index Module
     args << "--add-module=/usr/local/share/fancyindex-nginx-module" if build.include? "with-fancyindex-module"
 
-    # MogileFS Client Module
+    # HTTP MogileFS Module
     args << "--add-module=/usr/local/share/mogilefs-nginx-module" if build.include? "with-mogilefs-module"
+
+    # HTTP MP4/H264 Module
+    args << "--add-module=/usr/local/share/mp4-h264-nginx-module" if build.include? "with-mp4-h264-module"
 
     if build.head?
       system "./auto/configure", *args
