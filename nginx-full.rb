@@ -31,6 +31,7 @@ class NginxFull < Formula
   depends_on 'accept-language-nginx-module' if build.include? 'with-accept-language'
   depends_on 'accesskey-nginx-module' if build.include? 'with-accesskey-module'
   depends_on 'auth-ldap-nginx-module' if build.include? 'with-auth-ldap'
+  depends_on 'auth-pam-nginx-module' if build.include? 'with-auth-pam'
 
   skip_clean 'logs'
 
@@ -47,6 +48,7 @@ class NginxFull < Formula
       ['with-accept-language',   nil,                           'Compile with support for Accept Language Module'],
       ['with-accesskey-module',  nil,                           'Compile with support for HTTP Access Key Module'],
       ['with-auth-ldap',         nil,                           'Compile with support for Auth LDAP Module'],
+      ['with-auth-pam',          nil,                           'Compile with support for Auth PAM Module'],
       # Internal modules
       ['with-webdav',           'with-http_dav_module',         'Compile with support for WebDAV module'],
       ['with-debug',            'with-debug',                   'Compile with support for debug log'],
@@ -69,7 +71,8 @@ class NginxFull < Formula
     #  ['with-ssl',              'with-http_ssl_module',         'Compile with support for SSL module'],
       ['with-stub',             'with-stub-status',             'Compile with support for Stub Status module'],
       ['with-xslt',             'with-xslt',                    'Compile with support for XSLT module'],
-      ['with-pcre-jit',         'with-pcre-jit',                'Compile with support for JIT in PCRE']
+      ['with-pcre-jit',         'with-pcre-jit',                'Compile with support for JIT in PCRE'],
+      ['with-auth-req',         'with-http_auth_request_module','Compile with support for HTTP Auth Request Module']
     ]
   end
   def options
@@ -166,6 +169,9 @@ class NginxFull < Formula
 
     # Auth LDAP Module
     args << "--add-module=/usr/local/share/auth-ldap-nginx-module" if build.include? "with-auth-ldap"
+
+    # Auth PAM Module
+    args << "--add-module=/usr/local/share/auth-pam-nginx-module" if build.include? "with-auth-pam"
 
     # Auth Digest Module
     args << "--add-module=/usr/local/share/auth-digest-nginx-module" if build.include? "with-auth-digest"
