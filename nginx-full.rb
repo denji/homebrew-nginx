@@ -21,6 +21,8 @@ class NginxFull < Formula
   # http://www.openssl.org/news/changelog.html
   depends_on 'openssl' if build.with? 'spdy'
   depends_on 'geoip' if build.with? 'geoip'
+  depends_on 'libxml2' if build.with? 'xslt'
+  depends_on 'libxslt' if build.with? 'xslt'
   # 3rd party modules
   depends_on 'ngx-devel-kit' if build.include? 'with-lua-module'
   depends_on 'lua-nginx-module' if build.include? 'with-lua-module'
@@ -82,7 +84,7 @@ class NginxFull < Formula
       ['with-random-index',     'with-random-index',            'Compile with support for Random Index module'],
     #  ['with-ssl',              'with-http_ssl_module',         'Compile with support for SSL module'],
       ['with-stub',             'with-stub-status',             'Compile with support for Stub Status module'],
-      ['with-xslt',             'with-xslt',                    'Compile with support for XSLT module'],
+      ['with-xslt',             'with-http_xslt_module',        'Compile with support for XSLT module'],
       ['with-pcre-jit',         'with-pcre-jit',                'Compile with support for JIT in PCRE'],
       ['with-auth-req',         'with-http_auth_request_module','Compile with support for HTTP Auth Request Module']
     ]
