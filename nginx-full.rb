@@ -32,6 +32,7 @@ class NginxFull < Formula
   depends_on 'accesskey-nginx-module' if build.include? 'with-accesskey-module'
   depends_on 'auth-ldap-nginx-module' if build.include? 'with-auth-ldap'
   depends_on 'auth-pam-nginx-module' if build.include? 'with-auth-pam'
+  depends_on 'cache-purge-nginx-module' if build.include? 'with-cache-purge'
 
   skip_clean 'logs'
 
@@ -49,6 +50,7 @@ class NginxFull < Formula
       ['with-accesskey-module',  nil,                           'Compile with support for HTTP Access Key Module'],
       ['with-auth-ldap',         nil,                           'Compile with support for Auth LDAP Module'],
       ['with-auth-pam',          nil,                           'Compile with support for Auth PAM Module'],
+      ['with-cache-purge',       nil,                           'Compile with support for Cache Purge Module'],
       # Internal modules
       ['with-webdav',           'with-http_dav_module',         'Compile with support for WebDAV module'],
       ['with-debug',            'with-debug',                   'Compile with support for debug log'],
@@ -175,6 +177,9 @@ class NginxFull < Formula
 
     # Auth Digest Module
     args << "--add-module=/usr/local/share/auth-digest-nginx-module" if build.include? "with-auth-digest"
+
+    # Auth Digest Module
+    args << "--add-module=/usr/local/share/cache-purge-nginx-module" if build.include? "with-cache-purge"
 
     if build.head?
       system "./auto/configure", *args
