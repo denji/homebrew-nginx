@@ -50,18 +50,17 @@ class NginxFull < Formula
       ['with-perl',             'with-http_perl_module',        'Compile with support for Perl module'],
       ['with-sub',              'with-http_sub_module',         'Compile with support for HTTP Sub module'],
       ['with-addition',         'with-http_addition_module',    'Compile with support for HTTP Addition module'],
-      ['with-degredation',      'with-http_degradation_module', 'Compile with http degredation module'],
-      ['with-flv',              'with-flv',                     'Compile with flv module'],
-      ['with-geoip',            'with-geoip',                   'Compile with geoip module'],
-      ['with-google-perftools', 'with-google-pertools',         'Compile with Google Performance tools module'],
-      ['with-gzip-static',      'with-gzip-static',             'Compile with gzip static module'],
-      ['with-image-filter',     'with-image-filter',            'Compile with Image Filter module'],
-      ['with-mp4',              'with-mp4',                     'Compile with mp4 module'],
-      ['with-random-index',     'with-random-index',            'Compile with random index module'],
+      ['with-degredation',      'with-http_degradation_module', 'Compile with support for HTTP Degredation module'],
+      ['with-flv',              'with-flv',                     'Compile with support for FLV module'],
+      ['with-geoip',            'with-geoip',                   'Compile with support for GeoIP module'],
+      ['with-google-perftools', 'with-google-pertools',         'Compile with support for Google Performance tools module'],
+      ['with-gzip-static',      'with-gzip-static',             'Compile with support for Gzip static module'],
+      ['with-image-filter',     'with-image-filter',            'Compile with support for Image Filter module'],
+      ['with-mp4',              'with-mp4',                     'Compile with support for mp4 module'],
+      ['with-random-index',     'with-random-index',            'Compile with support for Random Index module'],
     #  ['with-ssl',              'with-http_ssl_module',         'Compile with support for SSL module'],
-      ['with-stub',             'with-stub-status',             'Compile with stub status module'],
-      ['with-sub',              'with-sub',                     'Compile with Substitution module'],
-      ['with-xslt',             'with-xslt',                    'Compile with XSLT module']
+      ['with-stub',             'with-stub-status',             'Compile with support for Stub Status module'],
+      ['with-xslt',             'with-xslt',                    'Compile with support for XSLT module']
     ]
   end
   def options
