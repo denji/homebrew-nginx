@@ -21,6 +21,7 @@ class NginxFull < Formula
   # http://www.openssl.org/news/changelog.html
   depends_on 'openssl' if build.with? 'spdy'
   depends_on 'geoip' if build.with? 'geoip'
+  # 3rd party modules
   depends_on 'ngx-devel-kit' if build.include? 'with-lua-module'
   depends_on 'lua-nginx-module' if build.include? 'with-lua-module'
   depends_on 'echo-nginx-module' if build.include? 'with-echo-module'
@@ -33,12 +34,14 @@ class NginxFull < Formula
   # Options
   def options_array
     option_data = [
+      # 3rd party modules
       ['with-passenger',        nil,                            'Compile with support for Phusion Passenger module'],
       ['with-lua-module',       nil,                            'Compile with support for LUA module'],
       ['with-echo-module',      nil,                            'Compile with support for Echo Module'],
       ['with-auth-digest',      nil,                            'Compile with support for Auth Digest Module'],
       ['with-set-misc-module',  nil,                            'Compile with support for Set Misc Module'],
       ['with-redis2-module',    nil,                            'Compile with support for Redis2 Module'],
+      # Internal modules
       ['with-webdav',           'with-http_dav_module',         'Compile with support for WebDAV module'],
       ['with-debug',            'with-debug',                   'Compile with support for debug log'],
       ['with-spdy',             'with-http_spdy_module',        'Compile with support for SPDY module'],
@@ -59,7 +62,8 @@ class NginxFull < Formula
       ['with-random-index',     'with-random-index',            'Compile with support for Random Index module'],
     #  ['with-ssl',              'with-http_ssl_module',         'Compile with support for SSL module'],
       ['with-stub',             'with-stub-status',             'Compile with support for Stub Status module'],
-      ['with-xslt',             'with-xslt',                    'Compile with support for XSLT module']
+      ['with-xslt',             'with-xslt',                    'Compile with support for XSLT module'],
+      ['with-pcre-jit',         'with-pcre-jit',                'Compile with support for JIT in PCRE']
     ]
   end
   def options
