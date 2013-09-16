@@ -34,6 +34,7 @@ class NginxFull < Formula
   depends_on 'auth-pam-nginx-module' if build.include? 'with-auth-pam'
   depends_on 'cache-purge-nginx-module' if build.include? 'with-cache-purge'
   depends_on 'ctpp2-nginx-module' if build.include? 'with-ctpp2-module'
+  depends_on 'header-more-nginx-module' if build.include? 'with-header-more-module'
 
   skip_clean 'logs'
 
@@ -53,6 +54,7 @@ class NginxFull < Formula
       ['with-auth-pam',          nil,                           'Compile with support for Auth PAM Module'],
       ['with-cache-purge',       nil,                           'Compile with support for Cache Purge Module'],
       ['with-ctpp2-module',      nil,                           'Compile with support for CT++ Module'],
+      ['with-header-more-module',nil,                           'Compile with support for Header More Module'],
       # Internal modules
       ['with-webdav',           'with-http_dav_module',         'Compile with support for WebDAV module'],
       ['with-debug',            'with-debug',                   'Compile with support for debug log'],
@@ -185,6 +187,9 @@ class NginxFull < Formula
 
     # CT++ Module
     args << "--add-module=/usr/local/share/ctpp2-nginx-module" if build.include? "with-ctpp2-module"
+
+    # Header More Module
+    args << "--add-module=/usr/local/share/header-more-nginx-module" if build.include? "with-header-more-module"
 
     if build.head?
       system "./auto/configure", *args
