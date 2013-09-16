@@ -7,9 +7,8 @@ class NoticeNginxModule < Formula
   sha1 'ed64e7caffc8cf46bf2ebf7987f59a32952a55a8'
   version '0.0.2'
 
-  def patches
-    DATA
-  end
+  # Fix issue compatibility
+  def patches; DATA end
 
   def install
     (share+'notice-nginx-module').install Dir['*']
