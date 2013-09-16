@@ -36,6 +36,7 @@ class NginxFull < Formula
   depends_on 'ctpp2-nginx-module' if build.include? 'with-ctpp2-module'
   depends_on 'header-more-nginx-module' if build.include? 'with-header-more-module'
   depends_on 'dav-ext-nginx-module' if build.include? 'with-dav-ext-module'
+  depends_on 'eval-nginx-module' if build.include? 'with-eval-module'
 
   skip_clean 'logs'
 
@@ -57,6 +58,7 @@ class NginxFull < Formula
       ['with-ctpp2-module',      nil,                           'Compile with support for CT++ Module'],
       ['with-header-more-module',nil,                           'Compile with support for Header More Module'],
       ['with-dav-ext-module',    nil,                           'Compile with support for HTTP WebDav Extended Module'],
+      ['with-eval-module',       nil,                           'Compile with support for Eval Module'],
       # Internal modules
       ['with-webdav',           'with-http_dav_module',         'Compile with support for WebDAV module'],
       ['with-debug',            'with-debug',                   'Compile with support for debug log'],
@@ -195,6 +197,9 @@ class NginxFull < Formula
 
     # HTTP WebDav Ext Module
     args << "--add-module=/usr/local/share/dav-ext-nginx-module" if build.include? "with-dav-ext-module"
+
+    # Eval Module
+    args << "--add-module=/usr/local/share/eval-nginx-module" if build.include? "with-eval-module"
 
     if build.head?
       system "./auto/configure", *args
