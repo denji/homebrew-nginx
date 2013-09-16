@@ -23,6 +23,7 @@ class NginxFull < Formula
   depends_on 'geoip' if build.with? 'geoip'
   depends_on 'libxml2' if build.with? 'xslt'
   depends_on 'libxslt' if build.with? 'xslt'
+  depends_on 'gd' if build.with? 'image-filter'
   # 3rd party modules
   depends_on 'ngx-devel-kit' if build.include? 'with-lua-module'
   depends_on 'lua-nginx-module' if build.include? 'with-lua-module'
@@ -78,12 +79,12 @@ class NginxFull < Formula
       ['with-degredation',      'with-http_degradation_module', 'Compile with support for HTTP Degredation module'],
       ['with-flv',              'with-http_flv_module',         'Compile with support for FLV module'],
       ['with-geoip',            'with-http_geoip_module',       'Compile with support for GeoIP module'],
-      ['with-google-perftools', 'with-google-pertools',         'Compile with support for Google Performance tools module'],
-      ['with-gzip-static',      'with-gzip-static',             'Compile with support for Gzip static module'],
-      ['with-image-filter',     'with-image-filter',            'Compile with support for Image Filter module'],
-      ['with-random-index',     'with-random-index',            'Compile with support for Random Index module'],
+      ['with-google-perftools', 'with-google_perftools_module', 'Compile with support for Google Performance tools module'],
+      ['with-gzip-static',      'with-http_gzip_static_module', 'Compile with support for Gzip static module'],
+      ['with-image-filter',     'with-http_image_filter_module','Compile with support for Image Filter module'],
+      ['with-random-index',     'with-http_random_index_module','Compile with support for Random Index module'],
     #  ['with-ssl',              'with-http_ssl_module',         'Compile with support for SSL module'],
-      ['with-stub',             'with-stub-status',             'Compile with support for Stub Status module'],
+      ['with-stub',             'with-http_stub_status_module', 'Compile with support for Stub Status module'],
       ['with-xslt',             'with-http_xslt_module',        'Compile with support for XSLT module'],
       ['with-pcre-jit',         'with-pcre-jit',                'Compile with support for JIT in PCRE'],
       ['with-auth-req',         'with-http_auth_request_module','Compile with support for HTTP Auth Request Module']
