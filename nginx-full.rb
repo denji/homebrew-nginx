@@ -59,7 +59,6 @@ class NginxFull < Formula
       ['with-google-perftools', 'with-google-pertools',         'Compile with support for Google Performance tools module'],
       ['with-gzip-static',      'with-gzip-static',             'Compile with support for Gzip static module'],
       ['with-image-filter',     'with-image-filter',            'Compile with support for Image Filter module'],
-      ['with-mp4',              'with-mp4',                     'Compile with support for mp4 module'],
       ['with-random-index',     'with-random-index',            'Compile with support for Random Index module'],
     #  ['with-ssl',              'with-http_ssl_module',         'Compile with support for SSL module'],
       ['with-stub',             'with-stub-status',             'Compile with support for Stub Status module'],
