@@ -41,6 +41,7 @@ class NginxFull < Formula
   depends_on 'dav-ext-nginx-module' if build.include? 'with-dav-ext-module'
   depends_on 'eval-nginx-module' if build.include? 'with-eval-module'
   depends_on 'fancyindex-nginx-module' if build.include? 'with-fancyindex-module'
+  depends_on 'mogilefs-nginx-module' if build.include? 'with-mogilefs-module'
 
   skip_clean 'logs'
 
@@ -64,6 +65,7 @@ class NginxFull < Formula
       ['with-dav-ext-module',    nil,                           'Compile with support for HTTP WebDav Extended Module'],
       ['with-eval-module',       nil,                           'Compile with support for Eval Module'],
       ['with-fancyindex-module', nil,                           'Compile with support for Fancy Index Module'],
+      ['with-mogilefs-module',   nil,                           'Compile with support for MogileFS Client Module'],
       # Internal modules
       ['with-webdav',           'with-http_dav_module',         'Compile with support for WebDAV module'],
       ['with-debug',            'with-debug',                   'Compile with support for debug log'],
@@ -208,6 +210,9 @@ class NginxFull < Formula
 
     # Fancy Index Module
     args << "--add-module=/usr/local/share/fancyindex-nginx-module" if build.include? "with-fancyindex-module"
+
+    # MogileFS Client Module
+    args << "--add-module=/usr/local/share/mogilefs-nginx-module" if build.include? "with-mogilefs-module"
 
     if build.head?
       system "./auto/configure", *args
