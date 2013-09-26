@@ -20,35 +20,81 @@ class NginxFull < Formula
   # https://tools.ietf.org/agenda/82/slides/tls-3.pdf
   # http://www.openssl.org/news/changelog.html
   depends_on 'openssl' if build.with? 'spdy'
+  depends_on 'geoip' if build.with? 'geoip'
+  depends_on 'libxml2' if build.with? 'xslt'
+  depends_on 'libxslt' if build.with? 'xslt'
+  depends_on 'gd' if build.with? 'image-filter'
+  # 3rd party modules
   depends_on 'ngx-devel-kit' if build.include? 'with-lua-module'
   depends_on 'lua-nginx-module' if build.include? 'with-lua-module'
   depends_on 'echo-nginx-module' if build.include? 'with-echo-module'
   depends_on 'auth-digest-nginx-module' if build.include? 'with-auth-digest'
   depends_on 'set-misc-nginx-module' if build.include? 'with-set-misc-module'
   depends_on 'redis2-nginx-module' if build.include? 'with-redis2-module'
+  depends_on 'accept-language-nginx-module' if build.include? 'with-accept-language'
+  depends_on 'accesskey-nginx-module' if build.include? 'with-accesskey-module'
+  depends_on 'auth-ldap-nginx-module' if build.include? 'with-auth-ldap'
+  depends_on 'auth-pam-nginx-module' if build.include? 'with-auth-pam'
+  depends_on 'cache-purge-nginx-module' if build.include? 'with-cache-purge'
+  depends_on 'ctpp2-nginx-module' if build.include? 'with-ctpp2-module'
+  depends_on 'header-more-nginx-module' if build.include? 'with-header-more-module'
+  depends_on 'dav-ext-nginx-module' if build.include? 'with-dav-ext-module'
+  depends_on 'eval-nginx-module' if build.include? 'with-eval-module'
+  depends_on 'fancyindex-nginx-module' if build.include? 'with-fancyindex-module'
+  depends_on 'mogilefs-nginx-module' if build.include? 'with-mogilefs-module'
+  depends_on 'mp4-h264-nginx-module' if build.include? 'with-mp4-h264-module'
+  depends_on 'notice-nginx-module' if build.include? 'with-notice-module'
+  depends_on 'subs-filter-nginx-module' if build.include? 'with-subs-filter-module'
 
   skip_clean 'logs'
 
   # Options
   def options_array
     option_data = [
-      ['with-passenger',       nil,                            'Compile with support for Phusion Passenger module'],
-      ['with-lua-module',      nil,                            'Compile with support for LUA module'],
-      ['with-echo-module',     nil,                            'Compile with support for Echo Module'],
-      ['with-auth-digest',     nil,                            'Compile with support for Auth Digest Module'],
-      ['with-set-misc-module', nil,                            'Compile with support for Set Misc Module'],
-      ['with-redis2-module',   nil,                            'Compile with support for Redis2 Module'],
-      ['with-webdav',          'with-http_dav_module',         'Compile with support for WebDAV module'],
-      ['with-debug',           'with-debug',                   'Compile with support for debug log'],
-      ['with-spdy',            'with-http_spdy_module',        'Compile with support for SPDY module'],
-      ['with-gunzip',          'with-http_gunzip_module',      'Compile with support for gunzip module'],
-      ['with-secure-link',     'with-http_secure_link_module', 'Compile with support for secure link module'],
-      ['with-status',          'with-http_stub_status_module', 'Compile with support for stub status module'],
-      ['with-mp4',             'with-http_mp4_module',         'Compile with support for mp4 module'],
-      ['with-realip',          'with-http_realip_module',      'Compile with support for real IP module'],
-      ['with-perl',            'with-http_perl_module',        'Compile with support for Perl module'],
-      ['with-sub',             'with-http_sub_module',         'Compile with support for HTTP Sub module'],
-      ['with-addition',        'with-http_addition_module',    'Compile with support for HTTP Addition module']
+      # 3rd party modules
+      ['with-passenger',         nil,                           'Compile with support for Phusion Passenger module'],
+      ['with-lua-module',        nil,                           'Compile with support for LUA module'],
+      ['with-echo-module',       nil,                           'Compile with support for Echo Module'],
+      ['with-auth-digest',       nil,                           'Compile with support for Auth Digest Module'],
+      ['with-set-misc-module',   nil,                           'Compile with support for Set Misc Module'],
+      ['with-redis2-module',     nil,                           'Compile with support for Redis2 Module'],
+      ['with-accept-language',   nil,                           'Compile with support for Accept Language Module'],
+      ['with-accesskey-module',  nil,                           'Compile with support for HTTP Access Key Module'],
+      ['with-auth-ldap',         nil,                           'Compile with support for Auth LDAP Module'],
+      ['with-auth-pam',          nil,                           'Compile with support for Auth PAM Module'],
+      ['with-cache-purge',       nil,                           'Compile with support for Cache Purge Module'],
+      ['with-ctpp2-module',      nil,                           'Compile with support for CT++ Module'],
+      ['with-header-more-module',nil,                           'Compile with support for Header More Module'],
+      ['with-dav-ext-module',    nil,                           'Compile with support for HTTP WebDav Extended Module'],
+      ['with-eval-module',       nil,                           'Compile with support for Eval Module'],
+      ['with-fancyindex-module', nil,                           'Compile with support for Fancy Index Module'],
+      ['with-mogilefs-module',   nil,                           'Compile with support for HTTP MogileFS Module'],
+      ['with-mp4-h264-module',   nil,                           'Compile with support for HTTP MP4/H264 Module'],
+      ['with-notice-module',     nil,                           'Compile with support for HTTP Notice Module'],
+      ['with-subs-filter',       nil,                           'Compile with support for Substitutions Filter Module'],
+      # Internal modules
+      ['with-webdav',           'with-http_dav_module',         'Compile with support for WebDAV module'],
+      ['with-debug',            'with-debug',                   'Compile with support for debug log'],
+      ['with-spdy',             'with-http_spdy_module',        'Compile with support for SPDY module'],
+      ['with-gunzip',           'with-http_gunzip_module',      'Compile with support for gunzip module'],
+      ['with-secure-link',      'with-http_secure_link_module', 'Compile with support for secure link module'],
+      ['with-status',           'with-http_stub_status_module', 'Compile with support for stub status module'],
+      ['with-mp4',              'with-http_mp4_module',         'Compile with support for mp4 module'],
+      ['with-realip',           'with-http_realip_module',      'Compile with support for real IP module'],
+      ['with-perl',             'with-http_perl_module',        'Compile with support for Perl module'],
+      ['with-sub',              'with-http_sub_module',         'Compile with support for HTTP Sub module'],
+      ['with-addition',         'with-http_addition_module',    'Compile with support for HTTP Addition module'],
+      ['with-degredation',      'with-http_degradation_module', 'Compile with support for HTTP Degredation module'],
+      ['with-flv',              'with-http_flv_module',         'Compile with support for FLV module'],
+      ['with-geoip',            'with-http_geoip_module',       'Compile with support for GeoIP module'],
+      ['with-google-perftools', 'with-google_perftools_module', 'Compile with support for Google Performance tools module'],
+      ['with-gzip-static',      'with-http_gzip_static_module', 'Compile with support for Gzip static module'],
+      ['with-image-filter',     'with-http_image_filter_module','Compile with support for Image Filter module'],
+      ['with-random-index',     'with-http_random_index_module','Compile with support for Random Index module'],
+    #  ['with-ssl',              'with-http_ssl_module',         'Compile with support for SSL module'],
+      ['with-xslt',             'with-http_xslt_module',        'Compile with support for XSLT module'],
+      ['with-pcre-jit',         'with-pcre-jit',                'Compile with support for JIT in PCRE'],
+      ['with-auth-req',         'with-http_auth_request_module','Compile with support for HTTP Auth Request Module']
     ]
   end
   def options
@@ -137,8 +183,50 @@ class NginxFull < Formula
     # Redis2 module
     args << "--add-module=/usr/local/share/redis2-nginx-module" if build.include? 'with-redis2-module'
 
+    # Accept Language module
+    args << "--add-module=/usr/local/share/accept-language-nginx-module" if build.include? "with-accept-language"
+
+    # HTTP Access Key module
+    args << "--add-module=/usr/local/share/accesskey-nginx-module" if build.include? "with-accesskey-module"
+
+    # Auth LDAP Module
+    args << "--add-module=/usr/local/share/auth-ldap-nginx-module" if build.include? "with-auth-ldap"
+
+    # Auth PAM Module
+    args << "--add-module=/usr/local/share/auth-pam-nginx-module" if build.include? "with-auth-pam"
+
     # Auth Digest Module
     args << "--add-module=/usr/local/share/auth-digest-nginx-module" if build.include? "with-auth-digest"
+
+    # Cache Purge Module
+    args << "--add-module=/usr/local/share/cache-purge-nginx-module" if build.include? "with-cache-purge"
+
+    # CT++ Module
+    args << "--add-module=/usr/local/share/ctpp2-nginx-module" if build.include? "with-ctpp2-module"
+
+    # Header More Module
+    args << "--add-module=/usr/local/share/header-more-nginx-module" if build.include? "with-header-more-module"
+
+    # HTTP WebDav Ext Module
+    args << "--add-module=/usr/local/share/dav-ext-nginx-module" if build.include? "with-dav-ext-module"
+
+    # Eval Module
+    args << "--add-module=/usr/local/share/eval-nginx-module" if build.include? "with-eval-module"
+
+    # Fancy Index Module
+    args << "--add-module=/usr/local/share/fancyindex-nginx-module" if build.include? "with-fancyindex-module"
+
+    # HTTP MogileFS Module
+    args << "--add-module=/usr/local/share/mogilefs-nginx-module" if build.include? "with-mogilefs-module"
+
+    # HTTP MP4/H264 Module
+    args << "--add-module=/usr/local/share/mp4-h264-nginx-module" if build.include? "with-mp4-h264-module"
+
+    # HTTP Notice Module
+    args << "--add-module=/usr/local/share/notice-nginx-module" if build.include? "with-notice-module"
+
+    # Substitutions Filter Module
+    args << "--add-module=/usr/local/share/subs-filter-nginx-module" if build.include? "with-subs-filter-module"
 
     if build.head?
       system "./auto/configure", *args
