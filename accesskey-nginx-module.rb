@@ -1,6 +1,6 @@
 require 'formula'
 
-class AccessKeyNginxModule < Formula
+class AccesskeyNginxModule < Formula
 
   homepage 'http://wiki.nginx.org/NginxHttpAccessKeyModule'
   url 'http://wiki.nginx.org/images/5/51/Nginx-accesskey-2.0.3.tar.gz'
