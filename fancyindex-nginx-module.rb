@@ -1,6 +1,6 @@
 require 'formula'
 
-class FancyIndexNginxModule < Formula
+class FancyindexNginxModule < Formula
 
   homepage 'https://github.com/aperezdc/ngx-fancyindex'
   url 'https://github.com/aperezdc/ngx-fancyindex/archive/v0.3.2.tar.gz'
