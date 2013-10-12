@@ -37,7 +37,7 @@ class NginxFull < Formula
   depends_on 'auth-pam-nginx-module' if build.include? 'with-auth-pam'
   depends_on 'cache-purge-nginx-module' if build.include? 'with-cache-purge'
   depends_on 'ctpp2-nginx-module' if build.include? 'with-ctpp2-module'
-  depends_on 'header-more-nginx-module' if build.include? 'with-header-more-module'
+  depends_on 'headers-more-nginx-module' if build.include? 'with-headers-more-module'
   depends_on 'dav-ext-nginx-module' if build.include? 'with-dav-ext-module'
   depends_on 'eval-nginx-module' if build.include? 'with-eval-module'
   depends_on 'fancyindex-nginx-module' if build.include? 'with-fancyindex-module'
@@ -64,7 +64,7 @@ class NginxFull < Formula
       ['with-auth-pam',          nil,                           'Compile with support for Auth PAM Module'],
       ['with-cache-purge',       nil,                           'Compile with support for Cache Purge Module'],
       ['with-ctpp2-module',      nil,                           'Compile with support for CT++ Module'],
-      ['with-header-more-module',nil,                           'Compile with support for Header More Module'],
+      ['with-headers-more-module',nil,                          'Compile with support for Headers More Module'],
       ['with-dav-ext-module',    nil,                           'Compile with support for HTTP WebDav Extended Module'],
       ['with-eval-module',       nil,                           'Compile with support for Eval Module'],
       ['with-fancyindex-module', nil,                           'Compile with support for Fancy Index Module'],
@@ -204,8 +204,8 @@ class NginxFull < Formula
     # CT++ Module
     args << "--add-module=/usr/local/share/ctpp2-nginx-module" if build.include? "with-ctpp2-module"
 
-    # Header More Module
-    args << "--add-module=/usr/local/share/header-more-nginx-module" if build.include? "with-header-more-module"
+    # Headers More Module
+    args << "--add-module=/usr/local/share/headers-more-nginx-module" if build.include? "with-headers-more-module"
 
     # HTTP WebDav Ext Module
     args << "--add-module=/usr/local/share/dav-ext-nginx-module" if build.include? "with-dav-ext-module"
