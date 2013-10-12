@@ -7,7 +7,7 @@ class HeadersMoreNginxModule < Formula
   sha1 '9e574fb0a3cacb4229fa2fe93d02bac0d43e431f'
 
   def install
-    (share+'header-more-nginx-module').install Dir['*']
+    (share+'headers-more-nginx-module').install Dir['*']
   end
 
 end
