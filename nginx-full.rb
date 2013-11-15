@@ -94,7 +94,8 @@ class NginxFull < Formula
     #  ['with-ssl',               'with-http_ssl_module',         'Compile with support for SSL module'],
       ['with-xslt',              'with-http_xslt_module',        'Compile with support for XSLT module'],
       ['with-pcre-jit',          'with-pcre-jit',                'Compile with support for JIT in PCRE'],
-      ['with-auth-req',          'with-http_auth_request_module','Compile with support for HTTP Auth Request Module']
+      ['with-auth-req',          'with-http_auth_request_module','Compile with support for HTTP Auth Request Module'],
+      ['with-mail',              'with-mail',                    'Compile with support for Mail module']
     ]
   end
   def options
