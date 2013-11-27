@@ -38,7 +38,7 @@ class NginxFull < Formula
   depends_on 'cache-purge-nginx-module' if build.include? 'with-cache-purge'
   depends_on 'ctpp2-nginx-module' if build.include? 'with-ctpp2-module'
   depends_on 'headers-more-nginx-module' if build.include? 'with-headers-more-module'
-  depends_on 'dav-ext-nginx-module' if build.include? 'with-dav-ext-module'
+  depends_on 'dav-ext-nginx-module' if build.include? 'with-webdav'
   depends_on 'eval-nginx-module' if build.include? 'with-eval-module'
   depends_on 'fancyindex-nginx-module' if build.include? 'with-fancyindex-module'
   depends_on 'mogilefs-nginx-module' if build.include? 'with-mogilefs-module'
@@ -209,7 +209,7 @@ class NginxFull < Formula
     args << "--add-module=/usr/local/share/headers-more-nginx-module" if build.include? "with-headers-more-module"
 
     # HTTP WebDav Ext Module
-    args << "--add-module=/usr/local/share/dav-ext-nginx-module" if build.include? "with-dav-ext-module"
+    args << "--add-module=/usr/local/share/dav-ext-nginx-module" if build.include? "with-webdav"
 
     # Eval Module
     args << "--add-module=/usr/local/share/eval-nginx-module" if build.include? "with-eval-module"
