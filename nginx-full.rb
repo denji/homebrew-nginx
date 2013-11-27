@@ -171,63 +171,63 @@ class NginxFull < Formula
       luajit_path = `brew --prefix luajit`.chomp
       ENV['LUAJIT_LIB'] = "#{luajit_path}/lib"
       ENV['LUAJIT_INC'] = "#{luajit_path}/include/luajit-2.0"
-      args << "--add-module=/usr/local/share/ngx-devel-kit"
-      args << "--add-module=/usr/local/share/lua-nginx-module"
+      args << "--add-module=#{HOMEBREW_PREFIX}/share/ngx-devel-kit"
+      args << "--add-module=#{HOMEBREW_PREFIX}/share/lua-nginx-module"
     end
 
     # Echo module
-    args << "--add-module=/usr/local/share/echo-nginx-module" if build.include? 'with-echo-module'
+    args << "--add-module=#{HOMEBREW_PREFIX}/share/echo-nginx-module" if build.include? 'with-echo-module'
 
     # Set-Misc module
-    args << "--add-module=/usr/local/share/set-misc-nginx-module" if build.include? 'with-set-misc-module'
+    args << "--add-module=#{HOMEBREW_PREFIX}/share/set-misc-nginx-module" if build.include? 'with-set-misc-module'
 
     # Redis2 module
-    args << "--add-module=/usr/local/share/redis2-nginx-module" if build.include? 'with-redis2-module'
+    args << "--add-module=#{HOMEBREW_PREFIX}/share/redis2-nginx-module" if build.include? 'with-redis2-module'
 
     # Accept Language module
-    args << "--add-module=/usr/local/share/accept-language-nginx-module" if build.include? "with-accept-language"
+    args << "--add-module=#{HOMEBREW_PREFIX}/share/accept-language-nginx-module" if build.include? "with-accept-language"
 
     # HTTP Access Key module
-    args << "--add-module=/usr/local/share/accesskey-nginx-module" if build.include? "with-accesskey-module"
+    args << "--add-module=#{HOMEBREW_PREFIX}/share/accesskey-nginx-module" if build.include? "with-accesskey-module"
 
     # Auth LDAP Module
-    args << "--add-module=/usr/local/share/auth-ldap-nginx-module" if build.include? "with-auth-ldap"
+    args << "--add-module=#{HOMEBREW_PREFIX}/share/auth-ldap-nginx-module" if build.include? "with-auth-ldap"
 
     # Auth PAM Module
-    args << "--add-module=/usr/local/share/auth-pam-nginx-module" if build.include? "with-auth-pam"
+    args << "--add-module=#{HOMEBREW_PREFIX}/share/auth-pam-nginx-module" if build.include? "with-auth-pam"
 
     # Auth Digest Module
-    args << "--add-module=/usr/local/share/auth-digest-nginx-module" if build.include? "with-auth-digest"
+    args << "--add-module=#{HOMEBREW_PREFIX}/share/auth-digest-nginx-module" if build.include? "with-auth-digest"
 
     # Cache Purge Module
-    args << "--add-module=/usr/local/share/cache-purge-nginx-module" if build.include? "with-cache-purge"
+    args << "--add-module=#{HOMEBREW_PREFIX}/share/cache-purge-nginx-module" if build.include? "with-cache-purge"
 
     # CT++ Module
-    args << "--add-module=/usr/local/share/ctpp2-nginx-module" if build.include? "with-ctpp2-module"
+    args << "--add-module=#{HOMEBREW_PREFIX}/share/ctpp2-nginx-module" if build.include? "with-ctpp2-module"
 
     # Headers More Module
-    args << "--add-module=/usr/local/share/headers-more-nginx-module" if build.include? "with-headers-more-module"
+    args << "--add-module=#{HOMEBREW_PREFIX}/share/headers-more-nginx-module" if build.include? "with-headers-more-module"
 
     # HTTP WebDav Ext Module
-    args << "--add-module=/usr/local/share/dav-ext-nginx-module" if build.include? "with-webdav"
+    args << "--add-module=#{HOMEBREW_PREFIX}/share/dav-ext-nginx-module" if build.include? "with-webdav"
 
     # Eval Module
-    args << "--add-module=/usr/local/share/eval-nginx-module" if build.include? "with-eval-module"
+    args << "--add-module=#{HOMEBREW_PREFIX}/share/eval-nginx-module" if build.include? "with-eval-module"
 
     # Fancy Index Module
-    args << "--add-module=/usr/local/share/fancyindex-nginx-module" if build.include? "with-fancyindex-module"
+    args << "--add-module=#{HOMEBREW_PREFIX}/share/fancyindex-nginx-module" if build.include? "with-fancyindex-module"
 
     # HTTP MogileFS Module
-    args << "--add-module=/usr/local/share/mogilefs-nginx-module" if build.include? "with-mogilefs-module"
+    args << "--add-module=#{HOMEBREW_PREFIX}/share/mogilefs-nginx-module" if build.include? "with-mogilefs-module"
 
     # HTTP MP4/H264 Module
-    args << "--add-module=/usr/local/share/mp4-h264-nginx-module" if build.include? "with-mp4-h264-module"
+    args << "--add-module=#{HOMEBREW_PREFIX}/share/mp4-h264-nginx-module" if build.include? "with-mp4-h264-module"
 
     # HTTP Notice Module
-    args << "--add-module=/usr/local/share/notice-nginx-module" if build.include? "with-notice-module"
+    args << "--add-module=#{HOMEBREW_PREFIX}/share/notice-nginx-module" if build.include? "with-notice-module"
 
     # Substitutions Filter Module
-    args << "--add-module=/usr/local/share/subs-filter-nginx-module" if build.include? "with-subs-filter-module"
+    args << "--add-module=#{HOMEBREW_PREFIX}/share/subs-filter-nginx-module" if build.include? "with-subs-filter-module"
 
     if build.head?
       system "./auto/configure", *args
