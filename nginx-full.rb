@@ -59,7 +59,7 @@ class NginxFull < Formula
       ['with-auth-digest',        nil,                           'Compile with support for Auth Digest Module'],
       ['with-set-misc-module',    nil,                           'Compile with support for Set Misc Module'],
       ['with-redis2-module',      nil,                           'Compile with support for Redis2 Module'],
-      ['with-array-var-module',   nil,                           'Compile with support for Array Var Module']
+      ['with-array-var-module',   nil,                           'Compile with support for Array Var Module'],
       ['with-accept-language',    nil,                           'Compile with support for Accept Language Module'],
       ['with-accesskey-module',   nil,                           'Compile with support for HTTP Access Key Module'],
       ['with-auth-ldap',          nil,                           'Compile with support for Auth LDAP Module'],
