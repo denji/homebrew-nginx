@@ -25,12 +25,13 @@ class NginxFull < Formula
   depends_on 'libxslt' if build.with? 'xslt'
   depends_on 'gd' if build.with? 'image-filter'
   # 3rd party modules
-  depends_on 'ngx-devel-kit' if build.include? 'with-lua-module'
+  depends_on 'ngx-devel-kit' if build.include? 'with-lua-module' or build.include? 'with-array-var-module'
   depends_on 'lua-nginx-module' if build.include? 'with-lua-module'
   depends_on 'echo-nginx-module' if build.include? 'with-echo-module'
   depends_on 'auth-digest-nginx-module' if build.include? 'with-auth-digest'
   depends_on 'set-misc-nginx-module' if build.include? 'with-set-misc-module'
   depends_on 'redis2-nginx-module' if build.include? 'with-redis2-module'
+  depends_on 'array-var-nginx-module' if build.include? 'with-array-var-module'
   depends_on 'accept-language-nginx-module' if build.include? 'with-accept-language'
   depends_on 'accesskey-nginx-module' if build.include? 'with-accesskey-module'
   depends_on 'auth-ldap-nginx-module' if build.include? 'with-auth-ldap'
@@ -58,6 +59,7 @@ class NginxFull < Formula
       ['with-auth-digest',        nil,                           'Compile with support for Auth Digest Module'],
       ['with-set-misc-module',    nil,                           'Compile with support for Set Misc Module'],
       ['with-redis2-module',      nil,                           'Compile with support for Redis2 Module'],
+      ['with-array-var-module',   nil,                           'Compile with support for Array Var Module']
       ['with-accept-language',    nil,                           'Compile with support for Accept Language Module'],
       ['with-accesskey-module',   nil,                           'Compile with support for HTTP Access Key Module'],
       ['with-auth-ldap',          nil,                           'Compile with support for Auth LDAP Module'],
@@ -183,6 +185,9 @@ class NginxFull < Formula
 
     # Redis2 module
     args << "--add-module=#{HOMEBREW_PREFIX}/share/redis2-nginx-module" if build.include? 'with-redis2-module'
+
+    # Array Var module
+    args << "--add-module=#{HOMEBREW_PREFIX}/share/array-var-nginx-module" if build.include? 'with-array-var-module'
 
     # Accept Language module
     args << "--add-module=#{HOMEBREW_PREFIX}/share/accept-language-nginx-module" if build.include? "with-accept-language"
