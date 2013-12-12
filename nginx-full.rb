@@ -46,6 +46,7 @@ class NginxFull < Formula
   depends_on 'mp4-h264-nginx-module' if build.include? 'with-mp4-h264-module'
   depends_on 'notice-nginx-module' if build.include? 'with-notice-module'
   depends_on 'subs-filter-nginx-module' if build.include? 'with-subs-filter-module'
+  depends_on 'upload-nginx-module' if build.include? 'with-upload-module'
 
   skip_clean 'logs'
 
@@ -97,7 +98,8 @@ class NginxFull < Formula
       ['with-xslt',              'with-http_xslt_module',        'Compile with support for XSLT module'],
       ['with-pcre-jit',          'with-pcre-jit',                'Compile with support for JIT in PCRE'],
       ['with-auth-req',          'with-http_auth_request_module','Compile with support for HTTP Auth Request Module'],
-      ['with-mail',              'with-mail',                    'Compile with support for Mail module']
+      ['with-mail',              'with-mail',                    'Compile with support for Mail module'],
+      ['with-upload',            'with-upload_module',           'Compile with support for Upload module']
     ]
   end
   def options
@@ -233,6 +235,9 @@ class NginxFull < Formula
 
     # Substitutions Filter Module
     args << "--add-module=#{HOMEBREW_PREFIX}/share/subs-filter-nginx-module" if build.include? "with-subs-filter-module"
+
+    # file upload
+        args << "--add-module=#{HOMEBREW_PREFIX}/share/upload-nginx-module" if build.include? "with-upload-module"
 
     if build.head?
       system "./auto/configure", *args
