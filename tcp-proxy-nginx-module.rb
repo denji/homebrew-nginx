@@ -1,6 +1,6 @@
 require 'formula'
 
-class TcpproxyNginxModule < Formula
+class TcpProxyNginxModule < Formula
 
   homepage 'https://github.com/yaoweibin/nginx_tcp_proxy_module'
   url 'https://github.com/yaoweibin/nginx_tcp_proxy_module/archive/9f75bb6.zip'
