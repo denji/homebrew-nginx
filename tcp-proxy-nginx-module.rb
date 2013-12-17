@@ -27,8 +27,6 @@ __END__
  };
 
 
-diff --git a/src/core/ngx_log.h b/src/core/ngx_log.h
-index 1054836..ee3f2cc 100644
 --- a/src/core/ngx_log.h
 +++ b/src/core/ngx_log.h
 @@ -29,6 +29,7 @@
@@ -48,8 +46,6 @@ index 1054836..ee3f2cc 100644
  #define NGX_LOG_DEBUG_CONNECTION  0x80000000
  #define NGX_LOG_DEBUG_ALL         0x7ffffff0
 
-diff --git a/src/event/ngx_event_connect.h b/src/event/ngx_event_connect.h
-index d64f1bb..d15aa9a 100644
 --- a/src/event/ngx_event_connect.h
 +++ b/src/event/ngx_event_connect.h
 @@ -32,6 +32,7 @@ typedef void (*ngx_event_save_peer_session_pt)(ngx_peer_connection_t *pc,
