@@ -39,6 +39,7 @@ class NginxFull < Formula
   depends_on 'cache-purge-nginx-module' if build.include? 'with-cache-purge'
   depends_on 'ctpp2-nginx-module' if build.include? 'with-ctpp2-module'
   depends_on 'headers-more-nginx-module' if build.include? 'with-headers-more-module'
+  depends_on 'tcp-proxy-nginx-module' if build.include? 'with-tcp-proxy-module'
   depends_on 'dav-ext-nginx-module' if build.include? 'with-webdav'
   depends_on 'eval-nginx-module' if build.include? 'with-eval-module'
   depends_on 'fancyindex-nginx-module' if build.include? 'with-fancyindex-module'
@@ -68,6 +69,7 @@ class NginxFull < Formula
       ['with-cache-purge',        nil,                           'Compile with support for Cache Purge Module'],
       ['with-ctpp2-module',       nil,                           'Compile with support for CT++ Module'],
       ['with-headers-more-module',nil,                           'Compile with support for Headers More Module'],
+      ['with-tcp-proxy-module',   nil,                           'Compile with support for TCP proxy'],
       ['with-dav-ext-module',     nil,                           'Compile with support for HTTP WebDav Extended Module'],
       ['with-eval-module',        nil,                           'Compile with support for Eval Module'],
       ['with-fancyindex-module',  nil,                           'Compile with support for Fancy Index Module'],
@@ -214,6 +216,9 @@ class NginxFull < Formula
 
     # Headers More Module
     args << "--add-module=#{HOMEBREW_PREFIX}/share/headers-more-nginx-module" if build.include? "with-headers-more-module"
+
+    # TCP proxy Module
+    args << "--add-module=#{HOMEBREW_PREFIX}/share/tcp-proxy-nginx-module" if build.include? "with-tcp-proxy-module"
 
     # HTTP WebDav Ext Module
     args << "--add-module=#{HOMEBREW_PREFIX}/share/dav-ext-nginx-module" if build.include? "with-webdav"
