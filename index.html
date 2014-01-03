@@ -33,6 +33,13 @@ title: Homebrew Nginx
 brew tap marcqualie/nginx
 brew install nginx-full
 {% endhighlight %}
+
+        <h1>Conflicts</h1>
+        <p>If you have trouble installing this tap then please make sure the default version of nginx is removed first. You can do that with the following commands.</p>
+{% highlight bash %}
+brew unlink nginx
+brew link nginx-full
+{% endhighlight %}
       </section>
     </div>
     <footer>
