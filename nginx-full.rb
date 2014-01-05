@@ -77,6 +77,7 @@ class NginxFull < Formula
       ['with-mp4-h264-module',    nil,                           'Compile with support for HTTP MP4/H264 Module'],
       ['with-notice-module',      nil,                           'Compile with support for HTTP Notice Module'],
       ['with-subs-filter',        nil,                           'Compile with support for Substitutions Filter Module'],
+      ['with-upload',             nil,                           'Compile with support for Upload module'],
       # Internal modules
       ['with-webdav',            'with-http_dav_module',         'Compile with support for WebDAV module'],
       ['with-debug',             'with-debug',                   'Compile with support for debug log'],
@@ -100,8 +101,7 @@ class NginxFull < Formula
       ['with-xslt',              'with-http_xslt_module',        'Compile with support for XSLT module'],
       ['with-pcre-jit',          'with-pcre-jit',                'Compile with support for JIT in PCRE'],
       ['with-auth-req',          'with-http_auth_request_module','Compile with support for HTTP Auth Request Module'],
-      ['with-mail',              'with-mail',                    'Compile with support for Mail module'],
-      ['with-upload',            'with-upload_module',           'Compile with support for Upload module']
+      ['with-mail',              'with-mail',                    'Compile with support for Mail module']
     ]
   end
   def options
