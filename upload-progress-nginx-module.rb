@@ -1,6 +1,6 @@
 require 'formula'
 
-class UploadprogressNginxModule < Formula
+class UploadProgressNginxModule < Formula
   
   homepage 'http://wiki.nginx.org/HttpUploadProgressModule'
   url 'http://github.com/downloads/masterzen/nginx-upload-progress-module/nginx_uploadprogress_module-0.9.0.tar.gz'
