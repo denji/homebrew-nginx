@@ -78,7 +78,7 @@ class NginxFull < Formula
       ['with-mp4-h264-module',    nil,                           'Compile with support for HTTP MP4/H264 Module'],
       ['with-notice-module',      nil,                           'Compile with support for HTTP Notice Module'],
       ['with-subs-filter',        nil,                           'Compile with support for Substitutions Filter Module'],
-      ['with-upload_module',      nil,                           'Compile with support for Upload module'],
+      ['with-upload-module',      nil,                           'Compile with support for Upload module'],
       ['with-upload-progress-module', nil,                       'Compile with support for Upload Progrress module'],
       # Internal modules
       ['with-webdav',            'with-http_dav_module',         'Compile with support for WebDAV module'],
