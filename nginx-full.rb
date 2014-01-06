@@ -48,6 +48,7 @@ class NginxFull < Formula
   depends_on 'notice-nginx-module' if build.include? 'with-notice-module'
   depends_on 'subs-filter-nginx-module' if build.include? 'with-subs-filter-module'
   depends_on 'upload-nginx-module' if build.include? 'with-upload-module'
+  depends_on 'upload-progress-nginx-module' if build.include? 'with-upload-progress-module'
 
   skip_clean 'logs'
 
@@ -78,6 +79,7 @@ class NginxFull < Formula
       ['with-notice-module',      nil,                           'Compile with support for HTTP Notice Module'],
       ['with-subs-filter',        nil,                           'Compile with support for Substitutions Filter Module'],
       ['with-upload-module',      nil,                           'Compile with support for Upload module'],
+      ['with-upload-progress-module', nil,                       'Compile with support for Upload Progrress module'],
       # Internal modules
       ['with-webdav',            'with-http_dav_module',         'Compile with support for WebDAV module'],
       ['with-debug',             'with-debug',                   'Compile with support for debug log'],
@@ -241,8 +243,11 @@ class NginxFull < Formula
     # Substitutions Filter Module
     args << "--add-module=#{HOMEBREW_PREFIX}/share/subs-filter-nginx-module" if build.include? "with-subs-filter-module"
 
-    # file upload
+    # file upload Module
     args << "--add-module=#{HOMEBREW_PREFIX}/share/upload-nginx-module" if build.include? "with-upload-module"
+
+    # file upload progress Module
+    args << "--add-module=#{HOMEBREW_PREFIX}/share/upload-progress-nginx-module" if build.include? "with-upload-progress-module"
 
     if build.head?
       system "./auto/configure", *args
