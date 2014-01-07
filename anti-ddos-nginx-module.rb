@@ -6,6 +6,8 @@ class AntiDdosNginxModule < Formula
   sha1 '758859a055538cf8d183bc8a9c72f643bd49312a'
 
   def install
+    (share+'anti-ddos-nginx-module').mv 'anddos/*', './'
+    (share+'anti-ddos-nginx-module').rm_rf 'anddos'
     (share+'anti-ddos-nginx-module').install Dir['*']
   end
 end
