@@ -82,6 +82,7 @@ class NginxFull < Formula
       ['with-php-session-module', nil,                           'Compile with support for Parse PHP Sessions module'],
       ['with-anti-ddos-module',   nil,                           'Compile with support for Anti-DDoS module'],
       ['with-captcha-module',     nil,                           'Compile with support for Captcha module'],
+      ['with-autols-module',      nil,                           'Compile with support for Flexible Auto Index module'],
       ['with-no-pool-nginx',      nil,                           'Patch disable nginx pool machanism & valgrind memcheck to detect memory issues'],
       # Internal modules
       ['with-webdav',            'with-http_dav_module',         'Compile with support for WebDAV module'],
@@ -260,6 +261,9 @@ class NginxFull < Formula
 
     # Captcha Module
     args << "--add-module=#{HOMEBREW_PREFIX}/share/captcha-nginx-module" if build.include? "with-captcha-module"
+
+    # Flexible Auto Index Module
+    args << "--add-module=#{HOMEBREW_PREFIX}/share/autols-nginx-module" if build.include? "with-autols-module"
 
     if build.head?
       system "./auto/configure", *args
