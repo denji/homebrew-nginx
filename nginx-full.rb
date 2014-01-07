@@ -80,6 +80,7 @@ class NginxFull < Formula
       ['with-subs-filter-module', nil,                           'Compile with support for Substitutions Filter Module'],
       ['with-upload-module',      nil,                           'Compile with support for Upload module'],
       ['with-upload-progress-module', nil,                       'Compile with support for Upload Progrress module'],
+      ['with-no-pool-nginx',      nil,                           'Patch disable nginx pool machanism & valgrind memcheck to detect memory issues'],
       # Internal modules
       ['with-webdav',            'with-http_dav_module',         'Compile with support for WebDAV module'],
       ['with-debug',             'with-debug',                   'Compile with support for debug log'],
