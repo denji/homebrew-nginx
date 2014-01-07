@@ -1,7 +1,6 @@
 require 'formula'
 
 class NginxFull < Formula
-
   homepage 'http://nginx.org/'
   url 'http://nginx.org/download/nginx-1.4.4.tar.gz'
   sha1 '304d5991ccde398af2002c0da980ae240cea9356'
@@ -77,9 +76,10 @@ class NginxFull < Formula
       ['with-mogilefs-module',    nil,                           'Compile with support for HTTP MogileFS Module'],
       ['with-mp4-h264-module',    nil,                           'Compile with support for HTTP MP4/H264 Module'],
       ['with-notice-module',      nil,                           'Compile with support for HTTP Notice Module'],
-      ['with-subs-filter',        nil,                           'Compile with support for Substitutions Filter Module'],
+      ['with-subs-filter-module', nil,                           'Compile with support for Substitutions Filter Module'],
       ['with-upload-module',      nil,                           'Compile with support for Upload module'],
       ['with-upload-progress-module', nil,                       'Compile with support for Upload Progrress module'],
+      ['with-no-pool-nginx',      nil,                           'Patch disable nginx pool machanism & valgrind memcheck to detect memory issues'],
       # Internal modules
       ['with-webdav',            'with-http_dav_module',         'Compile with support for WebDAV module'],
       ['with-debug',             'with-debug',                   'Compile with support for debug log'],

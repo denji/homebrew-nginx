@@ -1,7 +1,6 @@
 require 'formula'
 
 class TcpProxyNginxModule < Formula
-
   homepage 'https://github.com/yaoweibin/nginx_tcp_proxy_module'
   url 'https://github.com/yaoweibin/nginx_tcp_proxy_module/archive/9f75bb6.zip'
   sha1 '07083db4d66bcbf43435b2bd304d5206828e9f1e'
@@ -12,7 +11,6 @@ class TcpProxyNginxModule < Formula
   def install
     (share+'tcp-proxy-nginx-module').install Dir['*']
   end
-
 end
 
 __END__

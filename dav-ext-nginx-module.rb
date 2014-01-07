@@ -17,5 +17,4 @@ class DavExtNginxModule < Formula
     end
     (share+'dav-ext-nginx-module').install Dir['*']
   end
-
 end

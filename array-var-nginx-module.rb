@@ -1,7 +1,6 @@
 require 'formula'
 
 class ArrayVarNginxModule < Formula
-
   homepage 'https://github.com/agentzh/array-var-nginx-module'
   url 'https://github.com/agentzh/array-var-nginx-module/archive/v0.03.tar.gz'
   sha1 'b2666aa3c092060fcd3931a6d45798a5745c1ad6'
@@ -9,5 +8,4 @@ class ArrayVarNginxModule < Formula
   def install
     (share+'array-var-nginx-module').install Dir['*']
   end
-
 end
