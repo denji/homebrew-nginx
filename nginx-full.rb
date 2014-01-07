@@ -80,6 +80,7 @@ class NginxFull < Formula
       ['with-upload-module',      nil,                           'Compile with support for Upload module'],
       ['with-upload-progress-module', nil,                       'Compile with support for Upload Progrress module'],
       ['with-php-session-module', nil,                           'Compile with support for Parse PHP Sessions module'],
+      ['with-anti-ddos-module', nil,                             'Compile with support for Anti-DDoS module'],
       ['with-no-pool-nginx',      nil,                           'Patch disable nginx pool machanism & valgrind memcheck to detect memory issues'],
       # Internal modules
       ['with-webdav',            'with-http_dav_module',         'Compile with support for WebDAV module'],
@@ -252,6 +253,9 @@ class NginxFull < Formula
 
     # Parse PHP Sessions Module
     args << "--add-module=#{HOMEBREW_PREFIX}/share/php-session-nginx-module" if build.include? "with-php-session-module"
+
+    # Anti-DDoS Module
+    args << "--add-module=#{HOMEBREW_PREFIX}/share/anti-ddos-nginx-module" if build.include? "with-anti-ddos-module"
 
     if build.head?
       system "./auto/configure", *args
