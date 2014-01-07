@@ -83,6 +83,7 @@ class NginxFull < Formula
       ['with-anti-ddos-module',   nil,                           'Compile with support for Anti-DDoS module'],
       ['with-captcha-module',     nil,                           'Compile with support for Captcha module'],
       ['with-autols-module',      nil,                           'Compile with support for Flexible Auto Index module'],
+      ['with-auto-keepalive-module', nil,                        'Compile with support for Auto Disable KeepAlive module'],
       ['with-no-pool-nginx',      nil,                           'Patch disable nginx pool machanism & valgrind memcheck to detect memory issues'],
       # Internal modules
       ['with-webdav',            'with-http_dav_module',         'Compile with support for WebDAV module'],
@@ -264,6 +265,9 @@ class NginxFull < Formula
 
     # Flexible Auto Index Module
     args << "--add-module=#{HOMEBREW_PREFIX}/share/autols-nginx-module" if build.include? "with-autols-module"
+
+    # Flexible Auto Index Module
+    args << "--add-module=#{HOMEBREW_PREFIX}/share/auto-keepalive-nginx-module" if build.include? "with-auto-keepalive-module"
 
     if build.head?
       system "./auto/configure", *args
