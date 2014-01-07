@@ -1,7 +1,6 @@
 require 'formula'
 
 class NginxFull < Formula
-
   homepage 'http://nginx.org/'
   url 'http://nginx.org/download/nginx-1.4.4.tar.gz'
   sha1 '304d5991ccde398af2002c0da980ae240cea9356'
