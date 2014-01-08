@@ -38,6 +38,7 @@ module NginxConstants
     'healthcheck' => 'Compile with support for Healthcheck Module',
     'log-if' => 'Compile with support for Log-if Module',
     'pagespeed' => 'Compile with support for Pagespeed',
+    'txid' => 'Compile with support for Sortable Unique ID',
    }
 end
 
