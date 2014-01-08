@@ -44,6 +44,7 @@ module NginxConstants
     'http-flood-detector' => 'Compile with support for Var Flood-Threshold module',
     'http-remote-passwd' => 'Compile with support for Remote Basic Auth password module',
     'realtime-req' => 'Compile with support for Realtime Request module',
+    'counter-zone' => 'Compile with support for Realtime Counter Zone module',
    }
 end
 
