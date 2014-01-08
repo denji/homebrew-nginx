@@ -11,7 +11,7 @@ class ExtendedStatusNginxModule < Formula
   end
 
   if build.head?
-  	cause "extended-status-nginx-module: not support --HEAD version"
+    cause "extended-status-nginx-module: not support --HEAD version"
   end
 
   def install
