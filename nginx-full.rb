@@ -1,6 +1,44 @@
 require 'formula'
 
+module NginxConstants
+  THIRD_PARTY = {
+    'lua' => 'Compile with support for LUA module',
+    'echo' => 'Compile with support for Echo Module',
+    'auth-digest' => 'Compile with support for Auth Digest Module',
+    'set-misc' => 'Compile with support for Set Misc Module',
+    'redis2' => 'Compile with support for Redis2 Module',
+    'array-var' => 'Compile with support for Array Var Module',
+    'accept-language' => 'Compile with support for Accept Language Module',
+    'accesskey' => 'Compile with support for HTTP Access Key Module',
+    'auth-ldap' => 'Compile with support for Auth LDAP Module',
+    'auth-pam' => 'Compile with support for Auth PAM Module',
+    'cache-purge' => 'Compile with support for Cache Purge Module',
+    'ctpp2' => 'Compile with support for CT++ Module',
+    'headers-more' => 'Compile with support for Headers More Module',
+    'tcp-proxy' => 'Compile with support for TCP proxy',
+    'dav-ext' => 'Compile with support for HTTP WebDav Extended Module',
+    'eval' => 'Compile with support for Eval Module',
+    'fancyindex' => 'Compile with support for Fancy Index Module',
+    'mogilefs' => 'Compile with support for HTTP MogileFS Module',
+    'mp4-h264' => 'Compile with support for HTTP MP4/H264 Module',
+    'notice' => 'Compile with support for HTTP Notice Module',
+    'subs-filter' => 'Compile with support for Substitutions Filter Module',
+    'upload' => 'Compile with support for Upload module',
+    'upload-progress' => 'Compile with support for Upload Progrress module',
+    'php-session' => 'Compile with support for Parse PHP Sessions module',
+    'anti-ddos' => 'Compile with support for Anti-DDoS module',
+    'captcha' => 'Compile with support for Captcha module',
+    'autols' => 'Compile with support for Flexible Auto Index module',
+    'auto-keepalive' => 'Compile with support for Auto Disable KeepAlive module',
+    'ustats' => 'Compile with support for Upstream Statistics (HAProxy style) module',
+    'extended-status' => 'Compile with support for Extended Status module',
+    'no-pool-nginx' => 'Patch disable nginx pool machanism & valgrind memcheck to detect memory issues',
+   }
+end
+
 class NginxFull < Formula
+  include NginxConstants
+
   homepage 'http://nginx.org/'
   url 'http://nginx.org/download/nginx-1.4.4.tar.gz'
   sha1 '304d5991ccde398af2002c0da980ae240cea9356'
@@ -53,40 +91,10 @@ class NginxFull < Formula
 
   # Options
   def options_array
-    option_data = [
-      # 3rd party modules
-      ['with-passenger',          nil,                           'Compile with support for Phusion Passenger module'],
-      ['with-lua-module',         nil,                           'Compile with support for LUA module'],
-      ['with-echo-module',        nil,                           'Compile with support for Echo Module'],
-      ['with-auth-digest',        nil,                           'Compile with support for Auth Digest Module'],
-      ['with-set-misc-module',    nil,                           'Compile with support for Set Misc Module'],
-      ['with-redis2-module',      nil,                           'Compile with support for Redis2 Module'],
-      ['with-array-var-module',   nil,                           'Compile with support for Array Var Module'],
-      ['with-accept-language',    nil,                           'Compile with support for Accept Language Module'],
-      ['with-accesskey-module',   nil,                           'Compile with support for HTTP Access Key Module'],
-      ['with-auth-ldap',          nil,                           'Compile with support for Auth LDAP Module'],
-      ['with-auth-pam',           nil,                           'Compile with support for Auth PAM Module'],
-      ['with-cache-purge',        nil,                           'Compile with support for Cache Purge Module'],
-      ['with-ctpp2-module',       nil,                           'Compile with support for CT++ Module'],
-      ['with-headers-more-module',nil,                           'Compile with support for Headers More Module'],
-      ['with-tcp-proxy-module',   nil,                           'Compile with support for TCP proxy'],
-      ['with-dav-ext-module',     nil,                           'Compile with support for HTTP WebDav Extended Module'],
-      ['with-eval-module',        nil,                           'Compile with support for Eval Module'],
-      ['with-fancyindex-module',  nil,                           'Compile with support for Fancy Index Module'],
-      ['with-mogilefs-module',    nil,                           'Compile with support for HTTP MogileFS Module'],
-      ['with-mp4-h264-module',    nil,                           'Compile with support for HTTP MP4/H264 Module'],
-      ['with-notice-module',      nil,                           'Compile with support for HTTP Notice Module'],
-      ['with-subs-filter-module', nil,                           'Compile with support for Substitutions Filter Module'],
-      ['with-upload-module',      nil,                           'Compile with support for Upload module'],
-      ['with-upload-progress-module', nil,                       'Compile with support for Upload Progrress module'],
-      ['with-php-session-module', nil,                           'Compile with support for Parse PHP Sessions module'],
-      ['with-anti-ddos-module',   nil,                           'Compile with support for Anti-DDoS module'],
-      ['with-captcha-module',     nil,                           'Compile with support for Captcha module'],
-      ['with-autols-module',      nil,                           'Compile with support for Flexible Auto Index module'],
-      ['with-auto-keepalive-module', nil,                        'Compile with support for Auto Disable KeepAlive module'],
-      ['with-ustats-module',      nil,                           'Compile with support for Upstream Statistics (HAProxy style) module'],
-      ['with-extended-status-module',  nil,                       'Compile with support for Extended Status module'],
-      ['with-no-pool-nginx',      nil,                           'Patch disable nginx pool machanism & valgrind memcheck to detect memory issues'],
+    THIRD_PARTY.collect { | name, desc |
+      ["with-#{name}-module", nil, desc]
+    } + [
+      ['with-passenger',         nil,                            'Compile with support for Phusion Passenger module'],
       # Internal modules
       ['with-webdav',            'with-http_dav_module',         'Compile with support for WebDAV module'],
       ['with-debug',             'with-debug',                   'Compile with support for debug log'],
