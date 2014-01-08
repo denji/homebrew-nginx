@@ -6,7 +6,12 @@ class ExtendedStatusNginxModule < Formula
   sha1 '884f39921be512a4939be93bb0a5b64bf68fff06'
 
   def patches
-    "https://raw.github.com/denji/ngx_http_extended_status_module/master/extended_status-1.5.2.patch"
+    "https://raw.github.com/denji/ngx_http_extended_status_module/master/extended_status-1.5.2.patch" if build.devel?
+    "https://raw.github.com/denji/ngx_http_extended_status_module/master/extended_status-1.4.2.patch" unless build.devel?
+  end
+
+  if build.head?
+  	cause "extended-status-nginx-module: not support --HEAD version"
   end
 
   def install
