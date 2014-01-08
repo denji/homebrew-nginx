@@ -79,6 +79,13 @@ class NginxFull < Formula
       ['with-subs-filter-module', nil,                           'Compile with support for Substitutions Filter Module'],
       ['with-upload-module',      nil,                           'Compile with support for Upload module'],
       ['with-upload-progress-module', nil,                       'Compile with support for Upload Progrress module'],
+      ['with-php-session-module', nil,                           'Compile with support for Parse PHP Sessions module'],
+      ['with-anti-ddos-module',   nil,                           'Compile with support for Anti-DDoS module'],
+      ['with-captcha-module',     nil,                           'Compile with support for Captcha module'],
+      ['with-autols-module',      nil,                           'Compile with support for Flexible Auto Index module'],
+      ['with-auto-keepalive-module', nil,                        'Compile with support for Auto Disable KeepAlive module'],
+      ['with-ustats-module',      nil,                           'Compile with support for Upstream Statistics (HAProxy style) module'],
+      ['with-ext-status-module',  nil,                           'Compile with support for Extended Status module'],
       ['with-no-pool-nginx',      nil,                           'Patch disable nginx pool machanism & valgrind memcheck to detect memory issues'],
       # Internal modules
       ['with-webdav',            'with-http_dav_module',         'Compile with support for WebDAV module'],
@@ -248,6 +255,27 @@ class NginxFull < Formula
 
     # file upload progress Module
     args << "--add-module=#{HOMEBREW_PREFIX}/share/upload-progress-nginx-module" if build.include? "with-upload-progress-module"
+
+    # Parse PHP Sessions Module
+    args << "--add-module=#{HOMEBREW_PREFIX}/share/php-session-nginx-module" if build.include? "with-php-session-module"
+
+    # Anti-DDoS Module
+    args << "--add-module=#{HOMEBREW_PREFIX}/share/anti-ddos-nginx-module" if build.include? "with-anti-ddos-module"
+
+    # Captcha Module
+    args << "--add-module=#{HOMEBREW_PREFIX}/share/captcha-nginx-module" if build.include? "with-captcha-module"
+
+    # Flexible Auto Index Module
+    args << "--add-module=#{HOMEBREW_PREFIX}/share/autols-nginx-module" if build.include? "with-autols-module"
+
+    # Flexible Auto Index Module
+    args << "--add-module=#{HOMEBREW_PREFIX}/share/auto-keepalive-nginx-module" if build.include? "with-auto-keepalive-module"
+
+    # Upstream Statistics (HAProxy style) Module
+    args << "--add-module=#{HOMEBREW_PREFIX}/share/ustats-nginx-module" if build.include? "with-ustats-module"
+
+    # Extended Status Module
+    args << "--add-module=#{HOMEBREW_PREFIX}/share/ext-status-nginx-module" if build.include? "with-ext-status-module"
 
     if build.head?
       system "./auto/configure", *args
