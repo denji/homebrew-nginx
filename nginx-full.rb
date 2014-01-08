@@ -116,6 +116,7 @@ class NginxFull < Formula
 
   # Changes default port to 8080
   def patches
+    "https://gist.github.com/denji/01b932fd102a37219473/raw/nginx-optimizing-tls-time.patch",
     DATA
   end
 
