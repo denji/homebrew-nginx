@@ -37,12 +37,13 @@ module NginxConstants
     'consistent-hash' => 'Compile with support for Consistent Hash Upstream module',
     'healthcheck' => 'Compile with support for Healthcheck Module',
     'log-if' => 'Compile with support for Log-if Module',
-    'pagespeed' => 'Compile with support for Pagespeed',
+    'pagespeed' => 'Compile with support for Pagespeed module',
     'txid' => 'Compile with support for Sortable Unique ID',
     'upstream-order' => 'Compile with support for Order Upstream module',
     'var-req-speed' => 'Compile with support for Var Request-Speed module',
     'http-flood-detector' => 'Compile with support for Var Flood-Threshold module',
     'http-remote-passwd' => 'Compile with support for Remote Basic Auth password module',
+    'realtime-req' => 'Compile with support for Realtime Request module',
    }
 end
 
