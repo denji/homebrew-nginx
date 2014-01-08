@@ -39,6 +39,7 @@ module NginxConstants
     'log-if' => 'Compile with support for Log-if Module',
     'pagespeed' => 'Compile with support for Pagespeed',
     'txid' => 'Compile with support for Sortable Unique ID',
+    'upstream-order' => 'Compile with support for Order Upstream module',
    }
 end
 
