@@ -85,7 +85,7 @@ class NginxFull < Formula
       ['with-autols-module',      nil,                           'Compile with support for Flexible Auto Index module'],
       ['with-auto-keepalive-module', nil,                        'Compile with support for Auto Disable KeepAlive module'],
       ['with-ustats-module',      nil,                           'Compile with support for Upstream Statistics (HAProxy style) module'],
-      ['with-ext-status-module',  nil,                           'Compile with support for Extended Status module'],
+      ['with-extended-status-module',  nil,                       'Compile with support for Extended Status module'],
       ['with-no-pool-nginx',      nil,                           'Patch disable nginx pool machanism & valgrind memcheck to detect memory issues'],
       # Internal modules
       ['with-webdav',            'with-http_dav_module',         'Compile with support for WebDAV module'],
@@ -275,7 +275,7 @@ class NginxFull < Formula
     args << "--add-module=#{HOMEBREW_PREFIX}/share/ustats-nginx-module" if build.include? "with-ustats-module"
 
     # Extended Status Module
-    args << "--add-module=#{HOMEBREW_PREFIX}/share/ext-status-nginx-module" if build.include? "with-ext-status-module"
+    args << "--add-module=#{HOMEBREW_PREFIX}/share/extended-status-nginx-module" if build.include? "with-extended-status-module"
 
     if build.head?
       system "./auto/configure", *args
