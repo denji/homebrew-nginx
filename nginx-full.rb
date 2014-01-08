@@ -33,6 +33,11 @@ module NginxConstants
     'ustats' => 'Compile with support for Upstream Statistics (HAProxy style) module',
     'extended-status' => 'Compile with support for Extended Status module',
     'no-pool-nginx' => 'Patch disable nginx pool machanism & valgrind memcheck to detect memory issues',
+    'upstream-hash' => 'Compile with support for Upstream Hash Module',
+    'consistent-hash' => 'Compile with support for Consistent Hash Upstream module',
+    'healthcheck' => 'Compile with support for Healthcheck Module',
+    'log-if' => 'Compile with support for Log-if Module',
+    'pagespeed' => 'Compile with support for Pagespeed',
    }
 end
 
