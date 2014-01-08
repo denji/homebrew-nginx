@@ -61,31 +61,10 @@ class NginxFull < Formula
   depends_on 'libxml2' if build.with? 'xslt'
   depends_on 'libxslt' if build.with? 'xslt'
   depends_on 'gd' if build.with? 'image-filter'
-  # 3rd party modules
-  depends_on 'ngx-devel-kit' if build.include? 'with-lua-module' or build.include? 'with-array-var-module'
-  depends_on 'lua-nginx-module' if build.include? 'with-lua-module'
-  depends_on 'echo-nginx-module' if build.include? 'with-echo-module'
-  depends_on 'auth-digest-nginx-module' if build.include? 'with-auth-digest'
-  depends_on 'set-misc-nginx-module' if build.include? 'with-set-misc-module'
-  depends_on 'redis2-nginx-module' if build.include? 'with-redis2-module'
-  depends_on 'array-var-nginx-module' if build.include? 'with-array-var-module'
-  depends_on 'accept-language-nginx-module' if build.include? 'with-accept-language'
-  depends_on 'accesskey-nginx-module' if build.include? 'with-accesskey-module'
-  depends_on 'auth-ldap-nginx-module' if build.include? 'with-auth-ldap'
-  depends_on 'auth-pam-nginx-module' if build.include? 'with-auth-pam'
-  depends_on 'cache-purge-nginx-module' if build.include? 'with-cache-purge'
-  depends_on 'ctpp2-nginx-module' if build.include? 'with-ctpp2-module'
-  depends_on 'headers-more-nginx-module' if build.include? 'with-headers-more-module'
-  depends_on 'tcp-proxy-nginx-module' if build.include? 'with-tcp-proxy-module'
-  depends_on 'dav-ext-nginx-module' if build.include? 'with-webdav'
-  depends_on 'eval-nginx-module' if build.include? 'with-eval-module'
-  depends_on 'fancyindex-nginx-module' if build.include? 'with-fancyindex-module'
-  depends_on 'mogilefs-nginx-module' if build.include? 'with-mogilefs-module'
-  depends_on 'mp4-h264-nginx-module' if build.include? 'with-mp4-h264-module'
-  depends_on 'notice-nginx-module' if build.include? 'with-notice-module'
-  depends_on 'subs-filter-nginx-module' if build.include? 'with-subs-filter-module'
-  depends_on 'upload-nginx-module' if build.include? 'with-upload-module'
-  depends_on 'upload-progress-nginx-module' if build.include? 'with-upload-progress-module'
+  # register third party flags
+  THIRD_PARTY.each { | name, desc |
+    depends_on "#{name}-nginx-module" if build.include? "with-#{name}-module"
+  }
 
   skip_clean 'logs'
 
