@@ -16,6 +16,7 @@ module NginxConstants
     'ctpp2' => 'Compile with support for CT++ Module',
     'headers-more' => 'Compile with support for Headers More Module',
     'tcp-proxy' => 'Compile with support for TCP proxy',
+    'dav-ext' => 'Compile with support for HTTP WebDav Extended Module',
     'eval' => 'Compile with support for Eval Module',
     'fancyindex' => 'Compile with support for Fancy Index Module',
     'mogilefs' => 'Compile with support for HTTP MogileFS Module',
@@ -23,11 +24,27 @@ module NginxConstants
     'notice' => 'Compile with support for HTTP Notice Module',
     'subs-filter' => 'Compile with support for Substitutions Filter Module',
     'upload' => 'Compile with support for Upload module',
-    'dav-ext' => 'Compile with support for HTTP WebDav Extended Module',
+    'upload-progress' => 'Compile with support for Upload Progrress module',
+    'php-session' => 'Compile with support for Parse PHP Sessions module',
+    'anti-ddos' => 'Compile with support for Anti-DDoS module',
+    'captcha' => 'Compile with support for Captcha module',
+    'autols' => 'Compile with support for Flexible Auto Index module',
+    'auto-keepalive' => 'Compile with support for Auto Disable KeepAlive module',
+    'ustats' => 'Compile with support for Upstream Statistics (HAProxy style) module',
+    'extended-status' => 'Compile with support for Extended Status module',
+    'no-pool-nginx' => 'Patch disable nginx pool machanism & valgrind memcheck to detect memory issues',
     'upstream-hash' => 'Compile with support for Upstream Hash Module',
+    'consistent-hash' => 'Compile with support for Consistent Hash Upstream module',
     'healthcheck' => 'Compile with support for Healthcheck Module',
     'log-if' => 'Compile with support for Log-if Module',
-    'pagespeed' => 'Compile with support for Pagespeed',
+    'pagespeed' => 'Compile with support for Pagespeed module',
+    'txid' => 'Compile with support for Sortable Unique ID',
+    'upstream-order' => 'Compile with support for Order Upstream module',
+    'var-req-speed' => 'Compile with support for Var Request-Speed module',
+    'http-flood-detector' => 'Compile with support for Var Flood-Threshold module',
+    'http-remote-passwd' => 'Compile with support for Remote Basic Auth password module',
+    'realtime-req' => 'Compile with support for Realtime Request module',
+    'counter-zone' => 'Compile with support for Realtime Counter Zone module',
    }
 end
 
@@ -57,12 +74,10 @@ class NginxFull < Formula
   depends_on 'libxslt' if build.with? 'xslt'
   depends_on 'gd' if build.with? 'image-filter'
 
- # register third party flags
- THIRD_PARTY.each { | name, desc |
-   depends_on "#{name}-nginx-module" if build.include? "with-#{name}-module"
- }
-
-  depends_on 'ngx-devel-kit' if build.include? 'with-lua-module' or build.include? 'with-array-var-module'
+  # register third party flags
+  THIRD_PARTY.each { | name, desc |
+    depends_on "#{name}-nginx-module" if build.include? "with-#{name}-module"
+  }
 
   skip_clean 'logs'
 
@@ -71,8 +86,8 @@ class NginxFull < Formula
     THIRD_PARTY.collect { | name, desc |
       ["with-#{name}-module", nil, desc]
     } + [
+      ['with-passenger',         nil,                            'Compile with support for Phusion Passenger module'],
       # Internal modules
-      ['with-passenger',         nil,                           'Compile with support for Phusion Passenger module'],
       ['with-webdav',            'with-http_dav_module',         'Compile with support for WebDAV module'],
       ['with-debug',             'with-debug',                   'Compile with support for debug log'],
       ['with-spdy',              'with-http_spdy_module',        'Compile with support for SPDY module'],
@@ -180,14 +195,8 @@ class NginxFull < Formula
     args += THIRD_PARTY.select { | name, desc |
       build.with? "#{name}-module"
     }.collect { | name, desc |
-      "--add-module=#{HOMEBREW_PREFIX}/share/#{name}-nginx-module" 
+      "--add-module=#{HOMEBREW_PREFIX}/share/#{name}-nginx-module"
     }
-
-    # upstream hash module
-    args << "--add-module=#{HOMEBREW_PREFIX}/share/upstream-hash-nginx-module" if build.include? "with-upstream-hash-module"
-
-    # consistent hash module
-    args << "--add-module=#{HOMEBREW_PREFIX}/share/consistent-hash-nginx-module" if build.include? "with-consistent-hash-module"
 
     if build.head?
       system "./auto/configure", *args

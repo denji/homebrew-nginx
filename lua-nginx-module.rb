@@ -6,6 +6,7 @@ class LuaNginxModule < Formula
   sha1 'e7853e8f645f56bfb4347869528b33e0af23fed3'
 
   depends_on "luajit"
+  depends_on 'ngx-devel-kit'
 
   def install
     (share+'lua-nginx-module').install Dir['*']
