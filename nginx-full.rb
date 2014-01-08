@@ -40,6 +40,7 @@ module NginxConstants
     'pagespeed' => 'Compile with support for Pagespeed',
     'txid' => 'Compile with support for Sortable Unique ID',
     'upstream-order' => 'Compile with support for Order Upstream module',
+    'var-req-speed' => 'Compile with support for Var Request-Speed module',
    }
 end
 
