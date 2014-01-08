@@ -198,92 +198,12 @@ class NginxFull < Formula
       args << "--add-module=#{HOMEBREW_PREFIX}/share/lua-nginx-module"
     end
 
-    # Echo module
-    args << "--add-module=#{HOMEBREW_PREFIX}/share/echo-nginx-module" if build.include? 'with-echo-module'
-
-    # Set-Misc module
-    args << "--add-module=#{HOMEBREW_PREFIX}/share/set-misc-nginx-module" if build.include? 'with-set-misc-module'
-
-    # Redis2 module
-    args << "--add-module=#{HOMEBREW_PREFIX}/share/redis2-nginx-module" if build.include? 'with-redis2-module'
-
-    # Array Var module
-    args << "--add-module=#{HOMEBREW_PREFIX}/share/array-var-nginx-module" if build.include? 'with-array-var-module'
-
-    # Accept Language module
-    args << "--add-module=#{HOMEBREW_PREFIX}/share/accept-language-nginx-module" if build.include? "with-accept-language"
-
-    # HTTP Access Key module
-    args << "--add-module=#{HOMEBREW_PREFIX}/share/accesskey-nginx-module" if build.include? "with-accesskey-module"
-
-    # Auth LDAP Module
-    args << "--add-module=#{HOMEBREW_PREFIX}/share/auth-ldap-nginx-module" if build.include? "with-auth-ldap"
-
-    # Auth PAM Module
-    args << "--add-module=#{HOMEBREW_PREFIX}/share/auth-pam-nginx-module" if build.include? "with-auth-pam"
-
-    # Auth Digest Module
-    args << "--add-module=#{HOMEBREW_PREFIX}/share/auth-digest-nginx-module" if build.include? "with-auth-digest"
-
-    # Cache Purge Module
-    args << "--add-module=#{HOMEBREW_PREFIX}/share/cache-purge-nginx-module" if build.include? "with-cache-purge"
-
-    # CT++ Module
-    args << "--add-module=#{HOMEBREW_PREFIX}/share/ctpp2-nginx-module" if build.include? "with-ctpp2-module"
-
-    # Headers More Module
-    args << "--add-module=#{HOMEBREW_PREFIX}/share/headers-more-nginx-module" if build.include? "with-headers-more-module"
-
-    # TCP proxy Module
-    args << "--add-module=#{HOMEBREW_PREFIX}/share/tcp-proxy-nginx-module" if build.include? "with-tcp-proxy-module"
-
-    # HTTP WebDav Ext Module
-    args << "--add-module=#{HOMEBREW_PREFIX}/share/dav-ext-nginx-module" if build.include? "with-webdav"
-
-    # Eval Module
-    args << "--add-module=#{HOMEBREW_PREFIX}/share/eval-nginx-module" if build.include? "with-eval-module"
-
-    # Fancy Index Module
-    args << "--add-module=#{HOMEBREW_PREFIX}/share/fancyindex-nginx-module" if build.include? "with-fancyindex-module"
-
-    # HTTP MogileFS Module
-    args << "--add-module=#{HOMEBREW_PREFIX}/share/mogilefs-nginx-module" if build.include? "with-mogilefs-module"
-
-    # HTTP MP4/H264 Module
-    args << "--add-module=#{HOMEBREW_PREFIX}/share/mp4-h264-nginx-module" if build.include? "with-mp4-h264-module"
-
-    # HTTP Notice Module
-    args << "--add-module=#{HOMEBREW_PREFIX}/share/notice-nginx-module" if build.include? "with-notice-module"
-
-    # Substitutions Filter Module
-    args << "--add-module=#{HOMEBREW_PREFIX}/share/subs-filter-nginx-module" if build.include? "with-subs-filter-module"
-
-    # file upload Module
-    args << "--add-module=#{HOMEBREW_PREFIX}/share/upload-nginx-module" if build.include? "with-upload-module"
-
-    # file upload progress Module
-    args << "--add-module=#{HOMEBREW_PREFIX}/share/upload-progress-nginx-module" if build.include? "with-upload-progress-module"
-
-    # Parse PHP Sessions Module
-    args << "--add-module=#{HOMEBREW_PREFIX}/share/php-session-nginx-module" if build.include? "with-php-session-module"
-
-    # Anti-DDoS Module
-    args << "--add-module=#{HOMEBREW_PREFIX}/share/anti-ddos-nginx-module" if build.include? "with-anti-ddos-module"
-
-    # Captcha Module
-    args << "--add-module=#{HOMEBREW_PREFIX}/share/captcha-nginx-module" if build.include? "with-captcha-module"
-
-    # Flexible Auto Index Module
-    args << "--add-module=#{HOMEBREW_PREFIX}/share/autols-nginx-module" if build.include? "with-autols-module"
-
-    # Flexible Auto Index Module
-    args << "--add-module=#{HOMEBREW_PREFIX}/share/auto-keepalive-nginx-module" if build.include? "with-auto-keepalive-module"
-
-    # Upstream Statistics (HAProxy style) Module
-    args << "--add-module=#{HOMEBREW_PREFIX}/share/ustats-nginx-module" if build.include? "with-ustats-module"
-
-    # Extended Status Module
-    args << "--add-module=#{HOMEBREW_PREFIX}/share/extended-status-nginx-module" if build.include? "with-extended-status-module"
+    # add third party flags
+    args += THIRD_PARTY.select { | name, desc |
+      build.with? "#{name}-module"
+    }.collect { | name, desc |
+      "--add-module=#{HOMEBREW_PREFIX}/share/#{name}-nginx-module" 
+    }
 
     if build.head?
       system "./auto/configure", *args
