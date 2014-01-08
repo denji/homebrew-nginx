@@ -41,6 +41,7 @@ module NginxConstants
     'txid' => 'Compile with support for Sortable Unique ID',
     'upstream-order' => 'Compile with support for Order Upstream module',
     'var-req-speed' => 'Compile with support for Var Request-Speed module',
+    'http-flood-detector' => 'Compile with support for Var Flood-Threshold module',
    }
 end
 
