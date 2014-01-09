@@ -1,7 +1,6 @@
 require 'formula'
 
 class HealthcheckNginxModule < Formula
-
   homepage "https://github.com/cep21/healthcheck_nginx_upstreams"
   url "https://github.com/cep21/healthcheck_nginx_upstreams/archive/master.tar.gz"
 
@@ -10,5 +9,4 @@ class HealthcheckNginxModule < Formula
   def install
     (share+'healthcheck-nginx-module').install Dir['*']
   end
-
 end

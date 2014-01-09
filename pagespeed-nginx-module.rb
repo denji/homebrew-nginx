@@ -23,5 +23,4 @@ class PagespeedNginxModule < Formula
 
     (share+'pagespeed-nginx-module').install Dir['*']
   end
-
 end
