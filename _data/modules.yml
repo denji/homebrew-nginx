@@ -1,0 +1,6 @@
+- name: lua
+  version: 0.8.5
+  description: Compile with support for LUA
+- name: ngx-devel-kit
+  version: 0.2.18
+  description: Additional generic tools for module developers

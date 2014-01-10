@@ -40,6 +40,27 @@ brew install nginx-full
 brew unlink nginx
 brew link nginx-full
 {% endhighlight %}
+
+        <h2>Modules</h2>
+        <p>This tap comes with tons of custom modules and more are added all the time</p>
+        <table>
+          <thead>
+            <tr>
+              <th>Name</th>
+              <th>Version</th>
+              <th>Description</th>
+            </tr>
+          <tbody>
+{% for module in site.data.modules %}
+            <tr>
+              <td>{{ module.name }}</td>
+              <td>{{ module.version }}</td>
+              <td>{{ module.description }}</td>
+            </tr>
+{% endfor %}
+          </tbody>
+        </table>
+
       </section>
     </div>
     <footer>
