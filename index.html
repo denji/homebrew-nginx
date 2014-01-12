@@ -41,7 +41,7 @@ brew unlink nginx
 brew link nginx-full
 {% endhighlight %}
 
-        <h2>Modules</h2>
+        <h1>Modules</h1>
         <p>This tap comes with tons of custom modules and more are added all the time</p>
         <table>
           <thead>
@@ -60,6 +60,16 @@ brew link nginx-full
 {% endfor %}
           </tbody>
         </table>
+
+        <h1>Contributing</h1>
+        <p>We accept most modules as long as they are tested and follow convetions. The following rules apply when submitting new formula or updating existing formula.</p>
+        <ol>
+          <li>Modifications to one module per pull request</li>
+          <li>A tagged version must be specified</li>
+          <li>Uses --with-{name}-module syntax to install the module</li>
+          <li><code>brew doctor</code> must not show any warnings or errors</li>
+          <li>Patches must be included in the <code>patches<code> subdirectory</li>
+        </ol>
 
       </section>
     </div>
