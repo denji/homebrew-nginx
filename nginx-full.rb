@@ -188,8 +188,6 @@ class NginxFull < Formula
       luajit_path = `brew --prefix luajit`.chomp
       ENV['LUAJIT_LIB'] = "#{luajit_path}/lib"
       ENV['LUAJIT_INC'] = "#{luajit_path}/include/luajit-2.0"
-      args << "--add-module=#{HOMEBREW_PREFIX}/share/ngx-devel-kit"
-      args << "--add-module=#{HOMEBREW_PREFIX}/share/lua-nginx-module"
     end
 
     # add third party flags
