@@ -2,6 +2,7 @@ require 'formula'
 
 class NoPoolNginx < Formula
   homepage 'https://github.com/shrimp/no-pool-nginx'
+  version '0.1'
 
   depends_on "valgrind"
 
