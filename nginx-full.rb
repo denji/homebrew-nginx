@@ -32,7 +32,6 @@ module NginxConstants
     'auto-keepalive' => 'Compile with support for Auto Disable KeepAlive module',
     'ustats' => 'Compile with support for Upstream Statistics (HAProxy style) module',
     'extended-status' => 'Compile with support for Extended Status module',
-    'no-pool-nginx' => 'Patch disable nginx pool machanism & valgrind memcheck to detect memory issues',
     'upstream-hash' => 'Compile with support for Upstream Hash Module',
     'consistent-hash' => 'Compile with support for Consistent Hash Upstream module',
     'healthcheck' => 'Compile with support for Healthcheck Module',
@@ -74,6 +73,7 @@ class NginxFull < Formula
   depends_on 'libxml2' if build.with? 'xslt'
   depends_on 'libxslt' if build.with? 'xslt'
   depends_on 'gd' if build.with? 'image-filter'
+  depends_on "valgrind" if build.include? 'without-pool-nginx'
 
   # register third party flags
   THIRD_PARTY.each { | name, desc |
@@ -88,6 +88,7 @@ class NginxFull < Formula
       ["with-#{name}-module", nil, desc]
     } + [
       ['with-passenger',         nil,                            'Compile with support for Phusion Passenger module'],
+      ['without-pool-nginx',     nil,                            'Disable nginx-pool, valgrind detect memory issues'],
       # Internal modules
       ['with-webdav',            'with-http_dav_module',         'Compile with support for WebDAV module'],
       ['with-debug',             'with-debug',                   'Compile with support for debug log'],
@@ -123,9 +124,21 @@ class NginxFull < Formula
     options
   end
 
-  # Changes default port to 8080
   def patches
-    DATA
+    # Changes default port to 8080
+    patches = {
+      :p1 => DATA,
+    }
+
+    # replaces nginx's pool machanism
+    # with plain malloc & free to help tools like valgrind's memcheck to detect
+    # memory issues more reliably.
+    if build.include? 'without-pool-nginx'
+      patches[:p1] = 'https://raw.github.com/shrimp/no-pool-nginx/master/nginx-1.4.3-no_pool.patch' if build.stable?
+      patches[:p1] = 'https://raw.github.com/shrimp/no-pool-nginx/master/nginx-1.5.8-no_pool.patch' if build.devel?
+    end
+
+    patches
   end
 
   def passenger_config_args
