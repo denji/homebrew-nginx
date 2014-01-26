@@ -6,11 +6,11 @@ class HttpFloodDetectorNginxModule < Formula
   sha1 '8b3a9de84cf6c326190b030fb78da10194a2942b'
   version '0.1'
 
-  if !build.with? 'with-status'
-    cause "http-flood-detector-nginx-module: Stub Status module is required `--with-status`"
-  end
-
   def install
+    if !build.with? 'status'
+      onoe "http-flood-detector-nginx-module: Stub Status module is required '--with-status'"
+      exit 99
+    end
     (share+'http-flood-detector-nginx-module').install Dir['*']
   end
 end
