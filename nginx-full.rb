@@ -160,7 +160,7 @@ class NginxFull < Formula
     ld_opt = "-L#{HOMEBREW_PREFIX}/lib"
 
     if build.with? 'spdy'
-      openssl_path = Formula.factory("openssl").opt_prefix
+      openssl_path = Formula["openssl"].opt_prefix
       cc_opt += " -I#{openssl_path}/include"
       ld_opt += " -L#{openssl_path}/lib"
     end
