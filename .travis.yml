@@ -1,0 +1,13 @@
+language: objective-c
+before_install:
+  - brew update
+install:
+  - mkdir -p $(brew --repo)/Library/Taps
+  - ln -s $PWD $(brew --repo)/Library/Taps/homebrew-nginx
+  - brew tap --repair
+env:
+  - PACKAGE=nginx-full
+script:
+  - brew audit $PACKAGE
+  - brew install -v $PACKAGE
+  - '! brew cat $PACKAGE | grep -q "test do" || brew test -v $PACKAGE'
