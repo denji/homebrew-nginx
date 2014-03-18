@@ -208,6 +208,7 @@ class NginxFull < Formula
     args += THIRD_PARTY.select { | name, desc |
       build.with? "#{name}-module"
     }.collect { | name, desc |
+      ohai "--with-#{name}-module"
       "--add-module=#{HOMEBREW_PREFIX}/share/#{name}-nginx-module"
     }
 
