@@ -8,7 +8,7 @@
   sha1: 68eb4c47f9a1a058a711b280d4e29339ddab8775
   description: ''
 - name: anti-ddos
-  version: 758859a
+  version: '0.1'
   sha1: 758859a055538cf8d183bc8a9c72f643bd49312a
   description: ''
 - name: array-var
@@ -16,11 +16,11 @@
   sha1: b2666aa3c092060fcd3931a6d45798a5745c1ad6
   description: ''
 - name: auth-digest
-  version: 0.0.1
+  version: '0.1'
   sha1: 3188e07820d5a06f8328f61875dbb91d4a74b6c0
   description: ''
 - name: auth-ldap
-  version: 0.0.1
+  version: '0.1'
   sha1: 663c521a487ff5b6c87c59b8fe5a7677410a30b0
   description: ''
 - name: auth-pam
@@ -40,11 +40,11 @@
   sha1: e6e3779487182c94efd3206751927ce722c1da5c
   description: ''
 - name: captcha
-  version: a984fac
+  version: '0.1'
   sha1: a984facfc5cbf82fca383fb2c09e98ca03c69613
   description: ''
 - name: consistent-hash
-  version: 0.0.1
+  version: '0.1'
   sha1: 4aff332a839fe6e366d3b5faf21dd4dc81ff2459
   description: ''
 - name: counter-zone
@@ -80,11 +80,11 @@
   sha1: 9e574fb0a3cacb4229fa2fe93d02bac0d43e431f
   description: ''
 - name: healthcheck
-  version: 4c539aa
+  version: '0.1'
   sha1: 4c539aa1bd29ea22406ce352142873d6efbe86c0
   description: ''
 - name: http-flood-detector
-  version: 8b3a9de
+  version: '0.1'
   sha1: 8b3a9de84cf6c326190b030fb78da10194a2942b
   description: ''
 - name: http-remote-passwd
@@ -92,12 +92,16 @@
   sha1: 1006b236a932d6659fba55d322f7d00dfb2431b0
   description: ''
 - name: log-if
-  version: 8dfb8c0
+  version: '0.1'
   sha1: 8dfb8c0f9358821377c0dea810a49a026aecd405
   description: ''
 - name: lua
-  version: 0.8.5
-  sha1: e7853e8f645f56bfb4347869528b33e0af23fed3
+  version: 0.9.4
+  sha1: 617d9dedcc8ca6758e77c4253c8de0080ae2c9ae
+  description: ''
+- name: mod-zip
+  version: '0.1'
+  sha1: f9a085915e471e2aeb97e06db3f1d6d72a779fab
   description: ''
 - name: mogilefs
   version: 4f6b774
@@ -111,12 +115,8 @@
   version: 0.0.2
   sha1: ed64e7caffc8cf46bf2ebf7987f59a32952a55a8
   description: ''
-- name: pagespeed
-  version: 1.7.30.1
-  sha1: 276709d665293b2f529b6f92fb5ade61d4fea08b
-  description: ''
 - name: php-session
-  version: 0a07677
+  version: 0.4b
   sha1: 0a07677df689477b6b5123dbdb41271352b047e6
   description: ''
 - name: realtime-req
@@ -140,30 +140,30 @@
   sha1: 3997b93b6421d0afa69e7fd79a952c16a1f5db1b
   description: ''
 - name: txid
-  version: 8e779f7
+  version: '0.1'
   sha1: 8e779f757ddc5e62237c45b925aba20b8e131e99
   description: ''
 - name: upload
   version: 2.2.0
-  sha1: c8cbeddce12e80e4103e6a3a86754a331bd7ab8a
+  sha1: a7d31ac0358b86ff12a07bcda1e9a8714118c2bb
   description: ''
 - name: upload-progress
   version: 0.9.0
   sha1: 93aadaf6065e1e8afd9f14b9291a66819d3aa4c0
   description: ''
 - name: upstream-hash
-  version: 0.0.1
+  version: '0.1'
   sha1: 359c3e7f52266763301b29bdf07edfab3d7c32d9
   description: ''
 - name: upstream-order
-  version: b98a582
+  version: '0.1'
   sha1: b98a582d63f26da48dd3fe586c6e54863adc102e
   description: ''
 - name: ustats
-  version: b1d574e
+  version: '0.1'
   sha1: b1d574ed613c15ccc9795513aacd22e896b15759
   description: ''
 - name: var-req-speed
-  version: f2ce2dd
+  version: '0.1'
   sha1: f2ce2dd4068b9abbfb16363bd0892768c92be02d
   description: ''
