@@ -5,8 +5,8 @@ class NginxFull < Formula
   include NginxConstants
 
   homepage 'http://nginx.org/'
-  url 'http://nginx.org/download/nginx-1.4.6.tar.gz'
-  sha1 '1d790fd2b403b0b694a8dbbc28f7e34dbc3ca863'
+  url 'http://nginx.org/download/nginx-1.4.7.tar.gz'
+  sha1 'e13b5b23f9be908b69652b0c394a95e9029687e3'
 
   devel do
     url 'http://nginx.org/download/nginx-1.5.11.tar.gz'
