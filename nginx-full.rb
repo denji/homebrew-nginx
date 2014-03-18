@@ -36,7 +36,6 @@ module NginxConstants
     'consistent-hash' => 'Compile with support for Consistent Hash Upstream module',
     'healthcheck' => 'Compile with support for Healthcheck Module',
     'log-if' => 'Compile with support for Log-if Module',
-    'pagespeed' => 'Compile with support for Pagespeed module',
     'txid' => 'Compile with support for Sortable Unique ID',
     'upstream-order' => 'Compile with support for Order Upstream module',
     'var-req-speed' => 'Compile with support for Var Request-Speed module',
