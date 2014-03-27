@@ -170,8 +170,7 @@ class NginxFull < Formula
             "--http-uwsgi-temp-path=#{var}/run/nginx/uwsgi_temp",
             "--http-scgi-temp-path=#{var}/run/nginx/scgi_temp",
             "--http-log-path=#{var}/log/nginx/access.log",
-            "--error-log-path=#{var}/log/nginx/error.log",
-            "--with-http_gzip_static_module"
+            "--error-log-path=#{var}/log/nginx/error.log"
           ]
 
     # Core Modules
