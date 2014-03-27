@@ -13,8 +13,6 @@ class NginxFull < Formula
 
   head 'http://hg.nginx.org/nginx/', :using => :hg
 
-  env :userpaths
-
   def self.core_modules
     [
       ['passenger',        nil,                        'Compile with support for Phusion Passenger module'],
@@ -94,16 +92,12 @@ class NginxFull < Formula
   depends_on 'pcre'
   depends_on 'passenger' => :optional
   depends_on 'geoip' => :optional
-  # SPDY needs openssl >= 1.0.1 for NPN; see:
-  # https://tools.ietf.org/agenda/82/slides/tls-3.pdf
-  # http://www.openssl.org/news/changelog.html
   depends_on 'openssl' if build.with? 'spdy'
   depends_on 'libxml2' if build.with? 'xslt'
   depends_on 'libxslt' if build.with? 'xslt'
   depends_on 'gd' if build.with? 'image-filter'
   depends_on "valgrind" if build.with? 'no-pool-nginx'
 
-  # Options
   self.core_modules.each do |arr|
     option "with-#{arr[0]}", arr[2]
   end
@@ -112,24 +106,22 @@ class NginxFull < Formula
     depends_on "#{name}-nginx-module" if build.with? "#{name}-module"
   end
 
-  skip_clean 'logs'
-
   def patches
-    # Changes default port to 8080
     patches = {
       :p1 => DATA,
     }
 
-    # replaces nginx's pool machanism
-    # with plain malloc & free to help tools like valgrind's memcheck to detect
-    # memory issues more reliably.
+    # https://github.com/shrimp/no-pool-nginx
     if build.with? 'no-pool-nginx'
-      patches[:p1] = 'https://raw.github.com/shrimp/no-pool-nginx/master/nginx-1.4.3-no_pool.patch' if build.stable?
-      patches[:p1] = 'https://raw.github.com/shrimp/no-pool-nginx/master/nginx-1.5.8-no_pool.patch' if build.devel?
+      patches[:p2] = 'https://raw.github.com/shrimp/no-pool-nginx/master/nginx-1.4.3-no_pool.patch' if build.stable?
+      patches[:p2] = 'https://raw.github.com/shrimp/no-pool-nginx/master/nginx-1.5.8-no_pool.patch' if build.devel?
     end
 
     patches
   end
+
+  env :userpaths
+  skip_clean 'logs'
 
   def passenger_config_args
     passenger_root = `passenger-config --root`.chomp
@@ -180,6 +172,13 @@ class NginxFull < Formula
       "--with-#{arr[1]}"
     }
 
+    # Third Party Modules
+    args += self.class.third_party_modules.select { |name, desc|
+      build.with? "#{name}-module"
+    }.collect { |name, desc|
+      "--add-module=#{HOMEBREW_PREFIX}/share/#{name}-nginx-module"
+    }
+
     # Passenger
     args << passenger_config_args if build.with? 'passenger'
 
@@ -189,13 +188,6 @@ class NginxFull < Formula
       ENV['LUAJIT_LIB'] = "#{luajit_path}/lib"
       ENV['LUAJIT_INC'] = "#{luajit_path}/include/luajit-2.0"
     end
-
-    # Third Party Modules
-    args += self.class.third_party_modules.select { |name, desc|
-      build.with? "#{name}-module"
-    }.collect { |name, desc|
-      "--add-module=#{HOMEBREW_PREFIX}/share/#{name}-nginx-module"
-    }
 
     if build.head?
       system "./auto/configure", *args
