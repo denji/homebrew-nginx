@@ -64,11 +64,11 @@ class NginxFull < Formula
 
   depends_on 'pcre'
   depends_on 'passenger' => :optional
+  depends_on 'geoip' => :optional
   # SPDY needs openssl >= 1.0.1 for NPN; see:
   # https://tools.ietf.org/agenda/82/slides/tls-3.pdf
   # http://www.openssl.org/news/changelog.html
   depends_on 'openssl' if build.with? 'spdy'
-  depends_on 'geoip' if build.with? 'geoip'
   depends_on 'libxml2' if build.with? 'xslt'
   depends_on 'libxslt' if build.with? 'xslt'
   depends_on 'gd' if build.with? 'image-filter'
