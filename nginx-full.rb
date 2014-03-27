@@ -62,6 +62,35 @@ class NginxFull < Formula
     }
   end
 
+  def self.core_modules
+    {
+      'passenger' => 'Compile with support for Phusion Passenger module',
+      'no-pool-nginx' => 'Disable nginx-pool, valgrind detect memory issues',
+      'webdav' => 'Compile with support for WebDAV module',
+      'debug' => 'Compile with support for debug log',
+      'spdy' => 'Compile with support for SPDY module',
+      'gunzip' => 'Compile with support for gunzip module',
+      'secure-link' => 'Compile with support for secure link module',
+      'status' => 'Compile with support for stub status module',
+      'mp4' => 'Compile with support for mp4 module',
+      'realip' => 'Compile with support for real IP module',
+      'perl' => 'Compile with support for Perl module',
+      'sub' => 'Compile with support for HTTP Sub module',
+      'addition' => 'Compile with support for HTTP Addition module',
+      'degredation' => 'Compile with support for HTTP Degredation module',
+      'flv' => 'Compile with support for FLV module',
+      'geoip' => 'Compile with support for GeoIP module',
+      'google-perftools' => 'Compile with support for Google Performance tools module',
+      'gzip-static' => 'Compile with support for Gzip static module',
+      'image-filter' => 'Compile with support for Image Filter module',
+      'random-index' => 'Compile with support for Random Index module',
+      'xslt' => 'Compile with support for XSLT module',
+      'pcre-jit' => 'Compile with support for JIT in PCRE',
+      'auth-req' => 'Compile with support for HTTP Auth Request Module',
+      'mail' => 'Compile with support for Mail module'
+    }
+  end
+
   depends_on 'pcre'
   depends_on 'passenger' => :optional
   depends_on 'geoip' => :optional
@@ -74,54 +103,16 @@ class NginxFull < Formula
   depends_on 'gd' if build.with? 'image-filter'
   depends_on "valgrind" if build.with? 'no-pool-nginx'
 
-  # register third party flags
-  self.third_party_modules.each { | name, desc |
+  # Options
+  self.core_modules.each do |name, desc|
+    option "with-#{name}", desc
+  end
+  self.third_party_modules.each do |name, desc|
+    option "with-#{name}-module", desc
     depends_on "#{name}-nginx-module" if build.with? "#{name}-module"
-  }
+  end
 
   skip_clean 'logs'
-
-  # Options
-  def options_array
-    self.class.third_party_modules.collect { | name, desc |
-      ["with-#{name}-module", nil, desc]
-    } + [
-      ['with-passenger',         nil,                            'Compile with support for Phusion Passenger module'],
-      ['with-no-pool-nginx',     nil,                            'Disable nginx-pool, valgrind detect memory issues'],
-      # Internal modules
-      ['with-webdav',            'with-http_dav_module',         'Compile with support for WebDAV module'],
-      ['with-debug',             'with-debug',                   'Compile with support for debug log'],
-      ['with-spdy',              'with-http_spdy_module',        'Compile with support for SPDY module'],
-      ['with-gunzip',            'with-http_gunzip_module',      'Compile with support for gunzip module'],
-      ['with-secure-link',       'with-http_secure_link_module', 'Compile with support for secure link module'],
-      ['with-status',            'with-http_stub_status_module', 'Compile with support for stub status module'],
-      ['with-mp4',               'with-http_mp4_module',         'Compile with support for mp4 module'],
-      ['with-realip',            'with-http_realip_module',      'Compile with support for real IP module'],
-      ['with-perl',              'with-http_perl_module',        'Compile with support for Perl module'],
-      ['with-sub',               'with-http_sub_module',         'Compile with support for HTTP Sub module'],
-      ['with-addition',          'with-http_addition_module',    'Compile with support for HTTP Addition module'],
-      ['with-degredation',       'with-http_degradation_module', 'Compile with support for HTTP Degredation module'],
-      ['with-flv',               'with-http_flv_module',         'Compile with support for FLV module'],
-      ['with-geoip',             'with-http_geoip_module',       'Compile with support for GeoIP module'],
-      ['with-google-perftools',  'with-google_perftools_module', 'Compile with support for Google Performance tools module'],
-      ['with-gzip-static',       'with-http_gzip_static_module', 'Compile with support for Gzip static module'],
-      ['with-image-filter',      'with-http_image_filter_module','Compile with support for Image Filter module'],
-      ['with-random-index',      'with-http_random_index_module','Compile with support for Random Index module'],
-    #  ['with-ssl',               'with-http_ssl_module',         'Compile with support for SSL module'],
-      ['with-xslt',              'with-http_xslt_module',        'Compile with support for XSLT module'],
-      ['with-pcre-jit',          'with-pcre-jit',                'Compile with support for JIT in PCRE'],
-      ['with-auth-req',          'with-http_auth_request_module','Compile with support for HTTP Auth Request Module'],
-      ['with-mail',              'with-mail',                    'Compile with support for Mail module']
-    ]
-  end
-
-  def options
-    options = []
-    options_array.each do |arr|
-      options << ["--#{arr[0]}", arr[2]]
-    end
-    options
-  end
 
   def patches
     # Changes default port to 8080
@@ -183,13 +174,16 @@ class NginxFull < Formula
             "--with-http_gzip_static_module"
           ]
 
-    # Optional Arguments
+    # Arguments
     ohai 'Configuring Arguments'
-    options_array.each do |arr|
-      next unless arr[1]
-      ohai "--#{arr[1]}" if build.include? arr[0]
-      args << "--#{arr[1]}" if build.include? arr[0]
-    end
+
+    # Core Modules
+    args += self.class.core_modules.select { |name, desc|
+      build.with? name
+    }.collect { |name, desc|
+      # Args need mapping here
+      "--with-#{name}"
+    }
 
     # Passenger
     args << passenger_config_args if build.with? 'passenger'
@@ -202,10 +196,10 @@ class NginxFull < Formula
       ENV['LUAJIT_INC'] = "#{luajit_path}/include/luajit-2.0"
     end
 
-    # add third party flags
-    args += self.class.third_party_modules.select { | name, desc |
+    # Third Party Modules
+    args += self.class.third_party_modules.select { |name, desc|
       build.with? "#{name}-module"
-    }.collect { | name, desc |
+    }.collect { |name, desc|
       ohai "--with-#{name}-module"
       "--add-module=#{HOMEBREW_PREFIX}/share/#{name}-nginx-module"
     }
