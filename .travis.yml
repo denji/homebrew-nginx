@@ -1,15 +1,19 @@
 language: objective-c
 before_install:
   - brew update
+  - brew install pcre
 install:
   - mkdir -p $(brew --repo)/Library/Taps
-  - ln -s $PWD $(brew --repo)/Library/Taps/homebrew-nginx
+  - ln -s $PWD $(brew --repo)/Library/Taps/marcqualie-nginx
   - brew tap --repair
 env:
-  - PACKAGE=nginx-full
+  - MODULE=""
+  - MODULE="spdy"
+  - MODULE="geoip"
+  - MODULE="lua-module"
+  - MODULE="headers-more-module"
 script:
-  - brew audit $PACKAGE
-  - brew install -v $PACKAGE
-  - '! brew cat $PACKAGE | grep -q "test do" || brew test -v $PACKAGE'
+  - brew audit nginx-full
+  - brew install -v nginx-full --with-$MODULE
 matrix:
   fast_finish: true

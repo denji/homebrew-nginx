@@ -13,7 +13,34 @@ class NginxFull < Formula
 
   head 'http://hg.nginx.org/nginx/', :using => :hg
 
-  env :userpaths
+  def self.core_modules
+    [
+      ['passenger',        nil,                        'Compile with support for Phusion Passenger module'],
+      ['no-pool-nginx',    nil,                        'Disable nginx-pool, valgrind detect memory issues'],
+      ['webdav',           'http_dav_module',          'Compile with support for WebDAV module'],
+      ['spdy',             'http_spdy_module',         'Compile with support for SPDY module'],
+      ['gunzip',           'http_gunzip_module',       'Compile with support for gunzip module'],
+      ['secure-link',      'http_secure_link_module',  'Compile with support for secure link module'],
+      ['status',           'http_stub_status_module',  'Compile with support for stub status module'],
+      ['mp4',              'http_mp4_module',          'Compile with support for mp4 module'],
+      ['realip',           'http_realip_module',       'Compile with support for real IP module'],
+      ['perl',             'http_perl_module',         'Compile with support for Perl module'],
+      ['sub',              'http_sub_module',          'Compile with support for HTTP Sub module'],
+      ['addition',         'http_addition_module',     'Compile with support for HTTP Addition module'],
+      ['degredation',      'http_degradation_module',  'Compile with support for HTTP Degredation module'],
+      ['flv',              'http_flv_module',          'Compile with support for FLV module'],
+      ['geoip',            'http_geoip_module',        'Compile with support for GeoIP module'],
+      ['gzip-static',      'http_gzip_static_module',  'Compile with support for Gzip static module'],
+      ['image-filter',     'http_image_filter_module', 'Compile with support for Image Filter module'],
+      ['random-index',     'http_random_index_module', 'Compile with support for Random Index module'],
+      ['xslt',             'http_xslt_module',         'Compile with support for XSLT module'],
+      ['auth-req',         'http_auth_request_module', 'Compile with support for HTTP Auth Request Module'],
+      ['mail',             'mail',                     'Compile with support for Mail module'],
+      ['debug',            'debug',                    'Compile with support for debug log'],
+      ['pcre-jit',         'pcre-jit',                 'Compile with support for JIT in PCRE'],
+      ['google-perftools', 'google_perftools_module',  'Compile with support for Google Performance tools module']
+    ]
+  end
 
   def self.third_party_modules
     {
@@ -64,81 +91,37 @@ class NginxFull < Formula
 
   depends_on 'pcre'
   depends_on 'passenger' => :optional
-  # SPDY needs openssl >= 1.0.1 for NPN; see:
-  # https://tools.ietf.org/agenda/82/slides/tls-3.pdf
-  # http://www.openssl.org/news/changelog.html
+  depends_on 'geoip' => :optional
   depends_on 'openssl' if build.with? 'spdy'
-  depends_on 'geoip' if build.with? 'geoip'
   depends_on 'libxml2' if build.with? 'xslt'
   depends_on 'libxslt' if build.with? 'xslt'
   depends_on 'gd' if build.with? 'image-filter'
-  depends_on "valgrind" if build.include? 'without-pool-nginx'
+  depends_on "valgrind" if build.with? 'no-pool-nginx'
 
-  # register third party flags
-  self.third_party_modules.each { | name, desc |
-    depends_on "#{name}-nginx-module" if build.include? "with-#{name}-module"
-  }
-
-  skip_clean 'logs'
-
-  # Options
-  def options_array
-    self.class.third_party_modules.collect { | name, desc |
-      ["with-#{name}-module", nil, desc]
-    } + [
-      ['with-passenger',         nil,                            'Compile with support for Phusion Passenger module'],
-      ['without-pool-nginx',     nil,                            'Disable nginx-pool, valgrind detect memory issues'],
-      # Internal modules
-      ['with-webdav',            'with-http_dav_module',         'Compile with support for WebDAV module'],
-      ['with-debug',             'with-debug',                   'Compile with support for debug log'],
-      ['with-spdy',              'with-http_spdy_module',        'Compile with support for SPDY module'],
-      ['with-gunzip',            'with-http_gunzip_module',      'Compile with support for gunzip module'],
-      ['with-secure-link',       'with-http_secure_link_module', 'Compile with support for secure link module'],
-      ['with-status',            'with-http_stub_status_module', 'Compile with support for stub status module'],
-      ['with-mp4',               'with-http_mp4_module',         'Compile with support for mp4 module'],
-      ['with-realip',            'with-http_realip_module',      'Compile with support for real IP module'],
-      ['with-perl',              'with-http_perl_module',        'Compile with support for Perl module'],
-      ['with-sub',               'with-http_sub_module',         'Compile with support for HTTP Sub module'],
-      ['with-addition',          'with-http_addition_module',    'Compile with support for HTTP Addition module'],
-      ['with-degredation',       'with-http_degradation_module', 'Compile with support for HTTP Degredation module'],
-      ['with-flv',               'with-http_flv_module',         'Compile with support for FLV module'],
-      ['with-geoip',             'with-http_geoip_module',       'Compile with support for GeoIP module'],
-      ['with-google-perftools',  'with-google_perftools_module', 'Compile with support for Google Performance tools module'],
-      ['with-gzip-static',       'with-http_gzip_static_module', 'Compile with support for Gzip static module'],
-      ['with-image-filter',      'with-http_image_filter_module','Compile with support for Image Filter module'],
-      ['with-random-index',      'with-http_random_index_module','Compile with support for Random Index module'],
-    #  ['with-ssl',               'with-http_ssl_module',         'Compile with support for SSL module'],
-      ['with-xslt',              'with-http_xslt_module',        'Compile with support for XSLT module'],
-      ['with-pcre-jit',          'with-pcre-jit',                'Compile with support for JIT in PCRE'],
-      ['with-auth-req',          'with-http_auth_request_module','Compile with support for HTTP Auth Request Module'],
-      ['with-mail',              'with-mail',                    'Compile with support for Mail module']
-    ]
+  self.core_modules.each do |arr|
+    option "with-#{arr[0]}", arr[2]
   end
-
-  def options
-    options = []
-    options_array.each do |arr|
-      options << ["--#{arr[0]}", arr[2]]
-    end
-    options
+  self.third_party_modules.each do |name, desc|
+    option "with-#{name}-module", desc
+    depends_on "#{name}-nginx-module" if build.with? "#{name}-module"
   end
 
   def patches
-    # Changes default port to 8080
     patches = {
       :p1 => DATA,
     }
 
-    # replaces nginx's pool machanism
-    # with plain malloc & free to help tools like valgrind's memcheck to detect
-    # memory issues more reliably.
-    if build.include? 'without-pool-nginx'
-      patches[:p1] = 'https://raw.github.com/shrimp/no-pool-nginx/master/nginx-1.4.3-no_pool.patch' if build.stable?
-      patches[:p1] = 'https://raw.github.com/shrimp/no-pool-nginx/master/nginx-1.5.8-no_pool.patch' if build.devel?
+    # https://github.com/shrimp/no-pool-nginx
+    if build.with? 'no-pool-nginx'
+      patches[:p2] = 'https://raw.github.com/shrimp/no-pool-nginx/master/nginx-1.4.3-no_pool.patch' if build.stable?
+      patches[:p2] = 'https://raw.github.com/shrimp/no-pool-nginx/master/nginx-1.5.8-no_pool.patch' if build.devel?
     end
 
     patches
   end
+
+  env :userpaths
+  skip_clean 'logs'
 
   def passenger_config_args
     passenger_root = `passenger-config --root`.chomp
@@ -179,36 +162,32 @@ class NginxFull < Formula
             "--http-uwsgi-temp-path=#{var}/run/nginx/uwsgi_temp",
             "--http-scgi-temp-path=#{var}/run/nginx/scgi_temp",
             "--http-log-path=#{var}/log/nginx/access.log",
-            "--error-log-path=#{var}/log/nginx/error.log",
-            "--with-http_gzip_static_module"
+            "--error-log-path=#{var}/log/nginx/error.log"
           ]
 
-    # Optional Arguments
-    ohai 'Configuring Arguments'
-    options_array.each do |arr|
-      next unless arr[1]
-      ohai "--#{arr[1]}" if build.include? arr[0]
-      args << "--#{arr[1]}" if build.include? arr[0]
-    end
+    # Core Modules
+    args += self.class.core_modules.select { |arr|
+      build.with? arr[0]
+    }.collect { |arr|
+      "--with-#{arr[1]}"
+    }
+
+    # Third Party Modules
+    args += self.class.third_party_modules.select { |name, desc|
+      build.with? "#{name}-module"
+    }.collect { |name, desc|
+      "--add-module=#{HOMEBREW_PREFIX}/share/#{name}-nginx-module"
+    }
 
     # Passenger
-    args << passenger_config_args if build.include? 'with-passenger'
+    args << passenger_config_args if build.with? 'passenger'
 
     # Install LuaJit
-    if build.include? 'with-lua-module'
-      ohai "Configuring LuaJit"
+    if build.with? 'lua-module'
       luajit_path = `brew --prefix luajit`.chomp
       ENV['LUAJIT_LIB'] = "#{luajit_path}/lib"
       ENV['LUAJIT_INC'] = "#{luajit_path}/include/luajit-2.0"
     end
-
-    # add third party flags
-    args += self.class.third_party_modules.select { | name, desc |
-      build.with? "#{name}-module"
-    }.collect { | name, desc |
-      ohai "--with-#{name}-module"
-      "--add-module=#{HOMEBREW_PREFIX}/share/#{name}-nginx-module"
-    }
 
     if build.head?
       system "./auto/configure", *args
@@ -266,7 +245,7 @@ class NginxFull < Formula
     The default port has been set in #{HOMEBREW_PREFIX}/etc/nginx/nginx.conf to 8080 so that
     nginx can run without sudo.
     EOS
-    s << passenger_caveats if build.include? 'with-passenger'
+    s << passenger_caveats if build.with? 'passenger'
     s
   end
 
