@@ -15,6 +15,35 @@ class NginxFull < Formula
 
   env :userpaths
 
+  def self.core_modules
+    [
+      ['passenger',        nil,                        'Compile with support for Phusion Passenger module'],
+      ['no-pool-nginx',    nil,                        'Disable nginx-pool, valgrind detect memory issues'],
+      ['webdav',           'http_dav_module',          'Compile with support for WebDAV module'],
+      ['spdy',             'http_spdy_module',         'Compile with support for SPDY module'],
+      ['gunzip',           'http_gunzip_module',       'Compile with support for gunzip module'],
+      ['secure-link',      'http_secure_link_module',  'Compile with support for secure link module'],
+      ['status',           'http_stub_status_module',  'Compile with support for stub status module'],
+      ['mp4',              'http_mp4_module',          'Compile with support for mp4 module'],
+      ['realip',           'http_realip_module',       'Compile with support for real IP module'],
+      ['perl',             'http_perl_module',         'Compile with support for Perl module'],
+      ['sub',              'http_sub_module',          'Compile with support for HTTP Sub module'],
+      ['addition',         'http_addition_module',     'Compile with support for HTTP Addition module'],
+      ['degredation',      'http_degradation_module',  'Compile with support for HTTP Degredation module'],
+      ['flv',              'http_flv_module',          'Compile with support for FLV module'],
+      ['geoip',            'http_geoip_module',        'Compile with support for GeoIP module'],
+      ['gzip-static',      'http_gzip_static_module',  'Compile with support for Gzip static module'],
+      ['image-filter',     'http_image_filter_module', 'Compile with support for Image Filter module'],
+      ['random-index',     'http_random_index_module', 'Compile with support for Random Index module'],
+      ['xslt',             'http_xslt_module',         'Compile with support for XSLT module'],
+      ['auth-req',         'http_auth_request_module', 'Compile with support for HTTP Auth Request Module'],
+      ['mail',             'mail',                     'Compile with support for Mail module'],
+      ['debug',            'debug',                    'Compile with support for debug log'],
+      ['pcre-jit',         'pcre-jit',                 'Compile with support for JIT in PCRE'],
+      ['google-perftools', 'google_perftools_module',  'Compile with support for Google Performance tools module']
+    ]
+  end
+
   def self.third_party_modules
     {
       'lua' => 'Compile with support for LUA module',
@@ -62,35 +91,6 @@ class NginxFull < Formula
     }
   end
 
-  def self.core_modules
-    {
-      'passenger' => 'Compile with support for Phusion Passenger module',
-      'no-pool-nginx' => 'Disable nginx-pool, valgrind detect memory issues',
-      'webdav' => 'Compile with support for WebDAV module',
-      'debug' => 'Compile with support for debug log',
-      'spdy' => 'Compile with support for SPDY module',
-      'gunzip' => 'Compile with support for gunzip module',
-      'secure-link' => 'Compile with support for secure link module',
-      'status' => 'Compile with support for stub status module',
-      'mp4' => 'Compile with support for mp4 module',
-      'realip' => 'Compile with support for real IP module',
-      'perl' => 'Compile with support for Perl module',
-      'sub' => 'Compile with support for HTTP Sub module',
-      'addition' => 'Compile with support for HTTP Addition module',
-      'degredation' => 'Compile with support for HTTP Degredation module',
-      'flv' => 'Compile with support for FLV module',
-      'geoip' => 'Compile with support for GeoIP module',
-      'google-perftools' => 'Compile with support for Google Performance tools module',
-      'gzip-static' => 'Compile with support for Gzip static module',
-      'image-filter' => 'Compile with support for Image Filter module',
-      'random-index' => 'Compile with support for Random Index module',
-      'xslt' => 'Compile with support for XSLT module',
-      'pcre-jit' => 'Compile with support for JIT in PCRE',
-      'auth-req' => 'Compile with support for HTTP Auth Request Module',
-      'mail' => 'Compile with support for Mail module'
-    }
-  end
-
   depends_on 'pcre'
   depends_on 'passenger' => :optional
   depends_on 'geoip' => :optional
@@ -104,8 +104,8 @@ class NginxFull < Formula
   depends_on "valgrind" if build.with? 'no-pool-nginx'
 
   # Options
-  self.core_modules.each do |name, desc|
-    option "with-#{name}", desc
+  self.core_modules.each do |arr|
+    option "with-#{arr[0]}", arr[2]
   end
   self.third_party_modules.each do |name, desc|
     option "with-#{name}-module", desc
@@ -174,15 +174,11 @@ class NginxFull < Formula
             "--with-http_gzip_static_module"
           ]
 
-    # Arguments
-    ohai 'Configuring Arguments'
-
     # Core Modules
-    args += self.class.core_modules.select { |name, desc|
-      build.with? name
-    }.collect { |name, desc|
-      # Args need mapping here
-      "--with-#{name}"
+    args += self.class.core_modules.select { |arr|
+      build.with? arr[0]
+    }.collect { |arr|
+      "--with-#{arr[1]}"
     }
 
     # Passenger
@@ -190,7 +186,6 @@ class NginxFull < Formula
 
     # Install LuaJit
     if build.with? 'lua-module'
-      ohai "Configuring LuaJit"
       luajit_path = `brew --prefix luajit`.chomp
       ENV['LUAJIT_LIB'] = "#{luajit_path}/lib"
       ENV['LUAJIT_INC'] = "#{luajit_path}/include/luajit-2.0"
@@ -200,7 +195,6 @@ class NginxFull < Formula
     args += self.class.third_party_modules.select { |name, desc|
       build.with? "#{name}-module"
     }.collect { |name, desc|
-      ohai "--with-#{name}-module"
       "--add-module=#{HOMEBREW_PREFIX}/share/#{name}-nginx-module"
     }
 
