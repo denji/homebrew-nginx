@@ -1,6 +1,7 @@
 language: objective-c
 before_install:
   - brew update
+  - brew install pcre
 install:
   - mkdir -p $(brew --repo)/Library/Taps
   - ln -s $PWD $(brew --repo)/Library/Taps/marcqualie-nginx
