@@ -7,11 +7,13 @@ install:
   - ln -s $PWD $(brew --repo)/Library/Taps/marcqualie-nginx
   - brew tap --repair
 env:
-  - MODULES=""
-  - MODULES="--with-spdy"
-  - MODULES="--with-lua-module"
+  - MODULE=""
+  - MODULE="spdy"
+  - MODULE="geoip"
+  - MODULE="lua-module"
+  - MODULE="headers-more-module"
 script:
   - brew audit nginx-full
-  - brew install -v nginx-full $MODULES
+  - brew install -v nginx-full --with-$MODULE
 matrix:
   fast_finish: true
