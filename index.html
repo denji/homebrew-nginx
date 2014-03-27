@@ -54,7 +54,7 @@ brew link nginx-full
           <tbody>
 {% for module in site.data.modules %}
             <tr>
-              <td>{{ module.name }}</td>
+              <td>{% if module.homepage %}<a href="{{ module.homepage }}" target="_blank">{{ module.name }}</a>{% else %}{{ module.name }}{% endif %}</td>
               <td>{{ module.version }}</td>
               <td>{{ module.description }}</td>
             </tr>
