@@ -1,169 +1,331 @@
 ---
 - name: accept-language
+  homepage: https://github.com/giom/nginx_accept_language_module
   version: badac1f
   sha1: badac1f89639388bb518f68482e659b97d7968c2
-  description: ''
+  description: Compile with support for Accept Language Module
 - name: accesskey
+  homepage: http://wiki.nginx.org/NginxHttpAccessKeyModule
   version: 68eb4c4
   sha1: 68eb4c47f9a1a058a711b280d4e29339ddab8775
-  description: ''
+  description: Compile with support for HTTP Access Key Module
+- name: addition
+  homepage: 
+  version: master
+  sha1: 
+  description: Compile with support for HTTP Addition module
 - name: anti-ddos
+  homepage: https://github.com/aufi/anddos
   version: '0.1'
   sha1: 758859a055538cf8d183bc8a9c72f643bd49312a
-  description: ''
+  description: Compile with support for Anti-DDoS module
 - name: array-var
+  homepage: https://github.com/agentzh/array-var-nginx-module
   version: '0.03'
   sha1: b2666aa3c092060fcd3931a6d45798a5745c1ad6
-  description: ''
+  description: Compile with support for Array Var Module
 - name: auth-digest
+  homepage: https://github.com/samizdatco/nginx-http-auth-digest
   version: '0.1'
   sha1: 3188e07820d5a06f8328f61875dbb91d4a74b6c0
-  description: ''
+  description: Compile with support for Auth Digest Module
 - name: auth-ldap
+  homepage: https://github.com/kvspb/nginx-auth-ldap
   version: '0.1'
   sha1: 663c521a487ff5b6c87c59b8fe5a7677410a30b0
-  description: ''
+  description: Compile with support for Auth LDAP Module
 - name: auth-pam
+  homepage: http://web.iti.upv.es/~sto/nginx/
   version: 3bb82c7
   sha1: 3bb82c75f7cbace4c10b11aa51adbe36ab0803ed
-  description: ''
+  description: Compile with support for Auth PAM Module
+- name: auth-req
+  homepage: 
+  version: master
+  sha1: 
+  description: Compile with support for HTTP Auth Request Module
 - name: auto-keepalive
+  homepage: https://github.com/ideal/ngx_http_auto_keepalive
   version: 11851b8
   sha1: 11851b879f6643280525c024836e8d875d1dec33
-  description: ''
+  description: Compile with support for Auto Disable KeepAlive module
 - name: autols
+  homepage: https://github.com/DvdKhl/ngx_http_autols_module
   version: b37901b
   sha1: b37901b2418f688ffb84f909d2fa8e165fcb258d
-  description: ''
+  description: Compile with support for Flexible Auto Index module
 - name: cache-purge
+  homepage: http://labs.frickle.com
   version: e6e3779
   sha1: e6e3779487182c94efd3206751927ce722c1da5c
-  description: ''
+  description: Compile with support for Cache Purge Module
 - name: captcha
+  homepage: https://github.com/fallgold/ngx_http_captcha
   version: '0.1'
   sha1: a984facfc5cbf82fca383fb2c09e98ca03c69613
-  description: ''
+  description: Compile with support for Captcha module
 - name: consistent-hash
+  homepage: https://github.com/replay/ngx_http_consistent_hash
   version: '0.1'
   sha1: 4aff332a839fe6e366d3b5faf21dd4dc81ff2459
-  description: ''
+  description: Compile with support for Consistent Hash Upstream module
 - name: counter-zone
+  homepage: https://github.com/theromis/ngx_counter_zone
   version: ed97ea0
   sha1: ed97ea0503eefb0aa0e2c3ac3924fb9b606d2eb5
-  description: ''
+  description: Compile with support for Realtime Counter Zone module
 - name: ctpp2
+  homepage: http://ngx-ctpp.vbart.ru/
   version: b8faa03
   sha1: b8faa0366654b5616e8182a5078daff2c36e712c
-  description: ''
+  description: Compile with support for CT++ Module
 - name: dav-ext
+  homepage: https://github.com/arut/nginx-dav-ext-module
   version: 0.0.3
   sha1: 80714f9471cb5c8259ecdca9e25eb32f4d581074
-  description: ''
+  description: Compile with support for HTTP WebDav Extended Module
+- name: debug
+  homepage: 
+  version: master
+  sha1: 
+  description: Compile with support for debug log
+- name: degredation
+  homepage: 
+  version: master
+  sha1: 
+  description: Compile with support for HTTP Degredation module
 - name: echo
+  homepage: https://github.com/agentzh/echo-nginx-module
   version: '0.48'
   sha1: 51c6df070d15dfd63a6c5c17ed683a08e6dd86e8
-  description: ''
+  description: Compile with support for Echo Module
 - name: eval
+  homepage: https://github.com/vkholodkov/nginx-eval-module
   version: 1.0.3
   sha1: 16df14c6c56a9965eee97f74df2933be2463535b
-  description: ''
+  description: Compile with support for Eval Module
 - name: extended-status
+  homepage: https://github.com/denji/ngx_http_extended_status_module
   version: '1.0'
   sha1: 884f39921be512a4939be93bb0a5b64bf68fff06
-  description: ''
+  description: Compile with support for Extended Status module
 - name: fancyindex
+  homepage: https://github.com/aperezdc/ngx-fancyindex
   version: 0.3.2
   sha1: 98c3c361ac163a49bada0dc25e81f7575cb8ff85
-  description: ''
+  description: Compile with support for Fancy Index Module
+- name: flv
+  homepage: 
+  version: master
+  sha1: 
+  description: Compile with support for FLV module
+- name: geoip
+  homepage: 
+  version: master
+  sha1: 
+  description: Compile with support for GeoIP module
+- name: google-perftools
+  homepage: 
+  version: master
+  sha1: 
+  description: Compile with support for Google Performance tools module
+- name: gunzip
+  homepage: 
+  version: master
+  sha1: 
+  description: Compile with support for gunzip module
+- name: gzip-static
+  homepage: 
+  version: master
+  sha1: 
+  description: Compile with support for Gzip static module
 - name: headers-more
+  homepage: https://github.com/agentzh/headers-more-nginx-module
   version: '0.22'
   sha1: 9e574fb0a3cacb4229fa2fe93d02bac0d43e431f
-  description: ''
+  description: Compile with support for Headers More Module
 - name: healthcheck
+  homepage: https://github.com/cep21/healthcheck_nginx_upstreams
   version: '0.1'
   sha1: 4c539aa1bd29ea22406ce352142873d6efbe86c0
-  description: ''
+  description: Compile with support for Healthcheck Module
 - name: http-flood-detector
+  homepage: https://github.com/suehiro/ngx_http_flood_detector_module
   version: '0.1'
   sha1: 8b3a9de84cf6c326190b030fb78da10194a2942b
-  description: ''
+  description: Compile with support for Var Flood-Threshold module
 - name: http-remote-passwd
+  homepage: https://github.com/x-way/ngx_http_remote_passwd
   version: 1006b23
   sha1: 1006b236a932d6659fba55d322f7d00dfb2431b0
-  description: ''
+  description: Compile with support for Remote Basic Auth password module
+- name: image-filter
+  homepage: 
+  version: master
+  sha1: 
+  description: Compile with support for Image Filter module
 - name: log-if
+  homepage: https://github.com/cfsego/ngx_log_if
   version: '0.1'
   sha1: 8dfb8c0f9358821377c0dea810a49a026aecd405
-  description: ''
+  description: Compile with support for Log-if Module
 - name: lua
+  homepage: https://github.com/chaoslawful/lua-nginx-module
   version: 0.9.4
   sha1: 617d9dedcc8ca6758e77c4253c8de0080ae2c9ae
-  description: ''
+  description: Compile with support for LUA module
+- name: mail
+  homepage: 
+  version: master
+  sha1: 
+  description: Compile with support for Mail module
 - name: mod-zip
+  homepage: https://github.com/evanmiller/mod_zip
   version: '0.1'
   sha1: f9a085915e471e2aeb97e06db3f1d6d72a779fab
-  description: ''
+  description: Compile with support for HTTP Zip Module
 - name: mogilefs
+  homepage: http://www.grid.net.ru/nginx/mogilefs.en.html
   version: 4f6b774
   sha1: 4f6b774096a77aa8c550d8fd6a3f5d39a661d8ed
-  description: ''
+  description: Compile with support for HTTP MogileFS Module
+- name: mp4
+  homepage: 
+  version: master
+  sha1: 
+  description: Compile with support for mp4 module
 - name: mp4-h264
+  homepage: http://h264.code-shop.com/trac/wiki/Mod-H264-Streaming-Nginx-Version2
   version: c887af2
   sha1: c887af256b1d6302149efc8159cc6c7ba1e7d439
-  description: ''
+  description: Compile with support for HTTP MP4/H264 Module
+- name: no-pool-nginx
+  homepage: 
+  version: master
+  sha1: 
+  description: Disable nginx-pool, valgrind detect memory issues
 - name: notice
+  homepage: https://github.com/kr/nginx-notice
   version: 0.0.2
   sha1: ed64e7caffc8cf46bf2ebf7987f59a32952a55a8
-  description: ''
+  description: Compile with support for HTTP Notice Module
+- name: passenger
+  homepage: 
+  version: master
+  sha1: 
+  description: Compile with support for Phusion Passenger module
+- name: pcre-jit
+  homepage: 
+  version: master
+  sha1: 
+  description: Compile with support for JIT in PCRE
+- name: perl
+  homepage: 
+  version: master
+  sha1: 
+  description: Compile with support for Perl module
 - name: php-session
+  homepage: https://github.com/replay/ngx_http_php_session
   version: 0.4b
   sha1: 0a07677df689477b6b5123dbdb41271352b047e6
-  description: ''
+  description: Compile with support for Parse PHP Sessions module
+- name: random-index
+  homepage: 
+  version: master
+  sha1: 
+  description: Compile with support for Random Index module
+- name: realip
+  homepage: 
+  version: master
+  sha1: 
+  description: Compile with support for real IP module
 - name: realtime-req
+  homepage: https://github.com/magicbear/ngx_realtime_request_module
   version: a4b9723
   sha1: a4b9723585064b33c2157358406c3deb70edce6d
-  description: ''
+  description: Compile with support for Realtime Request module
 - name: redis2
+  homepage: https://github.com/agentzh/redis2-nginx-module
   version: '0.10'
   sha1: ce352ae84a2c03eee9a34880e7b5e4ffd19bdb01
-  description: ''
+  description: Compile with support for Redis2 Module
+- name: secure-link
+  homepage: 
+  version: master
+  sha1: 
+  description: Compile with support for secure link module
 - name: set-misc
+  homepage: https://github.com/agentzh/set-misc-nginx-module
   version: 5754e2c
   sha1: 5754e2c26af8fbf12949dcdd68d8c916a3da8450
-  description: ''
+  description: Compile with support for Set Misc Module
+- name: spdy
+  homepage: 
+  version: master
+  sha1: 
+  description: Compile with support for SPDY module
+- name: status
+  homepage: 
+  version: master
+  sha1: 
+  description: Compile with support for stub status module
+- name: sub
+  homepage: 
+  version: master
+  sha1: 
+  description: Compile with support for HTTP Sub module
 - name: subs-filter
+  homepage: https://github.com/yaoweibin/ngx_http_substitutions_filter_module
   version: 0.6.3
   sha1: 8ac8efa385c8b0fcfcd6a7505697bcfe498039e3
-  description: ''
+  description: Compile with support for Substitutions Filter Module
 - name: tcp-proxy
+  homepage: https://github.com/yaoweibin/nginx_tcp_proxy_module
   version: '0.26'
   sha1: 3997b93b6421d0afa69e7fd79a952c16a1f5db1b
-  description: ''
+  description: Compile with support for TCP proxy
 - name: txid
+  homepage: https://github.com/streadway/ngx_txid
   version: '0.1'
   sha1: 8e779f757ddc5e62237c45b925aba20b8e131e99
-  description: ''
+  description: Compile with support for Sortable Unique ID
 - name: upload
+  homepage: http://wiki.nginx.org/HttpUploadModule
   version: 2.2.0
   sha1: a7d31ac0358b86ff12a07bcda1e9a8714118c2bb
-  description: ''
+  description: Compile with support for Upload module
 - name: upload-progress
+  homepage: http://wiki.nginx.org/HttpUploadProgressModule
   version: 0.9.0
   sha1: 93aadaf6065e1e8afd9f14b9291a66819d3aa4c0
-  description: ''
+  description: Compile with support for Upload Progrress module
 - name: upstream-hash
+  homepage: https://github.com/evanmiller/nginx_upstream_hash
   version: '0.1'
   sha1: 359c3e7f52266763301b29bdf07edfab3d7c32d9
-  description: ''
+  description: Compile with support for Upstream Hash Module
 - name: upstream-order
+  homepage: https://github.com/flygoast/ngx_http_upstream_order
   version: '0.1'
   sha1: b98a582d63f26da48dd3fe586c6e54863adc102e
-  description: ''
+  description: Compile with support for Order Upstream module
 - name: ustats
+  homepage: https://github.com/denji/ngx_ustats_module
   version: '0.1'
   sha1: b1d574ed613c15ccc9795513aacd22e896b15759
-  description: ''
+  description: Compile with support for Upstream Statistics (HAProxy style) module
 - name: var-req-speed
+  homepage: https://github.com/alexstup/ngx_http_var_request_speed
   version: '0.1'
   sha1: f2ce2dd4068b9abbfb16363bd0892768c92be02d
-  description: ''
+  description: Compile with support for Var Request-Speed module
+- name: webdav
+  homepage: 
+  version: master
+  sha1: 
+  description: Compile with support for WebDAV module
+- name: xslt
+  homepage: 
+  version: master
+  sha1: 
+  description: Compile with support for XSLT module
