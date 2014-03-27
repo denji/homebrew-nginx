@@ -72,11 +72,11 @@ class NginxFull < Formula
   depends_on 'libxml2' if build.with? 'xslt'
   depends_on 'libxslt' if build.with? 'xslt'
   depends_on 'gd' if build.with? 'image-filter'
-  depends_on "valgrind" if build.include? 'without-pool-nginx'
+  depends_on "valgrind" if build.without? 'pool-nginx'
 
   # register third party flags
   self.third_party_modules.each { | name, desc |
-    depends_on "#{name}-nginx-module" if build.include? "with-#{name}-module"
+    depends_on "#{name}-nginx-module" if build.with? "#{name}-module"
   }
 
   skip_clean 'logs'
@@ -132,7 +132,7 @@ class NginxFull < Formula
     # replaces nginx's pool machanism
     # with plain malloc & free to help tools like valgrind's memcheck to detect
     # memory issues more reliably.
-    if build.include? 'without-pool-nginx'
+    if build.without? 'pool-nginx'
       patches[:p1] = 'https://raw.github.com/shrimp/no-pool-nginx/master/nginx-1.4.3-no_pool.patch' if build.stable?
       patches[:p1] = 'https://raw.github.com/shrimp/no-pool-nginx/master/nginx-1.5.8-no_pool.patch' if build.devel?
     end
@@ -192,10 +192,10 @@ class NginxFull < Formula
     end
 
     # Passenger
-    args << passenger_config_args if build.include? 'with-passenger'
+    args << passenger_config_args if build.with? 'passenger'
 
     # Install LuaJit
-    if build.include? 'with-lua-module'
+    if build.with? 'lua-module'
       ohai "Configuring LuaJit"
       luajit_path = `brew --prefix luajit`.chomp
       ENV['LUAJIT_LIB'] = "#{luajit_path}/lib"
@@ -266,7 +266,7 @@ class NginxFull < Formula
     The default port has been set in #{HOMEBREW_PREFIX}/etc/nginx/nginx.conf to 8080 so that
     nginx can run without sudo.
     EOS
-    s << passenger_caveats if build.include? 'with-passenger'
+    s << passenger_caveats if build.with? 'passenger'
     s
   end
 
