@@ -81,18 +81,38 @@ brew link nginx-full
       <p>Project maintained by <a href="https://github.com/marcqualie" rel="author">Marc Qualie</a></p>
       <p>Hosted on <a href="https://gostatic.io">GoStatic</a> &mdash; Theme by <a href="https://github.com/orderedlist" target="_blank" rel="nofollow">orderedlist</a></p>
     </footer>
-    <script src="javascripts/scale.fix.js"></script>
 
 {% if site.environment == 'production' %}
-<script>
-  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-  ga('create', 'UA-4472999-11', 'homebrew-nginx.gonestatic.io');
-  ga('send', 'pageview');
-</script>
+    <!-- Analytics -->
+    <script>
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+      ga('create', 'UA-4472999-11', 'homebrew-nginx.gonestatic.io');
+      ga('send', 'pageview');
+    </script>
 {% endif %}
+
+    <!-- Scalefix -->
+    <script>
+    if (navigator.userAgent.match(/iPhone/i)) {
+      var i, gestureStart, metas = document.getElementsByTagName('meta');
+      for (i = 0; i < metas.length; i++) {
+        if (metas[i].name === "viewport") {
+          metas[i].content = "width=device-width, minimum-scale=1.0, maximum-scale=1.0";
+        }
+      }
+      gestureStart = function () {
+        for (i = 0; i < metas.length; i++) {
+          if (metas[i].name === "viewport") {
+            metas[i].content = "width=device-width, minimum-scale=0.25, maximum-scale=1.6";
+          }
+        }
+      }
+      document.addEventListener("gesturestart", gestureStart, false);
+    }
+    </script>
 
   </body>
 </html>
