@@ -72,7 +72,7 @@ class NginxFull < Formula
   depends_on 'libxml2' if build.with? 'xslt'
   depends_on 'libxslt' if build.with? 'xslt'
   depends_on 'gd' if build.with? 'image-filter'
-  depends_on "valgrind" if build.without? 'pool-nginx'
+  depends_on "valgrind" if build.with? 'no-pool-nginx'
 
   # register third party flags
   self.third_party_modules.each { | name, desc |
@@ -87,7 +87,7 @@ class NginxFull < Formula
       ["with-#{name}-module", nil, desc]
     } + [
       ['with-passenger',         nil,                            'Compile with support for Phusion Passenger module'],
-      ['without-pool-nginx',     nil,                            'Disable nginx-pool, valgrind detect memory issues'],
+      ['with-no-pool-nginx',     nil,                            'Disable nginx-pool, valgrind detect memory issues'],
       # Internal modules
       ['with-webdav',            'with-http_dav_module',         'Compile with support for WebDAV module'],
       ['with-debug',             'with-debug',                   'Compile with support for debug log'],
@@ -132,7 +132,7 @@ class NginxFull < Formula
     # replaces nginx's pool machanism
     # with plain malloc & free to help tools like valgrind's memcheck to detect
     # memory issues more reliably.
-    if build.without? 'pool-nginx'
+    if build.with? 'no-pool-nginx'
       patches[:p1] = 'https://raw.github.com/shrimp/no-pool-nginx/master/nginx-1.4.3-no_pool.patch' if build.stable?
       patches[:p1] = 'https://raw.github.com/shrimp/no-pool-nginx/master/nginx-1.5.8-no_pool.patch' if build.devel?
     end
