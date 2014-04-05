@@ -86,6 +86,7 @@ class NginxFull < Formula
       'realtime-req' => 'Compile with support for Realtime Request module',
       'counter-zone' => 'Compile with support for Realtime Counter Zone module',
       'mod-zip' => 'Compile with support for HTTP Zip Module',
+      'rtmp' => 'Compile with support for RTMP Module',
     }
   end
 
