@@ -32,7 +32,7 @@
 - name: auth-ldap
   homepage: https://github.com/kvspb/nginx-auth-ldap
   version: '0.1'
-  sha1: 663c521a487ff5b6c87c59b8fe5a7677410a30b0
+  sha1: e52a6b131a58a0ded2c7ef162caa122209ffe568
   description: Compile with support for Auth LDAP Module
 - name: auth-pam
   homepage: http://web.iti.upv.es/~sto/nginx/
@@ -249,6 +249,11 @@
   version: '0.10'
   sha1: ce352ae84a2c03eee9a34880e7b5e4ffd19bdb01
   description: Compile with support for Redis2 Module
+- name: rtmp
+  homepage: https://github.com/arut/nginx-rtmp-module
+  version: 1.1.4b
+  sha1: fc7c9909bc1f4870d136378309b4021838f2a14c
+  description: Compile with support for RTMP Module
 - name: secure-link
   homepage: 
   version: master
