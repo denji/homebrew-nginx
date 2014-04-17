@@ -87,6 +87,7 @@ class NginxFull < Formula
       'counter-zone' => 'Compile with support for Realtime Counter Zone module',
       'mod-zip' => 'Compile with support for HTTP Zip Module',
       'rtmp' => 'Compile with support for RTMP Module',
+      'dosdetector' => 'Compile with support for detecting DoS attacks',
     }
   end
 
