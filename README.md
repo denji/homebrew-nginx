@@ -16,7 +16,7 @@ Rather than submitting modules to the core Homebrew Nginx Forumla this repo will
 
 ## What about conflicts?
 
-You are free to install this version alongside a current install of Nginx from `mxcl/homebrew` if you wish. However, they cannot be linked at the same time. To switch between them use brew's built in linking system.
+You are free to install this version alongside a current install of Nginx from `Homebrew/homebrew` if you wish. However, they cannot be linked at the same time. To switch between them use brew's built in linking system.
 
     brew unlink nginx
     brew link nginx-full
