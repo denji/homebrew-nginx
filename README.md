@@ -5,7 +5,7 @@ This tap is designed specifically for a custom build of Nginx with more module o
 
 ## Installation
 
-    brew tap marcqualie/nginx
+    brew tap homebrew/nginx
     brew install nginx-full
 
 
