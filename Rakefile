@@ -14,7 +14,7 @@ namespace :modules do
   desc "Build _data directory"
   task :generate do
     tmp_dir = "/tmp/homebrew-nginx-generate"
-    git_url = "https://github.com/marcqualie/homebrew-nginx.git"
+    git_url = "https://github.com/Homebrew/homebrew-nginx.git"
     if Dir.exists? tmp_dir
       Dir.chdir(tmp_dir) do
         sh "git fetch origin"
