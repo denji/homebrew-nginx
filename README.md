@@ -1,4 +1,4 @@
-# Nginx Homebrew Tap  [![Build Status](https://travis-ci.org/marcqualie/homebrew-nginx.png?branch=master)](https://travis-ci.org/marcqualie/homebrew-nginx)
+# Nginx Homebrew Tap  [![Build Status](https://travis-ci.org/Homebrew/homebrew-nginx.png?branch=master)](https://travis-ci.org/Homebrew/homebrew-nginx)
 
 This tap is designed specifically for a custom build of Nginx with more module options.
 
@@ -20,7 +20,6 @@ You are free to install this version alongside a current install of Nginx from `
 
     brew unlink nginx
     brew link nginx-full
-
 
 ## Credits
 
