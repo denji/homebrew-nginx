@@ -94,6 +94,11 @@
   version: master
   sha1: 
   description: Compile with support for HTTP Degredation module
+- name: dosdetector
+  homepage: https://github.com/cubicdaiya/ngx_dosdetector
+  version: '0.1'
+  sha1: e476ecc2e3b38667bae0edd452116d14e75e450c
+  description: Compile with support for detecting DoS attacks
 - name: echo
   homepage: https://github.com/agentzh/echo-nginx-module
   version: '0.48'
