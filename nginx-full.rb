@@ -7,8 +7,8 @@ class NginxFull < Formula
   sha1 'e13b5b23f9be908b69652b0c394a95e9029687e3'
 
   devel do
-    url 'http://nginx.org/download/nginx-1.5.13.tar.gz'
-    sha1 'f0ee0d2545978c8cf5ca3a5e70fcd6b27c4f6191'
+    url 'http://nginx.org/download/nginx-1.7.0.tar.gz'
+    sha1 'e406cb9f1c17a0d9ff5df926412fce948bfea7de'
   end
 
   head 'http://hg.nginx.org/nginx/', :using => :hg
