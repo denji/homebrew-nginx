@@ -174,6 +174,11 @@ class NginxFull < Formula
       "--with-#{arr[1]}"
     }
 
+    # Set misc module depends on nginx-devel-kit being compiled in
+    if build.with? 'set-misc-module'
+      args << "--add-module=#{HOMEBREW_PREFIX}/share/ngx-devel-kit"
+    end
+
     # Third Party Modules
     args += self.class.third_party_modules.select { |name, desc|
       build.with? "#{name}-module"
