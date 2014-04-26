@@ -4,7 +4,7 @@ before_install:
   - brew install pcre
 install:
   - mkdir -p $(brew --repo)/Library/Taps
-  - ln -s $PWD $(brew --repo)/Library/Taps/marcqualie-nginx
+  - ln -s $PWD $(brew --repo)/Library/Taps/homebrew-nginx
   - brew tap --repair
 env:
   - MODULE=""
