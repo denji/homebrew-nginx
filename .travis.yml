@@ -3,9 +3,10 @@ before_install:
   - brew update
   - brew install pcre
 install:
-  - mkdir -p $(brew --repo)/Library/Taps
-  - ln -s $PWD $(brew --repo)/Library/Taps/homebrew-nginx
+  - mkdir -p $(brew --repo)/Library/Taps/homebrew
+  - ln -s $PWD $(brew --repo)/Library/Taps/homebrew/homebrew-nginx
   - brew tap --repair
+  - brew tap
 env:
   - MODULE=""
   - MODULE="spdy"
