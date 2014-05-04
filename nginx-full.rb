@@ -255,6 +255,19 @@ class NginxFull < Formula
 
     The default port has been set in #{HOMEBREW_PREFIX}/etc/nginx/nginx.conf to 8080 so that
     nginx can run without sudo.
+
+    - Tips -
+    Run port 80:
+     $ sudo chown root:wheel #{sbin}/nginx
+     $ sudo chmod u+s #{sbin}/nginx
+    Reload config:
+      $ nginx -s reload
+    Reopen Logfile:
+     $ nginx -s reopen
+    Stop process:
+     $ nginx -s stop
+    Waiting on exit process
+     $ nginx -s quit
     EOS
     s << passenger_caveats if build.with? 'passenger'
     s
