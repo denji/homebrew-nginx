@@ -261,7 +261,7 @@ class NginxFull < Formula
      $ sudo chown root:wheel #{sbin}/nginx
      $ sudo chmod u+s #{sbin}/nginx
     Reload config:
-      $ nginx -s reload
+     $ nginx -s reload
     Reopen Logfile:
      $ nginx -s reopen
     Stop process:
