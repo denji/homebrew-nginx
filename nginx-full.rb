@@ -175,8 +175,8 @@ class NginxFull < Formula
     args += self.class.core_modules.select { |arr|
       build.with? arr[0]
     }.collect { |arr|
-      "--with-#{arr[1]}"
-    }
+      "--with-#{arr[1]}" if arr[1]
+    }.compact
 
     # Set misc module depends on nginx-devel-kit being compiled in
     if build.with? 'set-misc-module'
