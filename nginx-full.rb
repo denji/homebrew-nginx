@@ -91,7 +91,7 @@ class NginxFull < Formula
     }
   end
 
-  if build.include? 'with-http-flood-detector-module' and !build.include? 'with-status'
+  if build.with? 'http-flood-detector-module' and build.without? 'status'
     raise "http-flood-detector-nginx-module: Stub Status module is required --with-status"
   end
 
