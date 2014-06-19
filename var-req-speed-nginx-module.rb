@@ -1,9 +1,9 @@
 require 'formula'
 
 class VarReqSpeedNginxModule < Formula
-  homepage 'https://github.com/alexstup/ngx_http_var_request_speed'
-  url 'https://github.com/alexstup/ngx_http_var_request_speed/archive/ad1abbc81b.tar.gz'
-  sha1 'f2ce2dd4068b9abbfb16363bd0892768c92be02d'
+  homepage 'https://github.com/denji/ngx_http_var_request_speed'
+  url 'https://github.com/denji/ngx_http_var_request_speed/archive/v1.0.tar.gz'
+  sha1 '2883fe2b7beaee5ff5f99ef4e9f418b9ef177c9c'
   version '0.1'
 
   def install
