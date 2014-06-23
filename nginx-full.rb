@@ -96,7 +96,6 @@ class NginxFull < Formula
   end
 
   depends_on 'pcre'
-  depends_on 'passenger' => :optional
   depends_on 'geoip' => :optional
   depends_on 'openssl' if build.with? 'spdy'
   depends_on 'libxml2' if build.with? 'xslt'
