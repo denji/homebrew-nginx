@@ -5,7 +5,6 @@ class NginxFull < Formula
   homepage 'http://nginx.org/'
   url 'http://nginx.org/download/nginx-1.6.0.tar.gz'
   sha1 '00eed38652d2cee36cc91a395f6703584658bb23'
-  revision 1
 
   devel do
     url 'http://nginx.org/download/nginx-1.7.2.tar.gz'
@@ -92,18 +91,18 @@ class NginxFull < Formula
     }
   end
 
-  if build.with? "http-flood-detector-module" and build.without? "status"
+  if build.with? 'http-flood-detector-module' and build.without? 'status'
     raise "http-flood-detector-nginx-module: Stub Status module is required --with-status"
   end
 
   depends_on 'pcre'
   depends_on 'passenger' => :optional
   depends_on 'geoip' => :optional
-  depends_on 'openssl' if build.with? "spdy"
-  depends_on 'libxml2' if build.with? "xslt"
-  depends_on 'libxslt' if build.with? "xslt"
-  depends_on 'gd' if build.with? "image-filter"
-  depends_on "valgrind" if build.with? "no-pool-nginx"
+  depends_on 'openssl' if build.with? 'spdy'
+  depends_on 'libxml2' if build.with? 'xslt'
+  depends_on 'libxslt' if build.with? 'xslt'
+  depends_on 'gd' if build.with? 'image-filter'
+  depends_on "valgrind" if build.with? 'no-pool-nginx'
 
   self.core_modules.each do |arr|
     option "with-#{arr[0]}", arr[2]
@@ -114,11 +113,16 @@ class NginxFull < Formula
   end
 
   def patches
+    patches = {
+      :p1 => DATA,
+    }
+
     # https://github.com/shrimp/no-pool-nginx
-    if build.with? "no-pool-nginx"
+    if build.with? 'no-pool-nginx'
       patches[:p2] = 'https://raw.github.com/shrimp/no-pool-nginx/master/nginx-1.4.3-no_pool.patch' if build.stable?
       patches[:p2] = 'https://raw.github.com/shrimp/no-pool-nginx/master/nginx-1.5.8-no_pool.patch' if build.devel?
     end
+
     patches
   end
 
@@ -126,25 +130,23 @@ class NginxFull < Formula
   skip_clean 'logs'
 
   def passenger_config_args
-    passenger_config = "#{HOMEBREW_PREFIX}/opt/passenger/bin/passenger-config"
-    nginx_ext = `#{passenger_config} --nginx-addon-dir`.chomp
+    passenger_root = `passenger-config --root`.chomp
 
-    if File.directory?(nginx_ext)
-      return "--add-module=#{nginx_ext}"
+    if File.directory?(passenger_root)
+      return "--add-module=#{passenger_root}/ext/nginx"
     end
 
-    puts "Unable to install nginx with passenger support."
+    puts "Unable to install nginx with passenger support. The passenger"
+    puts "gem must be installed and passenger-config must be in your path"
+    puts "in order to continue."
     exit
   end
 
   def install
-    # Changes default port to 8080
-    inreplace 'conf/nginx.conf', 'listen       80;', 'listen       8080;'
-
     cc_opt = "-I#{HOMEBREW_PREFIX}/include"
     ld_opt = "-L#{HOMEBREW_PREFIX}/lib"
 
-    if build.with? "spdy"
+    if build.with? 'spdy'
       openssl_path = Formula["openssl"].opt_prefix
       cc_opt += " -I#{openssl_path}/include"
       ld_opt += " -L#{openssl_path}/lib"
@@ -177,7 +179,7 @@ class NginxFull < Formula
     }.compact
 
     # Set misc module depends on nginx-devel-kit being compiled in
-    if build.with? "set-misc-module"
+    if build.with? 'set-misc-module'
       args << "--add-module=#{HOMEBREW_PREFIX}/share/ngx-devel-kit"
     end
 
@@ -189,10 +191,10 @@ class NginxFull < Formula
     }
 
     # Passenger
-    args << passenger_config_args if build.with? "passenger"
+    args << passenger_config_args if build.with? 'passenger'
 
     # Install LuaJit
-    if build.with? "lua-module"
+    if build.with? 'lua-module'
       luajit_path = `brew --prefix luajit`.chomp
       ENV['LUAJIT_LIB'] = "#{luajit_path}/lib"
       ENV['LUAJIT_INC'] = "#{luajit_path}/include/luajit-2.0"
@@ -208,7 +210,7 @@ class NginxFull < Formula
     man8.install "objs/nginx.8"
     (var/'run/nginx').mkpath
 
-    # nginx's docroot is #{prefix}/html, this isn't useful, so we symlink it
+    # nginx’s docroot is #{prefix}/html, this isn't useful, so we symlink it
     # to #{HOMEBREW_PREFIX}/var/www. The reason we symlink instead of patching
     # is so the user can redirect it easily to something else if they choose.
     prefix.cd do
@@ -223,7 +225,7 @@ class NginxFull < Formula
       Pathname.new("#{prefix}/html").make_relative_symlink(dst)
     end
 
-    # for most of this formula's life the binary has been placed in sbin
+    # for most of this formula’s life the binary has been placed in sbin
     # and Homebrew used to suggest the user copy the plist for nginx to their
     # ~/Library/LaunchAgents directory. So we need to have a symlink there
     # for such cases
@@ -241,7 +243,7 @@ class NginxFull < Formula
 
   def passenger_caveats; <<-EOS.undent
 
-    To activate Phusion Passenger, add this to #{etc}/nginx/nginx.conf, inside the 'http' context:
+    To activate Phusion Passenger, add this to #{etc}/nginx/nginx.conf:
       passenger_root #{HOMEBREW_PREFIX}/opt/passenger/libexec/lib/phusion_passenger/locations.ini
       passenger_ruby /usr/bin/ruby
     EOS
@@ -271,8 +273,6 @@ class NginxFull < Formula
     s
   end
 
-  plist_options :manual => 'nginx'
-
   def plist; <<-EOS.undent
     <?xml version="1.0" encoding="UTF-8"?>
     <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
@@ -286,7 +286,7 @@ class NginxFull < Formula
         <false/>
         <key>ProgramArguments</key>
         <array>
-            <string>#{opt_bin}/nginx</string>
+            <string>#{opt_prefix}/bin/nginx</string>
             <string>-g</string>
             <string>daemon off;</string>
         </array>
@@ -297,3 +297,16 @@ class NginxFull < Formula
     EOS
   end
 end
+
+__END__
+--- a/conf/nginx.conf
++++ b/conf/nginx.conf
+@@ -33,7 +33,7 @@
+     #gzip  on;
+
+     server {
+-        listen       80;
++        listen       8080;
+         server_name  localhost;
+
+         #charset koi8-r;
