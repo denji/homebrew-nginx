@@ -88,6 +88,7 @@ class NginxFull < Formula
       'mod-zip' => 'Compile with support for HTTP Zip Module',
       'rtmp' => 'Compile with support for RTMP Module',
       'dosdetector' => 'Compile with support for detecting DoS attacks',
+      'push-stream' => 'Compile with support for http push stream module',
     }
   end
 
