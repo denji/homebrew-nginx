@@ -5,8 +5,20 @@ This tap is designed specifically for a custom build of Nginx with more module o
 
 ## Installation
 
+Then, run the following in your command-line:
+
     brew tap homebrew/nginx
-    brew install nginx-full
+
+## Usage
+
+**Note**: For a list of available configuration options run:
+
+    brew options nginx-full
+    brew info nginx-full
+
+Once the tap is installed, you can install `nginx-full` with optional arguments as additional functionality and modules.
+
+    brew install nginx-full --with-upload-module
 
 
 ## Why submit modules here?
