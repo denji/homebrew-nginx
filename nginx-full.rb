@@ -99,7 +99,7 @@ class NginxFull < Formula
   depends_on "pcre"
   depends_on "passenger" => :optional
   depends_on "geoip" => :optional
-  depends_on "openssl" if build.with? "spdy"
+  depends_on "openssl"
   depends_on "libxml2" if build.with? "xslt"
   depends_on "libxslt" if build.with? "xslt"
   depends_on "gd" if build.with? "image-filter"
@@ -128,15 +128,14 @@ class NginxFull < Formula
   skip_clean "logs"
 
   def passenger_config_args
-    passenger_root = `passenger-config --root`.chomp
+    passenger_config = "#{HOMEBREW_PREFIX}/opt/passenger/bin/passenger-config"
+    nginx_ext = `#{passenger_config} --nginx-addon-dir`.chomp
 
-    if File.directory?(passenger_root)
-      return "--add-module=#{passenger_root}/ext/nginx"
+    if File.directory?(nginx_ext)
+      return "--add-module=#{nginx_ext}"
     end
 
-    puts "Unable to install nginx with passenger support. The passenger"
-    puts "gem must be installed and passenger-config must be in your path"
-    puts "in order to continue."
+    puts "Unable to install nginx with passenger support."
     exit
   end
 
@@ -144,14 +143,10 @@ class NginxFull < Formula
     # Changes default port to 8080
     inreplace "conf/nginx.conf", "listen       80;", "listen       8080;"
 
-    cc_opt = "-I#{HOMEBREW_PREFIX}/include"
-    ld_opt = "-L#{HOMEBREW_PREFIX}/lib"
-
-    if build.with? "spdy"
-      openssl_path = Formula["openssl"].opt_prefix
-      cc_opt += " -I#{openssl_path}/include"
-      ld_opt += " -L#{openssl_path}/lib"
-    end
+    pcre = Formula["pcre"]
+    openssl = Formula["openssl"]
+    cc_opt = "-I#{HOMEBREW_PREFIX}/include -I#{pcre.include} -I#{openssl.include}"
+    ld_opt = "-L#{HOMEBREW_PREFIX}/lib -L#{pcre.lib} -L#{openssl.lib}"
 
     args = ["--prefix=#{prefix}",
             "--with-http_ssl_module",
@@ -210,31 +205,31 @@ class NginxFull < Formula
     system "make install"
     man8.install "objs/nginx.8"
     (var/"run/nginx").mkpath
+  end
 
+  def post_install
     # nginx"s docroot is #{prefix}/html, this isn"t useful, so we symlink it
     # to #{HOMEBREW_PREFIX}/var/www. The reason we symlink instead of patching
     # is so the user can redirect it easily to something else if they choose.
-    prefix.cd do
-      dst = HOMEBREW_PREFIX/"var/www"
-      if not dst.exist?
-        dst.dirname.mkpath
-        mv "html", dst
-      else
-        rm_rf "html"
-        dst.mkpath
-      end
-      Pathname.new("#{prefix}/html").make_relative_symlink(dst)
+    html = prefix/"html"
+    dst  = var/"www"
+
+    if dst.exist?
+      html.rmtree
+      dst.mkpath
+    else
+      dst.dirname.mkpath
+      html.rename(dst)
     end
 
-    # for most of this formula"s life the binary has been placed in sbin
+    prefix.install_symlink dst => "html"
+
+    # for most of this formula's life the binary has been placed in sbin
     # and Homebrew used to suggest the user copy the plist for nginx to their
     # ~/Library/LaunchAgents directory. So we need to have a symlink there
     # for such cases
-    if (HOMEBREW_CELLAR/"nginx-full").subdirs.any?{|d| (d/:sbin).directory? }
-      sbin.mkpath
-      sbin.cd do
-        (sbin/"nginx").make_relative_symlink(bin/"nginx")
-      end
+    if rack.subdirs.any? { |d| d.join("sbin").directory? }
+      sbin.install_symlink bin/"nginx"
     end
   end
 
@@ -244,7 +239,7 @@ class NginxFull < Formula
 
   def passenger_caveats; <<-EOS.undent
 
-    To activate Phusion Passenger, add this to #{etc}/nginx/nginx.conf:
+    To activate Phusion Passenger, add this to #{etc}/nginx/nginx.conf, inside the 'http' context:
       passenger_root #{HOMEBREW_PREFIX}/opt/passenger/libexec/lib/phusion_passenger/locations.ini
       passenger_ruby /usr/bin/ruby
     EOS
@@ -287,7 +282,7 @@ class NginxFull < Formula
         <false/>
         <key>ProgramArguments</key>
         <array>
-            <string>#{opt_prefix}/bin/nginx</string>
+            <string>#{opt_bin}/nginx</string>
             <string>-g</string>
             <string>daemon off;</string>
         </array>
