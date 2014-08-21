@@ -1,109 +1,109 @@
-require 'formula'
+require "formula"
 
 class NginxFull < Formula
 
-  homepage 'http://nginx.org/'
-  url 'http://nginx.org/download/nginx-1.6.1.tar.gz'
-  sha1 'e58c865f67b580541ed4eadf69d1676762bf50ab'
+  homepage "http://nginx.org/"
+  url "http://nginx.org/download/nginx-1.6.1.tar.gz"
+  sha1 "e58c865f67b580541ed4eadf69d1676762bf50ab"
 
   devel do
-    url 'http://nginx.org/download/nginx-1.7.4.tar.gz'
-    sha1 '94f4ac8ddb4a05349e75c43b84f24dbacdbac6e9'
+    url "http://nginx.org/download/nginx-1.7.4.tar.gz"
+    sha1 "94f4ac8ddb4a05349e75c43b84f24dbacdbac6e9"
   end
 
-  head 'http://hg.nginx.org/nginx/', :using => :hg
+  head "http://hg.nginx.org/nginx/", :using => :hg
 
   def self.core_modules
     [
-      ['passenger',        nil,                        'Compile with support for Phusion Passenger module'],
-      ['no-pool-nginx',    nil,                        'Disable nginx-pool, valgrind detect memory issues'],
-      ['webdav',           'http_dav_module',          'Compile with support for WebDAV module'],
-      ['spdy',             'http_spdy_module',         'Compile with support for SPDY module'],
-      ['gunzip',           'http_gunzip_module',       'Compile with support for gunzip module'],
-      ['secure-link',      'http_secure_link_module',  'Compile with support for secure link module'],
-      ['status',           'http_stub_status_module',  'Compile with support for stub status module'],
-      ['mp4',              'http_mp4_module',          'Compile with support for mp4 module'],
-      ['realip',           'http_realip_module',       'Compile with support for real IP module'],
-      ['perl',             'http_perl_module',         'Compile with support for Perl module'],
-      ['sub',              'http_sub_module',          'Compile with support for HTTP Sub module'],
-      ['addition',         'http_addition_module',     'Compile with support for HTTP Addition module'],
-      ['degredation',      'http_degradation_module',  'Compile with support for HTTP Degredation module'],
-      ['flv',              'http_flv_module',          'Compile with support for FLV module'],
-      ['geoip',            'http_geoip_module',        'Compile with support for GeoIP module'],
-      ['gzip-static',      'http_gzip_static_module',  'Compile with support for Gzip static module'],
-      ['image-filter',     'http_image_filter_module', 'Compile with support for Image Filter module'],
-      ['random-index',     'http_random_index_module', 'Compile with support for Random Index module'],
-      ['xslt',             'http_xslt_module',         'Compile with support for XSLT module'],
-      ['auth-req',         'http_auth_request_module', 'Compile with support for HTTP Auth Request Module'],
-      ['mail',             'mail',                     'Compile with support for Mail module'],
-      ['debug',            'debug',                    'Compile with support for debug log'],
-      ['pcre-jit',         'pcre-jit',                 'Compile with support for JIT in PCRE'],
-      ['google-perftools', 'google_perftools_module',  'Compile with support for Google Performance tools module']
+      ["passenger",        nil,                        "Compile with support for Phusion Passenger module"],
+      ["no-pool-nginx",    nil,                        "Disable nginx-pool, valgrind detect memory issues"],
+      ["webdav",           "http_dav_module",          "Compile with support for WebDAV module"],
+      ["spdy",             "http_spdy_module",         "Compile with support for SPDY module"],
+      ["gunzip",           "http_gunzip_module",       "Compile with support for gunzip module"],
+      ["secure-link",      "http_secure_link_module",  "Compile with support for secure link module"],
+      ["status",           "http_stub_status_module",  "Compile with support for stub status module"],
+      ["mp4",              "http_mp4_module",          "Compile with support for mp4 module"],
+      ["realip",           "http_realip_module",       "Compile with support for real IP module"],
+      ["perl",             "http_perl_module",         "Compile with support for Perl module"],
+      ["sub",              "http_sub_module",          "Compile with support for HTTP Sub module"],
+      ["addition",         "http_addition_module",     "Compile with support for HTTP Addition module"],
+      ["degredation",      "http_degradation_module",  "Compile with support for HTTP Degredation module"],
+      ["flv",              "http_flv_module",          "Compile with support for FLV module"],
+      ["geoip",            "http_geoip_module",        "Compile with support for GeoIP module"],
+      ["gzip-static",      "http_gzip_static_module",  "Compile with support for Gzip static module"],
+      ["image-filter",     "http_image_filter_module", "Compile with support for Image Filter module"],
+      ["random-index",     "http_random_index_module", "Compile with support for Random Index module"],
+      ["xslt",             "http_xslt_module",         "Compile with support for XSLT module"],
+      ["auth-req",         "http_auth_request_module", "Compile with support for HTTP Auth Request Module"],
+      ["mail",             "mail",                     "Compile with support for Mail module"],
+      ["debug",            "debug",                    "Compile with support for debug log"],
+      ["pcre-jit",         "pcre-jit",                 "Compile with support for JIT in PCRE"],
+      ["google-perftools", "google_perftools_module",  "Compile with support for Google Performance tools module"]
     ]
   end
 
   def self.third_party_modules
     {
-      'lua' => 'Compile with support for LUA module',
-      'echo' => 'Compile with support for Echo Module',
-      'auth-digest' => 'Compile with support for Auth Digest Module',
-      'set-misc' => 'Compile with support for Set Misc Module',
-      'redis2' => 'Compile with support for Redis2 Module',
-      'array-var' => 'Compile with support for Array Var Module',
-      'accept-language' => 'Compile with support for Accept Language Module',
-      'accesskey' => 'Compile with support for HTTP Access Key Module',
-      'auth-ldap' => 'Compile with support for Auth LDAP Module',
-      'auth-pam' => 'Compile with support for Auth PAM Module',
-      'cache-purge' => 'Compile with support for Cache Purge Module',
-      'ctpp2' => 'Compile with support for CT++ Module',
-      'headers-more' => 'Compile with support for Headers More Module',
-      'tcp-proxy' => 'Compile with support for TCP proxy',
-      'dav-ext' => 'Compile with support for HTTP WebDav Extended Module',
-      'eval' => 'Compile with support for Eval Module',
-      'fancyindex' => 'Compile with support for Fancy Index Module',
-      'mogilefs' => 'Compile with support for HTTP MogileFS Module',
-      'mp4-h264' => 'Compile with support for HTTP MP4/H264 Module',
-      'notice' => 'Compile with support for HTTP Notice Module',
-      'subs-filter' => 'Compile with support for Substitutions Filter Module',
-      'upload' => 'Compile with support for Upload module',
-      'upload-progress' => 'Compile with support for Upload Progrress module',
-      'php-session' => 'Compile with support for Parse PHP Sessions module',
-      'anti-ddos' => 'Compile with support for Anti-DDoS module',
-      'captcha' => 'Compile with support for Captcha module',
-      'autols' => 'Compile with support for Flexible Auto Index module',
-      'auto-keepalive' => 'Compile with support for Auto Disable KeepAlive module',
-      'ustats' => 'Compile with support for Upstream Statistics (HAProxy style) module',
-      'extended-status' => 'Compile with support for Extended Status module',
-      'upstream-hash' => 'Compile with support for Upstream Hash Module',
-      'consistent-hash' => 'Compile with support for Consistent Hash Upstream module',
-      'healthcheck' => 'Compile with support for Healthcheck Module',
-      'log-if' => 'Compile with support for Log-if Module',
-      'txid' => 'Compile with support for Sortable Unique ID',
-      'upstream-order' => 'Compile with support for Order Upstream module',
-      'var-req-speed' => 'Compile with support for Var Request-Speed module',
-      'http-flood-detector' => 'Compile with support for Var Flood-Threshold module',
-      'http-remote-passwd' => 'Compile with support for Remote Basic Auth password module',
-      'realtime-req' => 'Compile with support for Realtime Request module',
-      'counter-zone' => 'Compile with support for Realtime Counter Zone module',
-      'mod-zip' => 'Compile with support for HTTP Zip Module',
-      'rtmp' => 'Compile with support for RTMP Module',
-      'dosdetector' => 'Compile with support for detecting DoS attacks',
-      'push-stream' => 'Compile with support for http push stream module',
+      "lua" => "Compile with support for LUA module",
+      "echo" => "Compile with support for Echo Module",
+      "auth-digest" => "Compile with support for Auth Digest Module",
+      "set-misc" => "Compile with support for Set Misc Module",
+      "redis2" => "Compile with support for Redis2 Module",
+      "array-var" => "Compile with support for Array Var Module",
+      "accept-language" => "Compile with support for Accept Language Module",
+      "accesskey" => "Compile with support for HTTP Access Key Module",
+      "auth-ldap" => "Compile with support for Auth LDAP Module",
+      "auth-pam" => "Compile with support for Auth PAM Module",
+      "cache-purge" => "Compile with support for Cache Purge Module",
+      "ctpp2" => "Compile with support for CT++ Module",
+      "headers-more" => "Compile with support for Headers More Module",
+      "tcp-proxy" => "Compile with support for TCP proxy",
+      "dav-ext" => "Compile with support for HTTP WebDav Extended Module",
+      "eval" => "Compile with support for Eval Module",
+      "fancyindex" => "Compile with support for Fancy Index Module",
+      "mogilefs" => "Compile with support for HTTP MogileFS Module",
+      "mp4-h264" => "Compile with support for HTTP MP4/H264 Module",
+      "notice" => "Compile with support for HTTP Notice Module",
+      "subs-filter" => "Compile with support for Substitutions Filter Module",
+      "upload" => "Compile with support for Upload module",
+      "upload-progress" => "Compile with support for Upload Progrress module",
+      "php-session" => "Compile with support for Parse PHP Sessions module",
+      "anti-ddos" => "Compile with support for Anti-DDoS module",
+      "captcha" => "Compile with support for Captcha module",
+      "autols" => "Compile with support for Flexible Auto Index module",
+      "auto-keepalive" => "Compile with support for Auto Disable KeepAlive module",
+      "ustats" => "Compile with support for Upstream Statistics (HAProxy style) module",
+      "extended-status" => "Compile with support for Extended Status module",
+      "upstream-hash" => "Compile with support for Upstream Hash Module",
+      "consistent-hash" => "Compile with support for Consistent Hash Upstream module",
+      "healthcheck" => "Compile with support for Healthcheck Module",
+      "log-if" => "Compile with support for Log-if Module",
+      "txid" => "Compile with support for Sortable Unique ID",
+      "upstream-order" => "Compile with support for Order Upstream module",
+      "var-req-speed" => "Compile with support for Var Request-Speed module",
+      "http-flood-detector" => "Compile with support for Var Flood-Threshold module",
+      "http-remote-passwd" => "Compile with support for Remote Basic Auth password module",
+      "realtime-req" => "Compile with support for Realtime Request module",
+      "counter-zone" => "Compile with support for Realtime Counter Zone module",
+      "mod-zip" => "Compile with support for HTTP Zip Module",
+      "rtmp" => "Compile with support for RTMP Module",
+      "dosdetector" => "Compile with support for detecting DoS attacks",
+      "push-stream" => "Compile with support for http push stream module",
     }
   end
 
-  if build.with? 'http-flood-detector-module' and build.without? 'status'
+  if build.with? "http-flood-detector-module" and build.without? "status"
     raise "http-flood-detector-nginx-module: Stub Status module is required --with-status"
   end
 
-  depends_on 'pcre'
-  depends_on 'passenger' => :optional
-  depends_on 'geoip' => :optional
-  depends_on 'openssl' if build.with? 'spdy'
-  depends_on 'libxml2' if build.with? 'xslt'
-  depends_on 'libxslt' if build.with? 'xslt'
-  depends_on 'gd' if build.with? 'image-filter'
-  depends_on "valgrind" if build.with? 'no-pool-nginx'
+  depends_on "pcre"
+  depends_on "passenger" => :optional
+  depends_on "geoip" => :optional
+  depends_on "openssl" if build.with? "spdy"
+  depends_on "libxml2" if build.with? "xslt"
+  depends_on "libxslt" if build.with? "xslt"
+  depends_on "gd" if build.with? "image-filter"
+  depends_on "valgrind" if build.with? "no-pool-nginx"
 
   self.core_modules.each do |arr|
     option "with-#{arr[0]}", arr[2]
@@ -114,21 +114,18 @@ class NginxFull < Formula
   end
 
   def patches
-    patches = {
-      :p1 => DATA,
-    }
+    patches = {}
 
     # https://github.com/shrimp/no-pool-nginx
-    if build.with? 'no-pool-nginx'
-      patches[:p2] = 'https://raw.github.com/shrimp/no-pool-nginx/master/nginx-1.4.3-no_pool.patch' if build.stable?
-      patches[:p2] = 'https://raw.github.com/shrimp/no-pool-nginx/master/nginx-1.5.8-no_pool.patch' if build.devel?
+    if build.with? "no-pool-nginx"
+      patches[:p2] = "https://raw.github.com/shrimp/no-pool-nginx/master/nginx-1.4.3-no_pool.patch" if build.stable?
+      patches[:p2] = "https://raw.github.com/shrimp/no-pool-nginx/master/nginx-1.5.8-no_pool.patch" if build.devel?
     end
-
     patches
   end
 
   env :userpaths
-  skip_clean 'logs'
+  skip_clean "logs"
 
   def passenger_config_args
     passenger_root = `passenger-config --root`.chomp
@@ -144,10 +141,13 @@ class NginxFull < Formula
   end
 
   def install
+    # Changes default port to 8080
+    inreplace "conf/nginx.conf", "listen       80;", "listen       8080;"
+
     cc_opt = "-I#{HOMEBREW_PREFIX}/include"
     ld_opt = "-L#{HOMEBREW_PREFIX}/lib"
 
-    if build.with? 'spdy'
+    if build.with? "spdy"
       openssl_path = Formula["openssl"].opt_prefix
       cc_opt += " -I#{openssl_path}/include"
       ld_opt += " -L#{openssl_path}/lib"
@@ -180,7 +180,7 @@ class NginxFull < Formula
     }.compact
 
     # Set misc module depends on nginx-devel-kit being compiled in
-    if build.with? 'set-misc-module'
+    if build.with? "set-misc-module"
       args << "--add-module=#{HOMEBREW_PREFIX}/share/ngx-devel-kit"
     end
 
@@ -192,13 +192,13 @@ class NginxFull < Formula
     }
 
     # Passenger
-    args << passenger_config_args if build.with? 'passenger'
+    args << passenger_config_args if build.with? "passenger"
 
     # Install LuaJit
-    if build.with? 'lua-module'
+    if build.with? "lua-module"
       luajit_path = `brew --prefix luajit`.chomp
-      ENV['LUAJIT_LIB'] = "#{luajit_path}/lib"
-      ENV['LUAJIT_INC'] = "#{luajit_path}/include/luajit-2.0"
+      ENV["LUAJIT_LIB"] = "#{luajit_path}/lib"
+      ENV["LUAJIT_INC"] = "#{luajit_path}/include/luajit-2.0"
     end
 
     if build.head?
@@ -209,9 +209,9 @@ class NginxFull < Formula
     system "make"
     system "make install"
     man8.install "objs/nginx.8"
-    (var/'run/nginx').mkpath
+    (var/"run/nginx").mkpath
 
-    # nginx’s docroot is #{prefix}/html, this isn't useful, so we symlink it
+    # nginx"s docroot is #{prefix}/html, this isn"t useful, so we symlink it
     # to #{HOMEBREW_PREFIX}/var/www. The reason we symlink instead of patching
     # is so the user can redirect it easily to something else if they choose.
     prefix.cd do
@@ -226,20 +226,20 @@ class NginxFull < Formula
       Pathname.new("#{prefix}/html").make_relative_symlink(dst)
     end
 
-    # for most of this formula’s life the binary has been placed in sbin
+    # for most of this formula"s life the binary has been placed in sbin
     # and Homebrew used to suggest the user copy the plist for nginx to their
     # ~/Library/LaunchAgents directory. So we need to have a symlink there
     # for such cases
-    if (HOMEBREW_CELLAR/'nginx-full').subdirs.any?{|d| (d/:sbin).directory? }
+    if (HOMEBREW_CELLAR/"nginx-full").subdirs.any?{|d| (d/:sbin).directory? }
       sbin.mkpath
       sbin.cd do
-        (sbin/'nginx').make_relative_symlink(bin/'nginx')
+        (sbin/"nginx").make_relative_symlink(bin/"nginx")
       end
     end
   end
 
   test do
-    system "#{bin}/nginx", '-t'
+    system "#{bin}/nginx", "-t"
   end
 
   def passenger_caveats; <<-EOS.undent
@@ -270,7 +270,7 @@ class NginxFull < Formula
     Waiting on exit process
      $ nginx -s quit
     EOS
-    s << passenger_caveats if build.with? 'passenger'
+    s << passenger_caveats if build.with? "passenger"
     s
   end
 
@@ -298,16 +298,3 @@ class NginxFull < Formula
     EOS
   end
 end
-
-__END__
---- a/conf/nginx.conf
-+++ b/conf/nginx.conf
-@@ -33,7 +33,7 @@
-     #gzip  on;
-
-     server {
--        listen       80;
-+        listen       8080;
-         server_name  localhost;
-
-         #charset koi8-r;

@@ -1,10 +1,10 @@
-require 'formula'
+require "formula"
 
 class Openresty < Formula
-  homepage 'http://openresty.org'
-  url 'http://openresty.org/download/ngx_openresty-1.7.2.1.tar.gz'
-  sha1 'b54b3e0ff5265be6116817a18e753df595b9e929'
-  version '1.7.2.1'
+  homepage "http://openresty.org"
+  url "http://openresty.org/download/ngx_openresty-1.7.2.1.tar.gz"
+  sha1 "b54b3e0ff5265be6116817a18e753df595b9e929"
+  version "1.7.2.1"
 
   depends_on "luajit"
   depends_on "pcre"
@@ -29,8 +29,8 @@ class Openresty < Formula
     system "./configure", *args
 
     # Install
-    system 'make'
-    system 'make install'
+    system "make"
+    system "make install"
 
   end
 

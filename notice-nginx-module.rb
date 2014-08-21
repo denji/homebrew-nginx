@@ -1,16 +1,16 @@
-require 'formula'
+require "formula"
 
 class NoticeNginxModule < Formula
-  homepage 'https://github.com/kr/nginx-notice'
-  url 'https://github.com/kr/nginx-notice/archive/master.tar.gz'
-  sha1 'ed64e7caffc8cf46bf2ebf7987f59a32952a55a8'
-  version '0.0.2'
+  homepage "https://github.com/kr/nginx-notice"
+  url "https://github.com/kr/nginx-notice/archive/master.tar.gz"
+  sha1 "ed64e7caffc8cf46bf2ebf7987f59a32952a55a8"
+  version "0.0.2"
 
   # Fix issue compatibility
   def patches; DATA end
 
   def install
-    (share+'notice-nginx-module').install Dir['*']
+    (share+"notice-nginx-module").install Dir["*"]
   end
 end
 

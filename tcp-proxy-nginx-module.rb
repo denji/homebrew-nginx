@@ -1,15 +1,15 @@
-require 'formula'
+require "formula"
 
 class TcpProxyNginxModule < Formula
-  homepage 'https://github.com/yaoweibin/nginx_tcp_proxy_module'
-  url 'https://github.com/yaoweibin/nginx_tcp_proxy_module/archive/v0.26.tar.gz'
-  sha1 '3997b93b6421d0afa69e7fd79a952c16a1f5db1b'
+  homepage "https://github.com/yaoweibin/nginx_tcp_proxy_module"
+  url "https://github.com/yaoweibin/nginx_tcp_proxy_module/archive/v0.26.tar.gz"
+  sha1 "3997b93b6421d0afa69e7fd79a952c16a1f5db1b"
 
   # Fix issue compatibility
   def patches; DATA end
 
   def install
-    (share+'tcp-proxy-nginx-module').install Dir['*']
+    (share+"tcp-proxy-nginx-module").install Dir["*"]
   end
 end
 
