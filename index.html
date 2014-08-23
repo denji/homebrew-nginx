@@ -37,11 +37,21 @@ title: Homebrew Nginx
       </header>
       <section>
 
-        <h1>Install</h1>
+        <h1>Install tap</h1>
         <p>You can install the tap by running the following commands</p>
 {% highlight bash %}
 brew tap homebrew/nginx
-brew install nginx-full
+{% endhighlight %}
+
+        <h1>Usage</h1>
+        <p>For a list of available configuration options run</p>
+{% highlight bash %}
+brew options nginx-full
+brew info nginx-full
+{% endhighlight %}
+        <p>Once the tap is installed, you can install nginx-full with optional arguments as additional functionality and modules.</p>
+{% highlight bash %}
+brew install nginx-full --with-upload-module
 {% endhighlight %}
 
         <h1>Conflicts</h1>
