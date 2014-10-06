@@ -14,16 +14,18 @@ class Mp4H264NginxModule < Formula
 end
 
 __END__
---- ../nginx_mod_h264_streaming-2.2.7/src/ngx_http_streaming_module.c.orig	2010-05-24 18:04:43.000000000 +0400
-+++ ../nginx_mod_h264_streaming-2.2.7/src/ngx_http_streaming_module.c	2010-05-24 18:05:02.000000000 +0400
-@@ -155,10 +155,6 @@
+diff --git a/src/ngx_http_streaming_module.c b/src/ngx_http_streaming_module.c
+index 8d565c9..a8df30e 100644
+--- a/src/ngx_http_streaming_module.c
++++ b/src/ngx_http_streaming_module.c
+@@ -155,10 +155,6 @@ static ngx_int_t ngx_streaming_handler(ngx_http_request_t *r)
    }
-
+ 
    /* TODO: Win32 */
 -  if (r->zero_in_uri)
 -  {
 -    return NGX_DECLINED;
 -  }
-
+ 
    rc = ngx_http_discard_request_body(r);
-
+ 
