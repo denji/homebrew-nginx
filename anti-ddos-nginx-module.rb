@@ -7,8 +7,6 @@ class AntiDdosNginxModule < Formula
   version "0.1"
 
   def install
-    (share+"anti-ddos-nginx-module").mv "anddos/*", "./"
-    (share+"anti-ddos-nginx-module").rm_rf "anddos"
-    (share+"anti-ddos-nginx-module").install Dir["*"]
+    (share+"anti-ddos-nginx-module").install Dir["anddos/*"]
   end
 end
