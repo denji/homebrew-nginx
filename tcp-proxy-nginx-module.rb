@@ -6,7 +6,7 @@ class TcpProxyNginxModule < Formula
   sha1 "3997b93b6421d0afa69e7fd79a952c16a1f5db1b"
 
   # Fix issue compatibility
-  def patches; DATA end
+  patch :DATA
 
   def install
     (share+"tcp-proxy-nginx-module").install Dir["*"]

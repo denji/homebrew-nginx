@@ -7,7 +7,7 @@ class NoticeNginxModule < Formula
   version "0.0.2"
 
   # Fix issue compatibility
-  def patches; DATA end
+  patch :DATA
 
   def install
     (share+"notice-nginx-module").install Dir["*"]

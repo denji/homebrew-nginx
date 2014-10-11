@@ -6,7 +6,7 @@ class Mp4H264NginxModule < Formula
   sha1 "c887af256b1d6302149efc8159cc6c7ba1e7d439"
 
   # Fix issue compatibility
-  def patches; DATA end
+  patch :DATA
 
   def install
     (share+"mp4-h264-nginx-module").install Dir["*"]
