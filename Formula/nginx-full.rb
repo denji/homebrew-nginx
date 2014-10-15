@@ -66,7 +66,7 @@ class NginxFull < Formula
       "notice" => "Compile with support for HTTP Notice Module",
       "subs-filter" => "Compile with support for Substitutions Filter Module",
       "upload" => "Compile with support for Upload module",
-      "upload-progress" => "Compile with support for Upload Progrress module",
+      "upload-progress" => "Compile with support for Upload Progress module",
       "php-session" => "Compile with support for Parse PHP Sessions module",
       "anti-ddos" => "Compile with support for Anti-DDoS module",
       "captcha" => "Compile with support for Captcha module",
