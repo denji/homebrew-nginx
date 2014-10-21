@@ -1,4 +1,4 @@
-language: cpp
+language: objective-c
 before_install:
   - brew update
   - brew install pcre
@@ -18,5 +18,3 @@ script:
   - brew install -v nginx-full --with-$MODULE
 matrix:
   fast_finish: true
-os:
- - osx
