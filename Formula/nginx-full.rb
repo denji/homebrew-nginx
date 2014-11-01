@@ -96,6 +96,10 @@ class NginxFull < Formula
     raise "http-flood-detector-nginx-module: Stub Status module is required --with-status"
   end
 
+  if build.with? "dav-ext-module" and build.without? "webdav"
+    raise "dav-ext-nginx-module: WebDav Extended Module is required --with-webdav"
+  end
+
   depends_on "pcre"
   depends_on "passenger" => :optional
   depends_on "geoip" => :optional
