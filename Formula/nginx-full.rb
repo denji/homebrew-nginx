@@ -119,11 +119,15 @@ class NginxFull < Formula
 
   def patches
     patches = {}
-
-    # https://github.com/shrimp/no-pool-nginx
+    # https://github.com/openresty/no-pool-nginx
     if build.with? "no-pool-nginx"
-      patches[:p2] = "https://raw.github.com/shrimp/no-pool-nginx/master/nginx-1.4.3-no_pool.patch" if build.stable?
-      patches[:p2] = "https://raw.github.com/shrimp/no-pool-nginx/master/nginx-1.5.8-no_pool.patch" if build.devel?
+      patches[:p2] = "https://raw.githubusercontent.com/openresty/no-pool-nginx/master/nginx-1.7.7-no_pool.patch" if build.devel?
+    end
+    if build.with? "extended-status"
+      patches[:p1] = "https://raw.githubusercontent.com/nginx-modules/ngx_http_extended_status_module/master/extended_status-1.6.2.patch"
+    end
+    if build.with? "ustat"
+      patches[:p1] = "https://raw.githubusercontent.com/nginx-modules/ngx_ustats_module/master/nginx-1.6.1.patch"
     end
     patches
   end
