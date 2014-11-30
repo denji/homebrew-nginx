@@ -1,9 +1,9 @@
 require "formula"
 
 class LuaNginxModule < Formula
-  homepage "https://github.com/chaoslawful/lua-nginx-module"
-  url "https://github.com/chaoslawful/lua-nginx-module/archive/v0.9.4.tar.gz"
-  sha1 "617d9dedcc8ca6758e77c4253c8de0080ae2c9ae"
+  homepage "https://github.com/openresty/lua-nginx-module"
+  url "https://github.com/openresty/lua-nginx-module/archive/v0.9.13.tar.gz"
+  sha1 "246ab53272d61f64eb0f61333847d0babfc0ff04"
 
   depends_on "luajit"
   depends_on "ngx-devel-kit"
