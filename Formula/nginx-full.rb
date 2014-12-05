@@ -80,6 +80,7 @@ class NginxFull < Formula
       "log-if" => "Compile with support for Log-if Module",
       "txid" => "Compile with support for Sortable Unique ID",
       "upstream-order" => "Compile with support for Order Upstream module",
+      "unzip" => "Compile with support for UnZip module",
       "var-req-speed" => "Compile with support for Var Request-Speed module",
       "http-flood-detector" => "Compile with support for Var Flood-Threshold module",
       "http-remote-passwd" => "Compile with support for Remote Basic Auth password module",
