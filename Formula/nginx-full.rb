@@ -143,9 +143,9 @@ class NginxFull < Formula
 
     pcre = Formula["pcre"]
     openssl = Formula["openssl"]
-    cc_opt = "-I#{HOMEBREW_PREFIX}/include -I#{pcre.include} -I#{openssl.include}"
-    ld_opt = "-L#{HOMEBREW_PREFIX}/lib -L#{pcre.lib} -L#{openssl.lib}"
-    
+    cc_opt = "-I#{HOMEBREW_PREFIX}/include -I#{pcre.opt_include} -I#{openssl.opt_include}"
+    ld_opt = "-L#{HOMEBREW_PREFIX}/lib -L#{pcre.opt_lib} -L#{openssl.opt_lib}"
+
     if build.with? "unzip"
       cc_opt += " -I#{Formula['libzip'].opt_lib}/libzip/include"
     end
