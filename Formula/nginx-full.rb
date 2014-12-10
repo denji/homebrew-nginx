@@ -105,6 +105,7 @@ class NginxFull < Formula
   depends_on "passenger" => :optional
   depends_on "geoip" => :optional
   depends_on "openssl"
+  depends_on "libzip" if build.with? "unzip"
   depends_on "libxml2" if build.with? "xslt"
   depends_on "libxslt" if build.with? "xslt"
   depends_on "gd" if build.with? "image-filter"
