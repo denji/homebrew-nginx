@@ -1,5 +1,3 @@
-require "formula"
-
 class AntiDdosNginxModule < Formula
   homepage "https://github.com/aufi/anddos"
   url "https://github.com/aufi/anddos/archive/0507b433bb.tar.gz"

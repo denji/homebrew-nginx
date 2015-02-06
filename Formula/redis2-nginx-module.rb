@@ -1,5 +1,3 @@
-require "formula"
-
 class Redis2NginxModule < Formula
   homepage "https://github.com/openresty/redis2-nginx-module"
   url "https://github.com/openresty/redis2-nginx-module/archive/v0.10.tar.gz"

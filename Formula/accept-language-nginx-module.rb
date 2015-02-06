@@ -1,5 +1,3 @@
-require "formula"
-
 class AcceptLanguageNginxModule < Formula
   homepage "https://github.com/giom/nginx_accept_language_module"
   url "https://github.com/giom/nginx_accept_language_module/tarball/master/giom-nginx_accept_language_module-2f69842.tar.gz"

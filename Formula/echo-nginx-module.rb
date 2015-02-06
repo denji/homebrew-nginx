@@ -1,5 +1,3 @@
-require "formula"
-
 class EchoNginxModule < Formula
   homepage "https://github.com/openresty/echo-nginx-module"
   url "https://github.com/openresty/echo-nginx-module/archive/v0.54.tar.gz"

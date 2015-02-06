@@ -1,5 +1,3 @@
-require "formula"
-
 class HeadersMoreNginxModule < Formula
   homepage "https://github.com/openresty/headers-more-nginx-module"
   url "https://github.com/openresty/headers-more-nginx-module/archive/v0.25.tar.gz"

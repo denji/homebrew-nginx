@@ -1,5 +1,3 @@
-require "formula"
-
 class PhpSessionNginxModule < Formula
   homepage "https://github.com/replay/ngx_http_php_session"
   url "https://github.com/replay/ngx_http_php_session/archive/30f69b3bbe.tar.gz"

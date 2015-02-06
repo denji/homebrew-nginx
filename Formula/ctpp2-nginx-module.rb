@@ -1,5 +1,3 @@
-require "formula"
-
 class Ctpp2NginxModule < Formula
   homepage "http://ngx-ctpp.vbart.ru/"
   url "http://dl.vbart.ru/ngx-ctpp/ngx_ctpp2-0.5.tar.gz"

@@ -1,5 +1,3 @@
-require "formula"
-
 class LogIfNginxModule < Formula
   homepage "https://github.com/cfsego/ngx_log_if"
   url "https://github.com/cfsego/ngx_log_if/archive/master.tar.gz"

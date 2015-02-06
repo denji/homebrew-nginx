@@ -1,5 +1,3 @@
-require "formula"
-
 class DavExtNginxModule < Formula
   # NGINX WebDAV missing commands support (PROPFIND & OPTIONS)
   homepage "https://github.com/arut/nginx-dav-ext-module"

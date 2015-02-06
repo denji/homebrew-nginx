@@ -1,5 +1,3 @@
-require "formula"
-
 class AutoKeepaliveNginxModule < Formula
   homepage "https://github.com/ideal/ngx_http_auto_keepalive"
   url "https://github.com/ideal/ngx_http_auto_keepalive/archive/86369fc5f4.tar.gz"

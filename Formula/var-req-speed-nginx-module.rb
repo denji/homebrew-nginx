@@ -1,5 +1,3 @@
-require "formula"
-
 class VarReqSpeedNginxModule < Formula
   homepage "https://github.com/nginx-modules/ngx_http_var_request_speed"
   url "https://github.com/nginx-modules/ngx_http_var_request_speed/archive/v1.0.tar.gz"

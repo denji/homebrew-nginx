@@ -1,5 +1,3 @@
-require "formula"
-
 class UploadNginxModule < Formula
   homepage "http://wiki.nginx.org/HttpUploadModule"
   url "https://github.com/vkholodkov/nginx-upload-module/archive/2.2.tar.gz"

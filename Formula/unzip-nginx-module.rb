@@ -1,5 +1,3 @@
-require "formula"
-
 class UnzipNginxModule < Formula
   homepage "https://github.com/youzee/nginx-unzip-module"
   url "https://github.com/youzee/nginx-unzip-module/archive/03e582a2e99d2dd4bbd7f26d3f3d4a8e4a5d23f4.tar.gz"

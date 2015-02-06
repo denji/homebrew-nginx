@@ -1,5 +1,3 @@
-require "formula"
-
 class ModZipNginxModule < Formula
   homepage "https://github.com/evanmiller/mod_zip"
   url "https://github.com/evanmiller/mod_zip/archive/35ea7ff.tar.gz"

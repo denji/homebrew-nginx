@@ -1,5 +1,3 @@
-require "formula"
-
 class ArrayVarNginxModule < Formula
   homepage "https://github.com/openresty/array-var-nginx-module"
   url "https://github.com/openresty/array-var-nginx-module/archive/v0.03.tar.gz"

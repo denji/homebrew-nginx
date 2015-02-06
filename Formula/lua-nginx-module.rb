@@ -1,5 +1,3 @@
-require "formula"
-
 class LuaNginxModule < Formula
   homepage "https://github.com/openresty/lua-nginx-module"
   url "https://github.com/openresty/lua-nginx-module/archive/v0.9.13.tar.gz"

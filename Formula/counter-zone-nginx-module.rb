@@ -1,5 +1,3 @@
-require "formula"
-
 class CounterZoneNginxModule < Formula
   homepage "https://github.com/theromis/ngx_counter_zone"
   url "https://github.com/theromis/ngx_counter_zone/archive/dd78fcb781.tar.gz"

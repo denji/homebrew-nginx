@@ -1,5 +1,3 @@
-require "formula"
-
 class HttpFloodDetectorNginxModule < Formula
   homepage "https://github.com/suehiro/ngx_http_flood_detector_module"
   url "https://github.com/suehiro/ngx_http_flood_detector_module/archive/b66fb66c23.tar.gz"

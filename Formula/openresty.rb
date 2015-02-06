@@ -1,5 +1,3 @@
-require "formula"
-
 class Openresty < Formula
   homepage "http://openresty.org"
   url "http://openresty.org/download/ngx_openresty-1.7.2.1.tar.gz"

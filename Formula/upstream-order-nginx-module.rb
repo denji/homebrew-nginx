@@ -1,5 +1,3 @@
-require "formula"
-
 class UpstreamOrderNginxModule < Formula
   homepage "https://github.com/flygoast/ngx_http_upstream_order"
   url "https://github.com/flygoast/ngx_http_upstream_order/archive/d820667a5f.tar.gz"

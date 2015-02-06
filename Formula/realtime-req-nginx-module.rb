@@ -1,5 +1,3 @@
-require "formula"
-
 class RealtimeReqNginxModule < Formula
   homepage "https://github.com/magicbear/ngx_realtime_request_module"
   url "https://github.com/magicbear/ngx_realtime_request_module/archive/1c89cd3da8.tar.gz"

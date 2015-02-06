@@ -1,5 +1,3 @@
-require "formula"
-
 class DosdetectorNginxModule < Formula
   homepage "https://github.com/cubicdaiya/ngx_dosdetector"
   url "https://github.com/cubicdaiya/ngx_dosdetector/archive/91a40e87c1.tar.gz"

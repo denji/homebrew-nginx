@@ -1,5 +1,3 @@
-require "formula"
-
 class MogilefsNginxModule < Formula
   homepage "http://www.grid.net.ru/nginx/mogilefs.en.html"
   url "http://www.grid.net.ru/nginx/download/nginx_mogilefs_module-1.0.4.tar.gz"

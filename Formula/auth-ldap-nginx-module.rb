@@ -1,5 +1,3 @@
-require "formula"
-
 class AuthLdapNginxModule < Formula
   homepage "https://github.com/kvspb/nginx-auth-ldap"
   url "https://github.com/kvspb/nginx-auth-ldap/archive/master.tar.gz"

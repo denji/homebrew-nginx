@@ -1,5 +1,3 @@
-require "formula"
-
 class TxidNginxModule < Formula
   homepage "https://github.com/streadway/ngx_txid"
   url "https://github.com/streadway/ngx_txid/archive/e7df6b153f.tar.gz"

@@ -1,5 +1,3 @@
-require "formula"
-
 class AutolsNginxModule < Formula
   homepage "https://github.com/DvdKhl/ngx_http_autols_module"
   url "https://github.com/DvdKhl/ngx_http_autols_module/archive/e0da4b2ff3.tar.gz"

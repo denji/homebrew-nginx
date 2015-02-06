@@ -1,5 +1,3 @@
-require "formula"
-
 class ExtendedStatusNginxModule < Formula
   homepage "https://github.com/nginx-modules/ngx_http_extended_status_module"
   url "https://github.com/nginx-modules/ngx_http_extended_status_module/archive/1.1.tar.gz"

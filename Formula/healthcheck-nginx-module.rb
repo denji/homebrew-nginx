@@ -1,5 +1,3 @@
-require "formula"
-
 class HealthcheckNginxModule < Formula
   homepage "https://github.com/cep21/healthcheck_nginx_upstreams"
   url "https://github.com/cep21/healthcheck_nginx_upstreams/archive/master.tar.gz"

@@ -1,5 +1,3 @@
-require "formula"
-
 class EvalNginxModule < Formula
   homepage "https://github.com/vkholodkov/nginx-eval-module"
   url "https://github.com/vkholodkov/nginx-eval-module/archive/1.0.3.tar.gz"

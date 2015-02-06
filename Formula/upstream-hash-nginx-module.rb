@@ -1,5 +1,3 @@
-require "formula"
-
 class UpstreamHashNginxModule < Formula
   homepage "https://github.com/evanmiller/nginx_upstream_hash"
   url "https://github.com/evanmiller/nginx_upstream_hash/archive/master.tar.gz"

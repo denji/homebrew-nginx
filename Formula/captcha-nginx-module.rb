@@ -1,5 +1,3 @@
-require "formula"
-
 class CaptchaNginxModule < Formula
   homepage "https://github.com/fallgold/ngx_http_captcha"
   url "https://github.com/fallgold/ngx_http_captcha/archive/0fbd025edb.tar.gz"

@@ -1,5 +1,3 @@
-require "formula"
-
 class UstatsNginxModule < Formula
   homepage "https://github.com/nginx-modules/ngx_ustats_module"
   url "https://github.com/nginx-modules/ngx_ustats_module/archive/ngx_ustats_0.3.tar.gz"

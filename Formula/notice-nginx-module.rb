@@ -1,5 +1,3 @@
-require "formula"
-
 class NoticeNginxModule < Formula
   homepage "https://github.com/kr/nginx-notice"
   url "https://github.com/kr/nginx-notice/archive/master.tar.gz"
@@ -20,9 +18,9 @@ __END__
 @@ -153,7 +153,7 @@
          return NGX_HTTP_NOT_ALLOWED;
      }
- 
+
 -    rc = ngx_http_discard_body(r);
 +    rc = ngx_http_discard_request_body(r);
- 
+
      if (rc != NGX_OK && rc != NGX_AGAIN) {
          return rc;

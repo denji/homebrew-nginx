@@ -1,5 +1,3 @@
-require "formula"
-
 class NginxFull < Formula
 
   homepage "http://nginx.org/"

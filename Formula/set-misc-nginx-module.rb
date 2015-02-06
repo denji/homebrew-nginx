@@ -1,5 +1,3 @@
-require "formula"
-
 class SetMiscNginxModule < Formula
   homepage "https://github.com/openresty/set-misc-nginx-module"
   url "https://github.com/openresty/set-misc-nginx-module/archive/v0.22rc8.tar.gz"

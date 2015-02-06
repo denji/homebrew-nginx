@@ -1,5 +1,3 @@
-require "formula"
-
 class NgxDevelKit < Formula
   homepage "https://github.com/simpl/ngx_devel_kit"
   url "https://github.com/simpl/ngx_devel_kit/archive/v0.2.19.tar.gz"

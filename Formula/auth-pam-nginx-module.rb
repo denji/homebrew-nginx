@@ -1,5 +1,3 @@
-require "formula"
-
 class AuthPamNginxModule < Formula
   homepage "http://web.iti.upv.es/~sto/nginx/"
   url "http://web.iti.upv.es/~sto/nginx/ngx_http_auth_pam_module-1.2.tar.gz"

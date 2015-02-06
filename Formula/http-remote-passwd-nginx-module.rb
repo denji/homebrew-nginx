@@ -1,5 +1,3 @@
-require "formula"
-
 class HttpRemotePasswdNginxModule < Formula
   homepage "https://github.com/x-way/ngx_http_remote_passwd"
   url "https://github.com/x-way/ngx_http_remote_passwd/archive/8f5ccc2b70.tar.gz"
