@@ -46,6 +46,7 @@ class NginxFull < Formula
       "echo" => "Compile with support for Echo Module",
       "auth-digest" => "Compile with support for Auth Digest Module",
       "set-misc" => "Compile with support for Set Misc Module",
+      "redis" => "Compile with support for Redis Module",
       "redis2" => "Compile with support for Redis2 Module",
       "array-var" => "Compile with support for Array Var Module",
       "accept-language" => "Compile with support for Accept Language Module",
