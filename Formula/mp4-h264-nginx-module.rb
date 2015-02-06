@@ -18,12 +18,12 @@ index 8d565c9..a8df30e 100644
 +++ b/src/ngx_http_streaming_module.c
 @@ -155,10 +155,6 @@ static ngx_int_t ngx_streaming_handler(ngx_http_request_t *r)
    }
-
+ 
    /* TODO: Win32 */
 -  if (r->zero_in_uri)
 -  {
 -    return NGX_DECLINED;
 -  }
-
+ 
    rc = ngx_http_discard_request_body(r);
-
+ 
