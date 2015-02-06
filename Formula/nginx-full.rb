@@ -90,6 +90,7 @@ class NginxFull < Formula
       "rtmp" => "Compile with support for RTMP Module",
       "dosdetector" => "Compile with support for detecting DoS attacks",
       "push-stream" => "Compile with support for http push stream module",
+      "websockify" => "Compile with support for websockify module",
     }
   end
 
