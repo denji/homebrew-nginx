@@ -132,6 +132,9 @@ class NginxFull < Formula
     if build.with? "ustats-module"
       patches[:p1] = "https://raw.githubusercontent.com/nginx-modules/ngx_ustats_module/master/nginx-1.6.1.patch"
     end
+    if build.with? "tcp-proxy-module"
+      patches[:p1] = "https://raw.githubusercontent.com/yaoweibin/nginx_tcp_proxy_module/master/tcp.patch"
+    end
     patches
   end
 
