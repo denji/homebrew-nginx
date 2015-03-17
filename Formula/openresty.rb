@@ -1,8 +1,8 @@
 class Openresty < Formula
   homepage "http://openresty.org"
-  url "http://openresty.org/download/ngx_openresty-1.7.10.1.tar.gz"
-  sha1 "0cc7a3fe75fbe50dec619af1a09b87f7f8c79e1d"
-  version "1.7.10.1"
+  url "http://openresty.org/download/ngx_openresty-1.7.2.1.tar.gz"
+  sha1 "b54b3e0ff5265be6116817a18e753df595b9e929"
+  version "1.7.2.1"
 
   depends_on "luajit"
   depends_on "pcre"
@@ -20,6 +20,7 @@ class Openresty < Formula
       "--conf-path=#{etc}/openresty/nginx.conf",
       "--http-log-path=#{var}/log/nginx/access.log",
       "--error-log-path=#{var}/log/nginx/error.log",
+      "--with-pcre",
       "--with-luajit",
       "--with-cc-opt=#{cc_opt}",
       "--with-ld-opt=#{ld_opt}"
