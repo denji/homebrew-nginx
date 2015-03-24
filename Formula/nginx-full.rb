@@ -90,7 +90,8 @@ class NginxFull < Formula
       "dosdetector" => "Compile with support for detecting DoS attacks",
       "push-stream" => "Compile with support for http push stream module",
       "websockify" => "Compile with support for websockify module",
-      "ajp" => "Compile with support for AJP-protocol"
+      "ajp" => "Compile with support for AJP-protocol",
+      "xsltproc" => "Compile with support for XSLT transformations"
     }
   end
 
