@@ -112,6 +112,9 @@ class NginxFull < Formula
   depends_on "libxslt" if build.with? "xslt"
   depends_on "gd" if build.with? "image-filter"
   depends_on "valgrind" if build.with? "no-pool-nginx"
+  depends_on "icu4c" if build.with? "xsltproc-module"
+  depends_on "libxml2" if build.with? "xsltproc-module"
+  depends_on "libxslt" if build.with? "xsltproc-module"
 
   self.core_modules.each do |arr|
     option "with-#{arr[0]}", arr[2]
@@ -150,6 +153,12 @@ class NginxFull < Formula
     openssl = Formula["openssl"]
     cc_opt = "-I#{HOMEBREW_PREFIX}/include -I#{pcre.opt_include} -I#{openssl.opt_include}"
     ld_opt = "-L#{HOMEBREW_PREFIX}/lib -L#{pcre.opt_lib} -L#{openssl.opt_lib}"
+
+    if build.with? "xsltproc-module"
+      icu = Formula["icu4c"]
+      cc_opt += " -I#{icu.opt_include}"
+      ld_opt += " -L#{icu.opt_lib}"
+    end
 
     if build.with? "unzip"
       cc_opt += " -I#{Formula['libzip'].opt_lib}/libzip/include"
