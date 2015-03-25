@@ -91,7 +91,8 @@ class NginxFull < Formula
       "push-stream" => "Compile with support for http push stream module",
       "websockify" => "Compile with support for websockify module",
       "ajp" => "Compile with support for AJP-protocol",
-      "xsltproc" => "Compile with support for XSLT transformations"
+      "xsltproc" => "Compile with support for XSLT transformations",
+      "small-light" => "Compile with support for small light module"
     }
   end
 
@@ -115,6 +116,8 @@ class NginxFull < Formula
   depends_on "icu4c" if build.with? "xsltproc-module"
   depends_on "libxml2" if build.with? "xsltproc-module"
   depends_on "libxslt" if build.with? "xsltproc-module"
+  depends_on "gd" => :optional
+  depends_on "imlib2" => :optional
 
   self.core_modules.each do |arr|
     option "with-#{arr[0]}", arr[2]
@@ -146,6 +149,17 @@ class NginxFull < Formula
   skip_clean "logs"
 
   def install
+    # small-light needs to run setup script
+    if build.with? "small-light-module"
+      small_light = Formula["small-light-nginx-module"]
+      args = build.used_options.select{|option| ["with-gd", "with-imlib2"].include?(option.name)}
+      origin_dir = Dir.pwd
+      Dir.chdir("#{small_light.share}/#{small_light.name}")
+      system "./setup", *args
+      raise "The small-light setup script couldn't generate config file." if !File.exist?("./config")
+      Dir.chdir(origin_dir)
+    end
+
     # Changes default port to 8080
     inreplace "conf/nginx.conf", "listen       80;", "listen       8080;"
 
