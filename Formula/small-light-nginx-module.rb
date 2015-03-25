@@ -6,23 +6,8 @@ class SmallLightNginxModule < Formula
   depends_on "imagemagick"
   depends_on "pcre"
   depends_on "pkg-config" => :build
-  depends_on "gd" => :optional
-  depends_on "imlib2" => :optional
 
   def install
-    args = []
-
-    if build.with? "gd"
-      args << "--with-gd"
-    end
-    if build.with? "imlib2"
-      args << "--with-imlib2"
-    end
-    system "./setup", *args
     (share+"small-light-nginx-module").install Dir["*"]
-  end
-
-  test do
-    assert File.exist?((share+"small-light-nginx-module/config")), "setup script didn't generate config file."
   end
 end
