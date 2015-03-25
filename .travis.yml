@@ -3,6 +3,7 @@ osx_image: xcode61
 before_install:
   - brew update
   - brew install pcre
+  - brew install icu4c
 install:
   - mkdir -p $(brew --repo)/Library/Taps/homebrew
   - ln -s $PWD $(brew --repo)/Library/Taps/homebrew/homebrew-nginx
@@ -14,6 +15,7 @@ env:
   - MODULE="geoip"
   - MODULE="lua-module"
   - MODULE="headers-more-module"
+  - MODULE="xsltproc-module"
 script:
   - brew audit nginx-full
   - brew install -v nginx-full --with-$MODULE
