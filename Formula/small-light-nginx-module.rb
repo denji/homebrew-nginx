@@ -21,4 +21,8 @@ class SmallLightNginxModule < Formula
     system "./setup", *args
     (share+"small-light-nginx-module").install Dir["*"]
   end
+
+  test do
+    assert File.exist?((share+"small-light-nginx-module/config")), "setup script didn't generate config file."
+  end
 end
