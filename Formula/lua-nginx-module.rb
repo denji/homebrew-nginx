@@ -1,7 +1,7 @@
 class LuaNginxModule < Formula
   homepage "https://github.com/openresty/lua-nginx-module"
-  url "https://github.com/openresty/lua-nginx-module/archive/v0.9.13.tar.gz"
-  sha1 "246ab53272d61f64eb0f61333847d0babfc0ff04"
+  url "https://github.com/openresty/lua-nginx-module/archive/v0.9.15.tar.gz"
+  sha1 "64879ba9912d2deaf81417ac9a2aca18fa56ff86"
 
   depends_on "luajit"
   depends_on "ngx-devel-kit"
