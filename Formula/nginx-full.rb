@@ -1,8 +1,8 @@
 class NginxFull < Formula
 
   homepage "http://nginx.org/"
-  url "http://nginx.org/download/nginx-1.6.2.tar.gz"
-  sha256 "b5608c2959d3e7ad09b20fc8f9e5bd4bc87b3bc8ba5936a513c04ed8f1391a18"
+  url "http://nginx.org/download/nginx-1.6.3.tar.gz"
+  sha256 "0a98e95b366e4d6042f331e1fa4d70e18fd1e49d8993e589008e70e742b7e757"
 
   devel do
     url "http://nginx.org/download/nginx-1.7.11.tar.gz"
