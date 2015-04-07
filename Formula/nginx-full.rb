@@ -5,8 +5,8 @@ class NginxFull < Formula
   sha256 "0a98e95b366e4d6042f331e1fa4d70e18fd1e49d8993e589008e70e742b7e757"
 
   devel do
-    url "http://nginx.org/download/nginx-1.7.11.tar.gz"
-    sha256 "dad9d740210e638bfd480536910083ed13f04c04775eedf877984e1c61a69695"
+    url "http://nginx.org/download/nginx-1.7.12.tar.gz"
+    sha256 "22d1f0b6d064e125b01aeb2c6171682559d2488e1b102fc48ec564aa36e66897"
   end
 
   head "http://hg.nginx.org/nginx/", :using => :hg
