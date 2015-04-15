@@ -1,7 +1,7 @@
 class SmallLightNginxModule < Formula
   homepage "https://github.com/cubicdaiya/ngx_small_light"
-  url "https://github.com/cubicdaiya/ngx_small_light/archive/v0.6.6.tar.gz"
-  sha256 "e7852ab5f480bc72f21939ffa5ddff7dcb04e4a6750d5b6ebac874f710bd6f6a"
+  url "https://github.com/cubicdaiya/ngx_small_light/archive/v0.6.7.tar.gz"
+  sha256 "04dfc56b853b1ac3aaba155261795937c0da4e4d8811b4316963acaf0816d318"
 
   depends_on "imagemagick"
   depends_on "pcre"
