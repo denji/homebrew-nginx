@@ -1,12 +1,12 @@
 class NginxFull < Formula
 
   homepage "http://nginx.org/"
-  url "http://nginx.org/download/nginx-1.6.3.tar.gz"
-  sha256 "0a98e95b366e4d6042f331e1fa4d70e18fd1e49d8993e589008e70e742b7e757"
+  url "http://nginx.org/download/nginx-1.8.0.tar.gz"
+  sha256 "23cca1239990c818d8f6da118320c4979aadf5386deda691b1b7c2c96b9df3d5"
 
   devel do
-    url "http://nginx.org/download/nginx-1.8.0.tar.gz"
-    sha256 "23cca1239990c818d8f6da118320c4979aadf5386deda691b1b7c2c96b9df3d5"
+    url "http://nginx.org/download/nginx-1.7.12.tar.gz"
+    sha256 "22d1f0b6d064e125b01aeb2c6171682559d2488e1b102fc48ec564aa36e66897"
   end
 
   head "http://hg.nginx.org/nginx/", :using => :hg
