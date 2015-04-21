@@ -1,13 +1,8 @@
 class NginxFull < Formula
-
   homepage "http://nginx.org/"
   url "http://nginx.org/download/nginx-1.8.0.tar.gz"
   sha256 "23cca1239990c818d8f6da118320c4979aadf5386deda691b1b7c2c96b9df3d5"
-
-  devel do
-    url "http://nginx.org/download/nginx-1.7.12.tar.gz"
-    sha256 "22d1f0b6d064e125b01aeb2c6171682559d2488e1b102fc48ec564aa36e66897"
-  end
+  revision 1
 
   head "http://hg.nginx.org/nginx/", :using => :hg
 
@@ -107,7 +102,8 @@ class NginxFull < Formula
   depends_on "pcre"
   depends_on "passenger" => :optional
   depends_on "geoip" => :optional
-  depends_on "openssl"
+  depends_on "openssl" => :recommended
+  depends_on "libressl" => :optional
   depends_on "libzip" if build.with? "unzip"
   depends_on "libxml2" if build.with? "xslt"
   depends_on "libxslt" if build.with? "xslt"
@@ -162,11 +158,21 @@ class NginxFull < Formula
 
     # Changes default port to 8080
     inreplace "conf/nginx.conf", "listen       80;", "listen       8080;"
+    open("conf/nginx.conf", "a") { |f| f.puts "include servers/*;" }
 
     pcre = Formula["pcre"]
     openssl = Formula["openssl"]
-    cc_opt = "-I#{HOMEBREW_PREFIX}/include -I#{pcre.opt_include} -I#{openssl.opt_include}"
-    ld_opt = "-L#{HOMEBREW_PREFIX}/lib -L#{pcre.opt_lib} -L#{openssl.opt_lib}"
+    libressl = Formula["libressl"]
+    cc_opt = "-I#{HOMEBREW_PREFIX}/include -I#{pcre.include}"
+    ld_opt = "-L#{HOMEBREW_PREFIX}/lib -L#{pcre.lib}"
+
+    if build.with? "libressl"
+      cc_opt += " -I#{libressl.include}"
+      ld_opt += " -L#{libressl.lib}"
+    else
+      cc_opt += " -I#{openssl.include}"
+      ld_opt += " -L#{openssl.lib}"
+    end
 
     if build.with? "xsltproc-module"
       icu = Formula["icu4c"]
@@ -178,24 +184,25 @@ class NginxFull < Formula
       cc_opt += " -I#{Formula['libzip'].opt_lib}/libzip/include"
     end
 
-    args = ["--prefix=#{prefix}",
-            "--with-http_ssl_module",
-            "--with-pcre",
-            "--with-ipv6",
-            "--sbin-path=#{bin}/nginx",
-            "--with-cc-opt=#{cc_opt}",
-            "--with-ld-opt=#{ld_opt}",
-            "--conf-path=#{etc}/nginx/nginx.conf",
-            "--pid-path=#{var}/run/nginx.pid",
-            "--lock-path=#{var}/run/nginx.lock",
-            "--http-client-body-temp-path=#{var}/run/nginx/client_body_temp",
-            "--http-proxy-temp-path=#{var}/run/nginx/proxy_temp",
-            "--http-fastcgi-temp-path=#{var}/run/nginx/fastcgi_temp",
-            "--http-uwsgi-temp-path=#{var}/run/nginx/uwsgi_temp",
-            "--http-scgi-temp-path=#{var}/run/nginx/scgi_temp",
-            "--http-log-path=#{var}/log/nginx/access.log",
-            "--error-log-path=#{var}/log/nginx/error.log"
-          ]
+    args = %W[
+      --prefix=#{prefix}
+      --with-http_ssl_module
+      --with-pcre
+      --with-ipv6
+      --sbin-path=#{bin}/nginx
+      --with-cc-opt=#{cc_opt}
+      --with-ld-opt=#{ld_opt}
+      --conf-path=#{etc}/nginx/nginx.conf
+      --pid-path=#{var}/run/nginx.pid
+      --lock-path=#{var}/run/nginx.lock
+      --http-client-body-temp-path=#{var}/run/nginx/client_body_temp
+      --http-proxy-temp-path=#{var}/run/nginx/proxy_temp
+      --http-fastcgi-temp-path=#{var}/run/nginx/fastcgi_temp
+      --http-uwsgi-temp-path=#{var}/run/nginx/uwsgi_temp
+      --http-scgi-temp-path=#{var}/run/nginx/scgi_temp
+      --http-log-path=#{var}/log/nginx/access.log
+      --error-log-path=#{var}/log/nginx/error.log
+    ]
 
     # Core Modules
     args += self.class.core_modules.select { |arr|
@@ -234,9 +241,12 @@ class NginxFull < Formula
     else
       system "./configure", *args
     end
+
     system "make"
     system "make install"
     man8.install "objs/nginx.8"
+
+    (etc/"nginx/servers").mkpath
     (var/"run/nginx").mkpath
   end
 
@@ -284,6 +294,8 @@ class NginxFull < Formula
 
     The default port has been set in #{etc}/nginx/nginx.conf to 8080 so that
     nginx can run without sudo.
+
+    nginx will load all files in #{etc}/nginx/servers/.
 
     - Tips -
     Run port 80:
