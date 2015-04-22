@@ -1,8 +1,7 @@
-require "formula"
 class RtmpNginxModule < Formula
   homepage "https://github.com/arut/nginx-rtmp-module"
-  url "https://github.com/arut/nginx-rtmp-module/archive/v1.1.6.tar.gz"
-  sha1 "1b91433367764efe2c1c7b5e781acdb05dbadc63"
+  url "https://github.com/arut/nginx-rtmp-module/archive/v1.1.7.tar.gz"
+  sha256 "7922b0e3d5f3d9c4b275e4908cfb8f5fb1bfb3ac2df77f4c262cda56df21aab3"
 
   def install
     (share+"rtmp-nginx-module").install Dir["*"]
