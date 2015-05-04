@@ -2,7 +2,12 @@ class NginxFull < Formula
   homepage "http://nginx.org/"
   url "http://nginx.org/download/nginx-1.8.0.tar.gz"
   sha256 "23cca1239990c818d8f6da118320c4979aadf5386deda691b1b7c2c96b9df3d5"
-  revision 1
+  revision 2
+
+  devel do
+    url "http://nginx.org/download/nginx-1.9.0.tar.gz"
+    sha256 "e12aa1d5b701edde880ebcc7be47ca171c3fbeed8fa7c8c62054a6f19d27f248"
+  end
 
   head "http://hg.nginx.org/nginx/", :using => :hg
 
@@ -158,7 +163,7 @@ class NginxFull < Formula
 
     # Changes default port to 8080
     inreplace "conf/nginx.conf", "listen       80;", "listen       8080;"
-    open("conf/nginx.conf", "a") { |f| f.puts "include servers/*;" }
+    inreplace "conf/nginx.conf", "    #}\n\n}", "    #}\n    include servers/*;\n}"
 
     pcre = Formula["pcre"]
     openssl = Formula["openssl"]
