@@ -1,7 +1,8 @@
 class AuthPamNginxModule < Formula
-  homepage "http://web.iti.upv.es/~sto/nginx/"
-  url "http://web.iti.upv.es/~sto/nginx/ngx_http_auth_pam_module-1.2.tar.gz"
-  sha1 "3bb82c75f7cbace4c10b11aa51adbe36ab0803ed"
+  desc "PAM for http basic authentication for nginx"
+  homepage "https://github.com/stogh/ngx_http_auth_pam_module"
+  url "https://github.com/stogh/ngx_http_auth_pam_module/archive/v1.4.tar.gz"
+  sha256 "095742c5bcb86f2431e215db785bdeb238d594f085a0ac00d16125876a157409"
 
   def install
     (share+"auth-pam-nginx-module").install Dir["*"]
