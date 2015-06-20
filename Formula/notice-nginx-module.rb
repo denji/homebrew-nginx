@@ -1,8 +1,9 @@
 class NoticeNginxModule < Formula
+  desc "Notices downtime, HTTP semantics and fixed response"
   homepage "https://github.com/kr/nginx-notice"
-  url "https://github.com/kr/nginx-notice/archive/master.tar.gz"
-  sha1 "ed64e7caffc8cf46bf2ebf7987f59a32952a55a8"
+  url "https://github.com/kr/nginx-notice/archive/3c95966.tar.gz"
   version "0.0.2"
+  sha256 "c520f7905f569f1590442a7c3ac3ef54a977fb306f3adb9c2ba008d4481939ac"
 
   # Fix issue compatibility
   patch :DATA

@@ -1,9 +1,9 @@
 class AuthLdapNginxModule < Formula
   desc "LDAP authentication module for nginx"
   homepage "https://github.com/kvspb/nginx-auth-ldap"
-  url "https://github.com/kvspb/nginx-auth-ldap/archive/be8ff8eecb2578304d72e1f4947466ac9ba50295.tar.gz"
-  sha256 "02adfa17c7f9bc06ae2914ebe0b14a2965fd05127979826010bf9d9fefbfca8b"
+  url "https://github.com/kvspb/nginx-auth-ldap/archive/be8ff8e.tar.gz"
   version "be8ff8e"
+  sha256 "02adfa17c7f9bc06ae2914ebe0b14a2965fd05127979826010bf9d9fefbfca8b"
   head "https://github.com/kvspb/nginx-auth-ldap.git"
 
   depends_on "openldap"

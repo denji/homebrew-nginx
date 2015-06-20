@@ -1,7 +1,8 @@
 class AcceptLanguageNginxModule < Formula
+  desc "Parse the Accept-Language header and set variable"
   homepage "https://github.com/giom/nginx_accept_language_module"
   url "https://github.com/giom/nginx_accept_language_module/tarball/master/giom-nginx_accept_language_module-2f69842.tar.gz"
-  sha1 "badac1f89639388bb518f68482e659b97d7968c2"
+  sha256 "fbcdf792160a1eff7b9549aeb5209d6e76716ff8e86b05e42c90b2d2f858e011"
 
   def install
     (share+"accept-language-nginx-module").install Dir["*"]

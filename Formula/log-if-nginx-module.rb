@@ -1,8 +1,10 @@
 class LogIfNginxModule < Formula
+  desc "allows you to control when not to write down access log"
   homepage "https://github.com/cfsego/ngx_log_if"
-  url "https://github.com/cfsego/ngx_log_if/archive/master.tar.gz"
-  sha1 "a337ae59efa7ef1d8a544706e73cb4b004774c56"
+  url "https://github.com/cfsego/ngx_log_if/archive/32ff3e9.tar.gz"
   version "0.1"
+  sha256 "1d10d5265f619f9e012b91a69381f5b057896c6b5a445e18b9857f65b8f2b8a9"
+  head "https://github.com/cfsego/ngx_log_if.git"
 
   def install
     (share+"log-if-nginx-module").install Dir["*"]

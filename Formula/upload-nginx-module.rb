@@ -1,8 +1,9 @@
 class UploadNginxModule < Formula
+  desc "file uploads using multipart/form-data encoding (RFC 1867)"
   homepage "http://wiki.nginx.org/HttpUploadModule"
   url "https://github.com/vkholodkov/nginx-upload-module/archive/2.2.tar.gz"
-  sha1 "d25e781ff60237cfdbb3f011d159397f82ab7358"
   version "2.2.0"
+  sha256 "036f9fe82bfaef56ee24849d8343712ac3789a45e563f01337a4a6946f968259"
 
   def install
     (share+"upload-nginx-module").install Dir["*"]

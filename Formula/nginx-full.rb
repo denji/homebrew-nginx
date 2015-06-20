@@ -1,16 +1,15 @@
 class NginxFull < Formula
+  desc "HTTP(S) server and reverse proxy, and IMAP/POP3 proxy server"
   homepage "http://nginx.org/"
-  desc "High performance web and reverse/mail proxy server"
   url "http://nginx.org/download/nginx-1.8.0.tar.gz"
   sha256 "23cca1239990c818d8f6da118320c4979aadf5386deda691b1b7c2c96b9df3d5"
+  head "http://hg.nginx.org/nginx/", :using => :hg
   revision 2
 
   devel do
     url "http://nginx.org/download/nginx-1.9.2.tar.gz"
     sha256 "80b6425be14a005c8cb15115f3c775f4bc06bf798aa1affaee84ed9cf641ed78"
   end
-
-  head "http://hg.nginx.org/nginx/", :using => :hg
 
   def self.core_modules
     [
@@ -97,11 +96,11 @@ class NginxFull < Formula
     }
   end
 
-  if build.with? "http-flood-detector-module" and build.without? "status"
+  if build.with?("http-flood-detector-module") && build.without?("status")
     raise "http-flood-detector-nginx-module: Stub Status module is required --with-status"
   end
 
-  if build.with? "dav-ext-module" and build.without? "webdav"
+  if build.with?("dav-ext-module") && build.without?("webdav")
     raise "dav-ext-nginx-module: WebDav Extended Module is required --with-webdav"
   end
 
@@ -155,11 +154,11 @@ class NginxFull < Formula
     # small-light needs to run setup script
     if build.with? "small-light-module"
       small_light = Formula["small-light-nginx-module"]
-      args = build.used_options.select{|option| ["with-gd", "with-imlib2"].include?(option.name)}
+      args = build.used_options.select { |option| ["with-gd", "with-imlib2"].include?(option.name) }
       origin_dir = Dir.pwd
       Dir.chdir("#{small_light.share}/#{small_light.name}")
       system "./setup", *args
-      raise "The small-light setup script couldn't generate config file." if !File.exist?("./config")
+      raise "The small-light setup script couldn't generate config file." unless File.exist?("./config")
       Dir.chdir(origin_dir)
     end
 
@@ -187,9 +186,7 @@ class NginxFull < Formula
       ld_opt += " -L#{icu.opt_lib}"
     end
 
-    if build.with? "unzip"
-      cc_opt += " -I#{Formula['libzip'].opt_lib}/libzip/include"
-    end
+    cc_opt += " -I#{Formula["libzip"].opt_lib}/libzip/include" if build.with? "unzip"
 
     args = %W[
       --prefix=#{prefix}
@@ -224,9 +221,9 @@ class NginxFull < Formula
     end
 
     # Third Party Modules
-    args += self.class.third_party_modules.select { |name, desc|
+    args += self.class.third_party_modules.select { |name, _desc|
       build.with? "#{name}-module"
-    }.collect { |name, desc|
+    }.collect { |name, _desc|
       "--add-module=#{HOMEBREW_PREFIX}/share/#{name}-nginx-module"
     }
 
@@ -249,8 +246,7 @@ class NginxFull < Formula
       system "./configure", *args
     end
 
-    system "make"
-    system "make install"
+    system "make", "install"
     man8.install "objs/nginx.8"
 
     (etc/"nginx/servers").mkpath
@@ -283,12 +279,7 @@ class NginxFull < Formula
     end
   end
 
-  test do
-    system "#{bin}/nginx", "-t"
-  end
-
   def passenger_caveats; <<-EOS.undent
-
     To activate Phusion Passenger, add this to #{etc}/nginx/nginx.conf, inside the 'http' context:
       passenger_root #{Formula["passenger"].opt_libexec}/lib/phusion_passenger/locations.ini;
       passenger_ruby /usr/bin/ruby;
@@ -317,8 +308,12 @@ class NginxFull < Formula
     Waiting on exit process
      $ nginx -s quit
     EOS
-    s << passenger_caveats if build.with? "passenger"
+    s << "\n" << passenger_caveats if build.with? "passenger"
     s
+  end
+
+  test do
+    system "#{bin}/nginx", "-t"
   end
 
   def plist; <<-EOS.undent

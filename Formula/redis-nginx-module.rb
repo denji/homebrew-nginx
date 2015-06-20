@@ -1,7 +1,8 @@
 class RedisNginxModule < Formula
+  desc "keep-alive TCP connections to your backend redis servers"
   homepage "http://wiki.nginx.org/HttpRedis"
-  url "http://people.FreeBSD.org/~osa/ngx_http_redis-0.3.7.tar.gz"
-  sha1 "0d95a901118927da79d7a1adba0b9865cf57cc5f"
+  url "https://people.FreeBSD.org/~osa/ngx_http_redis-0.3.7.tar.gz"
+  sha256 "9dfc14db81f431fdf3d69f3661a37daf110aef5f9479aa7c88cf362bb5d62604"
 
   def install
     (share+"redis-nginx-module").install Dir["*"]

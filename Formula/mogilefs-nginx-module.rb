@@ -1,7 +1,9 @@
 class MogilefsNginxModule < Formula
+  desc "MogileFS client for nginx web server"
   homepage "http://www.grid.net.ru/nginx/mogilefs.en.html"
   url "http://www.grid.net.ru/nginx/download/nginx_mogilefs_module-1.0.4.tar.gz"
-  sha1 "4f6b774096a77aa8c550d8fd6a3f5d39a661d8ed"
+  sha256 "7ac230d30907f013dff8d435a118619ea6168aa3714dba62c6962d350c6295ae"
+  head "https://github.com/vkholodkov/nginx-mogilefs-module.git"
 
   def install
     (share+"mogilefs-nginx-module").install Dir["*"]
