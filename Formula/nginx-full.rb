@@ -34,6 +34,7 @@ class NginxFull < Formula
       ["secure-link",      "http_secure_link_module",  "Compile with support for secure link module"],
       ["spdy",             "http_spdy_module",         "Compile with support for SPDY module"],
       ["status",           "http_stub_status_module",  "Compile with support for stub status module"],
+      ["stream",           "stream",                   "Compile with support for TCP load balancing module"],
       ["sub",              "http_sub_module",          "Compile with support for HTTP Sub module"],
       ["webdav",           "http_dav_module",          "Compile with support for WebDAV module"],
       ["xslt",             "http_xslt_module",         "Compile with support for XSLT module"],
