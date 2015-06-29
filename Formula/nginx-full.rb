@@ -248,7 +248,11 @@ class NginxFull < Formula
     end
 
     system "make", "install"
-    man8.install "man/nginx.8"
+    if build.head?
+      man8.install "docs/man/nginx.8"
+    else
+      man8.install "man/nginx.8"
+    end
 
     (etc/"nginx/servers").mkpath
     (var/"run/nginx").mkpath
