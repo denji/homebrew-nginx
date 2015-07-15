@@ -106,6 +106,7 @@ class NginxFull < Formula
   end
 
   depends_on "pcre"
+  depends_on "perl" => :optional
   depends_on "passenger" => :optional
   depends_on "geoip" => :optional
   depends_on "openssl" => :recommended
