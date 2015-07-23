@@ -14,14 +14,16 @@ class NoticeNginxModule < Formula
 end
 
 __END__
---- ../kr-nginx-notice-3c95966/ngx_http_notice_module.c.orig	2009-07-16 18:37:57.000000000 +0200
-+++ ../kr-nginx-notice-3c95966/ngx_http_notice_module.c	2009-07-16 08:09:38.000000000 +0200
-@@ -153,7 +153,7 @@
+diff --git a/ngx_http_notice_module.c b/ngx_http_notice_module.c
+index 0c84f8d..e795da0 100644
+--- a/ngx_http_notice_module.c
++++ b/ngx_http_notice_module.c
+@@ -153,7 +153,7 @@ ngx_http_notice_handler(ngx_http_request_t *r)
          return NGX_HTTP_NOT_ALLOWED;
      }
-
+ 
 -    rc = ngx_http_discard_body(r);
 +    rc = ngx_http_discard_request_body(r);
-
+ 
      if (rc != NGX_OK && rc != NGX_AGAIN) {
          return rc;
