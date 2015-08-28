@@ -1,7 +1,7 @@
 class Openresty < Formula
   homepage "http://openresty.org"
-  url "http://openresty.org/download/ngx_openresty-1.7.10.1.tar.gz"
-  sha256 "4fd0d73e5955319cee51c6fa574e254be4538a63ae3e673c35eacdf9d4bce679"
+  url "https://openresty.org/download/ngx_openresty-1.9.3.1.tar.gz"
+  sha256 "dbcfd21f84431a7d13fe3c3656dcd9dd81236a8f7a114ac8d4afb86665f788bb"
 
   depends_on "pcre"
   depends_on "drizzle" => :optional
