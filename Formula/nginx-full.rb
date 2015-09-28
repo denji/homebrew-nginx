@@ -7,8 +7,8 @@ class NginxFull < Formula
   revision 2
 
   devel do
-    url "http://nginx.org/download/nginx-1.9.4.tar.gz"
-    sha256 "479b0c03747ee6b2d4a21046f89b06d178a2881ea80cfef160451325788f2ba8"
+    url "http://nginx.org/download/nginx-1.9.5.tar.gz"
+    sha256 "48e2787a6b245277e37cb7c5a31b1549a0bbacf288aa4731baacf9eaacdb481b"
   end
 
   def self.core_modules
@@ -24,6 +24,7 @@ class NginxFull < Formula
       ["google-perftools", "google_perftools_module",  "Compile with support for Google Performance tools module"],
       ["gunzip",           "http_gunzip_module",       "Compile with support for gunzip module"],
       ["gzip-static",      "http_gzip_static_module",  "Compile with support for Gzip static module"],
+      ["http2",            "http_v2_module",           "Compile with support for HTTP/2 module"],
       ["image-filter",     "http_image_filter_module", "Compile with support for Image Filter module"],
       ["mail",             "mail",                     "Compile with support for Mail module"],
       ["mp4",              "http_mp4_module",          "Compile with support for mp4 module"],
