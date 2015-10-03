@@ -67,6 +67,7 @@ class NginxFull < Formula
       "fancyindex" => "Compile with support for Fancy Index module",
       "headers-more" => "Compile with support for Headers More module",
       "healthcheck" => "Compile with support for Healthcheck module",
+      "http-accounting" => "Compile with support for HTTP Accounting module",
       "http-flood-detector" => "Compile with support for Var Flood-Threshold module",
       "http-remote-passwd" => "Compile with support for Remote Basic Auth password module",
       "log-if" => "Compile with support for Log-if module",
