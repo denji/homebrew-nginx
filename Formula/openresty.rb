@@ -4,6 +4,7 @@ class Openresty < Formula
   sha256 "dbcfd21f84431a7d13fe3c3656dcd9dd81236a8f7a114ac8d4afb86665f788bb"
 
   depends_on "pcre"
+  depends_on "openssl"
   depends_on "drizzle" => :optional
   depends_on "postgresql" => :optional
   depends_on "geoip" => :optional
