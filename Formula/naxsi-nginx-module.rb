@@ -1,8 +1,8 @@
 class NaxsiNginxModule < Formula
-  desc "NAXSI is an open-source, high performance, low rules maintenance WAF for NGINX"
+  desc "NAXSI is an open-source WAF for NGINX"
   homepage "https://github.com/nbs-system/naxsi"
   url "https://github.com/nbs-system/naxsi/archive/0.54.tar.gz"
-  sha1 "d5db25db19a564358af7763d4935e978d05bf6f5"
+  sha256 "9cc2c09405bc71f78ef26a8b6d70afcea3fccbe8125df70cb0cfc480133daba5"
   head "https://github.com/nbs-system/naxsi.git"
 
   def install
@@ -13,5 +13,10 @@ class NaxsiNginxModule < Formula
     cd "naxsi_config" do
       (etc+"nginx").install Dir["*"]
     end
+  end
+
+  test do
+    File.exist?(share/"naxsi-nginx-module/config")
+    File.exist?(etc/"nginx/naxsi_core.rules")
   end
 end
