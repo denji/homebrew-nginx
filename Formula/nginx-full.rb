@@ -7,8 +7,8 @@ class NginxFull < Formula
   revision 2
 
   devel do
-    url "http://nginx.org/download/nginx-1.9.6.tar.gz"
-    sha256 "ed501fc6d0eff9d3bc1049cc1ba3a3ac8c602de046acb2a4c108392bbfa865ea"
+    url "http://nginx.org/download/nginx-1.9.7.tar.gz"
+    sha256 "794bd217affdfce1c6263d9199c3961f387a2df9d57dcb42876faaf41c1748d5"
   end
 
   def self.core_modules
