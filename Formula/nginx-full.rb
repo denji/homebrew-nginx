@@ -4,7 +4,6 @@ class NginxFull < Formula
   url "http://nginx.org/download/nginx-1.8.0.tar.gz"
   sha256 "23cca1239990c818d8f6da118320c4979aadf5386deda691b1b7c2c96b9df3d5"
   head "http://hg.nginx.org/nginx/", :using => :hg
-  revision 2
 
   devel do
     url "http://nginx.org/download/nginx-1.9.7.tar.gz"
