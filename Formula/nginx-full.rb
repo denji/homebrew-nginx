@@ -55,7 +55,6 @@ class NginxFull < Formula
       "autols" => "Compile with support for Flexible Auto Index module",
       "cache-purge" => "Compile with support for Cache Purge module",
       "captcha" => "Compile with support for Captcha module",
-      "consistent-hash" => "Compile with support for Consistent Hash Upstream module",
       "counter-zone" => "Compile with support for Realtime Counter Zone module",
       "ctpp2" => "Compile with support for CT++ module",
       "dav-ext" => "Compile with support for HTTP WebDav Extended module",
