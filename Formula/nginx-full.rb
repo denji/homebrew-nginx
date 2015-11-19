@@ -90,7 +90,6 @@ class NginxFull < Formula
       "unzip" => "Compile with support for UnZip module",
       "upload" => "Compile with support for Upload module",
       "upload-progress" => "Compile with support for Upload Progress module",
-      "upstream-hash" => "Compile with support for Upstream Hash module",
       "upstream-order" => "Compile with support for Order Upstream module",
       "ustats" => "Compile with support for Upstream Statistics (HAProxy style) module",
       "var-req-speed" => "Compile with support for Var Request-Speed module",
