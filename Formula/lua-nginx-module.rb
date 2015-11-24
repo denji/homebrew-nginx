@@ -1,8 +1,8 @@
 class LuaNginxModule < Formula
   desc "Embed the power of Lua into Nginx"
   homepage "https://github.com/openresty/lua-nginx-module"
-  url "https://github.com/openresty/lua-nginx-module/archive/v0.9.16.tar.gz"
-  sha256 "a3cda55b8cba5bc6632aa270b8a02d543fdb43f4d60a3bd2cb411c2a3b467656"
+  url "https://github.com/openresty/lua-nginx-module/archive/v0.9.19.tar.gz"
+  sha256 "2b41d4d2627fda76946f194aae6c2b4d89bb59afd792d397c6b481ee82c10eb4"
   head "https://github.com/openresty/lua-nginx-module.git"
 
   depends_on "luajit"
