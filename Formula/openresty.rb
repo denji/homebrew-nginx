@@ -1,13 +1,8 @@
 class Openresty < Formula
+  desc "Fast web app server"
   homepage "http://openresty.org"
   url "https://openresty.org/download/ngx_openresty-1.9.3.2.tar.gz"
   sha256 "9f0af0166e5a32d22cda69db716415bec089a6403a73007c45b2eaa90501e086"
-  
-  depends_on "pcre"
-  depends_on "openssl"
-  depends_on "drizzle" => :optional
-  depends_on "postgresql" => :optional
-  depends_on "geoip" => :optional
 
   # nginx options
   option "without-luajit", "Compile *without* support for the Lua Just-In-Time Compiler"
@@ -21,6 +16,12 @@ class Openresty < Formula
   option "with-gunzip", "Compile with ngx_http_gunzip_module"
   option "with-geoip", "Compile with ngx_http_geoip_module"
   option "with-stub_status", "Compile with ngx_http_stub_status_module"
+
+  depends_on "pcre"
+  depends_on "openssl"
+  depends_on "drizzle" => :optional
+  depends_on "postgresql" => :optional
+  depends_on "geoip" => :optional
 
   def install
     # Configure
@@ -37,7 +38,7 @@ class Openresty < Formula
       "--with-pcre",
       "--with-pcre-jit",
       "--with-cc-opt=#{cc_opt}",
-      "--with-ld-opt=#{ld_opt}"
+      "--with-ld-opt=#{ld_opt}",
     ]
 
     # OpenResty options
@@ -57,7 +58,7 @@ class Openresty < Formula
       args << "--with-no-pool-patch"
 
       # this allows setting of `debug.sethook` in luajit
-      unless build.without? "luajit"
+      if build.with? "luajit"
         args << "--with-luajit-xcflags=-DLUAJIT_ENABLE_CHECKHOOK"
       end
 
@@ -69,7 +70,7 @@ class Openresty < Formula
 
     # Install
     system "make"
-    system "make install"
+    system "make", "install"
   end
 
   def plist; <<-EOS.undent
