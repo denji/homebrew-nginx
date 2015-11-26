@@ -92,6 +92,7 @@ class NginxFull < Formula
       "upstream-order" => "Compile with support for Order Upstream module",
       "ustats" => "Compile with support for Upstream Statistics (HAProxy style) module",
       "var-req-speed" => "Compile with support for Var Request-Speed module",
+      "vod" => "Compile with support for Kaltura VOD on-the-fly packager",
       "websockify" => "Compile with support for websockify module",
       "xsltproc" => "Compile with support for XSLT transformations",
     }
