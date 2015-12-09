@@ -6,8 +6,8 @@ class NginxFull < Formula
   head "http://hg.nginx.org/nginx/", :using => :hg
 
   devel do
-    url "http://nginx.org/download/nginx-1.9.7.tar.gz"
-    sha256 "794bd217affdfce1c6263d9199c3961f387a2df9d57dcb42876faaf41c1748d5"
+    url "http://nginx.org/download/nginx-1.9.9.tar.gz"
+    sha256 "de66bb2b11c82533aa5cb5ccc27cbce736ab87c9f2c761e5237cda0b00068d73"
   end
 
   def self.core_modules
