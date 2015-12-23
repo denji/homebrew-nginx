@@ -75,6 +75,7 @@ class NginxFull < Formula
       "mp4-h264" => "Compile with support for HTTP MP4/H264 module",
       "naxsi" => "Compile with support for Naxsi module",
       "notice" => "Compile with support for HTTP Notice module",
+      "nchan" => "Compile with Nchan, a flexible pub/sub server",
       "php-session" => "Compile with support for Parse PHP Sessions module",
       "push-stream" => "Compile with support for http push stream module",
       "realtime-req" => "Compile with support for Realtime Request module",
