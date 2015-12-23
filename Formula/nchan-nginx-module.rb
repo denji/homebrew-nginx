@@ -7,4 +7,8 @@ class NchanNginxModule < Formula
   def install
     (share+"nchan-nginx-module").install Dir["*"]
   end
+  
+  test do
+    File.exist?(share/"nchan-nginx-module/config")
+  end
 end
