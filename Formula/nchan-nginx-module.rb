@@ -1,8 +1,8 @@
 class NchanNginxModule < Formula
   desc "fast, flexible pub/sub server"
   homepage "https://nchan.slact.net"
-  url "https://github.com/slact/nchan/archive/v0.94.tar.gz"
-  sha256 "e4006c5f48399a753b1fc9de061d80b1a339198a8be2c8c460e8a4af40f7c2fc"
+  url "https://github.com/slact/nchan/archive/v0.95.tar.gz"
+  sha256 "c852b82f27e9b228f13cd3806826d922b87d69e755e4019f632e1d7d04301fe9"
 
   def install
     (share+"nchan-nginx-module").install Dir["*"]
