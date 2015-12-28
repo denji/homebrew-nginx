@@ -1,8 +1,8 @@
 class SmallLightNginxModule < Formula
   desc "Dynamic image transformation module"
   homepage "https://github.com/cubicdaiya/ngx_small_light"
-  url "https://github.com/cubicdaiya/ngx_small_light/archive/v0.6.12.tar.gz"
-  sha256 "4c1b7101f72073ee00254727c5d87c211b0a1504c6c5c52c2258eebbab5d38f1"
+  url "https://github.com/cubicdaiya/ngx_small_light/archive/v0.6.13.tar.gz"
+  sha256 "4f6ace8e8b72ebd28dfd7da66f29d1bbe340a6f8e4157215e2aeec50b3e4c5c7"
 
   depends_on "imagemagick"
   depends_on "pcre"
