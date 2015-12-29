@@ -5,6 +5,8 @@ class SubsFilterNginxModule < Formula
   version "0.6.4"
   sha256 "ed4ddbcf0c434f4a1e97b61251a63ace759792764bd5cb79ff20efe348db8db3"
 
+  bottle :unneeded
+
   def install
     (share+"subs-filter-nginx-module").install Dir["*"]
   end
