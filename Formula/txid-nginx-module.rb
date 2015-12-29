@@ -5,6 +5,8 @@ class TxidNginxModule < Formula
   version "0.2"
   sha256 "c5c14172cf23e572d2258bbbbdf09ae7a81a7b6503ce1a0efe0f76260a9a86c5"
 
+  bottle :unneeded
+
   def install
     (share+"txid-nginx-module").install Dir["*"]
   end
