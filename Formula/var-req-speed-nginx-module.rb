@@ -5,6 +5,8 @@ class VarReqSpeedNginxModule < Formula
   version "0.1"
   sha256 "3473de7c25ecf22e586a59c0e1c078c4546aa1c8a6341d7b4daa628f8abe9839"
 
+  bottle :unneeded
+
   def install
     (share+"var-req-speed-nginx-module").install Dir["*"]
   end
