@@ -4,6 +4,8 @@ class CounterZoneNginxModule < Formula
   url "https://github.com/theromis/ngx_counter_zone/archive/4be9e36.tar.gz"
   sha256 "9b841ed09ec39cbe27dab16e017433418c0546fba58bc48d853bed0dcae9e322"
 
+  bottle :unneeded
+
   def install
     (share+"counter-zone-nginx-module").install Dir["*"]
   end
