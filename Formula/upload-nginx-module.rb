@@ -5,6 +5,8 @@ class UploadNginxModule < Formula
   version "2.2.0"
   sha256 "036f9fe82bfaef56ee24849d8343712ac3789a45e563f01337a4a6946f968259"
 
+  bottle :unneeded
+
   def install
     (share+"upload-nginx-module").install Dir["*"]
   end
