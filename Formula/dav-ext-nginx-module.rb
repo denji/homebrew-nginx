@@ -5,6 +5,8 @@ class DavExtNginxModule < Formula
   version "0.0.3"
   sha256 "d428a0236c933779cb40ac8c91afb19d5c25a376dc3caab825bfd543e1ee530d"
 
+  bottle :unneeded
+
   def install
     (share+"dav-ext-nginx-module").install Dir["*"]
   end
