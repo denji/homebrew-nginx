@@ -5,6 +5,8 @@ class HttpFloodDetectorNginxModule < Formula
   version "0.1"
   sha256 "d069eaf0a23d94da6e76d96db2242a731252a258b79b95e6b70bf757b3f125e4"
 
+  bottle :unneeded
+
   def install
     (share/"http-flood-detector-nginx-module").install Dir["*"]
   end
