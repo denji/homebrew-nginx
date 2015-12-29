@@ -5,6 +5,8 @@ class HealthcheckNginxModule < Formula
   version "0.1"
   sha256 "0d1c04b449e4ba383b21d3f718973508a50a77ad8e8003df15f8e9c592c2f540"
 
+  bottle :unneeded
+
   def install
     (share+"healthcheck-nginx-module").install Dir["*"]
   end
