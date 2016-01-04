@@ -6,7 +6,6 @@ class Openresty < Formula
 
   # nginx options
   option "without-luajit", "Compile *without* support for the Lua Just-In-Time Compiler"
-  option "with-drizzle", "Compile with support for direct communication with Drizzle database servers"
   option "with-postgresql", "Compile with support for direct communication with PostgreSQL database servers"
   option "with-iconv", "Compile with support for converting character encodings"
   option "with-debug", "Compile with support for debug logging but without proper gdb debugging symbols"
@@ -19,7 +18,6 @@ class Openresty < Formula
 
   depends_on "pcre"
   depends_on "openssl"
-  depends_on "drizzle" => :optional
   depends_on "postgresql" => :optional
   depends_on "geoip" => :optional
 
@@ -47,7 +45,6 @@ class Openresty < Formula
     args << "--with-http_gunzip_module" if build.with? "gunzip"
     args << "--with-http_geoip_module" if build.with? "geoip"
     args << "--with-http_stub_status_module" if build.with? "stub_status"
-    args << "--with-http_drizzle_module" if build.with? "drizzle"
     args << "--with-http_postgres_module" if build.with? "postgresql"
     args << "--with-http_iconv_module" if build.with? "iconv"
 
