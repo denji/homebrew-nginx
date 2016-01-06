@@ -63,6 +63,7 @@ class NginxFull < Formula
       "eval" => "Compile with support for Eval module",
       "extended-status" => "Compile with support for Extended Status module",
       "fancyindex" => "Compile with support for Fancy Index module",
+      "geoip2" => "Nginx GeoIP2 module",
       "headers-more" => "Compile with support for Headers More module",
       "healthcheck" => "Compile with support for Healthcheck module",
       "http-accounting" => "Compile with support for HTTP Accounting module",
