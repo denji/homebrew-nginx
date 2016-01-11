@@ -4,6 +4,8 @@ class VodNginxModule < Formula
   url "https://github.com/kaltura/nginx-vod-module/archive/1.4.tar.gz"
   sha256 "98c560ec0159bd54485aa6c1ef399776e3c19bc6780dc1035a3317ad2498d531"
 
+  bottle :unneeded
+
   patch :DATA
 
   def install
