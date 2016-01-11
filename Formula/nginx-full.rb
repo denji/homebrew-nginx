@@ -1,5 +1,5 @@
 class NginxFull < Formula
-  desc "HTTP(S) server and reverse proxy, and IMAP/POP3 proxy server"
+  desc "HTTP(S) server, reverse proxy, IMAP/POP3 proxy server"
   homepage "http://nginx.org/"
   url "http://nginx.org/download/nginx-1.8.0.tar.gz"
   sha256 "23cca1239990c818d8f6da118320c4979aadf5386deda691b1b7c2c96b9df3d5"
@@ -75,8 +75,8 @@ class NginxFull < Formula
       "mogilefs" => "Compile with support for HTTP MogileFS module",
       "mp4-h264" => "Compile with support for HTTP MP4/H264 module",
       "naxsi" => "Compile with support for Naxsi module",
-      "notice" => "Compile with support for HTTP Notice module",
       "nchan" => "Compile with Nchan, a flexible pub/sub server",
+      "notice" => "Compile with support for HTTP Notice module",
       "php-session" => "Compile with support for Parse PHP Sessions module",
       "push-stream" => "Compile with support for http push stream module",
       "realtime-req" => "Compile with support for Realtime Request module",
@@ -100,14 +100,6 @@ class NginxFull < Formula
     }
   end
 
-  if build.with?("http-flood-detector-module") && build.without?("status")
-    raise "http-flood-detector-nginx-module: Stub Status module is required --with-status"
-  end
-
-  if build.with?("dav-ext-module") && build.without?("webdav")
-    raise "dav-ext-nginx-module: WebDav Extended module is required --with-webdav"
-  end
-
   depends_on "pcre"
   depends_on "passenger" => :optional
   depends_on "geoip" => :optional
@@ -121,14 +113,14 @@ class NginxFull < Formula
   depends_on "icu4c" if build.with? "xsltproc-module"
   depends_on "libxml2" if build.with? "xsltproc-module"
   depends_on "libxslt" if build.with? "xsltproc-module"
-  depends_on "google-perftools" => :optional
+  depends_on "gperftools" => :optional
   depends_on "gd" => :optional
   depends_on "imlib2" => :optional
 
-  self.core_modules.each do |arr|
+  core_modules.each do |arr|
     option "with-#{arr[0]}", arr[2]
   end
-  self.third_party_modules.each do |name, desc|
+  third_party_modules.each do |name, desc|
     option "with-#{name}-module", desc
     depends_on "#{name}-nginx-module" if build.with? "#{name}-module"
   end
@@ -155,6 +147,14 @@ class NginxFull < Formula
   skip_clean "logs"
 
   def install
+    if build.with?("http-flood-detector-module") && build.without?("status")
+      odie "http-flood-detector-nginx-module: Stub Status module is required --with-status"
+    end
+
+    if build.with?("dav-ext-module") && build.without?("webdav")
+      odie "dav-ext-nginx-module: WebDav Extended module is required --with-webdav"
+    end
+
     # small-light needs to run setup script
     if build.with? "small-light-module"
       small_light = Formula["small-light-nginx-module"]
@@ -213,11 +213,9 @@ class NginxFull < Formula
     ]
 
     # Core Modules
-    args += self.class.core_modules.select { |arr|
-      build.with? arr[0]
-    }.collect { |arr|
-      "--with-#{arr[1]}" if arr[1]
-    }.compact
+    self.class.core_modules.each do |arr|
+      args << "--with-#{arr[1]}" if build.with?(arr[0]) && arr[1]
+    end
 
     # Set misc module depends on nginx-devel-kit being compiled in
     if build.with? "set-misc-module"
@@ -225,11 +223,11 @@ class NginxFull < Formula
     end
 
     # Third Party Modules
-    args += self.class.third_party_modules.select { |name, _desc|
-      build.with? "#{name}-module"
-    }.collect { |name, _desc|
-      "--add-module=#{HOMEBREW_PREFIX}/share/#{name}-nginx-module"
-    }
+    self.class.third_party_modules.each_key do |name|
+      if build.with? "#{name}-module"
+        args << "--add-module=#{HOMEBREW_PREFIX}/share/#{name}-nginx-module"
+      end
+    end
 
     # Passenger
     if build.with? "passenger"
