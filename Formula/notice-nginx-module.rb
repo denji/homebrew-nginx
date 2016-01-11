@@ -1,9 +1,11 @@
 class NoticeNginxModule < Formula
-  desc "Notices downtime, HTTP semantics and fixed response"
+  desc "Nginx module to display notices of downtime"
   homepage "https://github.com/kr/nginx-notice"
   url "https://github.com/kr/nginx-notice/archive/3c95966.tar.gz"
   version "0.0.2"
   sha256 "c520f7905f569f1590442a7c3ac3ef54a977fb306f3adb9c2ba008d4481939ac"
+
+  bottle :unneeded
 
   # Fix issue compatibility
   patch :DATA
