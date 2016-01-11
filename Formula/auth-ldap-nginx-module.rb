@@ -6,6 +6,8 @@ class AuthLdapNginxModule < Formula
   sha256 "02adfa17c7f9bc06ae2914ebe0b14a2965fd05127979826010bf9d9fefbfca8b"
   head "https://github.com/kvspb/nginx-auth-ldap.git"
 
+  bottle :unneeded
+
   depends_on "openldap"
 
   # undefined reference to "_ber_sockbuf_add_io"
