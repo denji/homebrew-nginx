@@ -6,6 +6,8 @@ class AuthDigestNginxModule < Formula
   sha256 "c950810be28e5cece5c6b30aefe96147681d4b74bace25e8dcad2a1cb75a861f"
   revision 1
 
+  bottle :unneeded
+
   patch :DATA
 
   def install
