@@ -1,14 +1,30 @@
 language: objective-c
-osx_image: xcode61
+matrix:
+  include:
+    - env: OSX=10.11
+      os: osx
+      osx_image: osx10.11
+      rvm: system
+    - env: OSX=10.10
+      os: osx
+      osx_image: xcode7
+      rvm: system
+    - env: OSX=10.9
+      os: osx
+      osx_image: beta-xcode6.2
+      rvm: system
 before_install:
+  - if [ -f ".git/shallow" ]; then travis_retry git fetch --unshallow; fi
+  - sudo chown -R $USER $(brew --repo)
+  - git -C $(brew --repo) reset --hard origin/master
+  - git -C $(brew --repo) clean -qxdff
+  - brew tap homebrew/dupes
+  - brew tap homebrew/versions
   - brew update
-  - brew install pcre
-  - brew install icu4c
-install:
-  - mkdir -p $(brew --repo)/Library/Taps/homebrew
   - ln -s $PWD $(brew --repo)/Library/Taps/homebrew/homebrew-nginx
-  - brew tap --repair
-  - brew tap
+  - cd $(brew --repo)/Library/Taps/homebrew/homebrew-nginx
+  - export TRAVIS_BUILD_DIR="$(brew --repo)/Library/Taps/homebrew/homebrew-nginx"
+  - env | grep TRAVIS_
 env:
   - MODULE=""
   - MODULE="spdy"
@@ -17,7 +33,10 @@ env:
   - MODULE="headers-more-module"
   - MODULE="xsltproc-module"
 script:
+#  - brew test-bot
   - brew audit nginx-full
   - brew install -v nginx-full --with-$MODULE
-matrix:
-  fast_finish: true
+notifications:
+  email:
+    on_success: never
+    on_failure: always
