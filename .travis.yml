@@ -25,17 +25,8 @@ before_install:
   - cd $(brew --repo)/Library/Taps/homebrew/homebrew-nginx
   - export TRAVIS_BUILD_DIR="$(brew --repo)/Library/Taps/homebrew/homebrew-nginx"
   - env | grep TRAVIS_
-env:
-  - MODULE=""
-  - MODULE="spdy"
-  - MODULE="geoip"
-  - MODULE="lua-module"
-  - MODULE="headers-more-module"
-  - MODULE="xsltproc-module"
 script:
-#  - brew test-bot
-  - brew audit nginx-full
-  - brew install -v nginx-full --with-$MODULE
+  - brew test-bot
 notifications:
   email:
     on_success: never
