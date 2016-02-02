@@ -6,8 +6,6 @@ class MrubyNginxModule < Formula
 
   bottle :unneeded
 
-  depends_on "git" => :build
-
   def install
     (share+"mruby-nginx-module").install Dir["*"]
   end
