@@ -74,6 +74,7 @@ class NginxFull < Formula
       "mod-zip" => "Compile with support for HTTP Zip module",
       "mogilefs" => "Compile with support for HTTP MogileFS module",
       "mp4-h264" => "Compile with support for HTTP MP4/H264 module",
+      "mruby" => "Compile with support for MRuby module",
       "naxsi" => "Compile with support for Naxsi module",
       "nchan" => "Compile with Nchan, a flexible pub/sub server",
       "notice" => "Compile with support for HTTP Notice module",
@@ -163,6 +164,21 @@ class NginxFull < Formula
       Dir.chdir("#{small_light.share}/#{small_light.name}")
       system "./setup", *args
       raise "The small-light setup script couldn't generate config file." unless File.exist?("./config")
+      Dir.chdir(origin_dir)
+    end
+
+    # mruby module needs to compile mruby
+    if build.with? "mruby-module"
+      mruby = Formula["mruby-nginx-module"]
+      origin_dir = Dir.pwd
+      Dir.chdir("#{mruby.share}/#{mruby.name}")
+      system "git", "init"
+      system "git", "add", "-A"
+      system "git", "commit", "-m 'initial'"
+      system "git", "submodule", "init"
+      system "git", "submodule", "update"
+      system "./configure", "--with-ngx-src-root=#{buildpath}"
+      system "make", "build_mruby", "generate_gems_config"
       Dir.chdir(origin_dir)
     end
 
