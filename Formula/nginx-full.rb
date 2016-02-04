@@ -167,16 +167,18 @@ class NginxFull < Formula
       Dir.chdir(origin_dir)
     end
 
-    # mruby module needs to compile mruby
+    # mruby module needs to prepare compiling mruby
     if build.with? "mruby-module"
       mruby = Formula["mruby-nginx-module"]
       origin_dir = Dir.pwd
       Dir.chdir("#{mruby.share}/#{mruby.name}")
+      # The compile flow of ngx_mruby is assumed that build_config.rb is managed with git.
+      FileUtils.rm_rf(".git")
       system "git", "init"
-      system "git", "add", "-A"
-      system "git", "commit", "-m 'initial'"
       system "git", "submodule", "init"
       system "git", "submodule", "update"
+      system "git", "add", "build_config.rb"
+      system "git", "commit", "-m 'build_config.rb'"
       system "./configure", "--with-ngx-src-root=#{buildpath}"
       system "make", "build_mruby", "generate_gems_config"
       Dir.chdir(origin_dir)
