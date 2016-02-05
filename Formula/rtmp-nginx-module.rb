@@ -1,8 +1,8 @@
 class RtmpNginxModule < Formula
   desc "NGINX-based Media Streaming Server"
-  homepage "https://github.com/arut/nginx-rtmp-module"
-  url "https://github.com/arut/nginx-rtmp-module/archive/v1.1.7.tar.gz"
-  sha256 "7922b0e3d5f3d9c4b275e4908cfb8f5fb1bfb3ac2df77f4c262cda56df21aab3"
+  homepage "https://github.com/sergey-dryabzhinsky/nginx-rtmp-module"
+  url "https://github.com/sergey-dryabzhinsky/nginx-rtmp-module/archive/v1.1.7.9.tar.gz"
+  sha256 "3966f96c745024a6d2a3ce97ab14d273e2d2fcbe4afe96848b189ad9a93065ac"
 
   bottle :unneeded
 
