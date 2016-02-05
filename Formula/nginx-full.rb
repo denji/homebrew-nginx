@@ -173,6 +173,7 @@ class NginxFull < Formula
       origin_dir = Dir.pwd
       Dir.chdir("#{mruby.share}/#{mruby.name}")
       # The compile flow of ngx_mruby is assumed that build_config.rb is managed with git.
+      FileUtils.rm_rf(".git")
       system "git", "init"
       system "git", "submodule", "init"
       system "git", "submodule", "update"
@@ -180,7 +181,6 @@ class NginxFull < Formula
       system "git", "commit", "-m 'build_config.rb'"
       system "./configure", "--with-ngx-src-root=#{buildpath}"
       system "make", "build_mruby", "generate_gems_config"
-      FileUtils.rm_rf(".git")
       Dir.chdir(origin_dir)
     end
 
