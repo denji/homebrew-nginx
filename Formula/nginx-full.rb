@@ -32,7 +32,6 @@ class NginxFull < Formula
       ["random-index",     "http_random_index_module", "Compile with support for Random Index module"],
       ["realip",           "http_realip_module",       "Compile with support for real IP module"],
       ["secure-link",      "http_secure_link_module",  "Compile with support for secure link module"],
-      ["spdy",             "http_spdy_module",         "Compile with support for SPDY module"],
       ["status",           "http_stub_status_module",  "Compile with support for stub status module"],
       ["stream",           "stream",                   "Compile with support for TCP load balancing module"],
       ["sub",              "http_sub_module",          "Compile with support for HTTP Sub module"],
@@ -117,6 +116,9 @@ class NginxFull < Formula
   depends_on "gperftools" => :optional
   depends_on "gd" => :optional
   depends_on "imlib2" => :optional
+
+  # HTTP2 (backward compatibility for spdy)
+  deprecated_option "with-spdy" => "with-http2"
 
   core_modules.each do |arr|
     option "with-#{arr[0]}", arr[2]
