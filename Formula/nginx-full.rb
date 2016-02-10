@@ -183,7 +183,8 @@ class NginxFull < Formula
       system "git", "commit", "-m 'build_config.rb'"
       Dir.chdir("#{mruby.share}/#{mruby.name}")
       system "./configure", "--with-ngx-src-root=#{buildpath}"
-      system "make", "build_mruby", "generate_gems_config"
+      system "make", "build_mruby"
+      system "make", "generate_gems_config"
       rm_rf('.git')
       Dir.chdir(origin_dir)
     end
