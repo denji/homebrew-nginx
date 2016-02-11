@@ -240,8 +240,8 @@ class NginxFull < Formula
       args << "--with-#{arr[1]}" if build.with?(arr[0]) && arr[1]
     end
 
-    # Set misc module depends on nginx-devel-kit being compiled in
-    if build.with? "set-misc-module"
+    # Set misc module and mruby module both depend on nginx-devel-kit being compiled in
+    if build.with?("set-misc-module") || build.with?("mruby-module")
       args << "--add-module=#{HOMEBREW_PREFIX}/share/ngx-devel-kit"
     end
 
