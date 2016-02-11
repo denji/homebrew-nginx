@@ -6,6 +6,8 @@ class MrubyNginxModule < Formula
 
   bottle :unneeded
 
+  depends_on "ngx-devel-kit"
+
   def install
     (share+"mruby-nginx-module").install Dir["*"]
   end
