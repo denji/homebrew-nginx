@@ -118,7 +118,11 @@ class NginxFull < Formula
   depends_on "imlib2" => :optional
 
   # HTTP2 (backward compatibility for spdy)
-  deprecated_option "with-spdy" => "with-http2"
+  if build.devel?
+    deprecated_option "with-spdy" => "with-http2"
+  else
+    deprecated_option "with-http2" => "with-spdy"
+  end
 
   core_modules.each do |arr|
     option "with-#{arr[0]}", arr[2]
