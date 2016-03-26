@@ -10,6 +10,8 @@ class NginxFull < Formula
     sha256 "1af2eb956910ed4b11aaf525a81bc37e135907e7127948f9179f5410337da042"
   end
 
+  conflicts_with "nginx", :because => "nginx-full symlink with the name for compatibility with nginx"
+
   def self.core_modules
     [
       ["passenger",        nil,                        "Compile with support for Phusion Passenger module"],
