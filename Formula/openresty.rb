@@ -1,8 +1,8 @@
 class Openresty < Formula
   desc "Fast web app server"
   homepage "http://openresty.org"
-  url "https://openresty.org/download/openresty-1.9.7.3.tar.gz"
-  sha256 "3e4422576d11773a03264021ff7985cd2eeac3382b511ae3052e835210a9a69a"
+  url "https://openresty.org/download/openresty-1.9.7.4.tar.gz"
+  sha256 "aa5dcae035dda6e483bc1bd3d969d7113205dc2d0a3702ece0ad496c88a653c5"
 
   # nginx options
   option "without-luajit", "Compile *without* support for the Lua Just-In-Time Compiler"
