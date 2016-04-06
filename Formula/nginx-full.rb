@@ -25,7 +25,7 @@ class NginxFull < Formula
       ["google-perftools", "google_perftools_module",  "Compile with support for Google Performance tools module"],
       ["gunzip",           "http_gunzip_module",       "Compile with support for gunzip module"],
       ["gzip-static",      "http_gzip_static_module",  "Compile with support for Gzip static module"],
-      ["spdy",             "http_spdy_module",         "Compile with support for SPDY module"],
+      ["spdy",             "http_spdy_module",         "Compile with support for either SPDY or HTTP/2 module"],
       ["http2",            "http_v2_module",           "Compile with support for HTTP/2 module"],
       ["image-filter",     "http_image_filter_module", "Compile with support for Image Filter module"],
       ["mail",             "mail",                     "Compile with support for Mail module"],
@@ -121,7 +121,7 @@ class NginxFull < Formula
   depends_on "imlib2" => :optional
 
   # HTTP2 (backward compatibility for spdy)
-  if build.devel?
+  if build.devel? || build.head? && build.with?("spdy")
     deprecated_option "with-spdy" => "with-http2"
   else
     deprecated_option "with-http2" => "with-spdy"
@@ -192,7 +192,7 @@ class NginxFull < Formula
       system "./configure", "--with-ngx-src-root=#{buildpath}"
       system "make", "build_mruby"
       system "make", "generate_gems_config"
-      rm_rf('.git')
+      rm_rf(".git")
       Dir.chdir(origin_dir)
     end
 
@@ -317,7 +317,7 @@ class NginxFull < Formula
 
   def passenger_caveats; <<-EOS.undent
     To activate Phusion Passenger, add this to #{etc}/nginx/nginx.conf, inside the 'http' context:
-      passenger_root #{Formula["passenger"].opt_libexec}/lib/phusion_passenger/locations.ini;
+      passenger_root #{Formula["passenger"].opt_libexec}/src/ruby_supportlib/phusion_passenger/locations.ini;
       passenger_ruby /usr/bin/ruby;
     EOS
   end
@@ -348,9 +348,7 @@ class NginxFull < Formula
     s
   end
 
-  test do
-    system "#{bin}/nginx", "-t"
-  end
+  plist_options :manual => "nginx"
 
   def plist; <<-EOS.undent
     <?xml version="1.0" encoding="UTF-8"?>
@@ -374,5 +372,33 @@ class NginxFull < Formula
       </dict>
     </plist>
     EOS
+  end
+
+  test do
+    (testpath/"nginx.conf").write <<-EOS
+      worker_processes 4;
+      error_log #{testpath}/error.log;
+      pid #{testpath}/nginx.pid;
+
+      events {
+        worker_connections 1024;
+      }
+
+      http {
+        client_body_temp_path #{testpath}/client_body_temp;
+        fastcgi_temp_path #{testpath}/fastcgi_temp;
+        proxy_temp_path #{testpath}/proxy_temp;
+        scgi_temp_path #{testpath}/scgi_temp;
+        uwsgi_temp_path #{testpath}/uwsgi_temp;
+
+        server {
+          listen 8080;
+          root #{testpath};
+          access_log #{testpath}/access.log;
+          error_log #{testpath}/error.log;
+        }
+      }
+    EOS
+    system "#{bin}/nginx", "-t", "-c", testpath/"nginx.conf"
   end
 end
