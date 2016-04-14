@@ -23,7 +23,7 @@ Once the tap is installed, you can install `nginx-full` with optional arguments 
 
 ## Why submit modules here?
 
-Rather than submitting modules to the core Homebrew Nginx Forumla this repo will serve as a place where any module can be added and configured for custom purposes.
+Rather than submitting modules to the core Homebrew `nginx` formula, this repo will serve as a place where any module can be added and configured for custom purposes.
 
 
 ## What about conflicts?
@@ -35,7 +35,7 @@ You are free to install this version alongside a current install of Nginx from `
 
 ## Credits
 
-Credit for the original base formula comes from https://github.com/mxcl/homebrew/blob/master/Library/Formula/nginx.rb and I will keep this formula up to date with any changes made there.
+Credit for the original base formula comes from https://github.com/Homebrew/homebrew-core/blob/master/Formula/nginx.rb and I will keep this formula up to date with any changes made there.
 
 
 [![Bitdeli Badge](https://d2weczhvl823v0.cloudfront.net/marcqualie/homebrew-nginx/trend.png)](https://bitdeli.com/free "Bitdeli Badge")
