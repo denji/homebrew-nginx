@@ -1,14 +1,9 @@
 class NginxFull < Formula
   desc "HTTP(S) server, reverse proxy, IMAP/POP3 proxy server"
   homepage "http://nginx.org/"
-  url "http://nginx.org/download/nginx-1.8.1.tar.gz"
-  sha256 "8f4b3c630966c044ec72715754334d1fdf741caa1d5795fb4646c27d09f797b7"
+  url "http://nginx.org/download/nginx-1.10.0.tar.gz"
+  sha256 "8ed647c3dd65bc4ced03b0e0f6bf9e633eff6b01bac772bcf97077d58bc2be4d"
   head "http://hg.nginx.org/nginx/", :using => :hg
-
-  devel do
-    url "http://nginx.org/download/nginx-1.9.15.tar.gz"
-    sha256 "cc89b277cc03f403c0b746d60aa5943cdecf59ae48278f8cb7e2df0cbdb6dac3"
-  end
 
   conflicts_with "nginx", :because => "nginx-full symlink with the name for compatibility with nginx"
 
@@ -121,10 +116,8 @@ class NginxFull < Formula
   depends_on "imlib2" => :optional
 
   # HTTP2 (backward compatibility for spdy)
-  if build.devel? || build.head? && build.with?("spdy")
+  if build.with?("spdy")
     deprecated_option "with-spdy" => "with-http2"
-  else
-    deprecated_option "with-http2" => "with-spdy"
   end
 
   core_modules.each do |arr|
@@ -197,8 +190,10 @@ class NginxFull < Formula
     end
 
     # Changes default port to 8080
-    inreplace "conf/nginx.conf", "listen       80;", "listen       8080;"
-    inreplace "conf/nginx.conf", "    #}\n\n}", "    #}\n    include servers/*;\n}"
+    inreplace "conf/nginx.conf" do |s|
+      s.gsub! "listen       80;", "listen       8080;"
+      s.gsub! "    #}\n\n}", "    #}\n    include servers/*;\n}"
+    end
 
     pcre = Formula["pcre"]
     openssl = Formula["openssl"]
@@ -294,7 +289,7 @@ class NginxFull < Formula
     # to #{HOMEBREW_PREFIX}/var/www. The reason we symlink instead of patching
     # is so the user can redirect it easily to something else if they choose.
     html = prefix/"html"
-    dst  = var/"www"
+    dst = var/"www"
 
     if dst.exist?
       html.rmtree
