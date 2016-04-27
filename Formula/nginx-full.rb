@@ -20,7 +20,6 @@ class NginxFull < Formula
       ["google-perftools", "google_perftools_module",  "Compile with support for Google Performance tools module"],
       ["gunzip",           "http_gunzip_module",       "Compile with support for gunzip module"],
       ["gzip-static",      "http_gzip_static_module",  "Compile with support for Gzip static module"],
-      ["spdy",             "http_spdy_module",         "Compile with support for either SPDY or HTTP/2 module"],
       ["http2",            "http_v2_module",           "Compile with support for HTTP/2 module"],
       ["image-filter",     "http_image_filter_module", "Compile with support for Image Filter module"],
       ["mail",             "mail",                     "Compile with support for Mail module"],
