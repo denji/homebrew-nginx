@@ -9,7 +9,7 @@ class NjsNginxModule < Formula
   bottle :unneeded
 
   def install
-    (share+"njs-nginx-module").install Dir["*"]
+    (share+"njs-nginx-module").install Dir["nginx/*"]
   end
 
 end

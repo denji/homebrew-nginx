@@ -247,14 +247,9 @@ class NginxFull < Formula
       args << "--add-module=#{HOMEBREW_PREFIX}/share/ngx-devel-kit"
     end
 
-    # Njs module configuration path needs to be appended with "/nginx" compared to other modules
-    if build.with?("njs-module")
-      args << "--add-module=#{HOMEBREW_PREFIX}/share/njs-nginx-module/nginx"
-    end
-
     # Third Party Modules
     self.class.third_party_modules.each_key do |name|
-      if build.with? "#{name}-module" && name != "njs"
+      if build.with? "#{name}-module"
         args << "--add-module=#{HOMEBREW_PREFIX}/share/#{name}-nginx-module"
       end
     end
