@@ -254,6 +254,13 @@ class NginxFull < Formula
       end
     end
 
+    # njs (nginScript - javascript) module 
+    if build.with?("njs-module")
+      #configuration path needs to be appended with "/nginx" 
+      args = args.select {|arg| arg.include? "njs-module"} 
+      args << "--add-module=#{HOMEBREW_PREFIX}/share/njs-nginx-module/nginx"
+    end
+
     # Passenger
     if build.with? "passenger"
       nginx_ext = `#{Formula["passenger"].opt_bin}/passenger-config --nginx-addon-dir`.chomp
