@@ -3,7 +3,7 @@ class NjsNginxModule < Formula
   homepage "https://github.com/nginx/njs"
   version "1.10.0.0.0.20160414.1c50334fbea6-1"
   url "https://github.com/nginx/njs/archive/master/nginx-njs-c4a5f2b.tar.gz"
-  sha256 "213d96e839bbc6e979708f42677aabcb723d0eaed27fa9aef198bb9e024e51d9"
+  sha256 "6c348eec7991361698c4c7c1830388a679c5516bf8a6a25d2d07a3c23642f545"
 
   bottle :unneeded
 
