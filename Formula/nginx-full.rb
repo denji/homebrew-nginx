@@ -254,10 +254,10 @@ class NginxFull < Formula
       end
     end
 
-    # njs (nginScript - javascript) module 
+    # njs (nginScript - javascript) module
     if build.with?("njs-module")
-      #configuration path needs to be appended with "/nginx" 
-      args = args.select {|arg| arg.include? "njs-module"} 
+      #configuration path needs to be appended with "/nginx"
+      args = args.select {|arg| arg.include? "njs-module"}
       args << "--add-module=#{HOMEBREW_PREFIX}/share/njs-nginx-module/nginx"
     end
 
