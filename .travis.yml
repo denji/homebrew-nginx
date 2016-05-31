@@ -25,6 +25,7 @@ before_install:
   - ln -s $PWD $(brew --repo)/Library/Taps/homebrew/homebrew-nginx
   - cd $(brew --repo)/Library/Taps/homebrew/homebrew-nginx
   - export TRAVIS_BUILD_DIR="$(brew --repo)/Library/Taps/homebrew/homebrew-nginx"
+  - export HOMEBREW_DEVELOPER="1"
   - env | grep TRAVIS_
 script:
   - brew test-bot
