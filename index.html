@@ -37,31 +37,31 @@ title: Homebrew Nginx
       </header>
       <section>
 
-        <h1>Install tap</h1>
+        <h1 id="install-tap">Install tap</h1>
         <p>You can install the tap by running the following commands</p>
 {% highlight bash %}
 brew tap homebrew/nginx
 {% endhighlight %}
 
-        <h1>Usage</h1>
+        <h1 id="usage">Usage</h1>
         <p>For a list of available configuration options run</p>
 {% highlight bash %}
 brew options nginx-full
 brew info nginx-full
 {% endhighlight %}
-        <p>Once the tap is installed, you can install nginx-full with optional arguments as additional functionality and modules.</p>
+        <p>Once the tap is installed, you can install nginx-full with optional arguments as additional functionality and <a href="#modules">modules</a>.</p>
 {% highlight bash %}
 brew install nginx-full --with-upload-module
 {% endhighlight %}
 
-        <h1>Conflicts</h1>
+        <h1 id="conflicts">Conflicts</h1>
         <p>If you have trouble installing this tap then please make sure the default version of nginx is removed first. You can do that with the following commands.</p>
 {% highlight bash %}
 brew unlink nginx
 brew link nginx-full
 {% endhighlight %}
 
-        <h1>Modules</h1>
+        <h1 id="modules">Modules</h1>
         <p>This tap comes with tons of custom modules and more are added all the time</p>
         <table>
           <thead>
@@ -81,7 +81,7 @@ brew link nginx-full
           </tbody>
         </table>
 
-        <h1>Contributing</h1>
+        <h1 id="contributing">Contributing</h1>
         <p>We accept most modules as long as they are tested and follow convetions. The following rules apply when submitting new formula or updating existing formula.</p>
         <ol>
           <li>Modifications to one module per pull request</li>
