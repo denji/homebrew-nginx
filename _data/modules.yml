@@ -1,341 +1,401 @@
 ---
 - name: accept-language
   homepage: https://github.com/giom/nginx_accept_language_module
-  version: badac1f
-  sha1: badac1f89639388bb518f68482e659b97d7968c2
-  description: Compile with support for Accept Language Module
+  version: fbcdf79
+  sha256: fbcdf792160a1eff7b9549aeb5209d6e76716ff8e86b05e42c90b2d2f858e011
+  description: Compile with support for Accept Language module
 - name: accesskey
   homepage: http://wiki.nginx.org/NginxHttpAccessKeyModule
-  version: 68eb4c4
-  sha1: 68eb4c47f9a1a058a711b280d4e29339ddab8775
-  description: Compile with support for HTTP Access Key Module
+  version: d9e9432
+  sha256: d9e94321e78a02de16c57f3e048fd31059fd8116ed03d6de7180f435c52502b1
+  description: Compile with support for HTTP Access Key module
 - name: addition
   homepage: 
   version: master
-  sha1: 
+  sha256: 
   description: Compile with support for HTTP Addition module
+- name: ajp
+  homepage: https://github.com/yaoweibin/nginx_ajp_module
+  version: 0.3.0
+  sha256: 7b3791275ef87dde153679fa459e84784da09b26d35426d61f5477903584b254
+  description: Compile with support for AJP-protocol
 - name: anti-ddos
   homepage: https://github.com/aufi/anddos
   version: '0.1'
-  sha1: 758859a055538cf8d183bc8a9c72f643bd49312a
+  sha256: eba0b685f500b963c41155330a7c7f42097a36f8d7a2017c467c5c9ee863a732
   description: Compile with support for Anti-DDoS module
 - name: array-var
-  homepage: https://github.com/agentzh/array-var-nginx-module
-  version: '0.03'
-  sha1: b2666aa3c092060fcd3931a6d45798a5745c1ad6
-  description: Compile with support for Array Var Module
+  homepage: https://github.com/openresty/array-var-nginx-module
+  version: '0.05'
+  sha256: c949d4be6f3442c8e2937046448dc8d8def25c0e0fa6f4e805144cea45eabe80
+  description: Compile with support for Array Var module
 - name: auth-digest
   homepage: https://github.com/samizdatco/nginx-http-auth-digest
   version: '0.1'
-  sha1: 3188e07820d5a06f8328f61875dbb91d4a74b6c0
-  description: Compile with support for Auth Digest Module
+  sha256: c950810be28e5cece5c6b30aefe96147681d4b74bace25e8dcad2a1cb75a861f
+  description: Compile with support for Auth Digest module
 - name: auth-ldap
   homepage: https://github.com/kvspb/nginx-auth-ldap
-  version: '0.1'
-  sha1: e52a6b131a58a0ded2c7ef162caa122209ffe568
-  description: Compile with support for Auth LDAP Module
+  version: 8517bb0
+  sha256: 2f0b1a65847ea1da801a99b654f132e1c814d2fa49a43a324d8fc4ce6327935f
+  description: Compile with support for Auth LDAP module
 - name: auth-pam
-  homepage: http://web.iti.upv.es/~sto/nginx/
-  version: 3bb82c7
-  sha1: 3bb82c75f7cbace4c10b11aa51adbe36ab0803ed
-  description: Compile with support for Auth PAM Module
+  homepage: https://github.com/stogh/ngx_http_auth_pam_module
+  version: '1.4'
+  sha256: 095742c5bcb86f2431e215db785bdeb238d594f085a0ac00d16125876a157409
+  description: Compile with support for Auth PAM module
 - name: auth-req
   homepage: 
   version: master
-  sha1: 
-  description: Compile with support for HTTP Auth Request Module
+  sha256: 
+  description: Compile with support for HTTP Auth Request module
 - name: auto-keepalive
   homepage: https://github.com/ideal/ngx_http_auto_keepalive
-  version: 11851b8
-  sha1: 11851b879f6643280525c024836e8d875d1dec33
+  version: 131b2af
+  sha256: 131b2af8a6d36a523058292881171343aa4f82ba1f4ebd29794651e8d5d736e5
   description: Compile with support for Auto Disable KeepAlive module
 - name: autols
   homepage: https://github.com/DvdKhl/ngx_http_autols_module
-  version: b37901b
-  sha1: b37901b2418f688ffb84f909d2fa8e165fcb258d
+  version: 445c5f3
+  sha256: 445c5f3ce494f253afe09de7f418fb076ac9aa5c76083a4186e863156fa9d9fc
   description: Compile with support for Flexible Auto Index module
 - name: cache-purge
   homepage: http://labs.frickle.com
-  version: e6e3779
-  sha1: e6e3779487182c94efd3206751927ce722c1da5c
-  description: Compile with support for Cache Purge Module
+  version: 279e0d8
+  sha256: 279e0d8a46d3b1521fd43b3f78bc1c08b263899142a7cc5058c1c0361a92c89c
+  description: Compile with support for Cache Purge module
 - name: captcha
   homepage: https://github.com/fallgold/ngx_http_captcha
   version: '0.1'
-  sha1: a984facfc5cbf82fca383fb2c09e98ca03c69613
+  sha256: 35e701afd0343a7fe167df6b3d546d4a8589e6d5ff1aa9064a8f9ebd936cc50b
   description: Compile with support for Captcha module
-- name: consistent-hash
-  homepage: https://github.com/replay/ngx_http_consistent_hash
-  version: '0.1'
-  sha1: 4aff332a839fe6e366d3b5faf21dd4dc81ff2459
-  description: Compile with support for Consistent Hash Upstream module
 - name: counter-zone
   homepage: https://github.com/theromis/ngx_counter_zone
-  version: ed97ea0
-  sha1: ed97ea0503eefb0aa0e2c3ac3924fb9b606d2eb5
+  version: 9b841ed
+  sha256: 9b841ed09ec39cbe27dab16e017433418c0546fba58bc48d853bed0dcae9e322
   description: Compile with support for Realtime Counter Zone module
 - name: ctpp2
   homepage: http://ngx-ctpp.vbart.ru/
-  version: b8faa03
-  sha1: b8faa0366654b5616e8182a5078daff2c36e712c
-  description: Compile with support for CT++ Module
+  version: f8adfec
+  sha256: f8adfecc23e2c23af95df8549ef92fd52598b21506a9d9df2278b2605668d5a6
+  description: Compile with support for CT++ module
 - name: dav-ext
   homepage: https://github.com/arut/nginx-dav-ext-module
   version: 0.0.3
-  sha1: 80714f9471cb5c8259ecdca9e25eb32f4d581074
-  description: Compile with support for HTTP WebDav Extended Module
+  sha256: d428a0236c933779cb40ac8c91afb19d5c25a376dc3caab825bfd543e1ee530d
+  description: Compile with support for HTTP WebDav Extended module
 - name: debug
   homepage: 
   version: master
-  sha1: 
+  sha256: 
   description: Compile with support for debug log
 - name: degredation
   homepage: 
   version: master
-  sha1: 
+  sha256: 
   description: Compile with support for HTTP Degredation module
 - name: dosdetector
   homepage: https://github.com/cubicdaiya/ngx_dosdetector
   version: '0.1'
-  sha1: e476ecc2e3b38667bae0edd452116d14e75e450c
+  sha256: eafac404719c21143e645d24540735f18446f61a8d0dd605b4116f1064741172
   description: Compile with support for detecting DoS attacks
 - name: echo
-  homepage: https://github.com/agentzh/echo-nginx-module
-  version: '0.48'
-  sha1: 51c6df070d15dfd63a6c5c17ed683a08e6dd86e8
-  description: Compile with support for Echo Module
+  homepage: https://github.com/openresty/echo-nginx-module
+  version: '0.58'
+  sha256: 190fe3977dd1910e82059f30f9baae3da2ee6e6fb50f18c9bc2605a19dbb9626
+  description: Compile with support for Echo module
 - name: eval
   homepage: https://github.com/vkholodkov/nginx-eval-module
   version: 1.0.3
-  sha1: 16df14c6c56a9965eee97f74df2933be2463535b
-  description: Compile with support for Eval Module
+  sha256: 849381433a9020ee1162fa6211b047369fde38dc1a8b5de79f03f8fff2407fe2
+  description: Compile with support for Eval module
 - name: extended-status
-  homepage: https://github.com/denji/ngx_http_extended_status_module
-  version: '1.0'
-  sha1: 884f39921be512a4939be93bb0a5b64bf68fff06
+  homepage: https://github.com/nginx-modules/ngx_http_extended_status_module
+  version: '1.1'
+  sha256: 054b4c1ecae202991d9bfa4efb8c112a883c0d46a6017a5179dc4243a86f7451
   description: Compile with support for Extended Status module
 - name: fancyindex
   homepage: https://github.com/aperezdc/ngx-fancyindex
-  version: 0.3.2
-  sha1: 98c3c361ac163a49bada0dc25e81f7575cb8ff85
-  description: Compile with support for Fancy Index Module
+  version: 0.3.6
+  sha256: e73f1f0444f8c53601b51da8684b174c5ffd3b4ed6eb7956dd57f8b95485b68f
+  description: Compile with support for Fancy Index module
 - name: flv
   homepage: 
   version: master
-  sha1: 
+  sha256: 
   description: Compile with support for FLV module
 - name: geoip
   homepage: 
   version: master
-  sha1: 
+  sha256: 
   description: Compile with support for GeoIP module
+- name: geoip2
+  homepage: https://github.com/leev/ngx_http_geoip2_module
+  version: '1.0'
+  sha256: 7b1eacf92fe57ee6e33316f07e31bda440f24b3af9ab6b14dd109ac0c348d6c7
+  description: Nginx GeoIP2 module
 - name: google-perftools
   homepage: 
   version: master
-  sha1: 
+  sha256: 
   description: Compile with support for Google Performance tools module
 - name: gunzip
   homepage: 
   version: master
-  sha1: 
+  sha256: 
   description: Compile with support for gunzip module
 - name: gzip-static
   homepage: 
   version: master
-  sha1: 
+  sha256: 
   description: Compile with support for Gzip static module
 - name: headers-more
-  homepage: https://github.com/agentzh/headers-more-nginx-module
-  version: '0.22'
-  sha1: 9e574fb0a3cacb4229fa2fe93d02bac0d43e431f
-  description: Compile with support for Headers More Module
+  homepage: https://github.com/openresty/headers-more-nginx-module
+  version: '0.29'
+  sha256: 0a5f3003b5851373b03c542723eb5e7da44a01bf4c4c5f20b4de53f355a28d33
+  description: Compile with support for Headers More module
 - name: healthcheck
   homepage: https://github.com/cep21/healthcheck_nginx_upstreams
   version: '0.1'
-  sha1: 4c539aa1bd29ea22406ce352142873d6efbe86c0
-  description: Compile with support for Healthcheck Module
+  sha256: 0d1c04b449e4ba383b21d3f718973508a50a77ad8e8003df15f8e9c592c2f540
+  description: Compile with support for Healthcheck module
+- name: http-accounting
+  homepage: https://github.com/Lax/ngx_http_accounting_module
+  version: '0.5'
+  sha256: f14b8e23b137eebe9e56e84be831c3db3e042b3294a1d99f1ad9d2715e5383f9
+  description: Compile with support for HTTP Accounting module
 - name: http-flood-detector
   homepage: https://github.com/suehiro/ngx_http_flood_detector_module
   version: '0.1'
-  sha1: 8b3a9de84cf6c326190b030fb78da10194a2942b
+  sha256: d069eaf0a23d94da6e76d96db2242a731252a258b79b95e6b70bf757b3f125e4
   description: Compile with support for Var Flood-Threshold module
 - name: http-remote-passwd
   homepage: https://github.com/x-way/ngx_http_remote_passwd
-  version: 1006b23
-  sha1: 1006b236a932d6659fba55d322f7d00dfb2431b0
+  version: 2fb6287
+  sha256: 2fb62875d915f87748ebc1308c2c2deee438fc83ba8ca4cd5226bb1d96470240
   description: Compile with support for Remote Basic Auth password module
+- name: http2
+  homepage: 
+  version: master
+  sha256: 
+  description: Compile with support for HTTP/2 module
 - name: image-filter
   homepage: 
   version: master
-  sha1: 
+  sha256: 
   description: Compile with support for Image Filter module
 - name: log-if
   homepage: https://github.com/cfsego/ngx_log_if
   version: '0.1'
-  sha1: 8dfb8c0f9358821377c0dea810a49a026aecd405
-  description: Compile with support for Log-if Module
+  sha256: 1d10d5265f619f9e012b91a69381f5b057896c6b5a445e18b9857f65b8f2b8a9
+  description: Compile with support for Log-if module
 - name: lua
-  homepage: https://github.com/chaoslawful/lua-nginx-module
-  version: 0.9.4
-  sha1: 617d9dedcc8ca6758e77c4253c8de0080ae2c9ae
+  homepage: https://github.com/openresty/lua-nginx-module
+  version: 0.10.2
+  sha256: 155feeff08a0b2efaf980705b9ef83d0b341e6d011adad8e2679ea4105668134
   description: Compile with support for LUA module
 - name: mail
   homepage: 
   version: master
-  sha1: 
+  sha256: 
   description: Compile with support for Mail module
 - name: mod-zip
   homepage: https://github.com/evanmiller/mod_zip
   version: '0.1'
-  sha1: f9a085915e471e2aeb97e06db3f1d6d72a779fab
-  description: Compile with support for HTTP Zip Module
+  sha256: 2198071ea1d25a861407745a0a99fffba6cc2784e9a79cabf5a6273f0ff478d1
+  description: Compile with support for HTTP Zip module
 - name: mogilefs
   homepage: http://www.grid.net.ru/nginx/mogilefs.en.html
-  version: 4f6b774
-  sha1: 4f6b774096a77aa8c550d8fd6a3f5d39a661d8ed
-  description: Compile with support for HTTP MogileFS Module
+  version: 7ac230d
+  sha256: 7ac230d30907f013dff8d435a118619ea6168aa3714dba62c6962d350c6295ae
+  description: Compile with support for HTTP MogileFS module
 - name: mp4
   homepage: 
   version: master
-  sha1: 
+  sha256: 
   description: Compile with support for mp4 module
 - name: mp4-h264
   homepage: http://h264.code-shop.com/trac/wiki/Mod-H264-Streaming-Nginx-Version2
-  version: c887af2
-  sha1: c887af256b1d6302149efc8159cc6c7ba1e7d439
-  description: Compile with support for HTTP MP4/H264 Module
+  version: 6d974ba
+  sha256: 6d974ba630cef59de1f60996c66b401264a345d25988a76037c2856cec756c19
+  description: Compile with support for HTTP MP4/H264 module
+- name: mruby
+  homepage: https://github.com/matsumoto-r/ngx_mruby
+  version: 1.17.1
+  sha256: 5a347a5db0f12fc765640b30019c2355d9b26b5cbe0407c834983907ea65ceb7
+  description: Compile with support for MRuby module
+- name: naxsi
+  homepage: https://github.com/nbs-system/naxsi
+  version: '6353441'
+  sha256: 6353441ee53dca173689b63a78f1c9ac5408f3ed066ddaa3f43fd2795bd43cdd
+  description: Compile with support for Naxsi module
+- name: nchan
+  homepage: https://nchan.slact.net
+  version: 0.99.16
+  sha256: 200cc1b02931a067c3edb07243a7faac80265ce6aab37af680cf7373011efc41
+  description: Compile with Nchan, a flexible pub/sub server
 - name: no-pool-nginx
   homepage: 
   version: master
-  sha1: 
+  sha256: 
   description: Disable nginx-pool, valgrind detect memory issues
 - name: notice
   homepage: https://github.com/kr/nginx-notice
   version: 0.0.2
-  sha1: ed64e7caffc8cf46bf2ebf7987f59a32952a55a8
-  description: Compile with support for HTTP Notice Module
+  sha256: c520f7905f569f1590442a7c3ac3ef54a977fb306f3adb9c2ba008d4481939ac
+  description: Compile with support for HTTP Notice module
 - name: passenger
   homepage: 
   version: master
-  sha1: 
+  sha256: 
   description: Compile with support for Phusion Passenger module
 - name: pcre-jit
   homepage: 
   version: master
-  sha1: 
+  sha256: 
   description: Compile with support for JIT in PCRE
 - name: perl
   homepage: 
   version: master
-  sha1: 
+  sha256: 
   description: Compile with support for Perl module
 - name: php-session
   homepage: https://github.com/replay/ngx_http_php_session
   version: 0.4b
-  sha1: 0a07677df689477b6b5123dbdb41271352b047e6
+  sha256: 8b2a6d77571657f60bd4a4e411604ddbe9cbe7cdd33f5537923dfe4254770694
   description: Compile with support for Parse PHP Sessions module
+- name: push-stream
+  homepage: https://github.com/wandenberg/nginx-push-stream-module
+  version: 0.5.1
+  sha256: a95f31e80120fd7324795b92a0d94c0b43e1265df7fd0f1eba11a337c1e0a626
+  description: Compile with support for http push stream module
 - name: random-index
   homepage: 
   version: master
-  sha1: 
+  sha256: 
   description: Compile with support for Random Index module
 - name: realip
   homepage: 
   version: master
-  sha1: 
+  sha256: 
   description: Compile with support for real IP module
 - name: realtime-req
   homepage: https://github.com/magicbear/ngx_realtime_request_module
-  version: a4b9723
-  sha1: a4b9723585064b33c2157358406c3deb70edce6d
+  version: 45bf467
+  sha256: 45bf467e8600487e3c88640f37a7f1cb4a629a39fe8461490607fa52a9ff8e7b
   description: Compile with support for Realtime Request module
+- name: redis
+  homepage: http://wiki.nginx.org/HttpRedis
+  version: 9dfc14d
+  sha256: 9dfc14db81f431fdf3d69f3661a37daf110aef5f9479aa7c88cf362bb5d62604
+  description: Compile with support for Redis module
 - name: redis2
-  homepage: https://github.com/agentzh/redis2-nginx-module
-  version: '0.10'
-  sha1: ce352ae84a2c03eee9a34880e7b5e4ffd19bdb01
-  description: Compile with support for Redis2 Module
+  homepage: https://github.com/openresty/redis2-nginx-module
+  version: '0.12'
+  sha256: baf5274c815a5f27854747df09ff5bcd6d82e0baa2f224a9db6450d2f3a35a4f
+  description: Compile with support for Redis2 module
 - name: rtmp
-  homepage: https://github.com/arut/nginx-rtmp-module
-  version: 1.1.4b
-  sha1: fc7c9909bc1f4870d136378309b4021838f2a14c
-  description: Compile with support for RTMP Module
+  homepage: https://github.com/sergey-dryabzhinsky/nginx-rtmp-module
+  version: 1.1.7.10
+  sha256: 0b32d34704d038485d93656dc43e970bbdd9c63bca7ff3b81ad941cde9144fc6
+  description: Compile with support for RTMP module
 - name: secure-link
   homepage: 
   version: master
-  sha1: 
+  sha256: 
   description: Compile with support for secure link module
 - name: set-misc
-  homepage: https://github.com/agentzh/set-misc-nginx-module
-  version: 5754e2c
-  sha1: 5754e2c26af8fbf12949dcdd68d8c916a3da8450
-  description: Compile with support for Set Misc Module
-- name: spdy
-  homepage: 
-  version: master
-  sha1: 
-  description: Compile with support for SPDY module
+  homepage: https://github.com/openresty/set-misc-nginx-module
+  version: '0.29'
+  sha256: 8d280fc083420afb41dbe10df9a8ceec98f1d391bd2caa42ebae67d5bc9295d8
+  description: Compile with support for Set Misc module
+- name: small-light
+  homepage: https://github.com/cubicdaiya/ngx_small_light
+  version: 0.7.3
+  sha256: 3e01d3c5e581c5a6083a9408dd1d54dde52a02e2894e2c4fcfda05b127ad0bf0
+  description: Compile with support for small light module
 - name: status
   homepage: 
   version: master
-  sha1: 
+  sha256: 
   description: Compile with support for stub status module
+- name: stream
+  homepage: 
+  version: master
+  sha256: 
+  description: Compile with support for TCP load balancing module
 - name: sub
   homepage: 
   version: master
-  sha1: 
+  sha256: 
   description: Compile with support for HTTP Sub module
 - name: subs-filter
   homepage: https://github.com/yaoweibin/ngx_http_substitutions_filter_module
-  version: 0.6.3
-  sha1: 8ac8efa385c8b0fcfcd6a7505697bcfe498039e3
-  description: Compile with support for Substitutions Filter Module
+  version: 0.6.4
+  sha256: ed4ddbcf0c434f4a1e97b61251a63ace759792764bd5cb79ff20efe348db8db3
+  description: Compile with support for Substitutions Filter module
 - name: tcp-proxy
   homepage: https://github.com/yaoweibin/nginx_tcp_proxy_module
-  version: '0.26'
-  sha1: 3997b93b6421d0afa69e7fd79a952c16a1f5db1b
+  version: 0.4.5
+  sha256: 5225fa70785b14fcdf14a163d01b094c746b70e5ebad7dc35740af4f6d115390
   description: Compile with support for TCP proxy
 - name: txid
   homepage: https://github.com/streadway/ngx_txid
-  version: '0.1'
-  sha1: 8e779f757ddc5e62237c45b925aba20b8e131e99
+  version: '0.2'
+  sha256: c5c14172cf23e572d2258bbbbdf09ae7a81a7b6503ce1a0efe0f76260a9a86c5
   description: Compile with support for Sortable Unique ID
+- name: unzip
+  homepage: https://github.com/youzee/nginx-unzip-module
+  version: '0.1'
+  sha256: 49a0bd04ac632842e24c5bbb2fdd9ebe3aa6a753efd5b7e71eb273e5973a5cee
+  description: Compile with support for UnZip module
 - name: upload
   homepage: http://wiki.nginx.org/HttpUploadModule
   version: 2.2.0
-  sha1: a7d31ac0358b86ff12a07bcda1e9a8714118c2bb
+  sha256: 036f9fe82bfaef56ee24849d8343712ac3789a45e563f01337a4a6946f968259
   description: Compile with support for Upload module
 - name: upload-progress
   homepage: http://wiki.nginx.org/HttpUploadProgressModule
-  version: 0.9.0
-  sha1: 93aadaf6065e1e8afd9f14b9291a66819d3aa4c0
-  description: Compile with support for Upload Progrress module
-- name: upstream-hash
-  homepage: https://github.com/evanmiller/nginx_upstream_hash
-  version: '0.1'
-  sha1: 359c3e7f52266763301b29bdf07edfab3d7c32d9
-  description: Compile with support for Upstream Hash Module
+  version: 0.9.1
+  sha256: 99ec072cca35cd7791e77c40a8ded41a7a8c1111e057be26e55fba2fdf105f43
+  description: Compile with support for Upload Progress module
 - name: upstream-order
   homepage: https://github.com/flygoast/ngx_http_upstream_order
   version: '0.1'
-  sha1: b98a582d63f26da48dd3fe586c6e54863adc102e
+  sha256: e5fa35bd3ae20b94b760f396bae1aa56a233db79e881472786503f4a7370db27
   description: Compile with support for Order Upstream module
 - name: ustats
-  homepage: https://github.com/denji/ngx_ustats_module
-  version: '0.1'
-  sha1: b1d574ed613c15ccc9795513aacd22e896b15759
+  homepage: https://github.com/nginx-modules/ngx_ustats_module
+  version: '0.3'
+  sha256: 4eb5aadd2129da80d110d6c5a9f6a13485c0a24b5397d183bd24fcbe03125771
   description: Compile with support for Upstream Statistics (HAProxy style) module
 - name: var-req-speed
-  homepage: https://github.com/alexstup/ngx_http_var_request_speed
+  homepage: https://github.com/nginx-modules/ngx_http_var_request_speed
   version: '0.1'
-  sha1: f2ce2dd4068b9abbfb16363bd0892768c92be02d
+  sha256: 3473de7c25ecf22e586a59c0e1c078c4546aa1c8a6341d7b4daa628f8abe9839
   description: Compile with support for Var Request-Speed module
+- name: vod
+  homepage: https://github.com/kaltura/nginx-vod-module
+  version: '1.6'
+  sha256: 05dbfd292fe35b5fa97fe5cded58d43fbbd51a12cb1a4140175e661077ec9ce3
+  description: Compile with support for Kaltura VOD on-the-fly packager
 - name: webdav
   homepage: 
   version: master
-  sha1: 
+  sha256: 
   description: Compile with support for WebDAV module
+- name: websockify
+  homepage: https://github.com/tg123/websockify-nginx-module
+  version: 0.0.3
+  sha256: 35494258f9db0b113d739f9262bae5a61808e117662fe788d1422282d1ce5672
+  description: Compile with support for websockify module
 - name: xslt
   homepage: 
   version: master
-  sha1: 
+  sha256: 
   description: Compile with support for XSLT module
+- name: xsltproc
+  homepage: https://github.com/yoreek/nginx-xsltproc-module
+  version: '0.16'
+  sha256: 9003d5aa7bff157577d1f8fb5ee070ee52544fc53c48bb9aa0bdd092e5f39bcf
+  description: Compile with support for XSLT transformations

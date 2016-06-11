@@ -29,7 +29,7 @@ namespace :modules do
 
     $LOAD_PATH.unshift File.expand_path(tmp_dir)
     FileUtils.touch "#{tmp_dir}/formula.rb"
-    require "#{tmp_dir}/nginx-full"
+    require "#{tmp_dir}/Formula/nginx-full.rb"
     NginxFull.core_modules.each do |arr|
       module_data[arr[0]] = arr[2]
     end
@@ -38,13 +38,13 @@ namespace :modules do
     end
 
     module_data.each do |name, desc|
-      filename = "#{tmp_dir}/#{name}-nginx-module.rb"
+      filename = "#{tmp_dir}/Formula/#{name}-nginx-module.rb"
       if File.exists? filename
         contents = File.open(filename) { |f| f.read }
         match = /homepage [\"'](.*)[\"']/.match(contents)
         homepage = match[1]
-        match = /sha1 [\"'](.*)[\"']/.match(contents)
-        sha1 = match[1]
+        match = /sha256 [\"'](.*)[\"']/.match(contents)
+        sha256 = match[1]
         match = /version [\"'](.*)[\"']/.match(contents)
         version = match[1] if match
         unless version
@@ -52,16 +52,16 @@ namespace :modules do
           version = match[1] if match
         end
       else
-        sha1 = nil
+        sha256 = nil
         homepage = nil
         version = 'master'
       end
-      version = sha1[0..6] unless version
+      version = sha256[0..6] unless version
       modules.push({
         'name' => name,
         'homepage' => homepage,
         'version' => version,
-        'sha1' => sha1,
+        'sha256' => sha256,
         'description' => desc
       })
     end
@@ -71,6 +71,13 @@ namespace :modules do
     File.open('_data/modules.yml', 'w') do |f|
       YAML.dump(modules, f)
     end
-  end
 
+    # Cleanup
+    #if Dir.exists? tmp_dir
+    #  Dir.chdir(tmp_dir) do
+    #    FileUtils.rm_r(tmp_dir, :force => true)
+    #  end
+    #end
+
+  end
 end
