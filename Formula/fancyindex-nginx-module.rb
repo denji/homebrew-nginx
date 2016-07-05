@@ -8,6 +8,6 @@ class FancyindexNginxModule < Formula
   bottle :unneeded
 
   def install
-    (share+"fancyindex-nginx-module").install Dir["*"]
+    pkgshare.install Dir["*"]
   end
 end

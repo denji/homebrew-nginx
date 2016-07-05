@@ -11,7 +11,7 @@ class AuthDigestNginxModule < Formula
   patch :DATA
 
   def install
-    (share+"auth-digest-nginx-module").install Dir["*"]
+    pkgshare.install Dir["*"]
   end
 end
 

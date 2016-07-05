@@ -8,6 +8,6 @@ class MogilefsNginxModule < Formula
   bottle :unneeded
 
   def install
-    (share+"mogilefs-nginx-module").install Dir["*"]
+    pkgshare.install Dir["*"]
   end
 end

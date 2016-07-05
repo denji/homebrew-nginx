@@ -7,6 +7,6 @@ class XsltprocNginxModule < Formula
   bottle :unneeded
 
   def install
-    (share+"xsltproc-nginx-module").install Dir["*"]
+    pkgshare.install Dir["*"]
   end
 end

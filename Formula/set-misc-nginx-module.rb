@@ -9,6 +9,6 @@ class SetMiscNginxModule < Formula
   depends_on "ngx-devel-kit"
 
   def install
-    (share+"set-misc-nginx-module").install Dir["*"]
+    pkgshare.install Dir["*"]
   end
 end

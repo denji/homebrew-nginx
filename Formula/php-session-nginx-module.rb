@@ -8,6 +8,6 @@ class PhpSessionNginxModule < Formula
   bottle :unneeded
 
   def install
-    (share+"php-session-nginx-module").install Dir["*"]
+    pkgshare.install Dir["*"]
   end
 end

@@ -7,6 +7,6 @@ class AcceptLanguageNginxModule < Formula
   bottle :unneeded
 
   def install
-    (share+"accept-language-nginx-module").install Dir["*"]
+    pkgshare.install Dir["*"]
   end
 end

@@ -10,6 +10,6 @@ class StreamLuaNginxModule < Formula
   bottle :unneeded
 
   def install
-    (share/"stream-lua-nginx-module").install Dir["*"]
+    pkgshare.install Dir["*"]
   end
 end

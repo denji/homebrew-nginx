@@ -11,7 +11,7 @@ class NoticeNginxModule < Formula
   patch :DATA
 
   def install
-    (share+"notice-nginx-module").install Dir["*"]
+    pkgshare.install Dir["*"]
   end
 end
 

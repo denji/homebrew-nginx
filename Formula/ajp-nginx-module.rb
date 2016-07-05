@@ -8,6 +8,6 @@ class AjpNginxModule < Formula
   bottle :unneeded
 
   def install
-    (share+"ajp-nginx-module").install Dir["*"]
+    pkgshare.install Dir["*"]
   end
 end

@@ -7,6 +7,6 @@ class Redis2NginxModule < Formula
   bottle :unneeded
 
   def install
-    (share+"redis2-nginx-module").install Dir["*"]
+    pkgshare.install Dir["*"]
   end
 end

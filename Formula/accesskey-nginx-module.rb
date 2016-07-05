@@ -7,6 +7,6 @@ class AccesskeyNginxModule < Formula
   bottle :unneeded
 
   def install
-    (share+"accesskey-nginx-module").install Dir["*"]
+    pkgshare.install Dir["*"]
   end
 end

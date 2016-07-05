@@ -8,6 +8,6 @@ class HttpFloodDetectorNginxModule < Formula
   bottle :unneeded
 
   def install
-    (share/"http-flood-detector-nginx-module").install Dir["*"]
+    pkgshare.install Dir["*"]
   end
 end

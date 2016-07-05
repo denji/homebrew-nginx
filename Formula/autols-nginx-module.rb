@@ -7,6 +7,6 @@ class AutolsNginxModule < Formula
   bottle :unneeded
 
   def install
-    (share+"autols-nginx-module").install Dir["ngx_http_autols_module/*"]
+    pkgshare.install Dir["ngx_http_autols_module/*"]
   end
 end

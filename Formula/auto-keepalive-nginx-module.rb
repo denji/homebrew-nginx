@@ -7,6 +7,6 @@ class AutoKeepaliveNginxModule < Formula
   bottle :unneeded
 
   def install
-    (share+"auto-keepalive-nginx-module").install Dir["*"]
+    pkgshare.install Dir["*"]
   end
 end

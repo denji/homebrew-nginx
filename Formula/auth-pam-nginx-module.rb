@@ -7,6 +7,6 @@ class AuthPamNginxModule < Formula
   bottle :unneeded
 
   def install
-    (share+"auth-pam-nginx-module").install Dir["*"]
+    pkgshare.install Dir["*"]
   end
 end

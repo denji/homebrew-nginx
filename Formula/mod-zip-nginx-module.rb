@@ -8,6 +8,6 @@ class ModZipNginxModule < Formula
   bottle :unneeded
 
   def install
-    (share+"mod-zip-nginx-module").install Dir["*"]
+    pkgshare.install Dir["*"]
   end
 end

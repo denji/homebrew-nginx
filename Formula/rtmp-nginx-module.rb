@@ -7,6 +7,6 @@ class RtmpNginxModule < Formula
   bottle :unneeded
 
   def install
-    (share/"rtmp-nginx-module").install Dir["*"]
+    pkgshare.install Dir["*"]
   end
 end

@@ -7,6 +7,6 @@ class RealtimeReqNginxModule < Formula
   bottle :unneeded
 
   def install
-    (share+"realtime-req-nginx-module").install Dir["*"]
+    pkgshare.install Dir["*"]
   end
 end

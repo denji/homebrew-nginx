@@ -7,10 +7,10 @@ class NchanNginxModule < Formula
   bottle :unneeded
 
   def install
-    (share+"nchan-nginx-module").install Dir["*"]
+    pkgshare.install Dir["*"]
   end
 
   test do
-    File.exist?(share/"nchan-nginx-module/config")
+    File.exist?pkgshare
   end
 end

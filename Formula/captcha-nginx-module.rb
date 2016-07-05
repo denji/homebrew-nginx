@@ -10,6 +10,6 @@ class CaptchaNginxModule < Formula
   depends_on "imagemagick"
 
   def install
-    (share+"captcha-nginx-module").install Dir["*"]
+    pkgshare.install Dir["*"]
   end
 end

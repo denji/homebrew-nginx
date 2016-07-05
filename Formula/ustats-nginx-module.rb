@@ -8,6 +8,6 @@ class UstatsNginxModule < Formula
   bottle :unneeded
 
   def install
-    (share+"ustats-nginx-module").install Dir["*"]
+    pkgshare.install Dir["*"]
   end
 end

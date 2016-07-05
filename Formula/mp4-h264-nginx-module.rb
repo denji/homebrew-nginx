@@ -10,7 +10,7 @@ class Mp4H264NginxModule < Formula
   patch :DATA
 
   def install
-    (share+"mp4-h264-nginx-module").install Dir["*"]
+    pkgshare.install Dir["*"]
   end
 end
 

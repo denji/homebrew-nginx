@@ -7,6 +7,6 @@ class HttpAccountingNginxModule < Formula
   bottle :unneeded
 
   def install
-    (share+"http-accounting-nginx-module").install Dir["*"]
+    pkgshare.install Dir["*"]
   end
 end

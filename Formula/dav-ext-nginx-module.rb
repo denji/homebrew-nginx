@@ -8,6 +8,6 @@ class DavExtNginxModule < Formula
   bottle :unneeded
 
   def install
-    (share+"dav-ext-nginx-module").install Dir["*"]
+    pkgshare.install Dir["*"]
   end
 end

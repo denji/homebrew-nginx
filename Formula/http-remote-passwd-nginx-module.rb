@@ -7,6 +7,6 @@ class HttpRemotePasswdNginxModule < Formula
   bottle :unneeded
 
   def install
-    (share+"http-remote-passwd-nginx-module").install Dir["*"]
+    pkgshare.install Dir["*"]
   end
 end

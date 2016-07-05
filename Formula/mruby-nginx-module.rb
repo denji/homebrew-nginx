@@ -9,6 +9,6 @@ class MrubyNginxModule < Formula
   depends_on "ngx-devel-kit"
 
   def install
-    (share+"mruby-nginx-module").install Dir["*"]
+    pkgshare.install Dir["*"]
   end
 end

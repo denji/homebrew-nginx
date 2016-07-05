@@ -8,6 +8,6 @@ class UploadProgressNginxModule < Formula
   bottle :unneeded
 
   def install
-    (share+"upload-progress-nginx-module").install Dir["*"]
+    pkgshare.install Dir["*"]
   end
 end

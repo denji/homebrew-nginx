@@ -8,6 +8,6 @@ class AntiDdosNginxModule < Formula
   bottle :unneeded
 
   def install
-    (share+"anti-ddos-nginx-module").install Dir["anddos/*"]
+    pkgshare.install Dir["anddos/*"]
   end
 end

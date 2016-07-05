@@ -11,6 +11,6 @@ class AuthLdapNginxModule < Formula
   depends_on "openldap"
 
   def install
-    (share+"auth-ldap-nginx-module").install Dir["*"]
+    pkgshare.install Dir["*"]
   end
 end
