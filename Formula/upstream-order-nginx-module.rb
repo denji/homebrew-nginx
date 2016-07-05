@@ -8,6 +8,6 @@ class UpstreamOrderNginxModule < Formula
   bottle :unneeded
 
   def install
-    (share+"upstream-order-nginx-module").install Dir["*"]
+    pkgshare.install Dir["*"]
   end
 end

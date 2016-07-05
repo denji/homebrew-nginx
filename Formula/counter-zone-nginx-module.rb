@@ -7,6 +7,6 @@ class CounterZoneNginxModule < Formula
   bottle :unneeded
 
   def install
-    (share+"counter-zone-nginx-module").install Dir["*"]
+    pkgshare.install Dir["*"]
   end
 end

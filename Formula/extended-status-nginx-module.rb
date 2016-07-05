@@ -7,6 +7,6 @@ class ExtendedStatusNginxModule < Formula
   bottle :unneeded
 
   def install
-    (share+"extended-status-nginx-module").install Dir["*"]
+    pkgshare.install Dir["*"]
   end
 end

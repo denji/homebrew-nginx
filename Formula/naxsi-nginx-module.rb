@@ -9,7 +9,7 @@ class NaxsiNginxModule < Formula
 
   def install
     cd "naxsi_src" do
-      (share+"naxsi-nginx-module").install Dir["*"]
+      pkgshare.install Dir["*"]
     end
 
     cd "naxsi_config" do
@@ -18,7 +18,7 @@ class NaxsiNginxModule < Formula
   end
 
   test do
-    File.exist?(share/"naxsi-nginx-module/config")
+    File.exist?pkgshare
     File.exist?(etc/"nginx/naxsi_core.rules")
   end
 end

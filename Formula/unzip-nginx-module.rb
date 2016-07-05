@@ -9,6 +9,6 @@ class UnzipNginxModule < Formula
   revision 1
 
   def install
-    (share+"unzip-nginx-module").install Dir["*"]
+    pkgshare.install Dir["*"]
   end
 end

@@ -9,6 +9,6 @@ class LogIfNginxModule < Formula
   bottle :unneeded
 
   def install
-    (share+"log-if-nginx-module").install Dir["*"]
+    pkgshare.install Dir["*"]
   end
 end

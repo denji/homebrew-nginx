@@ -8,6 +8,6 @@ class VarReqSpeedNginxModule < Formula
   bottle :unneeded
 
   def install
-    (share+"var-req-speed-nginx-module").install Dir["*"]
+    pkgshare.install Dir["*"]
   end
 end

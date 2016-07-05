@@ -8,6 +8,6 @@ class HealthcheckNginxModule < Formula
   bottle :unneeded
 
   def install
-    (share+"healthcheck-nginx-module").install Dir["*"]
+    pkgshare.install Dir["*"]
   end
 end

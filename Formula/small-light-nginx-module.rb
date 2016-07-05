@@ -11,6 +11,6 @@ class SmallLightNginxModule < Formula
   depends_on "pkg-config" => :build
 
   def install
-    (share+"small-light-nginx-module").install Dir["*"]
+    pkgshare.install Dir["*"]
   end
 end

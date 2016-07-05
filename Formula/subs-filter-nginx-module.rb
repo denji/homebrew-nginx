@@ -8,6 +8,6 @@ class SubsFilterNginxModule < Formula
   bottle :unneeded
 
   def install
-    (share+"subs-filter-nginx-module").install Dir["*"]
+    pkgshare.install Dir["*"]
   end
 end

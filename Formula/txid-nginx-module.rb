@@ -8,6 +8,6 @@ class TxidNginxModule < Formula
   bottle :unneeded
 
   def install
-    (share+"txid-nginx-module").install Dir["*"]
+    pkgshare.install Dir["*"]
   end
 end

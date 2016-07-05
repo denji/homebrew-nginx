@@ -7,6 +7,6 @@ class WebsockifyNginxModule < Formula
   bottle :unneeded
 
   def install
-    (share+"websockify-nginx-module").install Dir["*"]
+    pkgshare.install Dir["*"]
   end
 end

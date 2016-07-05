@@ -9,6 +9,6 @@ class ArrayVarNginxModule < Formula
   depends_on "ngx-devel-kit"
 
   def install
-    (share+"array-var-nginx-module").install Dir["*"]
+    pkgshare.install Dir["*"]
   end
 end

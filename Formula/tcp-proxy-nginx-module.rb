@@ -7,6 +7,6 @@ class TcpProxyNginxModule < Formula
   bottle :unneeded
 
   def install
-    (share+"tcp-proxy-nginx-module").install Dir["*"]
+    pkgshare.install Dir["*"]
   end
 end

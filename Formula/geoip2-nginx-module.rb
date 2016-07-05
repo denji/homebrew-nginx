@@ -10,6 +10,6 @@ class Geoip2NginxModule < Formula
   bottle :unneeded
 
   def install
-    (share+"geoip2-nginx-module").install Dir["*"]
+    pkgshare.install Dir["*"]
   end
 end

@@ -7,6 +7,6 @@ class CachePurgeNginxModule < Formula
   bottle :unneeded
 
   def install
-    (share+"cache-purge-nginx-module").install Dir["*"]
+    pkgshare.install Dir["*"]
   end
 end

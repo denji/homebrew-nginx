@@ -8,6 +8,6 @@ class NgxDevelKit < Formula
   bottle :unneeded
 
   def install
-    (share+"ngx-devel-kit").install Dir["*"]
+    pkgshare.install Dir["*"]
   end
 end

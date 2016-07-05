@@ -21,6 +21,6 @@ class LuaNginxModule < Formula
   end
 
   def install
-    (share+"lua-nginx-module").install Dir["*"]
+    pkgshare.install Dir["*"]
   end
 end

@@ -8,6 +8,6 @@ class UploadNginxModule < Formula
   bottle :unneeded
 
   def install
-    (share+"upload-nginx-module").install Dir["*"]
+    pkgshare.install Dir["*"]
   end
 end

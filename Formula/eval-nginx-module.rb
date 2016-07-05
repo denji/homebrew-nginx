@@ -7,6 +7,6 @@ class EvalNginxModule < Formula
   bottle :unneeded
 
   def install
-    (share/"eval-nginx-module").install Dir["*"]
+    pkgshare.install Dir["*"]
   end
 end
