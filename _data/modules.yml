@@ -42,7 +42,7 @@
 - name: auth-pam
   homepage: https://github.com/stogh/ngx_http_auth_pam_module
   version: '1.4'
-  sha256: '095742c5bcb86f2431e215db785bdeb238d594f085a0ac00d16125876a157409'
+  sha256: 095742c5bcb86f2431e215db785bdeb238d594f085a0ac00d16125876a157409
   description: Build with Auth PAM support
 - name: auth-req
   homepage: 
@@ -101,8 +101,8 @@
   description: Build with detecting DoS attacks support
 - name: echo
   homepage: https://github.com/openresty/echo-nginx-module
-  version: '0.58'
-  sha256: 190fe3977dd1910e82059f30f9baae3da2ee6e6fb50f18c9bc2605a19dbb9626
+  version: '0.60'
+  sha256: 1077da2229ac7d0a0215e9e6817e297c10697e095010d88f1adbd1add1ce9f4e
   description: Build with Echo support
 - name: eval
   homepage: https://github.com/vkholodkov/nginx-eval-module
@@ -116,8 +116,8 @@
   description: Build with Extended Status support
 - name: fancyindex
   homepage: https://github.com/aperezdc/ngx-fancyindex
-  version: 0.3.6
-  sha256: e73f1f0444f8c53601b51da8684b174c5ffd3b4ed6eb7956dd57f8b95485b68f
+  version: 0.4.1
+  sha256: 2b00d8e0ad2a67152a9cee7b7ee67990c742d501412df912baaf1eee9bb6dc71
   description: Build with Fancy Index support
 - name: flv
   homepage: 
@@ -131,8 +131,8 @@
   description: Build with HTTP GeoIP support
 - name: geoip2
   homepage: https://github.com/leev/ngx_http_geoip2_module
-  version: '1.0'
-  sha256: 7b1eacf92fe57ee6e33316f07e31bda440f24b3af9ab6b14dd109ac0c348d6c7
+  version: '1.1'
+  sha256: efa446c10fa4d80ffe8b5e340d83db62474ae7eba091016032b754a1d17a6769
   description: Build with GeoIP2 support
 - name: google-perftools
   homepage: 
@@ -191,8 +191,8 @@
   description: Build with Log-if support
 - name: lua
   homepage: https://github.com/openresty/lua-nginx-module
-  version: 0.10.5
-  sha256: 4f0292c37ab3d7cb980c994825040be1bda2c769cbd800e79c43eb37458347d4
+  version: 0.10.6
+  sha256: b98c4f648589bbf3e2c3d5fd18664e7a7ef89ac083e96c8e984fa919e7a7c073
   description: Build with LUA support
 - name: mail
   homepage: 
@@ -221,8 +221,8 @@
   description: Build with HTTP MP4/H264 support
 - name: mruby
   homepage: https://github.com/matsumoto-r/ngx_mruby
-  version: 1.17.1
-  sha256: 5a347a5db0f12fc765640b30019c2355d9b26b5cbe0407c834983907ea65ceb7
+  version: 1.18.3
+  sha256: 8b3b8d67209dfdac210bf82fc47aa4744bc4c8de927c38d5d0b48ea3bd1a2a31
   description: Build with MRuby support
 - name: naxsi
   homepage: https://github.com/nbs-system/naxsi
@@ -231,8 +231,8 @@
   description: Build with Naxsi support
 - name: nchan
   homepage: https://nchan.slact.net
-  version: 0.99.16
-  sha256: 200cc1b02931a067c3edb07243a7faac80265ce6aab37af680cf7373011efc41
+  version: 1.0.3
+  sha256: 24abe863ed1d3bfeb220393a8dc18a6961bab45172ac2a510d3e2e63a2469edb
   description: Build with Nchan support
 - name: no-pool-nginx
   homepage: 
@@ -306,13 +306,13 @@
   description: Build with Secure Link support
 - name: set-misc
   homepage: https://github.com/openresty/set-misc-nginx-module
-  version: '0.29'
-  sha256: 8d280fc083420afb41dbe10df9a8ceec98f1d391bd2caa42ebae67d5bc9295d8
+  version: '0.31'
+  sha256: 97946a68937b50ab8637e1a90a13198fe376d801dc3e7447052e43c28e9ee7de
   description: Build with Set Misc support
 - name: small-light
   homepage: https://github.com/cubicdaiya/ngx_small_light
-  version: 0.8.0
-  sha256: 8f513d6d3df32c3b05327d40e16efd020532a911d3eeca8015eb6271f2d4fd1c
+  version: 0.8.1
+  sha256: 0aacb02ca2fef6b6ed3aac242f5cda2aeefc010066d38975c2f82d526f5d4cbd
   description: Build with Small Light support
 - name: status
   homepage: 
@@ -361,8 +361,8 @@
   description: Build with Upload support
 - name: upload-progress
   homepage: http://wiki.nginx.org/HttpUploadProgressModule
-  version: 0.9.1
-  sha256: 99ec072cca35cd7791e77c40a8ded41a7a8c1111e057be26e55fba2fdf105f43
+  version: 0.9.2
+  sha256: b286689355442657650421d8e8398bd4abf9dbbaade65947bb0cb74a349cc497
   description: Build with Upload Progress support
 - name: upstream-order
   homepage: https://github.com/flygoast/ngx_http_upstream_order
@@ -381,8 +381,8 @@
   description: Build with Var Request-Speed support
 - name: vod
   homepage: https://github.com/kaltura/nginx-vod-module
-  version: '1.9'
-  sha256: af98d03a8d153bc57301f312b015efb25d7955d777af93d5b630d7a944b67e8f
+  version: '1.10'
+  sha256: 451fbd8e0ff5c6234d23a198f307ed47803bb7d666f5af9eb868fb43dcb2d4ec
   description: Build with VOD on-the-fly MP4 Repackager support
 - name: webdav
   homepage: 
