@@ -30,7 +30,6 @@ class Openresty < Formula
       "--prefix=#{prefix}",
       "--pid-path=#{var}/run/openresty.pid",
       "--lock-path=#{var}/run/openresty.lock",
-      "--sbin-path=#{bin}/openresty",
       "--conf-path=#{etc}/openresty/nginx.conf",
       "--http-log-path=#{var}/log/nginx/access.log",
       "--error-log-path=#{var}/log/nginx/error.log",
@@ -70,6 +69,10 @@ class Openresty < Formula
     # Install
     system "make"
     system "make", "install"
+  end
+  
+  test do
+    system "#{bin}/openresty", '-V'
   end
 
   plist_options :manual => "openresty"
