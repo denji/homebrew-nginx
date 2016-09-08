@@ -15,6 +15,7 @@ class Openresty < Formula
   option "with-gunzip", "Compile with ngx_http_gunzip_module"
   option "with-geoip", "Compile with ngx_http_geoip_module"
   option "with-stub_status", "Compile with ngx_http_stub_status_module"
+  option "with-slice", "Compile with ngx_http_slice_module"
 
   depends_on "pcre"
   depends_on "openssl"
@@ -47,6 +48,7 @@ class Openresty < Formula
     args << "--with-http_stub_status_module" if build.with? "stub_status"
     args << "--with-http_postgres_module" if build.with? "postgresql"
     args << "--with-http_iconv_module" if build.with? "iconv"
+    args << "--with-http_slice_module" if build.with? "slice"
 
     # Debugging mode, unfortunately without debugging symbols
     if build.with? "debug"

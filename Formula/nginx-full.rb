@@ -40,6 +40,7 @@ class NginxFull < Formula
       ["sub",              "http_sub_module",          "Build with HTTP Sub support"],
       ["webdav",           "http_dav_module",          "Build with WebDAV support"],
       ["xslt",             "http_xslt_module",         "Build with XSLT support"],
+      ["slice",            "http_slice_module",        "Build with Slice support"],
     ]
   end
 
