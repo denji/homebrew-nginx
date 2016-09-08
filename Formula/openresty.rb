@@ -70,7 +70,7 @@ class Openresty < Formula
     system "make"
     system "make", "install"
   end
-  
+
   test do
     system "#{bin}/openresty", '-V'
   end
