@@ -249,7 +249,7 @@ class NginxFull < Formula
     end
 
     # Set misc module and mruby module both depend on nginx-devel-kit being compiled in
-    if build.with?("set-misc-module") || build.with?("mruby-module")
+    if build.with?("set-misc-module") || build.with?("mruby-module") || build.with?("lua-module") || build.with?("array-var-module")
       args << "--add-module=#{HOMEBREW_PREFIX}/share/ngx-devel-kit"
     end
 
