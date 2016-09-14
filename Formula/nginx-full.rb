@@ -6,23 +6,20 @@ class NginxFull < Formula
   head "http://hg.nginx.org/nginx/", :using => :hg
 
   devel do
-    url "https://nginx.org/download/nginx-1.11.3.tar.gz"
-    sha256 "4a667f40f9f3917069db1dea1f2d5baa612f1fa19378aadf71502e846a424610"
+    url "https://nginx.org/download/nginx-1.11.4.tar.gz"
+    sha256 "06221c1f43f643bc6bfe5b2c26d19e09f2588d5cde6c65bdb77dfcce7c026b3b"
   end
 
   conflicts_with "nginx", :because => "nginx-full symlink with the name for compatibility with nginx"
 
   def self.core_modules
     [
-      ["passenger",        nil,                        "Build with Phusion Passenger support"],
-      ["no-pool-nginx",    nil,                        "Build without nginx-pool (valgrind debug memory)"],
       ["addition",         "http_addition_module",     "Build with HTTP Addition support"],
       ["auth-req",         "http_auth_request_module", "Build with HTTP Auth Request support"],
       ["debug",            "debug",                    "Build with debug log"],
       ["degredation",      "http_degradation_module",  "Build with HTTP Degredation support"],
       ["flv",              "http_flv_module",          "Build with FLV support"],
       ["geoip",            "http_geoip_module",        "Build with HTTP GeoIP support"],
-      ["stream-geoip",     "stream_geoip_module",      "Build with Stream GeoIP support"],
       ["google-perftools", "google_perftools_module",  "Build with Google Performance Tools support"],
       ["gunzip",           "http_gunzip_module",       "Build with Gunzip support"],
       ["gzip-static",      "http_gzip_static_module",  "Build with Gzip static support"],
@@ -30,17 +27,21 @@ class NginxFull < Formula
       ["image-filter",     "http_image_filter_module", "Build with Image Filter support"],
       ["mail",             "mail",                     "Build with Mail support"],
       ["mp4",              "http_mp4_module",          "Build with MP4 support"],
+      ["no-pool-nginx",    nil,                        "Build without nginx-pool (valgrind debug memory)"],
+      ["passenger",        nil,                        "Build with Phusion Passenger support"],
       ["pcre-jit",         "pcre-jit",                 "Build with JIT in PCRE"],
       ["perl",             "http_perl_module",         "Build with Perl support"],
       ["random-index",     "http_random_index_module", "Build with Random Index support"],
       ["realip",           "http_realip_module",       "Build with Real IP support"],
       ["secure-link",      "http_secure_link_module",  "Build with Secure Link support"],
+      ["slice",            "http_slice_module",        "Build with Slice support"],
       ["status",           "http_stub_status_module",  "Build with Stub Status support"],
       ["stream",           "stream",                   "Build with TCP load balancing support"],
+      ["stream-geoip",     "stream_geoip_module",      "Build with Stream GeoIP support"],
+      ["stream-realip",    "stream_realip_module",     "Build with Stream RealIP support"],
       ["sub",              "http_sub_module",          "Build with HTTP Sub support"],
       ["webdav",           "http_dav_module",          "Build with WebDAV support"],
       ["xslt",             "http_xslt_module",         "Build with XSLT support"],
-      ["slice",            "http_slice_module",        "Build with Slice support"],
     ]
   end
 
