@@ -9,6 +9,7 @@ class Openresty < Formula
   option "with-postgresql", "Compile with support for direct communication with PostgreSQL database servers"
   option "with-iconv", "Compile with support for converting character encodings"
   option "with-debug", "Compile with support for debug logging but without proper gdb debugging symbols"
+  option "without-ipv6", "Compile *without* support for IPv6"
 
   # nginx options
   option "with-webdav", "Compile with ngx_http_dav_module"
@@ -48,6 +49,7 @@ class Openresty < Formula
     args << "--with-http_postgres_module" if build.with? "postgresql"
     args << "--with-http_iconv_module" if build.with? "iconv"
     args << "--with-http_slice_module" if build.with? "slice"
+    args << "--with-ipv6" unless build.without? "ipv6"
 
     # Debugging mode, unfortunately without debugging symbols
     if build.with? "debug"
