@@ -6,8 +6,8 @@ class NginxFull < Formula
   head "http://hg.nginx.org/nginx/", :using => :hg
 
   devel do
-    url "https://nginx.org/download/nginx-1.11.5.tar.gz"
-    sha256 "223f8a2345a75f891098cf26ccdf208b293350388f51ce69083674c9432db6f6"
+    url "https://nginx.org/download/nginx-1.11.6.tar.gz"
+    sha256 "3153abbb518e2d9c032e1b127da3dc0028ad36cd4679e5f3be0b8afa33bc85bd"
   end
 
   conflicts_with "nginx", :because => "nginx-full symlink with the name for compatibility with nginx"
