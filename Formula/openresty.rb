@@ -1,8 +1,8 @@
 class Openresty < Formula
-  desc "Fast web app server"
+  desc "Scalable Web Platform by Extending NGINX with Lua"
   homepage "http://openresty.org"
-  url "https://openresty.org/download/openresty-1.11.2.1.tar.gz"
-  sha256 "0e55b52bf6d77ac2d499ae2b05055f421acde6bb937e650ed8f482d11cbeeb5c"
+  url "https://openresty.org/download/openresty-1.11.2.2.tar.gz"
+  sha256 "7f9ca62cfa1e4aedf29df9169aed0395fd1b90de254139996e554367db4d5a01"
 
   # nginx options
   option "without-luajit", "Compile *without* support for the Lua Just-In-Time Compiler"
@@ -49,7 +49,7 @@ class Openresty < Formula
     args << "--with-http_postgres_module" if build.with? "postgresql"
     args << "--with-http_iconv_module" if build.with? "iconv"
     args << "--with-http_slice_module" if build.with? "slice"
-    args << "--with-ipv6" unless build.without? "ipv6"
+    args << "--with-ipv6" if build.with? "ipv6"
 
     # Debugging mode, unfortunately without debugging symbols
     if build.with? "debug"
