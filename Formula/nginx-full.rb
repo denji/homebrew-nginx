@@ -1,13 +1,13 @@
 class NginxFull < Formula
   desc "HTTP(S) server, reverse proxy, IMAP/POP3 proxy server"
-  homepage "http://nginx.org/"
+  homepage "https://nginx.org/"
   url "https://nginx.org/download/nginx-1.10.2.tar.gz"
   sha256 "1045ac4987a396e2fa5d0011daf8987b612dd2f05181b67507da68cbe7d765c2"
   head "http://hg.nginx.org/nginx/", :using => :hg
 
   devel do
-    url "https://nginx.org/download/nginx-1.11.7.tar.gz"
-    sha256 "0d55beb52b2126a3e6c7ae40f092986afb89d77b8062ca0974512b8c76d9300e"
+    url "https://nginx.org/download/nginx-1.11.8.tar.gz"
+    sha256 "53aef3715d79015314c2dcb18f2b185a0c64368cc01b30bdf0737a215f666b34"
   end
 
   conflicts_with "nginx", :because => "nginx-full symlink with the name for compatibility with nginx"
