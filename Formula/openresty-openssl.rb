@@ -1,8 +1,7 @@
 class OpenrestyOpenssl < Formula
-  desc "This OpenSSL library build is specifically for OpenResty uses.
-  It may contain custom patches from OpenResty."
+  desc "This OpenSSL library build is specifically for OpenResty uses"
   homepage "https://www.openssl.org/"
-  VERSION = "1.0.2j"
+  VERSION = "1.0.2j".freeze
 
   stable do
     url "https://www.openssl.org/source/openssl-#{VERSION}.tar.gz"
@@ -30,12 +29,12 @@ class OpenrestyOpenssl < Formula
               'zlib_dso = DSO_load(NULL, "/usr/lib/libz.dylib", NULL, DSO_FLAG_NO_NAME_TRANSLATION);'
 
     args = [
-       "no-threads",
-       "shared",
-       "zlib",
-       "-g",
+      "no-threads",
+      "shared",
+      "zlib",
+      "-g",
       "--openssldir=#{prefix}",
-      "--libdir=lib"
+      "--libdir=lib",
     ]
 
     if MacOS.prefer_64_bit?
@@ -49,7 +48,7 @@ class OpenrestyOpenssl < Formula
 
     # Install
     system "make"
-    system "make", "install"
+    system "make", "install", "MANDIR=#{man}"
   end
 
   test do
