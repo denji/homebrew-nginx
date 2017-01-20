@@ -6,7 +6,7 @@ class SmallLightNginxModule < Formula
 
   bottle :unneeded
 
-  depends_on "imagemagick"
+  depends_on "imagemagick@6"
   depends_on "pcre"
   depends_on "pkg-config" => :build
 
