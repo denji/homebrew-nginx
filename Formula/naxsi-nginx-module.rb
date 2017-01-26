@@ -3,7 +3,7 @@ class NaxsiNginxModule < Formula
   homepage "https://github.com/nbs-system/naxsi"
   url "https://github.com/nbs-system/naxsi/archive/0.55.1.tar.gz"
   sha256 "45dd0df7a6b0b6aa9c64eb8c39a8e294d659d87fb18e192cf58f1402f3cdb0a8"
-  version_scheme 1
+  #version_scheme 1
   head "https://github.com/nbs-system/naxsi.git"
 
   bottle :unneeded
