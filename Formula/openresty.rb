@@ -6,8 +6,12 @@ class Openresty < Formula
   sha256 "7f9ca62cfa1e4aedf29df9169aed0395fd1b90de254139996e554367db4d5a01"
 
   option "with-debug", "Compile with support for debug logging but without proper gdb debugging symbols"
+  option "with-postgresql", "Compile with ngx_http_postgres_module"
+  option "with-iconv", "Compile with ngx_http_iconv_module"
+  option "with-slice", "Compile with ngx_http_slice_module"
 
   depends_on "pcre"
+  depends_on "postgresql" => :optional
   depends_on "homebrew/nginx/openresty-openssl"
   depends_on "geoip"
 
@@ -20,6 +24,10 @@ class Openresty < Formula
     # Configure
     cc_opt = "-I#{HOMEBREW_PREFIX}/include -I#{Formula["pcre"].opt_include} -I#{Formula["openresty-openssl"].opt_include}"
     ld_opt = "-L#{HOMEBREW_PREFIX}/lib -L#{Formula["pcre"].opt_lib} -L#{Formula["openresty-openssl"].opt_lib}"
+
+    args << "--with-http_postgres_module" if build.with? "postgresql"
+    args << "--with-http_iconv_module" if build.with? "iconv"
+    args << "--with-http_slice_module" if build.with? "slice"
 
     args = %W[
       --prefix=#{prefix}
