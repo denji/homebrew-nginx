@@ -4,8 +4,14 @@ class OpenrestyDebug < Formula
   VERSION = "1.11.2.2".freeze
   url "https://openresty.org/download/openresty-#{VERSION}.tar.gz"
   sha256 "7f9ca62cfa1e4aedf29df9169aed0395fd1b90de254139996e554367db4d5a01"
+  revision 2
+
+  option "with-postgresql", "Compile with ngx_http_postgres_module"
+  option "with-iconv", "Compile with ngx_http_iconv_module"
+  option "with-slice", "Compile with ngx_http_slice_module"
 
   depends_on "pcre"
+  depends_on "postgresql" => :optional
   depends_on "homebrew/nginx/openresty-openssl"
   depends_on "geoip"
 
@@ -21,6 +27,11 @@ class OpenrestyDebug < Formula
 
     args = %W[
       --prefix=#{prefix}
+      --pid-path=#{var}/run/openresty.pid
+      --lock-path=#{var}/run/openresty.lock
+      --conf-path=#{etc}/openresty/nginx.conf
+      --http-log-path=#{var}/log/nginx/access.log
+      --error-log-path=#{var}/log/nginx/error.log
       --with-debug
       --with-cc-opt=#{cc_opt}
       --with-ld-opt=#{ld_opt}
@@ -52,6 +63,10 @@ class OpenrestyDebug < Formula
       --with-luajit-xcflags=-DLUAJIT_NUMMODE=2\ -DLUAJIT_ENABLE_LUA52COMPAT
       --with-dtrace-probes
     ]
+
+    args << "--with-http_postgres_module" if build.with? "postgresql"
+    args << "--with-http_iconv_module" if build.with? "iconv"
+    args << "--with-http_slice_module" if build.with? "slice"
 
     system "./configure", *args
 
