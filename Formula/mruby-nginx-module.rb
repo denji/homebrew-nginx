@@ -1,8 +1,8 @@
 class MrubyNginxModule < Formula
   desc "Embed the power of MRuby into Nginx"
   homepage "https://github.com/matsumoto-r/ngx_mruby"
-  url "https://github.com/matsumoto-r/ngx_mruby/archive/v1.18.8.tar.gz"
-  sha256 "2b0036b70966f6c3fb3d0cc31cb7c2ac46d03cf74fed7f0029de9614993df0aa"
+  url "https://github.com/matsumoto-r/ngx_mruby/archive/v1.18.9.tar.gz"
+  sha256 "ec91caf58b9326407fcda1f02c41c19fad39d4baf38b2806c49dab8bee6c3105"
 
   bottle :unneeded
 
