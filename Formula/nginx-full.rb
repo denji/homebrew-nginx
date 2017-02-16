@@ -244,6 +244,12 @@ class NginxFull < Formula
       --error-log-path=#{var}/log/nginx/error.log
     ]
 
+    # Stream nginx-1.11.5+ allows extracting information
+    # from the ClientHello message without terminating SSL/TLS
+    if build.devel? || build.head?
+      args << "--with-stream_ssl_preread_module"
+    end
+
     # Core Modules
     self.class.core_modules.each do |arr|
       args << "--with-#{arr[1]}" if build.with?(arr[0]) && arr[1]
