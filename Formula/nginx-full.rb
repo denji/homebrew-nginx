@@ -156,7 +156,7 @@ class NginxFull < Formula
       patches[:p1] = "https://raw.githubusercontent.com/nginx-modules/ngx_ustats_module/master/nginx-1.6.1.patch"
     end
     if build.with?("tcp-proxy-module")
-      patches[:p1] = "https://raw.githubusercontent.com/yaoweibin/nginx_tcp_proxy_module/v0.4.5/tcp.patch"
+      patches[:p1] = "https://raw.githubusercontent.com/yaoweibin/nginx_tcp_proxy_module/v0.4.5/tcp_1_8.patch"
     end
     patches
   end
