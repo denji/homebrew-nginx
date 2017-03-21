@@ -1,8 +1,8 @@
 class VodNginxModule < Formula
   desc "drm on the fly for video on demand"
   homepage "https://github.com/kaltura/nginx-vod-module"
-  url "https://github.com/kaltura/nginx-vod-module/archive/1.14.tar.gz"
-  sha256 "8034936d378b3487d3f2818f84141fe33f825bd8e127ca841292a4b445cbf040"
+  url "https://github.com/kaltura/nginx-vod-module/archive/1.15.tar.gz"
+  sha256 "9e5ba4bb05911b1076cf391d501b500cf029f9337e0a39aea2b7ea8808c0613e"
 
   bottle :unneeded
 
