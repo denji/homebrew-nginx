@@ -7,7 +7,7 @@ class NginxFull < Formula
 
   devel do
     url "https://nginx.org/download/nginx-1.11.12.tar.gz"
-    sha256 "1f0acf1549933a10b1ef9cf703b4a1b314917cb9b533c0276ed953fd253d513e"
+    sha256 "2aff7f9396d1f77256efc363e1cc05ba52d40a29e6de4d9bc08aa444eea14122"
   end
 
   conflicts_with "nginx", :because => "nginx-full symlink with the name for compatibility with nginx"
