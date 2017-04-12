@@ -147,7 +147,7 @@ class NginxFull < Formula
     patches = {}
     # https://github.com/openresty/no-pool-nginx
     if build.with?("no-pool-nginx")
-      patches[:p2] = "https://raw.githubusercontent.com/openresty/no-pool-nginx/master/nginx-1.7.7-no_pool.patch" if build.devel?
+      patches[:p2] = "https://raw.githubusercontent.com/openresty/no-pool-nginx/master/nginx-1.7.7-no_pool.patch"
     end
     if build.with?("extended-status-module")
       patches[:p1] = "https://raw.githubusercontent.com/nginx-modules/ngx_http_extended_status_module/master/extended_status-1.10.1.patch"
