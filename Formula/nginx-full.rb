@@ -5,11 +5,6 @@ class NginxFull < Formula
   sha256 "b4222e26fdb620a8d3c3a3a8b955e08b713672e1bc5198d1e4f462308a795b30"
   head "http://hg.nginx.org/nginx/", :using => :hg
 
-  devel do
-    url "https://nginx.org/download/nginx-1.12.0.tar.gz"
-    sha256 "b4222e26fdb620a8d3c3a3a8b955e08b713672e1bc5198d1e4f462308a795b30"
-  end
-
   conflicts_with "nginx", :because => "nginx-full symlink with the name for compatibility with nginx"
 
   def self.core_modules
