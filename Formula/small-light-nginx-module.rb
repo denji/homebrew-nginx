@@ -1,8 +1,8 @@
 class SmallLightNginxModule < Formula
   desc "Dynamic image transformation module"
   homepage "https://github.com/cubicdaiya/ngx_small_light"
-  url "https://github.com/cubicdaiya/ngx_small_light/archive/v0.9.1.tar.gz"
-  sha256 "08ee0dec308d3ebaa01871e36c0516739366d0481bac957dd7878ee948c0d42e"
+  url "https://github.com/cubicdaiya/ngx_small_light/archive/v0.9.2.tar.gz"
+  sha256 "4cf660651d11330a13aab29eb1722bf792d7c3c42e2919a36a1957c4ed0f1533"
 
   bottle :unneeded
 
