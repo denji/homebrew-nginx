@@ -2,8 +2,8 @@ class NchanNginxModule < Formula
   desc "fast, flexible pub/sub server"
   homepage "https://nchan.io"
   head "https://github.com/slact/nchan.git"
-  url "https://github.com/slact/nchan/archive/v1.1.4.tar.gz"
-  sha256 "8d7299c1b78e87c7970fc9656446ffa88d0ebc6abd2788cb067326cae355f36a"
+  url "https://github.com/slact/nchan/archive/v1.1.5.tar.gz"
+  sha256 "b376a79321bd920ac4babb3f3d699198caac017aec24ca333d7361c40760e7c2"
 
   bottle :unneeded
 
