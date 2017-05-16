@@ -1,6 +1,7 @@
 class OpenrestyOpenssl < Formula
   desc "This OpenSSL library build is specifically for OpenResty uses"
   homepage "https://www.openssl.org/"
+  keg_only "Only for use with OpenResty"
   VERSION = "1.0.2k".freeze
 
   stable do
