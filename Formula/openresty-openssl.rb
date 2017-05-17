@@ -9,6 +9,7 @@ class OpenrestyOpenssl < Formula
     mirror "https://dl.bintray.com/homebrew/mirror/openssl-1#{VERSION}.tar.gz"
     mirror "https://www.mirrorservice.org/sites/ftp.openssl.org/source/openssl-#{VERSION}.tar.gz"
     sha256 "6b3977c61f2aedf0f96367dcfb5c6e578cf37e7b8d913b4ecb6643c3cb88d8c0"
+    revision 1
 
     patch do
       url "https://raw.githubusercontent.com/openresty/openresty/master/patches/openssl-1.0.2h-sess_set_get_cb_yield.patch"
