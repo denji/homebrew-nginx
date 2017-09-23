@@ -186,6 +186,7 @@ class NginxFull < Formula
 
     # mruby module needs to prepare compiling mruby
     if build.with?("mruby-module")
+      ENV["NGX_MRUBY_LDFLAGS"] = "-lcrypto"
       mruby = Formula["mruby-nginx-module"]
       origin_dir = Dir.pwd
       Dir.chdir("#{mruby.share}/#{mruby.name}")
