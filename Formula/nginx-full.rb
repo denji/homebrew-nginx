@@ -86,6 +86,7 @@ class NginxFull < Formula
       "nchan" => "Build with Nchan support",
       "notice" => "Build with HTTP Notice support",
       "php-session" => "Build with Parse PHP Sessions support",
+      "tarantool" => "Build with Tarantool upstream support",
       "push-stream" => "Build with HTTP Push Stream support",
       "realtime-req" => "Build with Realtime Request support",
       "redis" => "Build with Redis support",
