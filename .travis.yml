@@ -18,12 +18,10 @@ before_install:
       export HOME=/home/linuxbrew;
       export LINUXBREW=$HOME/.linuxbrew;
       sudo apt-get -qq update;
-      sudo apt-get install -y texinfo;
       sudo mkdir $HOME;
       sudo chown "$USER:" $HOME;
       mkdir $LINUXBREW;
       curl -L https://github.com/Linuxbrew/brew/tarball/master | tar xz -m --strip 1 -C $LINUXBREW;
-      brew tap linuxbrew/xorg;
     fi
   - brew update || brew update
   - if [ -f ".git/shallow" ]; then travis_retry git fetch --unshallow; fi
