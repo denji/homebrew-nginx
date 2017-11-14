@@ -1,6 +1,6 @@
 class Openresty < Formula
   desc "Scalable Web Platform by Extending NGINX with Lua"
-  homepage "http://openresty.org"
+  homepage "https://openresty.org"
   VERSION = "1.13.6.1".freeze
   url "https://openresty.org/download/openresty-#{VERSION}.tar.gz"
   sha256 "d1246e6cfa81098eea56fb88693e980d3e6b8752afae686fab271519b81d696b"
