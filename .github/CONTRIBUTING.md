@@ -38,7 +38,7 @@ Adding or incrementing a [formula revision] forces a formula upgrade, for instan
 
 ## Submitting a Pull Request
 
-First read core Homebrew's [How To Open a Homebrew Pull Request (and get it merged)]. The Homebrew NGINX tap repository is located in `$(brew --repository)/Library/Taps/homebrew/homebrew-nginx`.
+First read core Homebrew's [How To Open a Homebrew Pull Request (and get it merged)]. The Homebrew NGINX tap repository is located in `$(brew --repository)/Library/Taps/denji/homebrew-nginx`.
 
 Check [open pull requests] before submitting a duplicate. We prefer one formula per PR.
 
@@ -88,8 +88,8 @@ Depending on `:mpi` is more flexible than depending directly on `mpich2` or `ope
 
 Improvements to this guide are appreciated via issues or pull requests. If you're willing to add a new section to this documentation or the wiki, we would very much welcome your contribution.
 
-[Homebrew NGINX]: https://github.com/Homebrew/homebrew-nginx
-[open pull requests]: https://github.com/Homebrew/homebrew-nginx/pulls
+[Homebrew NGINX]: https://github.com/denji/homebrew-nginx
+[open pull requests]: https://github.com/denji/homebrew-nginx/pulls
 [How To Open a Homebrew Pull Request (and get it merged)]: https://github.com/Homebrew/brew/blob/master/docs/How-To-Open-a-Homebrew-Pull-Request-(and-get-it-merged).md
 [Interesting Taps & Forks]: https://github.com/Homebrew/brew/blob/master/docs/Interesting-Taps-%26-Forks.md
 [Formula revision]: https://github.com/Homebrew/brew/blob/master/docs/Formula-Cookbook.md#formulae-revisions

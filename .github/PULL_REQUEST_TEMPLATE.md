@@ -1,7 +1,7 @@
 ### Have you:
 
-- [ ] Followed the guidelines in our [Contributing](https://github.com/Homebrew/homebrew-nginx/blob/master/.github/CONTRIBUTING.md) document?
-- [ ] Checked to ensure there aren't other open [Pull Requests](https://github.com/Homebrew/homebrew-nginx/pulls) for the same update/change?
+- [ ] Followed the guidelines in our [Contributing](https://github.com/denji/homebrew-nginx/blob/master/.github/CONTRIBUTING.md) document?
+- [ ] Checked to ensure there aren't other open [Pull Requests](https://github.com/denji/homebrew-nginx/pulls) for the same update/change?
 - [ ] Run `brew audit --strict --online <formula>` (where `<formula>` is the name of the formula you're submitting) and corrected all errors?
 - [ ] Built your formula locally prior to submission with `brew install <formula>`?
 

@@ -20,6 +20,6 @@
 
 ### Formula Requests:
 
-**The quickest way to get a new formula into Homebrew is to file a [Pull Request](https://github.com/Homebrew/homebrew-nginx/pulls)**.
+**The quickest way to get a new formula into Homebrew is to file a [Pull Request](https://github.com/denji/homebrew-nginx/pulls)**.
 
 We will consider your request but it may be closed if it's something we're not actively planning to work on.
