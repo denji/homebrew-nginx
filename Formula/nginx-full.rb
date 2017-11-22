@@ -60,6 +60,7 @@ class NginxFull < Formula
       "auth-pam" => "Build with Auth PAM support",
       "auto-keepalive" => "Build with Auto Disable KeepAlive support",
       "autols" => "Build with Flexible Auto Index support",
+      "brotli" => "Build with Brotli compression support",
       "cache-purge" => "Build with Cache Purge support",
       "captcha" => "Build with Captcha support",
       "counter-zone" => "Build with Realtime Counter Zone support",
