@@ -15,8 +15,8 @@ class BrotliNginxModule < Formula
 
   # Define main brotli package as a resource
   resource "brotli-devel" do
-    url "https://github.com/google/brotli/archive/v1.0.1.tar.gz"
-    sha256 "6870f9c2c63ef58d7da36e5212a3e1358427572f6ac5a8b5a73a815cf3e0c4a6"
+		url "https://github.com/google/brotli/archive/222564a95d9ab58865a096b8d9f7324ea5f2e03e.tar.gz"
+    sha256 "4299a2a86f0b931e80dd548be17fcaa5a6c158a0727f497f22cbb365668af0fe"
   end
 
   def deps_dir
