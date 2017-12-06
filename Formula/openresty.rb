@@ -27,11 +27,11 @@ class Openresty < Formula
 
     args = %W[
       --prefix=#{prefix}
-      --pid-path=#{var}/run/openresty.pid
-      --lock-path=#{var}/run/openresty.lock
+      --pid-path=logs/openresty.pid
+      --lock-path=logs/openresty.lock
       --conf-path=#{etc}/openresty/nginx.conf
-      --http-log-path=#{var}/log/nginx/access.log
-      --error-log-path=#{var}/log/nginx/error.log
+      --http-log-path=logs/access.log
+      --error-log-path=logs/error.log
       --with-cc-opt=#{cc_opt}
       --with-ld-opt=#{ld_opt}
       --with-pcre-jit
