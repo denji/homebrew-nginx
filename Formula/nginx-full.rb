@@ -42,6 +42,7 @@ class NginxFull < Formula
       ["stream-ssl-preread", "stream_ssl_preread_module", "Build with Stream without terminating SSL/TLS support"],
       ["stream-geoip",       "stream_geoip_module",       "Build with Stream GeoIP support"],
       ["stream-realip",      "stream_realip_module",      "Build with Stream RealIP support"],
+      ["stub-status",        "http_stub_status_module",   "Build with Stub Status support"],
       ["sub",                "http_sub_module",           "Build with HTTP Sub support"],
       ["webdav",             "http_dav_module",           "Build with WebDAV support"],
       ["xslt",               "http_xslt_module",          "Build with XSLT support"],
