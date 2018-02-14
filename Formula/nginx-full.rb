@@ -3,14 +3,12 @@ class NginxFull < Formula
   homepage "https://nginx.org/"
   url "https://nginx.org/download/nginx-1.12.2.tar.gz"
   sha256 "305f379da1d5fb5aefa79e45c829852ca6983c7cd2a79328f8e084a324cf0416"
-	head "https://github.com/nginx/nginx.git"
+  head "https://github.com/nginx/nginx.git"
 
   devel do
     url "https://nginx.org/download/nginx-1.13.8.tar.gz"
-    sha256 "8410b6c31ff59a763abf7e5a5316e7629f5a5033c95a3a0ebde727f9ec8464c5<Paste>"
+    sha256 "8410b6c31ff59a763abf7e5a5316e7629f5a5033c95a3a0ebde727f9ec8464c5"
   end
-
-  conflicts_with "nginx", :because => "nginx-full symlink with the name for compatibility with nginx"
 
   def self.core_modules
     [
@@ -48,6 +46,14 @@ class NginxFull < Formula
       [ "sub",                "http_sub_module",           "Build with HTTP Sub support"                           ],
       [ "webdav",             "http_dav_module",           "Build with WebDAV support"                             ],
       [ "xslt",               "http_xslt_module",          "Build with XSLT support"                               ],
+    ]
+  end
+
+  def self.core_modules_without
+    [
+      [ "mail-imap", "mail_imap_module", "Build without IMAP mail support"  ],
+      [ "mail-pop3", "mail_pop3_module", "Build without POP3 mail support"  ],
+      [ "mail-smtp", "mail_smtp_module", "Build without SMTP mail support"  ],
     ]
   end
 
@@ -113,7 +119,7 @@ class NginxFull < Formula
     }
   end
 
-  option 'with-homebrew-libressl', 'Include LibreSSL instead of OpenSSL via Homebrew'
+  option "with-homebrew-libressl", "Include LibreSSL instead of OpenSSL via Homebrew"
 
   depends_on "gcc"
   depends_on "llvm"
@@ -149,10 +155,17 @@ class NginxFull < Formula
   core_modules.each do |arr|
     option "with-#{arr[0]}", arr[2]
   end
+
+  core_modules_without.each do |arr|
+    option "without-#{arr[0]}", arr[2]
+  end
+
   third_party_modules.each do |name, desc|
     option "with-#{name}-module", desc
     depends_on "#{name}-nginx-module" if build.with?("#{name}-module")
   end
+
+  conflicts_with "nginx", :because => "nginx-full symlink with the name for compatibility with nginx"
 
   def patches
     patches = {}
@@ -253,15 +266,21 @@ class NginxFull < Formula
 
     # Set compilier and linker variables
     cc_opt += " -I#{Formula["llvm"].opt_include}"
-    ld_opt += " -L#{Formula["llvm"].opt_lib}-Wl,-rpath,#{Formula["llvm"].opt_lib}"
+    ld_opt += " -L#{Formula["llvm"].opt_lib} -Wl,-rpath,#{Formula["llvm"].opt_lib}"
 
-    ENV.append "CC",  "#{Formula["gcc"].bin}/gcc-7"
-    ENV.append "CXX", "#{Formula["gcc"].bin}/g++-7"
+    ENV["CC"]          = "#{Formula["gcc"].bin}/gcc-7"
+    ENV["OBJC"]        = "#{Formula["gcc"].bin}/gcc-7"
+    ENV["HOMEBREW_CC"] = "#{Formula["gcc"].bin}/gcc-7"
+
+    ENV["CXX"]          = "#{Formula["gcc"].bin}/g++-7"
+    ENV["OBJCXX"]       = "#{Formula["gcc"].bin}/g++-7"
+    ENV["HOMEBREW_CXX"] = "#{Formula["gcc"].bin}/g++-7"
 
     args = %W[
       --prefix=#{prefix}
       --with-http_ssl_module
       --with-pcre
+      --with-compat
       --with-threads
       --sbin-path=#{bin}/nginx
       --with-cc=#{Formula["gcc"].bin}/gcc-7
@@ -282,6 +301,10 @@ class NginxFull < Formula
     # Core Modules
     self.class.core_modules.each do |arr|
       args << "--with-#{arr[1]}" if build.with?(arr[0]) && arr[1]
+    end
+
+    self.class.core_modules_without.each do |arr|
+      args << "--without-#{arr[1]}" if build.without?(arr[0]) && arr[1]
     end
 
     # Set misc module and mruby module both depend on nginx-devel-kit being compiled in
