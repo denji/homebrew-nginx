@@ -3,134 +3,143 @@ class NginxFull < Formula
   homepage "https://nginx.org/"
   url "https://nginx.org/download/nginx-1.12.2.tar.gz"
   sha256 "305f379da1d5fb5aefa79e45c829852ca6983c7cd2a79328f8e084a324cf0416"
-  head "http://hg.nginx.org/nginx/", :using => :hg
+	head "https://github.com/nginx/nginx.git"
 
   devel do
-    url "https://nginx.org/download/nginx-1.13.7.tar.gz"
-    sha256 "beb732bc7da80948c43fd0bf94940a21a21b1c1ddfba0bd99a4b88e026220f5c"
+    url "https://nginx.org/download/nginx-1.13.8.tar.gz"
+    sha256 "8410b6c31ff59a763abf7e5a5316e7629f5a5033c95a3a0ebde727f9ec8464c5<Paste>"
   end
 
   conflicts_with "nginx", :because => "nginx-full symlink with the name for compatibility with nginx"
 
   def self.core_modules
     [
-      ["addition",           "http_addition_module",      "Build with HTTP Addition support"],
-      ["auth-req",           "http_auth_request_module",  "Build with HTTP Auth Request support"],
-      ["debug",              "debug",                     "Build with debug log"],
-      ["degredation",        "http_degradation_module",   "Build with HTTP Degredation support"],
-      ["flv",                "http_flv_module",           "Build with FLV support"],
-      ["geoip",              "http_geoip_module",         "Build with HTTP GeoIP support"],
-      ["google-perftools",   "google_perftools_module",   "Build with Google Performance Tools support"],
-      ["gunzip",             "http_gunzip_module",        "Build with Gunzip support"],
-      ["gzip-static",        "http_gzip_static_module",   "Build with Gzip static support"],
-      ["http2",              "http_v2_module",            "Build with HTTP/2 support"],
-      ["image-filter",       "http_image_filter_module",  "Build with Image Filter support"],
-      ["mail",               "mail",                      "Build with Mail support"],
-      ["mail-ssl",           "mail_ssl_module",           "Build with Mail SSL/TLS support"],
-      ["mp4",                "http_mp4_module",           "Build with MP4 support"],
-      ["no-pool-nginx",      nil,                         "Build without nginx-pool (valgrind debug memory)"],
-      ["passenger",          nil,                         "Build with Phusion Passenger support"],
-      ["pcre-jit",           "pcre-jit",                  "Build with JIT in PCRE"],
-      ["perl",               "http_perl_module",          "Build with Perl support"],
-      ["random-index",       "http_random_index_module",  "Build with Random Index support"],
-      ["realip",             "http_realip_module",        "Build with Real IP support"],
-      ["secure-link",        "http_secure_link_module",   "Build with Secure Link support"],
-      ["slice",              "http_slice_module",         "Build with Slice support"],
-      ["status",             "http_stub_status_module",   "Build with Stub Status support"],
-      ["stream",             "stream",                    "Build with TCP/UDP proxy support"],
-      ["stream-ssl",         "stream_ssl_module",         "Build with Stream SSL/TLS support"],
-      ["stream-ssl-preread", "stream_ssl_preread_module", "Build with Stream without terminating SSL/TLS support"],
-      ["stream-geoip",       "stream_geoip_module",       "Build with Stream GeoIP support"],
-      ["stream-realip",      "stream_realip_module",      "Build with Stream RealIP support"],
-      ["sub",                "http_sub_module",           "Build with HTTP Sub support"],
-      ["webdav",             "http_dav_module",           "Build with WebDAV support"],
-      ["xslt",               "http_xslt_module",          "Build with XSLT support"],
+      [ "addition",           "http_addition_module",      "Build with HTTP Addition support"                      ],
+      [ "auth-req",           "http_auth_request_module",  "Build with HTTP Auth Request support"                  ],
+      [ "debug",              "debug",                     "Build with debug log"                                  ],
+      [ "degredation",        "http_degradation_module",   "Build with HTTP Degredation support"                   ],
+      [ "flv",                "http_flv_module",           "Build with FLV support"                                ],
+      [ "geoip",              "http_geoip_module",         "Build with HTTP GeoIP support"                         ],
+      [ "google-perftools",   "google_perftools_module",   "Build with Google Performance Tools support"           ],
+      [ "gunzip",             "http_gunzip_module",        "Build with Gunzip support"                             ],
+      [ "gzip-static",        "http_gzip_static_module",   "Build with Gzip static support"                        ],
+      [ "http2",              "http_v2_module",            "Build with HTTP/2 support"                             ],
+      [ "image-filter",       "http_image_filter_module",  "Build with Image Filter support"                       ],
+      [ "libatomic",          "libatomic",                 "Build with libatomic_opts support"                     ],
+      [ "mail",               "mail",                      "Build with Mail support"                               ],
+      [ "mail-ssl",           "mail_ssl_module",           "Build with Mail SSL/TLS support"                       ],
+      [ "mp4",                "http_mp4_module",           "Build with MP4 support"                                ],
+      [ "no-pool-nginx",      nil,                         "Build without nginx-pool (valgrind debug memory)"      ],
+      [ "passenger",          nil,                         "Build with Phusion Passenger support"                  ],
+      [ "pcre-jit",           "pcre-jit",                  "Build with JIT in PCRE"                                ],
+      [ "perl",               "http_perl_module",          "Build with Perl support"                               ],
+      [ "poll",               "poll_module",               "Build with Polling support"                            ],
+      [ "random-index",       "http_random_index_module",  "Build with Random Index support"                       ],
+      [ "realip",             "http_realip_module",        "Build with Real IP support"                            ],
+      [ "secure-link",        "http_secure_link_module",   "Build with Secure Link support"                        ],
+      [ "select",             "select_module",             "Build with select support"                             ],
+      [ "slice",              "http_slice_module",         "Build with Slice support"                              ],
+      [ "stream",             "stream",                    "Build with TCP/UDP proxy support"                      ],
+      [ "stream-geoip",       "stream_geoip_module",       "Build with Stream GeoIP support"                       ],
+      [ "stream-realip",      "stream_realip_module",      "Build with Stream RealIP support"                      ],
+      [ "stream-ssl",         "stream_ssl_module",         "Build with Stream SSL/TLS support"                     ],
+      [ "stream-ssl-preread", "stream_ssl_preread_module", "Build with Stream without terminating SSL/TLS support" ],
+      [ "stub-status",        "http_stub_status_module",   "Build with Stub Status support"                        ],
+      [ "sub",                "http_sub_module",           "Build with HTTP Sub support"                           ],
+      [ "webdav",             "http_dav_module",           "Build with WebDAV support"                             ],
+      [ "xslt",               "http_xslt_module",          "Build with XSLT support"                               ],
     ]
   end
 
   def self.third_party_modules
     {
-      "accept-language" => "Build with Accept Language support",
-      "accesskey" => "Build with HTTP Access Key support",
-      "ajp" => "Build with AJP-protocol support",
-      "anti-ddos" => "Build with Anti-DDoS support",
-      "array-var" => "Build with Array Var support",
-      "auth-digest" => "Build with Auth Digest support",
-      "auth-ldap" => "Build with Auth LDAP support",
-      "auth-pam" => "Build with Auth PAM support",
-      "auto-keepalive" => "Build with Auto Disable KeepAlive support",
-      "autols" => "Build with Flexible Auto Index support",
-      "brotli" => "Build with Brotli compression support",
-      "cache-purge" => "Build with Cache Purge support",
-      "captcha" => "Build with Captcha support",
-      "counter-zone" => "Build with Realtime Counter Zone support",
-      "ctpp2" => "Build with CT++ support",
-      "dav-ext" => "Build with HTTP WebDav Extended support",
-      "dosdetector" => "Build with detecting DoS attacks support",
-      "echo" => "Build with Echo support",
-      "eval" => "Build with Eval support",
-      "extended-status" => "Build with Extended Status support",
-      "fancyindex" => "Build with Fancy Index support",
-      "geoip2" => "Build with GeoIP2 support",
-      "headers-more" => "Build with Headers More support",
-      "healthcheck" => "Build with Healthcheck support",
-      "http-accounting" => "Build with HTTP Accounting support",
+      "accept-language"     => "Build with Accept Language support",
+      "accesskey"           => "Build with HTTP Access Key support",
+      "ajp"                 => "Build with AJP-protocol support",
+      "anti-ddos"           => "Build with Anti-DDoS support",
+      "array-var"           => "Build with Array Var support",
+      "auth-digest"         => "Build with Auth Digest support",
+      "auth-ldap"           => "Build with Auth LDAP support",
+      "auth-pam"            => "Build with Auth PAM support",
+      "auto-keepalive"      => "Build with Auto Disable KeepAlive support",
+      "autols"              => "Build with Flexible Auto Index support",
+      "brotli"              => "Build with Brotli compression support",
+      "cache-purge"         => "Build with Cache Purge support",
+      "captcha"             => "Build with Captcha support",
+      "counter-zone"        => "Build with Realtime Counter Zone support",
+      "ctpp2"               => "Build with CT++ support",
+      "dav-ext"             => "Build with HTTP WebDav Extended support",
+      "dosdetector"         => "Build with detecting DoS attacks support",
+      "echo"                => "Build with Echo support",
+      "eval"                => "Build with Eval support",
+      "extended-status"     => "Build with Extended Status support",
+      "fancyindex"          => "Build with Fancy Index support",
+      "geoip2"              => "Build with GeoIP2 support",
+      "headers-more"        => "Build with Headers More support",
+      "healthcheck"         => "Build with Healthcheck support",
+      # "http-accounting"     => "Build with HTTP Accounting support",
       "http-flood-detector" => "Build with Var Flood-Threshold support",
-      "http-remote-passwd" => "Build with Remote Basic Auth Password support",
-      "log-if" => "Build with Log-if support",
-      "lua" => "Build with LUA support",
-      "mod-zip" => "Build with HTTP Zip support",
-      "mogilefs" => "Build with HTTP MogileFS support",
-      "mp4-h264" => "Build with HTTP MP4/H264 support",
-      "mruby" => "Build with MRuby support",
-      "naxsi" => "Build with Naxsi support",
-      "nchan" => "Build with Nchan support",
-      "notice" => "Build with HTTP Notice support",
-      "php-session" => "Build with Parse PHP Sessions support",
-      "tarantool" => "Build with Tarantool upstream support",
-      "push-stream" => "Build with HTTP Push Stream support",
-      "realtime-req" => "Build with Realtime Request support",
-      "redis" => "Build with Redis support",
-      "redis2" => "Build with Redis2 support",
-      "rtmp" => "Build with RTMP support",
-      "set-misc" => "Build with Set Misc support",
-      "small-light" => "Build with Small Light support",
-      "subs-filter" => "Build with Substitutions Filter support",
-      "tcp-proxy" => "Build with TCP Proxy support",
-      "txid" => "Build with Sortable Unique ID support",
-      "unzip" => "Build with UnZip support",
-      "upload" => "Build with Upload support",
-      "upload-progress" => "Build with Upload Progress support",
-      "upstream-order" => "Build with Order Upstream support",
-      "ustats" => "Build with Upstream Statistics (HAProxy style) support",
-      "var-req-speed" => "Build with Var Request-Speed support",
-      "vod" => "Build with VOD on-the-fly MP4 Repackager support",
-      "websockify" => "Build with Websockify support",
-      "xsltproc" => "Build with XSLT Transformations support",
+      "http-remote-passwd"  => "Build with Remote Basic Auth Password support",
+      "log-if"              => "Build with Log-if support",
+      "lua"                 => "Build with LUA support",
+      "mod-zip"             => "Build with HTTP Zip support",
+      "mogilefs"            => "Build with HTTP MogileFS support",
+      "mp4-h264"            => "Build with HTTP MP4/H264 support",
+      "mruby"               => "Build with MRuby support",
+      "naxsi"               => "Build with Naxsi support",
+      "nchan"               => "Build with Nchan support",
+      "notice"              => "Build with HTTP Notice support",
+      "php-session"         => "Build with Parse PHP Sessions support",
+      "tarantool"           => "Build with Tarantool upstream support",
+      "push-stream"         => "Build with HTTP Push Stream support",
+      "realtime-req"        => "Build with Realtime Request support",
+      # "redis"               => "Build with Redis support",
+      # "redis2"              => "Build with Redis2 support",
+      # "rtmp"                => "Build with RTMP support",
+      "set-misc"            => "Build with Set Misc support",
+      "small-light"         => "Build with Small Light support",
+      "subs-filter"         => "Build with Substitutions Filter support",
+      "tcp-proxy"           => "Build with TCP Proxy support",
+      # "txid"                => "Build with Sortable Unique ID support",
+      "unzip"               => "Build with UnZip support",
+      "upload"              => "Build with Upload support",
+      "upload-progress"     => "Build with Upload Progress support",
+      "upstream-order"      => "Build with Order Upstream support",
+      "ustats"              => "Build with Upstream Statistics (HAProxy style) support",
+      "var-req-speed"       => "Build with Var Request-Speed support",
+      # "vod"                 => "Build with VOD on-the-fly MP4 Repackager support",
+      "websockify"          => "Build with Websockify support",
+      "xsltproc"            => "Build with XSLT Transformations support",
     }
   end
 
   option 'with-homebrew-libressl', 'Include LibreSSL instead of OpenSSL via Homebrew'
 
+  depends_on "gcc"
+  depends_on "llvm"
   depends_on "pcre"
+  depends_on "geoip"     => :optional
   depends_on "passenger" => :optional
-  depends_on "geoip" => :optional
+
   if build.with?("homebrew-libressl")
     depends_on "libressl"
   else
-    depends_on "openssl"
+    depends_on "openssl@1.1"
   end
-  depends_on "libzip" if build.with?("unzip")
-  depends_on "libxml2" if build.with?("xslt")
-  depends_on "libxslt" if build.with?("xslt")
-  depends_on "gd" if build.with?("image-filter")
-  depends_on "valgrind" if build.with?("no-pool-nginx")
-  depends_on "icu4c" if build.with?("xsltproc-module")
-  depends_on "libxml2" if build.with?("xsltproc-module")
-  depends_on "libxslt" if build.with?("xsltproc-module")
+
+  depends_on "gd"            if build.with?("image-filter")
+  depends_on "icu4c"         if build.with?("xsltproc-module")
+  depends_on "libatomic_ops" if build.with?("libatomic")
+  depends_on "libxml2"       if build.with?("xslt")
+  depends_on "libxml2"       if build.with?("xsltproc-module")
+  depends_on "libxslt"       if build.with?("xslt")
+  depends_on "libxslt"       if build.with?("xsltproc-module")
+  depends_on "libzip"        if build.with?("unzip")
+  depends_on "valgrind"      if build.with?("no-pool-nginx")
+
   depends_on "gperftools" => :optional
-  depends_on "gd" => :optional
-  depends_on "imlib2" => :optional
+  depends_on "gd"         => :optional
+  depends_on "imlib2"     => :optional
 
   # HTTP2 (backward compatibility for spdy)
   if build.with?("spdy")
@@ -147,16 +156,20 @@ class NginxFull < Formula
 
   def patches
     patches = {}
+
     # https://github.com/openresty/no-pool-nginx
     if build.with?("no-pool-nginx")
       patches[:p2] = "https://raw.githubusercontent.com/openresty/no-pool-nginx/master/nginx-1.11.2-no_pool.patch"
     end
+
     if build.with?("extended-status-module")
       patches[:p1] = "https://raw.githubusercontent.com/nginx-modules/ngx_http_extended_status_module/master/extended_status-1.10.1.patch"
     end
+
     if build.with?("ustats-module")
       patches[:p1] = "https://raw.githubusercontent.com/nginx-modules/ngx_ustats_module/master/nginx-1.6.1.patch"
     end
+
     if build.with?("tcp-proxy-module")
       patches[:p1] = "https://raw.githubusercontent.com/yaoweibin/nginx_tcp_proxy_module/afcab76/tcp_1_8.patch"
     end
@@ -221,8 +234,13 @@ class NginxFull < Formula
       cc_opt += " -I#{Formula["libressl"].include}"
       ld_opt += " -L#{Formula["libressl"].lib}"
     else
-      cc_opt += " -I#{Formula["openssl"].include}"
-      ld_opt += " -L#{Formula["openssl"].lib}"
+      cc_opt += " -I#{Formula["openssl@1.1"].include}"
+      ld_opt += " -L#{Formula["openssl@1.1"].lib}"
+    end
+
+    if build.with?("libatomic")
+      cc_opt += " -I#{Formula["libatomic_ops"].include}"
+      ld_opt += " -L#{Formula["libatomic_ops"].lib}"
     end
 
     if build.with?("xsltproc-module")
@@ -233,12 +251,20 @@ class NginxFull < Formula
 
     cc_opt += " -I#{Formula["libzip"].opt_lib}/libzip/include" if build.with?("unzip")
 
+    # Set compilier and linker variables
+    cc_opt += " -I#{Formula["llvm"].opt_include}"
+    ld_opt += " -L#{Formula["llvm"].opt_lib}-Wl,-rpath,#{Formula["llvm"].opt_lib}"
+
+    ENV.append "CC",  "#{Formula["gcc"].bin}/gcc-7"
+    ENV.append "CXX", "#{Formula["gcc"].bin}/g++-7"
+
     args = %W[
       --prefix=#{prefix}
       --with-http_ssl_module
       --with-pcre
-      --with-ipv6
+      --with-threads
       --sbin-path=#{bin}/nginx
+      --with-cc=#{Formula["gcc"].bin}/gcc-7
       --with-cc-opt=#{cc_opt}
       --with-ld-opt=#{ld_opt}
       --conf-path=#{etc}/nginx/nginx.conf
@@ -326,7 +352,7 @@ class NginxFull < Formula
     end
   end
 
-  def passenger_caveats; <<-EOS.undent
+  def passenger_caveats; <<-EOS
     To activate Phusion Passenger, add this to #{etc}/nginx/nginx.conf, inside the 'http' context:
       passenger_root #{Formula["passenger"].opt_libexec}/src/ruby_supportlib/phusion_passenger/locations.ini;
       passenger_ruby /usr/bin/ruby;
@@ -334,7 +360,7 @@ class NginxFull < Formula
   end
 
   def caveats
-    s = <<-EOS.undent
+    s = <<-EOS
     Docroot is: #{var}/www
 
     The default port has been set in #{etc}/nginx/nginx.conf to 8080 so that
@@ -361,7 +387,7 @@ class NginxFull < Formula
 
   plist_options :manual => "nginx"
 
-  def plist; <<-EOS.undent
+  def plist; <<-EOS
     <?xml version="1.0" encoding="UTF-8"?>
     <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
     <plist version="1.0">
