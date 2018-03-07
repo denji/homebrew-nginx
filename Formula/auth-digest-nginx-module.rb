@@ -1,10 +1,9 @@
 class AuthDigestNginxModule < Formula
   desc "Digest Authentication for Nginx"
   homepage "https://github.com/samizdatco/nginx-http-auth-digest"
-  url "https://github.com/samizdatco/nginx-http-auth-digest/archive/bd1c86a.tar.gz"
-  version "0.1"
-  sha256 "c950810be28e5cece5c6b30aefe96147681d4b74bace25e8dcad2a1cb75a861f"
-  revision 1
+  url "https://github.com/samizdatco/nginx-http-auth-digest/archive/274490c.tar.gz"
+  version "0.2"
+  sha256 "ede0ad490cb9dd69da348bdea2a60a4c45284c9777b2f13fa48394b6b8e7671c"
 
   bottle :unneeded
 
