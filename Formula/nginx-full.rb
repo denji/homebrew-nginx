@@ -6,8 +6,8 @@ class NginxFull < Formula
   head "https://github.com/nginx/nginx.git"
 
   devel do
-    url "https://nginx.org/download/nginx-1.13.8.tar.gz"
-    sha256 "8410b6c31ff59a763abf7e5a5316e7629f5a5033c95a3a0ebde727f9ec8464c5"
+    url "https://nginx.org/download/nginx-1.13.10.tar.gz"
+    sha256 "336182104d90be3c40c874f7f06f87dbb357da1dc74ea573ad081a0f29a94885"
   end
 
   def self.core_modules
@@ -375,7 +375,7 @@ class NginxFull < Formula
     end
   end
 
-  def passenger_caveats; <<-EOS
+  def passenger_caveats; <<~EOS
     To activate Phusion Passenger, add this to #{etc}/nginx/nginx.conf, inside the 'http' context:
       passenger_root #{Formula["passenger"].opt_libexec}/src/ruby_supportlib/phusion_passenger/locations.ini;
       passenger_ruby /usr/bin/ruby;
@@ -383,7 +383,7 @@ class NginxFull < Formula
   end
 
   def caveats
-    s = <<-EOS
+    s = <<~EOS
     Docroot is: #{var}/www
 
     The default port has been set in #{etc}/nginx/nginx.conf to 8080 so that
@@ -410,7 +410,7 @@ class NginxFull < Formula
 
   plist_options :manual => "nginx"
 
-  def plist; <<-EOS
+  def plist; <<~EOS
     <?xml version="1.0" encoding="UTF-8"?>
     <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
     <plist version="1.0">
@@ -435,7 +435,7 @@ class NginxFull < Formula
   end
 
   test do
-    (testpath/"nginx.conf").write <<-EOS
+    (testpath/"nginx.conf").write <<~EOS
       worker_processes 4;
       error_log #{testpath}/error.log;
       pid #{testpath}/nginx.pid;
