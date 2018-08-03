@@ -1,9 +1,8 @@
 class NaxsiNginxModule < Formula
   desc "NAXSI is an open-source WAF for NGINX"
   homepage "https://github.com/nbs-system/naxsi"
-  url "https://github.com/nbs-system/naxsi/archive/0.55.3.tar.gz"
-  sha256 "0b3c95d250772dc89ad8b49e47c1e024c5ae2c76c0cffa445e9fe05c4dd13495"
-  version_scheme 1
+  url "https://github.com/nbs-system/naxsi/archive/0.56.tar.gz"
+  sha256 "0a66dcadd32432460fab180be9f2efe24e911e3798917b2787ee710e02901eb4"
   head "https://github.com/nbs-system/naxsi.git"
 
   bottle :unneeded
