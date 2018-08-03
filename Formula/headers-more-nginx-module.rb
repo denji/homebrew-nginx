@@ -1,8 +1,8 @@
 class HeadersMoreNginxModule < Formula
   desc "Set, add, and clear arbitrary output headers"
   homepage "https://github.com/openresty/headers-more-nginx-module"
-  url "https://github.com/openresty/headers-more-nginx-module/archive/v0.30.tar.gz"
-  sha256 "2aad309a9313c21c7c06ee4e71a39c99d4d829e31c8b3e7d76f8c964ea8047f5"
+  url "https://github.com/openresty/headers-more-nginx-module/archive/v0.33.tar.gz"
+  sha256 "a3dcbab117a9c103bc1ea5200fc00a7b7d2af97ff7fd525f16f8ac2632e30fbf"
 
   bottle :unneeded
 
