@@ -104,6 +104,7 @@ class NginxFull < Formula
       "ustats" => "Build with Upstream Statistics (HAProxy style) support",
       "var-req-speed" => "Build with Var Request-Speed support",
       "vod" => "Build with VOD on-the-fly MP4 Repackager support",
+      "vts" => "Build with virtual host traffic status support",
       "websockify" => "Build with Websockify support",
       "xsltproc" => "Build with XSLT Transformations support",
     }
