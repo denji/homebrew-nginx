@@ -1,8 +1,8 @@
 class FancyindexNginxModule < Formula
   desc "Fancy indexes module for the Nginx"
   homepage "https://github.com/aperezdc/ngx-fancyindex"
-  url "https://github.com/aperezdc/ngx-fancyindex/archive/v0.4.2.tar.gz"
-  sha256 "8327150864ca267b735d550d3304030efbbd863fdddfe0a94e970f249a8827ee"
+  url "https://github.com/aperezdc/ngx-fancyindex/archive/v0.4.3.tar.gz"
+  sha256 "81698fb0c1ec9f906ce308c055d5d248085caf390f4b92516c1ec93f87c886d4"
   head "https://github.com/aperezdc/ngx-fancyindex.git"
 
   bottle :unneeded
