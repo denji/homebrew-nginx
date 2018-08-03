@@ -84,6 +84,7 @@ class NginxFull < Formula
       "mruby" => "Build with MRuby support",
       "naxsi" => "Build with Naxsi support",
       "nchan" => "Build with Nchan support",
+      "njs" => "Compile with njs, a javascript framework for nginx",
       "notice" => "Build with HTTP Notice support",
       "php-session" => "Build with Parse PHP Sessions support",
       "tarantool" => "Build with Tarantool upstream support",
@@ -268,6 +269,13 @@ class NginxFull < Formula
       if build.with?("#{name}-module")
         args << "--add-module=#{HOMEBREW_PREFIX}/share/#{name}-nginx-module"
       end
+    end
+
+    # njs (nginScript - javascript) module
+    if build.with?("njs-module")
+      # configuration path needs to be appended with "/nginx"
+      args = args.reject {|arg| arg.include? "njs-nginx-module"}
+      args << "--add-module=#{HOMEBREW_PREFIX}/share/njs-nginx-module/nginx"
     end
 
     # Passenger
