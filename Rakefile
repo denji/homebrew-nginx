@@ -1,5 +1,5 @@
-require 'YAML'
-require 'JSON'
+require 'yaml'
+require 'json'
 
 class Formula
   def method_missing(method_name, *args); end
