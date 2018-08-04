@@ -1,8 +1,8 @@
 class CachePurgeNginxModule < Formula
   desc "Purge content from nginx - FastCGI, proxy, SCGI and uWSGI cache"
-  homepage "http://labs.frickle.com"
-  url "http://labs.frickle.com/files/ngx_cache_purge-2.3.tar.gz"
-  sha256 "279e0d8a46d3b1521fd43b3f78bc1c08b263899142a7cc5058c1c0361a92c89c"
+  homepage "https://github.com/nginx-modules/ngx_cache_purge"
+  url "https://github.com/nginx-modules/ngx_cache_purge/archive/2.4.2.tar.gz"
+  sha256 "067a10ae2a6d623deed5614d9fc55ec9b380d3b6060fd1e32e71c6f955d11cfc"
 
   bottle :unneeded
 
