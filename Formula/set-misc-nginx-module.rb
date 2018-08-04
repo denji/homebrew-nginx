@@ -1,8 +1,8 @@
 class SetMiscNginxModule < Formula
   desc "Rewrite module md5/sha1, and many more"
   homepage "https://github.com/openresty/set-misc-nginx-module"
-  url "https://github.com/openresty/set-misc-nginx-module/archive/v0.31.tar.gz"
-  sha256 "97946a68937b50ab8637e1a90a13198fe376d801dc3e7447052e43c28e9ee7de"
+  url "https://github.com/openresty/set-misc-nginx-module/archive/v0.32.tar.gz"
+  sha256 "f1ad2459c4ee6a61771aa84f77871f4bfe42943a4aa4c30c62ba3f981f52c201"
 
   bottle :unneeded
 
