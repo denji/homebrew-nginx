@@ -1,3 +1,4 @@
 name: Homebrew Nginx Tap
 markdown: redcarpet
 highlighter: rouge
+theme: jekyll-theme-modernist
