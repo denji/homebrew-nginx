@@ -65,9 +65,9 @@
   sha256: 309af9e96c10e80f1884acea96379980979581adc287ce338f084607bd48c185
   description: Build with Brotli compression support
 - name: cache-purge
-  homepage: http://labs.frickle.com
-  version: 279e0d8
-  sha256: 279e0d8a46d3b1521fd43b3f78bc1c08b263899142a7cc5058c1c0361a92c89c
+  homepage: https://github.com/nginx-modules/ngx_cache_purge
+  version: 2.4.2
+  sha256: 067a10ae2a6d623deed5614d9fc55ec9b380d3b6060fd1e32e71c6f955d11cfc
   description: Build with Cache Purge support
 - name: captcha
   homepage: https://github.com/fallgold/ngx_http_captcha
@@ -230,9 +230,9 @@
   sha256: 6d974ba630cef59de1f60996c66b401264a345d25988a76037c2856cec756c19
   description: Build with HTTP MP4/H264 support
 - name: mruby
-  homepage: https://github.com/matsumoto-r/ngx_mruby
-  version: 1.20.1
-  sha256: d5ed2de127a614e784bd743e79cb1c5ba9b9bbfe2dfb433d4f01daff5f92947a
+  homepage: https://github.com/matsumotory/ngx_mruby
+  version: 2.1.0
+  sha256: 8cc50f7bac46fab803d3ce18857dc3164fbfb733d728d75d0015a14756db0606
   description: Build with MRuby support
 - name: naxsi
   homepage: https://github.com/nbs-system/naxsi
@@ -316,8 +316,8 @@
   description: Build with Secure Link support
 - name: set-misc
   homepage: https://github.com/openresty/set-misc-nginx-module
-  version: '0.31'
-  sha256: 97946a68937b50ab8637e1a90a13198fe376d801dc3e7447052e43c28e9ee7de
+  version: '0.32'
+  sha256: f1ad2459c4ee6a61771aa84f77871f4bfe42943a4aa4c30c62ba3f981f52c201
   description: Build with Set Misc support
 - name: slice
   homepage: 
@@ -416,8 +416,8 @@
   description: Build with Var Request-Speed support
 - name: vod
   homepage: https://github.com/kaltura/nginx-vod-module
-  version: '1.20'
-  sha256: 4481cad931c322f8e0a8be2edbcea722faad0fcd5365830bec062208650930be
+  version: '1.23'
+  sha256: 800cf3de639567e27f4cb75527392f23842b349fb680abefd12d4db9a5be951f
   description: Build with VOD on-the-fly MP4 Repackager support
 - name: vts
   homepage: https://github.com/vozlt/nginx-module-vts
