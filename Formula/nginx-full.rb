@@ -1,13 +1,11 @@
 class NginxFull < Formula
   desc "HTTP(S) server, reverse proxy, IMAP/POP3 proxy server"
   homepage "https://nginx.org/"
-  url "https://nginx.org/download/nginx-1.14.0.tar.gz"
-  sha256 "5d15becbf69aba1fe33f8d416d97edd95ea8919ea9ac519eff9bafebb6022cb5"
+  # Use "mainline" releases only (odd minor version number), not "stable"
+  # See https://www.nginx.com/blog/nginx-1-12-1-13-released/ for why
+  url "https://nginx.org/download/nginx-1.15.3.tar.gz"
+  sha256 "9391fb91c3e2ebd040a4e3ac2b2f0893deb6232edc30a8e16fcc9c3fa9d6be85"
   head "http://hg.nginx.org/nginx/", :using => :hg
-  devel do
-    url "https://nginx.org/download/nginx-1.15.3.tar.gz"
-    sha256 "9391fb91c3e2ebd040a4e3ac2b2f0893deb6232edc30a8e16fcc9c3fa9d6be85"
-  end
 
   conflicts_with "nginx", :because => "nginx-full symlink with the name for compatibility with nginx"
 
