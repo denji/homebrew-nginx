@@ -6,6 +6,10 @@ matrix:
       rvm: system
     - os: linux
       rvm: 2.3.0
+  fast_finish: true
+  allow_failures:
+    - os: linux
+      rvm: 2.3.0
 
 env:
   global:
