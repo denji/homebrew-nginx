@@ -333,25 +333,25 @@ class NginxFull < Formula
 
   def caveats
     s = <<~EOS
-    Docroot is: #{var}/www
+      Docroot is: #{var}/www
 
-    The default port has been set in #{etc}/nginx/nginx.conf to 8080 so that
-    nginx can run without sudo.
+      The default port has been set in #{etc}/nginx/nginx.conf to 8080 so that
+      nginx can run without sudo.
 
-    nginx will load all files in #{etc}/nginx/servers/.
+      nginx will load all files in #{etc}/nginx/servers/.
 
-    - Tips -
-    Run port 80:
-     $ sudo chown root:wheel #{bin}/nginx
-     $ sudo chmod u+s #{bin}/nginx
-    Reload config:
-     $ nginx -s reload
-    Reopen Logfile:
-     $ nginx -s reopen
-    Stop process:
-     $ nginx -s stop
-    Waiting on exit process
-     $ nginx -s quit
+      - Tips -
+      Run port 80:
+       $ sudo chown root:wheel #{bin}/nginx
+       $ sudo chmod u+s #{bin}/nginx
+      Reload config:
+       $ nginx -s reload
+      Reopen Logfile:
+       $ nginx -s reopen
+      Stop process:
+       $ nginx -s stop
+      Waiting on exit process
+       $ nginx -s quit
     EOS
     s << "\n" << passenger_caveats if build.with?("passenger")
     s
