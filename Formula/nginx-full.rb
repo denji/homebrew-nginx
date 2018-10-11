@@ -108,7 +108,7 @@ class NginxFull < Formula
     }
   end
 
-  option 'with-homebrew-libressl', 'Include LibreSSL instead of OpenSSL via Homebrew'
+  option "with-homebrew-libressl", "Include LibreSSL instead of OpenSSL via Homebrew"
 
   depends_on "pcre"
   depends_on "passenger" => :optional
@@ -328,7 +328,7 @@ class NginxFull < Formula
     To activate Phusion Passenger, add this to #{etc}/nginx/nginx.conf, inside the 'http' context:
       passenger_root #{Formula["passenger"].opt_libexec}/src/ruby_supportlib/phusion_passenger/locations.ini;
       passenger_ruby /usr/bin/ruby;
-    EOS
+  EOS
   end
 
   def caveats
@@ -380,7 +380,7 @@ class NginxFull < Formula
         <string>#{HOMEBREW_PREFIX}</string>
       </dict>
     </plist>
-    EOS
+  EOS
   end
 
   test do
