@@ -42,6 +42,7 @@ class NginxFull < Formula
       ["sub",                "http_sub_module",           "Build with HTTP Sub support"],
       ["webdav",             "http_dav_module",           "Build with WebDAV support"],
       ["xslt",               "http_xslt_module",          "Build with XSLT support"],
+      ["hpack",              "http_v2_hpack_enc",         "Build with full HPACK header compression support"],
     ]
   end
 
@@ -119,6 +120,7 @@ class NginxFull < Formula
     depends_on "openssl"
   end
   depends_on "libzip" if build.with?("unzip")
+  depends_on "hpack" if build.with?("http2")
   depends_on "libxml2" if build.with?("xslt")
   depends_on "libxslt" if build.with?("xslt")
   depends_on "gd" if build.with?("image-filter")
@@ -145,7 +147,6 @@ class NginxFull < Formula
 
   def patches
     patches = {}
-    # https://github.com/openresty/no-pool-nginx
     if build.with?("no-pool-nginx")
       patches[:p2] = "https://raw.githubusercontent.com/openresty/no-pool-nginx/master/nginx-1.11.2-no_pool.patch"
     end
@@ -157,6 +158,9 @@ class NginxFull < Formula
     end
     if build.with?("tcp-proxy-module")
       patches[:p1] = "https://raw.githubusercontent.com/yaoweibin/nginx_tcp_proxy_module/afcab76/tcp_1_8.patch"
+    end
+    if build.with?("hpack")
+      patches[:p1] = "https://raw.githubusercontent.com/hakasenyang/openssl-patch/master/nginx_hpack_push.patch"
     end
     patches
   end
