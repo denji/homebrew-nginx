@@ -158,6 +158,9 @@ class NginxFull < Formula
     if build.with?("tcp-proxy-module")
       patches[:p1] = "https://raw.githubusercontent.com/yaoweibin/nginx_tcp_proxy_module/afcab76/tcp_1_8.patch"
     end
+    if build.with?("http_v2_hpack_enc")
+      patches[:p1] = "https://raw.githubusercontent.com/hakasenyang/openssl-patch/master/nginx_hpack_push.patch"
+    end
     patches
   end
 
