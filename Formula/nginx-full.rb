@@ -237,15 +237,9 @@ class NginxFull < Formula
 
     args = %W[
       --prefix=#{prefix}
-      --with-http2
       --with-http_ssl_module
-      --with-hpack
-      --with-ipv6
-      --with-gzip-static
-      --with-brotli-module
       --with-pcre
-      --with-threads
-      --with-headers-more-module
+      --with-ipv6
       --sbin-path=#{bin}/nginx
       --with-cc-opt=#{cc_opt}
       --with-ld-opt=#{ld_opt}
