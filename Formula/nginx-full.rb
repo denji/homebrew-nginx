@@ -238,7 +238,6 @@ class NginxFull < Formula
     args = %W[
       --prefix=#{prefix}
       --with-http_ssl_module
-      --with-hpack
       --with-ipv6
       --with-gzip-static
       --with-brotli-module
