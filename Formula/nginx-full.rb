@@ -118,6 +118,7 @@ class NginxFull < Formula
   else
     depends_on "openssl"
   end
+  depends_on "perl" if build.with?("perl")
   depends_on "libzip" if build.with?("unzip")
   depends_on "libxml2" if build.with?("xslt")
   depends_on "libxslt" if build.with?("xslt")
