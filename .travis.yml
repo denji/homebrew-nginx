@@ -4,15 +4,15 @@ matrix:
   include:
     - os: osx
       osx_image: xcode10.1
-      rvm: system
+      rvm: 2.6
     - os: linux
       dist: xenial
-      rvm: 2.3
+      rvm: 2.6
   fast_finish: true
   allow_failures:
     - os: linux
       dist: xenial
-      rvm: 2.3
+      rvm: 2.6
 
 env:
   global:
