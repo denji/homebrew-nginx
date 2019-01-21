@@ -45,6 +45,7 @@ class NginxFull < Formula
     ]
   end
 
+  # rubocop:disable AlignHash
   def self.third_party_modules
     {
       "accept-language" => "Build with Accept Language support",
@@ -107,6 +108,7 @@ class NginxFull < Formula
       "xsltproc" => "Build with XSLT Transformations support",
     }
   end
+  # rubocop:enable AlignHash
 
   option "with-homebrew-libressl", "Include LibreSSL instead of OpenSSL via Homebrew"
 
