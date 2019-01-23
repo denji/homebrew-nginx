@@ -113,25 +113,26 @@ class NginxFull < Formula
   option "with-homebrew-libressl", "Include LibreSSL instead of OpenSSL via Homebrew"
 
   depends_on "pcre"
-  depends_on "passenger" => :optional
-  depends_on "geoip" => :optional
   if build.with?("homebrew-libressl")
     depends_on "libressl"
   else
     depends_on "openssl"
   end
-  depends_on "perl" if build.with?("perl")
-  depends_on "libzip" if build.with?("unzip")
+  depends_on "gd" => :optional
+  depends_on "geoip" => :optional
+  depends_on "gperftools" => :optional
+  depends_on "passenger" => :optional
+  depends_on "imlib2" => :optional
+  depends_on "gd" if build.with?("image-filter")
+  depends_on "libxml2" if build.with?("dav-ext-module")
   depends_on "libxml2" if build.with?("xslt")
   depends_on "libxslt" if build.with?("xslt")
-  depends_on "gd" if build.with?("image-filter")
-  depends_on "valgrind" if build.with?("no-pool-nginx")
   depends_on "icu4c" if build.with?("xsltproc-module")
   depends_on "libxml2" if build.with?("xsltproc-module")
   depends_on "libxslt" if build.with?("xsltproc-module")
-  depends_on "gperftools" => :optional
-  depends_on "gd" => :optional
-  depends_on "imlib2" => :optional
+  depends_on "libzip" if build.with?("unzip")
+  depends_on "perl" if build.with?("perl")
+  depends_on "valgrind" if build.with?("no-pool-nginx")
 
   # HTTP2 (backward compatibility for spdy)
   if build.with?("spdy")
