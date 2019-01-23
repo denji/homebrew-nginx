@@ -86,8 +86,8 @@
   description: Build with CT++ support
 - name: dav-ext
   homepage: https://github.com/arut/nginx-dav-ext-module
-  version: 0.1.0
-  sha256: 6b004eed8ea16ad8de4d304027bf0413cc323a95914e58625a7dc066481aae3a
+  version: 3.0.0
+  sha256: d2499d94d82d4e4eac8425d799e52883131ae86a956524040ff2fd230ef9f859
   description: Build with HTTP WebDav Extended support
 - name: debug
   homepage: 
@@ -241,8 +241,8 @@
   description: Build with Naxsi support
 - name: nchan
   homepage: https://nchan.io
-  version: 1.2.1
-  sha256: 7bb3ae57a036afabee1da5e40085b69b3fd68026fcc1d8abc98a8ad9f5dccc44
+  version: 1.2.3
+  sha256: ea44d9f33115db4737abe611e63e3f734fa18cb11d998354b093a40eb7a8e6be
   description: Build with Nchan support
 - name: no-pool-nginx
   homepage: 
