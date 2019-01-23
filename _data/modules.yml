@@ -371,8 +371,8 @@
   description: Build with Substitutions Filter support
 - name: tarantool
   homepage: https://github.com/tarantool/nginx_upstream_module
-  version: '2.5'
-  sha256: f425c430ec3d9b8ede57d985f731b4162edaf945683f6bf46b6656ed2a0432e3
+  version: '2.7'
+  sha256: 48d0bd45de57c9c34c836941d79ac53b3d51d715361d447794aecd5e16eacfea
   description: Build with Tarantool upstream support
 - name: tcp-proxy
   homepage: https://github.com/yaoweibin/nginx_tcp_proxy_module
@@ -391,8 +391,8 @@
   description: Build with UnZip support
 - name: upload
   homepage: http://wiki.nginx.org/HttpUploadModule
-  version: 2.255.2
-  sha256: 8786f14d3274a122c0bb72c39431df8bc260e603228182b3c8a5731055ac8da0
+  version: 2.3.0
+  sha256: c86e318addb9c88d70fdbd58ff1f6ef6f404a93070f6db8017a1f880c97946c4
   description: Build with Upload support
 - name: upload-progress
   homepage: http://wiki.nginx.org/HttpUploadProgressModule
