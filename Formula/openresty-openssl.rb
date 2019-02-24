@@ -39,7 +39,7 @@ class OpenrestyOpenssl < Formula
       "--libdir=lib",
     ]
 
-    if MacOS.prefer_64_bit?
+    if MacOS.is_64_bit?
       args << "darwin64-x86_64-cc"
       args << "enable-ec_nistp_64_gcc_128"
     else
