@@ -241,8 +241,8 @@
   description: Build with Naxsi support
 - name: nchan
   homepage: https://nchan.io
-  version: 1.2.3
-  sha256: ea44d9f33115db4737abe611e63e3f734fa18cb11d998354b093a40eb7a8e6be
+  version: 1.2.5
+  sha256: 45d5dd0411238eee1694e36a476c33d88d83f83971316d2e00bc0bf46eeb7a4f
   description: Build with Nchan support
 - name: no-pool-nginx
   homepage: 
@@ -416,8 +416,8 @@
   description: Build with Var Request-Speed support
 - name: vod
   homepage: https://github.com/kaltura/nginx-vod-module
-  version: '1.23'
-  sha256: 800cf3de639567e27f4cb75527392f23842b349fb680abefd12d4db9a5be951f
+  version: '1.24'
+  sha256: b3cad8e3047556955fa028bcc68e7af46d19343942cb7984ad25e6f44d614ddf
   description: Build with VOD on-the-fly MP4 Repackager support
 - name: vts
   homepage: https://github.com/vozlt/nginx-module-vts
