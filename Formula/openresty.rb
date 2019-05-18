@@ -1,19 +1,19 @@
 class Openresty < Formula
   desc "Scalable Web Platform by Extending NGINX with Lua"
   homepage "https://openresty.org"
-  VERSION = "1.13.6.1".freeze
+  VERSION = "1.15.8.1".freeze
   url "https://openresty.org/download/openresty-#{VERSION}.tar.gz"
-  sha256 "d1246e6cfa81098eea56fb88693e980d3e6b8752afae686fab271519b81d696b"
+  sha256 "89a1238ca177692d6903c0adbea5bdf2a0b82c383662a73c03ebf5ef9f570842"
 
-  option "with-debug", "Compile with support for debug logging but without proper gdb debugging symbols"
+  option "with-debug", "Compile with support for debug logging"
   option "with-postgresql", "Compile with ngx_http_postgres_module"
   option "with-iconv", "Compile with ngx_http_iconv_module"
   option "with-slice", "Compile with ngx_http_slice_module"
 
+  depends_on "geoip"
+  depends_on "denji/nginx/openresty-openssl"
   depends_on "pcre"
   depends_on "postgresql" => :optional
-  depends_on "denji/nginx/openresty-openssl"
-  depends_on "geoip"
 
   skip_clean "site"
   skip_clean "pod"
@@ -41,6 +41,7 @@ class Openresty < Formula
       --with-ipv6
       --with-stream
       --with-stream_ssl_module
+      --with-stream_ssl_preread_module
       --with-http_v2_module
       --without-mail_pop3_module
       --without-mail_imap_module
@@ -66,10 +67,7 @@ class Openresty < Formula
     args << "--with-http_postgres_module" if build.with? "postgresql"
     args << "--with-http_iconv_module" if build.with? "iconv"
     args << "--with-http_slice_module" if build.with? "slice"
-
-    if build.with? "debug"
-      args << "--with-debug"
-    end
+    args << "--with-debug" if build.with? "debug"
 
     system "./configure", *args
 

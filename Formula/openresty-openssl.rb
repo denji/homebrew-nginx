@@ -1,56 +1,70 @@
 class OpenrestyOpenssl < Formula
   desc "This OpenSSL library build is specifically for OpenResty uses"
   homepage "https://www.openssl.org/"
-  keg_only "Only for use with OpenResty"
-  VERSION = "1.0.2k".freeze
-  revision 1
+  VERSION = "1.1.0j".freeze
 
   stable do
     url "https://www.openssl.org/source/openssl-#{VERSION}.tar.gz"
     mirror "https://dl.bintray.com/homebrew/mirror/openssl-1#{VERSION}.tar.gz"
-    mirror "https://www.mirrorservice.org/sites/ftp.openssl.org/source/openssl-#{VERSION}.tar.gz"
-    sha256 "6b3977c61f2aedf0f96367dcfb5c6e578cf37e7b8d913b4ecb6643c3cb88d8c0"
+    sha256 "31bec6c203ce1a8e93d5994f4ed304c63ccf07676118b6634edded12ad1b3246"
 
     patch do
-      url "https://raw.githubusercontent.com/openresty/openresty/master/patches/openssl-1.0.2h-sess_set_get_cb_yield.patch"
-      sha256 "6d6e02c21769784b106b62a146bfbfeac54884e23520c8dd29b74f3e1348d4a1"
+      url "https://raw.githubusercontent.com/openresty/openresty/master/patches/openssl-1.1.0d-sess_set_get_cb_yield.patch"
+      sha256 "886e3abbbc56f88c60554c13bf34c4d2f21b97fabd137cd0a213b3c3d396257e"
     end
   end
 
+  keg_only "only for use with OpenResty"
+
+  # Only needs 5.10 to run, but needs >5.13.4 to run the testsuite.
+  # https://github.com/openssl/openssl/blob/4b16fa791d3ad8/README.PERL
+  # The MacOS ML tag is same hack as the way we handle most :python deps.
+  depends_on "perl" if build.with?("test") && MacOS.version <= :mountain_lion
+
+  # SSLv2 died with 1.1.0, so no-ssl2 no longer required.
+  # SSLv3 & zlib are off by default with 1.1.0 but this may not
+  # be obvious to everyone, so explicitly state it for now to
+  # help debug inevitable breakage.
+  def configure_args; %W[
+    --prefix=#{prefix}
+    --openssldir=#{openssldir}
+    --libdir=lib
+    no-threads
+    shared
+    zlib
+    -g
+    enable-ssl3
+    enable-ssl3-method
+  ]
+  end
+
   def install
-    # OpenSSL will prefer the PERL environment variable if set over $PATH
-    # which can cause some odd edge cases & isn't intended. Unset for safety.
-    ENV.delete("PERL")
+    # This could interfere with how we expect OpenSSL to build.
+    ENV.delete("OPENSSL_LOCAL_CONFIG_DIR")
 
-    # Load zlib from an explicit path instead of relying on dyld's fallback
-    # path, which is empty in a SIP context. This patch will be unnecessary
-    # when we begin building openssl with no-comp to disable TLS compression.
-    # https://langui.sh/2015/11/27/sip-and-dlopen
-    inreplace "crypto/comp/c_zlib.c",
-              'zlib_dso = DSO_load(NULL, "z", NULL, 0);',
-              'zlib_dso = DSO_load(NULL, "/usr/lib/libz.dylib", NULL, DSO_FLAG_NO_NAME_TRANSLATION);'
-
-    args = [
-      "no-threads",
-      "shared",
-      "zlib",
-      "-g",
-      "--openssldir=#{prefix}",
-      "--libdir=lib",
-    ]
-
-    if MacOS.is_64_bit?
-      args << "darwin64-x86_64-cc"
-      args << "enable-ec_nistp_64_gcc_128"
-    else
-      args << "darwin-i386-cc"
+    # This ensures where Homebrew's Perl is needed the Cellar path isn't
+    # hardcoded into OpenSSL's scripts, causing them to break every Perl update.
+    # Whilst our env points to opt_bin, by default OpenSSL resolves the symlink.
+    if which("perl") == Formula["perl"].opt_bin/"perl"
+      ENV["PERL"] = Formula["perl"].opt_bin/"perl"
     end
 
-    system "./Configure", *args
+    if MacOS.is_64_bit?
+      arch_args = %w[darwin64-x86_64-cc enable-ec_nistp_64_gcc_128]
+    else
+      arch_args = %w[darwin-i386-cc]
+    end
 
     # Install
+    ENV.deparallelize
+    system "perl", "./Configure", *(configure_args + arch_args)
     system "make"
-    system "make", "install", "MANDIR=#{man}"
+    system "make", "test" if build.with?("test")
+    system "make", "install", "MANDIR=#{man}", "MANSUFFIX=ssl"
+  end
+
+  def openssldir
+    etc/"openssl@1.1"
   end
 
   test do
