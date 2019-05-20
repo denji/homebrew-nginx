@@ -49,7 +49,8 @@ class OpenrestyOpenssl < Formula
       ENV["PERL"] = Formula["perl"].opt_bin/"perl"
     end
 
-    if MacOS.is_64_bit?
+    # x86_64
+    if Hardware::CPU.is_64_bit? # Hardware::CPU.arch_64_bit?
       arch_args = %w[darwin64-x86_64-cc enable-ec_nistp_64_gcc_128]
     else
       arch_args = %w[darwin-i386-cc]
