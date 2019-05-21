@@ -3,8 +3,8 @@ class NginxFull < Formula
   homepage "https://nginx.org/"
   # Use "mainline" releases only (odd minor version number), not "stable"
   # See https://www.nginx.com/blog/nginx-1-12-1-13-released/ for why
-  url "https://nginx.org/download/nginx-1.16.0.tar.gz"
-  sha256 "4fd376bad78797e7f18094a00f0f1088259326436b537eb5af69b01be2ca1345"
+  url "https://nginx.org/download/nginx-1.17.0.tar.gz"
+  sha256 "e21b5d06cd53e86afb94f0b3678e0abb0c0f011433471fa3d895cefa65ae0fab"
   head "http://hg.nginx.org/nginx/", :using => :hg
 
   conflicts_with "nginx", :because => "nginx-full symlink with the name for compatibility with nginx"
