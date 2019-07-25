@@ -116,7 +116,7 @@ class NginxFull < Formula
   if build.with?("homebrew-libressl")
     depends_on "libressl"
   else
-    depends_on "openssl"
+    depends_on "openssl@1.1"
   end
   depends_on "gd" => :optional
   depends_on "geoip" => :optional
@@ -223,8 +223,8 @@ class NginxFull < Formula
       cc_opt += " -I#{Formula["libressl"].include}"
       ld_opt += " -L#{Formula["libressl"].lib}"
     else
-      cc_opt += " -I#{Formula["openssl"].include}"
-      ld_opt += " -L#{Formula["openssl"].lib}"
+      cc_opt += " -I#{Formula["openssl@1.1"].include}"
+      ld_opt += " -L#{Formula["openssl@1.1"].lib}"
     end
 
     if build.with?("xsltproc-module")
