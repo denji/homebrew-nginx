@@ -8,7 +8,7 @@ class RtmpNginxModule < Formula
 
   patch do
     url "https://github.com/sergey-dryabzhinsky/nginx-rtmp-module/compare/v1.1.7.10..504b9ee.diff"
-    sha256 "0e46216f50edd59d1f549aa9496ecee9ef06c558d9c21d9a65f509679ff3267c"
+    sha256 "afa7a32135bc522383b1c1ad9d32284856b7b59113401a5ad00039da015f66e3"
   end
 
   bottle :unneeded
