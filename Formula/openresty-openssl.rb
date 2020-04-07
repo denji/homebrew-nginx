@@ -1,17 +1,24 @@
 class OpenrestyOpenssl < Formula
   desc "This OpenSSL library build is specifically for OpenResty uses"
   homepage "https://www.openssl.org/"
-  VERSION = "1.1.0j".freeze
+  VERSION = "1.1.0l".freeze
+  revision 1
 
   stable do
-    url "https://www.openssl.org/source/openssl-#{VERSION}.tar.gz"
-    mirror "https://dl.bintray.com/homebrew/mirror/openssl-1#{VERSION}.tar.gz"
-    sha256 "31bec6c203ce1a8e93d5994f4ed304c63ccf07676118b6634edded12ad1b3246"
+    url "https://www.openssl.org/source/old/1.1.0/openssl-#{VERSION}.tar.gz"
+    mirror "https://openresty.org/download/openssl-#{VERSION}.tar.gz"
+    sha256 "74a2f756c64fd7386a29184dc0344f4831192d61dc2481a93a4c5dd727f41148"
 
     patch do
       url "https://raw.githubusercontent.com/openresty/openresty/master/patches/openssl-1.1.0d-sess_set_get_cb_yield.patch"
       sha256 "886e3abbbc56f88c60554c13bf34c4d2f21b97fabd137cd0a213b3c3d396257e"
     end
+
+    patch do
+      url "https://raw.githubusercontent.com/openresty/openresty/master/patches/openssl-1.1.0j-parallel_build_fix.patch"
+      sha256 "060720ca2b93452dcf68211064841e0417c4a4a40e976fe0b2b5797162917066"
+    end
+
   end
 
   keg_only "only for use with OpenResty"
@@ -56,8 +63,7 @@ class OpenrestyOpenssl < Formula
       arch_args = %w[darwin-i386-cc]
     end
 
-    # Install
-    ENV.deparallelize
+    #ENV.deparallelize
     system "perl", "./Configure", *(configure_args + arch_args)
     system "make"
     system "make", "test" if build.with?("test")

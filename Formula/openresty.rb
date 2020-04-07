@@ -1,9 +1,10 @@
 class Openresty < Formula
   desc "Scalable Web Platform by Extending NGINX with Lua"
   homepage "https://openresty.org"
-  VERSION = "1.15.8.1".freeze
+  VERSION = "1.15.8.3".freeze
+  revision 1
   url "https://openresty.org/download/openresty-#{VERSION}.tar.gz"
-  sha256 "89a1238ca177692d6903c0adbea5bdf2a0b82c383662a73c03ebf5ef9f570842"
+  sha256 "b68cf3aa7878db16771c96d9af9887ce11f3e96a1e5e68755637ecaff75134a8"
 
   option "with-debug", "Compile with support for debug logging"
   option "with-postgresql", "Compile with ngx_http_postgres_module"
@@ -26,6 +27,7 @@ class Openresty < Formula
     ld_opt = "-L#{HOMEBREW_PREFIX}/lib -L#{Formula["pcre"].opt_lib} -L#{Formula["denji/nginx/openresty-openssl"].opt_lib}"
 
     args = %W[
+      -j#{Etc.nprocessors}
       --prefix=#{prefix}
       --pid-path=#{var}/run/openresty.pid
       --lock-path=#{var}/run/openresty.lock
@@ -60,7 +62,7 @@ class Openresty < Formula
       --with-http_mp4_module
       --with-http_gunzip_module
       --with-threads
-      --with-luajit-xcflags=-DLUAJIT_NUMMODE=2\ -DLUAJIT_ENABLE_LUA52COMPAT
+      --with-luajit-xcflags=-DLUAJIT_NUMMODE=2\ -DLUAJIT_ENABLE_LUA52COMPAT\ -fno-stack-check
       --with-dtrace-probes
     ]
 
