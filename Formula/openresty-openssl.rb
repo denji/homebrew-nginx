@@ -63,6 +63,7 @@ class OpenrestyOpenssl < Formula
       arch_args = %w[darwin-i386-cc]
     end
 
+    # Install
     #ENV.deparallelize
     system "perl", "./Configure", *(configure_args + arch_args)
     system "make"

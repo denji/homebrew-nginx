@@ -27,7 +27,7 @@ class Openresty < Formula
     ld_opt = "-L#{HOMEBREW_PREFIX}/lib -L#{Formula["pcre"].opt_lib} -L#{Formula["denji/nginx/openresty-openssl"].opt_lib}"
 
     args = %W[
-      -j#{Etc.nprocessors}
+      -j#{ENV.make_jobs}
       --prefix=#{prefix}
       --pid-path=#{var}/run/openresty.pid
       --lock-path=#{var}/run/openresty.lock
