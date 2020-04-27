@@ -2,17 +2,20 @@ language: ruby
 
 matrix:
   include:
-    - os: osx
-      osx_image: xcode11.3
-      rvm: 2.6
-    - os: linux
-      dist: xenial
-      rvm: 2.6
-  fast_finish: true
+    - env: OSX=10.11
+      os: osx
+      osx_image: osx10.11
+      rvm: system
+    - env: OSX=10.10
+      os: osx
+      osx_image: xcode7
+      rvm: system
+    - env: OSX=10.9
+      os: osx
+      osx_image: beta-xcode6.2
+      rvm: system
   allow_failures:
     - os: linux
-      dist: xenial
-      rvm: 2.6
 
 env:
   global:
@@ -52,6 +55,4 @@ script:
     fi
 
 notifications:
-  email:
-    on_success: never
-    on_failure: always
+  email: never
