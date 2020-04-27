@@ -5,17 +5,19 @@ matrix:
     - env: OSX=10.11
       os: osx
       osx_image: osx10.11
-      rvm: system
+      rvm: 2.7.1
     - env: OSX=10.10
       os: osx
       osx_image: xcode7
-      rvm: system
+      rvm: 2.7.1
     - env: OSX=10.9
       os: osx
       osx_image: beta-xcode6.2
-      rvm: system
+      rvm: 2.7.1
   allow_failures:
     - os: linux
+      dist: bionic
+      rvm: 2.7.1
 
 env:
   global:
