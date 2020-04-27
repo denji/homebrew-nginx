@@ -48,11 +48,12 @@ before_install:
   - umask 022
 
 script:
-  - if [ "$TRAVIS_PULL_REQUEST" = "false" ]; then
-      brew test-bot --ci-testing;
-    else
-      brew test-bot --ci-pr;
-    fi
+  - brew test-bot
+  #- if [ "$TRAVIS_PULL_REQUEST" = "false" ]; then
+  #    brew test-bot --ci-testing;
+  #  else
+  #    brew test-bot --ci-pr;
+  #  fi
 
 notifications:
   email: never
