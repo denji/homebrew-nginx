@@ -83,6 +83,7 @@ class NginxFull < Formula
       "mruby" => "Build with MRuby support",
       "naxsi" => "Build with Naxsi support",
       "nchan" => "Build with Nchan support",
+      "njs" => "Build with njs support",
       "notice" => "Build with HTTP Notice support",
       "php-session" => "Build with Parse PHP Sessions support",
       "tarantool" => "Build with Tarantool upstream support",
@@ -267,9 +268,14 @@ class NginxFull < Formula
 
     # Third Party Modules
     self.class.third_party_modules.each_key do |name|
-      if build.with?("#{name}-module")
+      if build.with?("#{name}-module") and not name == "njs"
         args << "--add-module=#{HOMEBREW_PREFIX}/share/#{name}-nginx-module"
       end
+    end
+
+    # The njs module is special since it has a command-line component as well, we have to specify the nginx/ subpath
+    if build.with?("njs-module")
+      args << "--add-module=#{HOMEBREW_PREFIX}/share/njs-nginx-module/nginx"
     end
 
     # Passenger
