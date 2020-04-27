@@ -45,7 +45,7 @@ before_install:
   - umask 022
 
 script:
-  - brew test-bot --no-bottle
+  - brew test-bot
 
 notifications:
   email:
