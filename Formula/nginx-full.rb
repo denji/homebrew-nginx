@@ -148,22 +148,29 @@ class NginxFull < Formula
     depends_on "#{name}-nginx-module" if build.with?("#{name}-module")
   end
 
-  def patches
-    patches = {}
+  if build.with?("no-pool-nginx")
     # https://github.com/openresty/no-pool-nginx
-    if build.with?("no-pool-nginx")
-      patches[:p2] = "https://raw.githubusercontent.com/openresty/no-pool-nginx/master/nginx-1.11.2-no_pool.patch"
+    patch :p2 do
+      url "https://raw.githubusercontent.com/openresty/no-pool-nginx/master/nginx-1.11.2-no_pool.patch"
     end
-    if build.with?("extended-status-module")
-      patches[:p1] = "https://raw.githubusercontent.com/nginx-modules/ngx_http_extended_status_module/master/extended_status-1.10.1.patch"
+  end
+
+  if build.with?("extended-status-module")
+    patch :p2 do
+      url "https://raw.githubusercontent.com/nginx-modules/ngx_http_extended_status_module/master/extended_status-1.10.1.patch"
     end
-    if build.with?("ustats-module")
-      patches[:p1] = "https://raw.githubusercontent.com/nginx-modules/ngx_ustats_module/master/nginx-1.6.1.patch"
+  end
+
+  if build.with?("ustats-module")
+    patch do
+      url "https://raw.githubusercontent.com/nginx-modules/ngx_ustats_module/master/nginx-1.6.1.patch"
     end
-    if build.with?("tcp-proxy-module")
-      patches[:p1] = "https://raw.githubusercontent.com/yaoweibin/nginx_tcp_proxy_module/afcab76/tcp_1_8.patch"
+  end
+
+  if build.with?("tcp-proxy-module")
+    patch do
+      url "https://raw.githubusercontent.com/yaoweibin/nginx_tcp_proxy_module/afcab76/tcp_1_8.patch"
     end
-    patches
   end
 
   env :userpaths
