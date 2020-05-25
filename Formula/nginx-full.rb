@@ -156,7 +156,7 @@ class NginxFull < Formula
   end
 
   if build.with?("extended-status-module")
-    patch :p2 do
+    patch do
       url "https://raw.githubusercontent.com/nginx-modules/ngx_http_extended_status_module/master/extended_status-1.10.1.patch"
     end
   end
