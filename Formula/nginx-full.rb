@@ -173,7 +173,7 @@ class NginxFull < Formula
     end
   end
 
-  env :userpaths
+  #env :userpaths
   skip_clean "logs"
 
   def install
