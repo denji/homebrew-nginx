@@ -4,8 +4,6 @@ class Redis2NginxModule < Formula
   url "https://github.com/openresty/redis2-nginx-module/archive/v0.15.tar.gz"
   sha256 "d255571bcfb9939b78099df39cb4d42f174d789aec8c8e5e47b93942b0299438"
 
-  bottle :unneeded
-
   def install
     pkgshare.install Dir["*"]
   end

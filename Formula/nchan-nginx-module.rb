@@ -5,8 +5,6 @@ class NchanNginxModule < Formula
   sha256 "8bb5d1749af759bb5e9cc5476a9c4b44d51bee6096bb89ab5ff53e85367b490b"
   head "https://github.com/slact/nchan.git"
 
-  bottle :unneeded
-
   def install
     pkgshare.install Dir["*"]
   end

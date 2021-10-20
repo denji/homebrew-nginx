@@ -5,8 +5,6 @@ class AuthDigestNginxModule < Formula
   version "0.2.2"
   sha256 "fe683831f832aae4737de1e1026a4454017c2d5f98cb88b08c5411dc380062f8"
 
-  bottle :unneeded
-
   def install
     pkgshare.install Dir["*"]
   end

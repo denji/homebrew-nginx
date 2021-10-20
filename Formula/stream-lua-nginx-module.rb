@@ -7,8 +7,6 @@ class StreamLuaNginxModule < Formula
     depends_on "autoconf" => :build
   end
 
-  bottle :unneeded
-
   def install
     pkgshare.install Dir["*"]
   end

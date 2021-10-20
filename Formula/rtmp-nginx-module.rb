@@ -11,8 +11,6 @@ class RtmpNginxModule < Formula
     sha256 "afa7a32135bc522383b1c1ad9d32284856b7b59113401a5ad00039da015f66e3"
   end
 
-  bottle :unneeded
-
   def install
     pkgshare.install Dir["*"]
   end

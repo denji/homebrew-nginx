@@ -5,8 +5,6 @@ class ModZipNginxModule < Formula
   version "0.2"
   sha256 "48f7803dfe6da9465a5101871ceee584402d055fe1e9c6ecff48cb20d4e9d836"
 
-  bottle :unneeded
-
   def install
     pkgshare.install Dir["*"]
   end

@@ -5,8 +5,6 @@ class NjsNginxModule < Formula
   sha256 "f41fedff2b82bb021b2389122ba3fc501803a4cfd63344f8b850cd531bf2be30"
   head "https://github.com/nginx/njs.git"
 
-  bottle :unneeded
-
   depends_on "pcre" => :build
   depends_on "readline" => :build
 

@@ -5,8 +5,6 @@ class UpstreamOrderNginxModule < Formula
   version "0.1"
   sha256 "e5fa35bd3ae20b94b760f396bae1aa56a233db79e881472786503f4a7370db27"
 
-  bottle :unneeded
-
   def install
     pkgshare.install Dir["*"]
   end

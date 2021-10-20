@@ -4,8 +4,6 @@ class MrubyNginxModule < Formula
   url "https://github.com/matsumotory/ngx_mruby/archive/v2.1.0.tar.gz"
   sha256 "8cc50f7bac46fab803d3ce18857dc3164fbfb733d728d75d0015a14756db0606"
 
-  bottle :unneeded
-
   depends_on "ngx-devel-kit"
 
   def install
