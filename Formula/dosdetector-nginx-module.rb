@@ -5,8 +5,6 @@ class DosdetectorNginxModule < Formula
   version "0.1"
   sha256 "eafac404719c21143e645d24540735f18446f61a8d0dd605b4116f1064741172"
 
-  bottle :unneeded
-
   def install
     pkgshare.install Dir["*"]
   end

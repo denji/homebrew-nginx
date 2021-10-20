@@ -5,8 +5,6 @@ class FancyindexNginxModule < Formula
   sha256 "81698fb0c1ec9f906ce308c055d5d248085caf390f4b92516c1ec93f87c886d4"
   head "https://github.com/aperezdc/ngx-fancyindex.git"
 
-  bottle :unneeded
-
   def install
     pkgshare.install Dir["*"]
   end

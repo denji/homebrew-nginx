@@ -5,8 +5,6 @@ class UploadProgressNginxModule < Formula
   sha256 "b286689355442657650421d8e8398bd4abf9dbbaade65947bb0cb74a349cc497"
   head "https://github.com/masterzen/nginx-upload-progress-module.git"
 
-  bottle :unneeded
-
   def install
     pkgshare.install Dir["*"]
   end

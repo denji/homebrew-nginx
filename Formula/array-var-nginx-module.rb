@@ -4,8 +4,6 @@ class ArrayVarNginxModule < Formula
   url "https://github.com/openresty/array-var-nginx-module/archive/v0.05.tar.gz"
   sha256 "c949d4be6f3442c8e2937046448dc8d8def25c0e0fa6f4e805144cea45eabe80"
 
-  bottle :unneeded
-
   depends_on "ngx-devel-kit"
 
   def install

@@ -5,8 +5,6 @@ class TarantoolNginxModule < Formula
   version "2.7"
   sha256 "48d0bd45de57c9c34c836941d79ac53b3d51d715361d447794aecd5e16eacfea"
 
-  bottle :unneeded
-
   depends_on "msgpuck" => :build
   depends_on "cmake" => :build
   depends_on "yajl"

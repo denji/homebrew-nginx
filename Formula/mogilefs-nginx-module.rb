@@ -5,8 +5,6 @@ class MogilefsNginxModule < Formula
   sha256 "7ac230d30907f013dff8d435a118619ea6168aa3714dba62c6962d350c6295ae"
   head "https://github.com/vkholodkov/nginx-mogilefs-module.git"
 
-  bottle :unneeded
-
   def install
     pkgshare.install Dir["*"]
   end

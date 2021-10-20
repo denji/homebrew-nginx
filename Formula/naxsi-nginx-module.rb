@@ -5,8 +5,6 @@ class NaxsiNginxModule < Formula
   sha256 "0a66dcadd32432460fab180be9f2efe24e911e3798917b2787ee710e02901eb4"
   head "https://github.com/nbs-system/naxsi.git"
 
-  bottle :unneeded
-
   def install
     cd "naxsi_src" do
       pkgshare.install Dir["*"]

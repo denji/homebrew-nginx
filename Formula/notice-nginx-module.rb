@@ -5,8 +5,6 @@ class NoticeNginxModule < Formula
   version "0.0.2"
   sha256 "c520f7905f569f1590442a7c3ac3ef54a977fb306f3adb9c2ba008d4481939ac"
 
-  bottle :unneeded
-
   # Fix issue compatibility
   patch :DATA
 

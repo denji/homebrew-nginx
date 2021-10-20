@@ -5,8 +5,6 @@ class NgxDevelKit < Formula
   sha256 "88e05a99a8a7419066f5ae75966fb1efc409bad4522d14986da074554ae61619"
   head "https://github.com/simpl/ngx_devel_kit.git"
 
-  bottle :unneeded
-
   def install
     pkgshare.install Dir["*"]
   end

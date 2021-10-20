@@ -5,8 +5,6 @@ class AjpNginxModule < Formula
   version "0.3.0"
   sha256 "7b3791275ef87dde153679fa459e84784da09b26d35426d61f5477903584b254"
 
-  bottle :unneeded
-
   def install
     pkgshare.install Dir["*"]
   end
