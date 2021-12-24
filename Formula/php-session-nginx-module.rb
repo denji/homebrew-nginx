@@ -1,5 +1,5 @@
 class PhpSessionNginxModule < Formula
-  desc "parse php sessions for nginx"
+  desc "Parse php sessions for nginx"
   homepage "https://github.com/replay/ngx_http_php_session"
   url "https://github.com/replay/ngx_http_php_session/archive/30f69b3bbe.tar.gz"
   version "0.4b"

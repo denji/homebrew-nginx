@@ -1,5 +1,5 @@
 class TxidNginxModule < Formula
-  desc "sortable unique id in 20 case-insensitive characters"
+  desc "Sortable unique id in 20 case-insensitive characters"
   homepage "https://github.com/streadway/ngx_txid"
   url "https://github.com/streadway/ngx_txid/archive/f1c197c.tar.gz"
   version "0.2"

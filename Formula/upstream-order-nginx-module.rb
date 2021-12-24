@@ -1,5 +1,5 @@
 class UpstreamOrderNginxModule < Formula
-  desc "attempt to access backends according the order"
+  desc "Attempt to access backends according the order"
   homepage "https://github.com/flygoast/ngx_http_upstream_order"
   url "https://github.com/flygoast/ngx_http_upstream_order/archive/d820667a5f.tar.gz"
   version "0.1"
