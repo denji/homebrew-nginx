@@ -5,9 +5,28 @@ class NginxFull < Formula
   # See https://www.nginx.com/blog/nginx-1-12-1-13-released/ for why
   url "https://nginx.org/download/nginx-1.19.10.tar.gz"
   sha256 "e8d0290ff561986ad7cd6c33307e12e11b137186c4403a6a5ccdb4914c082d88"
-  head "http://hg.nginx.org/nginx/", :using => :hg
+  head "http://hg.nginx.org/nginx/", using: :hg
 
-  conflicts_with "nginx", :because => "nginx-full symlink with the name for compatibility with nginx"
+  option "with-homebrew-libressl", "Include LibreSSL instead of OpenSSL via Homebrew"
+
+  depends_on "gd" if build.with?("image-filter")
+  depends_on "icu4c" if build.with?("xsltproc-module")
+  depends_on "libxml2" if build.with?("xsltproc-module") ||
+                          build.with?("xslt") ||
+                          build.with?("dav-ext-module")
+  depends_on "libxslt" if build.with?("xsltproc-module") ||
+                          build.with?("xslt")
+  depends_on "libzip" if build.with?("unzip")
+  depends_on "pcre"
+  depends_on "valgrind" if build.with?("no-pool-nginx")
+  depends_on "gd" => :optional
+  depends_on "geoip" => :optional
+  depends_on "gperftools" => :optional
+  depends_on "imlib2" => :optional
+  depends_on "passenger" => :optional
+  depends_on "perl" => :optional
+
+  conflicts_with "nginx", because: "nginx-full symlink with the name for compatibility with nginx"
 
   def self.core_modules
     [
@@ -45,100 +64,78 @@ class NginxFull < Formula
     ]
   end
 
-  # rubocop:disable AlignHash
   def self.third_party_modules
     {
-      "accept-language" => "Build with Accept Language support",
-      "accesskey" => "Build with HTTP Access Key support",
-      "ajp" => "Build with AJP-protocol support",
-      "anti-ddos" => "Build with Anti-DDoS support",
-      "array-var" => "Build with Array Var support",
-      "auth-digest" => "Build with Auth Digest support",
-      "auth-ldap" => "Build with Auth LDAP support",
-      "auth-pam" => "Build with Auth PAM support",
-      "auto-keepalive" => "Build with Auto Disable KeepAlive support",
-      "autols" => "Build with Flexible Auto Index support",
-      "brotli" => "Build with Brotli compression support",
-      "cache-purge" => "Build with Cache Purge support",
-      "captcha" => "Build with Captcha support",
-      "counter-zone" => "Build with Realtime Counter Zone support",
-      "ctpp2" => "Build with CT++ support",
-      "dav-ext" => "Build with HTTP WebDav Extended support",
-      "dosdetector" => "Build with detecting DoS attacks support",
-      "echo" => "Build with Echo support",
-      "eval" => "Build with Eval support",
-      "extended-status" => "Build with Extended Status support",
-      "fancyindex" => "Build with Fancy Index support",
-      "geoip2" => "Build with GeoIP2 support",
-      "headers-more" => "Build with Headers More support",
-      "healthcheck" => "Build with Healthcheck support",
-      "http-accounting" => "Build with HTTP Accounting support",
+      "accept-language"     => "Build with Accept Language support",
+      "accesskey"           => "Build with HTTP Access Key support",
+      "ajp"                 => "Build with AJP-protocol support",
+      "anti-ddos"           => "Build with Anti-DDoS support",
+      "array-var"           => "Build with Array Var support",
+      "auth-digest"         => "Build with Auth Digest support",
+      "auth-ldap"           => "Build with Auth LDAP support",
+      "auth-pam"            => "Build with Auth PAM support",
+      "auto-keepalive"      => "Build with Auto Disable KeepAlive support",
+      "autols"              => "Build with Flexible Auto Index support",
+      "brotli"              => "Build with Brotli compression support",
+      "cache-purge"         => "Build with Cache Purge support",
+      "captcha"             => "Build with Captcha support",
+      "counter-zone"        => "Build with Realtime Counter Zone support",
+      "ctpp2"               => "Build with CT++ support",
+      "dav-ext"             => "Build with HTTP WebDav Extended support",
+      "dosdetector"         => "Build with detecting DoS attacks support",
+      "echo"                => "Build with Echo support",
+      "eval"                => "Build with Eval support",
+      "extended-status"     => "Build with Extended Status support",
+      "fancyindex"          => "Build with Fancy Index support",
+      "geoip2"              => "Build with GeoIP2 support",
+      "headers-more"        => "Build with Headers More support",
+      "healthcheck"         => "Build with Healthcheck support",
+      "http-accounting"     => "Build with HTTP Accounting support",
       "http-flood-detector" => "Build with Var Flood-Threshold support",
-      "http-remote-passwd" => "Build with Remote Basic Auth Password support",
-      "log-if" => "Build with Log-if support",
-      "lua" => "Build with LUA support",
-      "mod-zip" => "Build with HTTP Zip support",
-      "mogilefs" => "Build with HTTP MogileFS support",
-      "mp4-h264" => "Build with HTTP MP4/H264 support",
-      "mruby" => "Build with MRuby support",
-      "naxsi" => "Build with Naxsi support",
-      "nchan" => "Build with Nchan support",
-      "njs" => "Build with njs support",
-      "notice" => "Build with HTTP Notice support",
-      "php-session" => "Build with Parse PHP Sessions support",
-      "tarantool" => "Build with Tarantool upstream support",
-      "push-stream" => "Build with HTTP Push Stream support",
-      "realtime-req" => "Build with Realtime Request support",
-      "redis" => "Build with Redis support",
-      "redis2" => "Build with Redis2 support",
-      "rtmp" => "Build with RTMP support",
-      "set-misc" => "Build with Set Misc support",
-      "small-light" => "Build with Small Light support",
-      "subs-filter" => "Build with Substitutions Filter support",
-      "tcp-proxy" => "Build with TCP Proxy support",
-      "txid" => "Build with Sortable Unique ID support",
-      "unzip" => "Build with UnZip support",
-      "upload" => "Build with Upload support",
-      "upload-progress" => "Build with Upload Progress support",
-      "upstream-order" => "Build with Order Upstream support",
-      "ustats" => "Build with Upstream Statistics (HAProxy style) support",
-      "var-req-speed" => "Build with Var Request-Speed support",
-      "vod" => "Build with VOD on-the-fly MP4 Repackager support",
-      "vts" => "Build with virtual host traffic status support",
-      "websockify" => "Build with Websockify support",
-      "xsltproc" => "Build with XSLT Transformations support",
+      "http-remote-passwd"  => "Build with Remote Basic Auth Password support",
+      "log-if"              => "Build with Log-if support",
+      "lua"                 => "Build with LUA support",
+      "mod-zip"             => "Build with HTTP Zip support",
+      "mogilefs"            => "Build with HTTP MogileFS support",
+      "mp4-h264"            => "Build with HTTP MP4/H264 support",
+      "mruby"               => "Build with MRuby support",
+      "naxsi"               => "Build with Naxsi support",
+      "nchan"               => "Build with Nchan support",
+      "njs"                 => "Build with njs support",
+      "notice"              => "Build with HTTP Notice support",
+      "php-session"         => "Build with Parse PHP Sessions support",
+      "tarantool"           => "Build with Tarantool upstream support",
+      "push-stream"         => "Build with HTTP Push Stream support",
+      "realtime-req"        => "Build with Realtime Request support",
+      "redis"               => "Build with Redis support",
+      "redis2"              => "Build with Redis2 support",
+      "rtmp"                => "Build with RTMP support",
+      "set-misc"            => "Build with Set Misc support",
+      "small-light"         => "Build with Small Light support",
+      "subs-filter"         => "Build with Substitutions Filter support",
+      "tcp-proxy"           => "Build with TCP Proxy support",
+      "txid"                => "Build with Sortable Unique ID support",
+      "unzip"               => "Build with UnZip support",
+      "upload"              => "Build with Upload support",
+      "upload-progress"     => "Build with Upload Progress support",
+      "upstream-order"      => "Build with Order Upstream support",
+      "ustats"              => "Build with Upstream Statistics (HAProxy style) support",
+      "var-req-speed"       => "Build with Var Request-Speed support",
+      "vod"                 => "Build with VOD on-the-fly MP4 Repackager support",
+      "vts"                 => "Build with virtual host traffic status support",
+      "websockify"          => "Build with Websockify support",
+      "xsltproc"            => "Build with XSLT Transformations support",
     }
   end
-  # rubocop:enable AlignHash
 
-  option "with-homebrew-libressl", "Include LibreSSL instead of OpenSSL via Homebrew"
-
-  depends_on "pcre"
   if build.with?("homebrew-libressl")
     depends_on "libressl"
   else
     depends_on "openssl@1.1"
   end
-  depends_on "gd" => :optional
-  depends_on "geoip" => :optional
-  depends_on "gperftools" => :optional
-  depends_on "passenger" => :optional
-  depends_on "imlib2" => :optional
-  depends_on "gd" if build.with?("image-filter")
-  depends_on "libxml2" if build.with?("dav-ext-module")
-  depends_on "libxml2" if build.with?("xslt")
-  depends_on "libxslt" if build.with?("xslt")
-  depends_on "icu4c" if build.with?("xsltproc-module")
-  depends_on "libxml2" if build.with?("xsltproc-module")
-  depends_on "libxslt" if build.with?("xsltproc-module")
-  depends_on "libzip" if build.with?("unzip")
-  depends_on "perl" if build.with?("perl")
-  depends_on "valgrind" if build.with?("no-pool-nginx")
 
   # HTTP2 (backward compatibility for spdy)
-  if build.with?("spdy")
-    deprecated_option "with-spdy" => "with-http2"
-  end
+  deprecated_option "with-spdy" => "with-http2" if build.with?("spdy")
 
   core_modules.each do |arr|
     option "with-#{arr[0]}", arr[2]
@@ -173,7 +170,7 @@ class NginxFull < Formula
     end
   end
 
-  #env :userpaths
+  # env :userpaths
   skip_clean "logs"
 
   def install
@@ -188,11 +185,13 @@ class NginxFull < Formula
     # small-light needs to run setup script
     if build.with?("small-light-module")
       small_light = Formula["small-light-nginx-module"]
-      args = build.used_options.select { |option| ["with-gd", "with-imlib2"].include?(option.name) }
+      img_opts = ["with-gd", "with-imlib2"]
+      args = build.used_options.select { |option| img_opts.include?(option.name) }
       origin_dir = Dir.pwd
       Dir.chdir("#{small_light.share}/#{small_light.name}")
       system "./setup", *args
       raise "The small-light setup script couldn't generate config file." unless File.exist?("./config")
+
       Dir.chdir(origin_dir)
     end
 
@@ -269,21 +268,22 @@ class NginxFull < Formula
     end
 
     # Set misc module and mruby module both depend on nginx-devel-kit being compiled in
-    if build.with?("set-misc-module") || build.with?("mruby-module") || build.with?("lua-module") || build.with?("array-var-module")
+    if build.with?("set-misc-module") ||
+       build.with?("mruby-module") ||
+       build.with?("lua-module") ||
+       build.with?("array-var-module")
       args << "--add-module=#{HOMEBREW_PREFIX}/share/ngx-devel-kit"
     end
 
     # Third Party Modules
     self.class.third_party_modules.each_key do |name|
-      if build.with?("#{name}-module") and not name == "njs"
+      if build.with?("#{name}-module") && (name != "njs")
         args << "--add-module=#{HOMEBREW_PREFIX}/share/#{name}-nginx-module"
       end
     end
 
     # The njs module is special since it has a command-line component as well, we have to specify the nginx/ subpath
-    if build.with?("njs-module")
-      args << "--add-module=#{HOMEBREW_PREFIX}/share/njs-nginx-module/nginx"
-    end
+    args << "--add-module=#{HOMEBREW_PREFIX}/share/njs-nginx-module/nginx" if build.with?("njs-module")
 
     # Passenger
     if build.with?("passenger")
@@ -336,16 +336,15 @@ class NginxFull < Formula
     # and Homebrew used to suggest the user copy the plist for nginx to their
     # ~/Library/LaunchAgents directory. So we need to have a symlink there
     # for such cases
-    if rack.subdirs.any? { |d| d.join("sbin").directory? }
-      sbin.install_symlink bin/"nginx"
-    end
+    sbin.install_symlink bin/"nginx" if rack.subdirs.any? { |d| d.join("sbin").directory? }
   end
 
-  def passenger_caveats; <<~EOS
-    To activate Phusion Passenger, add this to #{etc}/nginx/nginx.conf, inside the 'http' context:
-      passenger_root #{Formula["passenger"].opt_libexec}/src/ruby_supportlib/phusion_passenger/locations.ini;
-      passenger_ruby /usr/bin/ruby;
-  EOS
+  def passenger_caveats
+    <<~EOS
+      To activate Phusion Passenger, add this to #{etc}/nginx/nginx.conf, inside the 'http' context:
+        passenger_root #{Formula["passenger"].opt_libexec}/src/ruby_supportlib/phusion_passenger/locations.ini;
+        passenger_ruby /usr/bin/ruby;
+    EOS
   end
 
   def caveats
@@ -374,30 +373,31 @@ class NginxFull < Formula
     s
   end
 
-  plist_options :manual => "nginx"
+  plist_options manual: "nginx"
 
-  def plist; <<~EOS
-    <?xml version="1.0" encoding="UTF-8"?>
-    <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
-    <plist version="1.0">
-      <dict>
-        <key>Label</key>
-        <string>#{plist_name}</string>
-        <key>RunAtLoad</key>
-        <true/>
-        <key>KeepAlive</key>
-        <false/>
-        <key>ProgramArguments</key>
-        <array>
-            <string>#{opt_bin}/nginx</string>
-            <string>-g</string>
-            <string>daemon off;</string>
-        </array>
-        <key>WorkingDirectory</key>
-        <string>#{HOMEBREW_PREFIX}</string>
-      </dict>
-    </plist>
-  EOS
+  def plist
+    <<~EOS
+      <?xml version="1.0" encoding="UTF-8"?>
+      <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+      <plist version="1.0">
+        <dict>
+          <key>Label</key>
+          <string>#{plist_name}</string>
+          <key>RunAtLoad</key>
+          <true/>
+          <key>KeepAlive</key>
+          <false/>
+          <key>ProgramArguments</key>
+          <array>
+              <string>#{opt_bin}/nginx</string>
+              <string>-g</string>
+              <string>daemon off;</string>
+          </array>
+          <key>WorkingDirectory</key>
+          <string>#{HOMEBREW_PREFIX}</string>
+        </dict>
+      </plist>
+    EOS
   end
 
   test do

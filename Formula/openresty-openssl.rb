@@ -18,7 +18,6 @@ class OpenrestyOpenssl < Formula
       url "https://raw.githubusercontent.com/openresty/openresty/master/patches/openssl-1.1.0j-parallel_build_fix.patch"
       sha256 "060720ca2b93452dcf68211064841e0417c4a4a40e976fe0b2b5797162917066"
     end
-
   end
 
   keg_only "only for use with OpenResty"
@@ -32,17 +31,18 @@ class OpenrestyOpenssl < Formula
   # SSLv3 & zlib are off by default with 1.1.0 but this may not
   # be obvious to everyone, so explicitly state it for now to
   # help debug inevitable breakage.
-  def configure_args; %W[
-    --prefix=#{prefix}
-    --openssldir=#{openssldir}
-    --libdir=lib
-    no-threads
-    shared
-    zlib
-    -g
-    enable-ssl3
-    enable-ssl3-method
-  ]
+  def configure_args
+    %W[
+      --prefix=#{prefix}
+      --openssldir=#{openssldir}
+      --libdir=lib
+      no-threads
+      shared
+      zlib
+      -g
+      enable-ssl3
+      enable-ssl3-method
+    ]
   end
 
   def install
@@ -52,19 +52,17 @@ class OpenrestyOpenssl < Formula
     # This ensures where Homebrew's Perl is needed the Cellar path isn't
     # hardcoded into OpenSSL's scripts, causing them to break every Perl update.
     # Whilst our env points to opt_bin, by default OpenSSL resolves the symlink.
-    if which("perl") == Formula["perl"].opt_bin/"perl"
-      ENV["PERL"] = Formula["perl"].opt_bin/"perl"
-    end
+    ENV["PERL"] = Formula["perl"].opt_bin/"perl" if which("perl") == Formula["perl"].opt_bin/"perl"
 
     # x86_64
-    if Hardware::CPU.is_64_bit? # Hardware::CPU.arch_64_bit?
-      arch_args = %w[darwin64-x86_64-cc enable-ec_nistp_64_gcc_128]
+    arch_args = if Hardware::CPU.is_64_bit? # Hardware::CPU.arch_64_bit?
+      %w[darwin64-x86_64-cc enable-ec_nistp_64_gcc_128]
     else
-      arch_args = %w[darwin-i386-cc]
+      %w[darwin-i386-cc]
     end
 
     # Install
-    #ENV.deparallelize
+    # ENV.deparallelize
     system "perl", "./Configure", *(configure_args + arch_args)
     system "make"
     system "make", "test" if build.with?("test")
