@@ -41,8 +41,8 @@
   description: Build with Auth LDAP support
 - name: auth-pam
   homepage: https://github.com/stogh/ngx_http_auth_pam_module
-  version: 1.5.1
-  sha256: 77676842919134af88a7b4bfca4470223e3a00d287d17c0dbdc9a114a685b6e7
+  version: 1.5.3
+  sha256: 882018fea8d6955ab3fe294aafa8ebb1fdff4eac313c29583fef02c6de76fae7
   description: Build with Auth PAM support
 - name: auth-req
   homepage: 
@@ -66,8 +66,8 @@
   description: Build with Brotli compression support
 - name: cache-purge
   homepage: https://github.com/nginx-modules/ngx_cache_purge
-  version: 2.4.2
-  sha256: 067a10ae2a6d623deed5614d9fc55ec9b380d3b6060fd1e32e71c6f955d11cfc
+  version: 2.5.1
+  sha256: 9db968170c301168c4a623bce3fefe8bfd93d676c2006d1a8b2d5eec668cc22c
   description: Build with Cache Purge support
 - name: captcha
   homepage: https://github.com/fallgold/ngx_http_captcha
@@ -106,13 +106,13 @@
   description: Build with detecting DoS attacks support
 - name: echo
   homepage: https://github.com/openresty/echo-nginx-module
-  version: '0.61'
-  sha256: 2e6a03032555f5da1bdff2ae96c96486f447da3da37c117e0f964ae0753d22aa
+  version: '0.62'
+  sha256: 86f6866baf7297d85feb42ff6d9c212d1de696f3314a53d3a41a4b533a67ab01
   description: Build with Echo support
 - name: eval
   homepage: https://github.com/vkholodkov/nginx-eval-module
-  version: 1.0.3
-  sha256: 849381433a9020ee1162fa6211b047369fde38dc1a8b5de79f03f8fff2407fe2
+  version: 1.0.4
+  sha256: 0042fcfc677e4dab8d5627a46e4818e9c0c93b0aaa26d24ab8a37c9471de06a6
   description: Build with Eval support
 - name: extended-status
   homepage: https://github.com/nginx-modules/ngx_http_extended_status_module
@@ -121,8 +121,8 @@
   description: Build with Extended Status support
 - name: fancyindex
   homepage: https://github.com/aperezdc/ngx-fancyindex
-  version: 0.4.3
-  sha256: 81698fb0c1ec9f906ce308c055d5d248085caf390f4b92516c1ec93f87c886d4
+  version: 0.5.2
+  sha256: c3dd84d8ba0b8daeace3041ef5987e3fb96e9c7c17df30c9ffe2fe3aa2a0ca31
   description: Build with Fancy Index support
 - name: flv
   homepage: 
@@ -136,8 +136,8 @@
   description: Build with HTTP GeoIP support
 - name: geoip2
   homepage: https://github.com/leev/ngx_http_geoip2_module
-  version: '2.0'
-  sha256: ebb4652c4f9a2e1ee31fddefc4c93ff78e651a4b2727d3453d026bccbd708d99
+  version: '3.3'
+  sha256: 41378438c833e313a18869d0c4a72704b4835c30acaf7fd68013ab6732ff78a7
   description: Build with GeoIP2 support
 - name: google-perftools
   homepage: 
@@ -156,8 +156,8 @@
   description: Build with Gzip static support
 - name: headers-more
   homepage: https://github.com/openresty/headers-more-nginx-module
-  version: '0.33'
-  sha256: a3dcbab117a9c103bc1ea5200fc00a7b7d2af97ff7fd525f16f8ac2632e30fbf
+  version: '0.261'
+  sha256: 03d1f5fbecba8565f247d87a38f5e4b6440b0a56d752bdd2b29af2f1c4aea480
   description: Build with Headers More support
 - name: healthcheck
   homepage: https://github.com/cep21/healthcheck_nginx_upstreams
@@ -166,8 +166,8 @@
   description: Build with Healthcheck support
 - name: http-accounting
   homepage: https://github.com/Lax/ngx_http_accounting_module
-  version: '0.5'
-  sha256: f14b8e23b137eebe9e56e84be831c3db3e042b3294a1d99f1ad9d2715e5383f9
+  version: '2.0'
+  sha256: 8c99c5313e5c822aa5683691c8a0641499b2fa8c67f9e55652817042e21f5986
   description: Build with HTTP Accounting support
 - name: http-flood-detector
   homepage: https://github.com/suehiro/ngx_http_flood_detector_module
@@ -196,8 +196,8 @@
   description: Build with Log-if support
 - name: lua
   homepage: https://github.com/openresty/lua-nginx-module
-  version: 0.10.13
-  sha256: ecea8c3d7f69dd48c6132498ddefb5d83ba9f387fa3d4da14e2abeacdfc8a3ee
+  version: 0.10.20
+  sha256: efeb38afc966dec36a086a99f9b8706b8a343e5e44d75c19bf8f017ea6657313
   description: Build with LUA support
 - name: mail
   homepage: 
@@ -231,8 +231,8 @@
   description: Build with HTTP MP4/H264 support
 - name: mruby
   homepage: https://github.com/matsumotory/ngx_mruby
-  version: 2.1.0
-  sha256: 8cc50f7bac46fab803d3ce18857dc3164fbfb733d728d75d0015a14756db0606
+  version: 2.2.3
+  sha256: d4812fc0e3550ec672db65d71da73b4b0738323fc7edfb639d73ef34fb2e549e
   description: Build with MRuby support
 - name: naxsi
   homepage: https://github.com/nbs-system/naxsi
@@ -241,9 +241,14 @@
   description: Build with Naxsi support
 - name: nchan
   homepage: https://nchan.io
-  version: 1.2.5
-  sha256: 45d5dd0411238eee1694e36a476c33d88d83f83971316d2e00bc0bf46eeb7a4f
+  version: 1.2.14
+  sha256: d4280b83524ec0bbd794ee46e347f990fc1063e1849e41755c128b6e07371ac9
   description: Build with Nchan support
+- name: njs
+  homepage: https://github.com/nginx/njs
+  version: 0.7.0
+  sha256: 3f0fe7d77600a9c54000ce101dd51f44811964502641ae505e38c1bbf595e6f1
+  description: Build with njs support
 - name: no-pool-nginx
   homepage: 
   version: master
@@ -295,7 +300,7 @@
   sha256: 45bf467e8600487e3c88640f37a7f1cb4a629a39fe8461490607fa52a9ff8e7b
   description: Build with Realtime Request support
 - name: redis
-  homepage: http://wiki.nginx.org/HttpRedis
+  homepage: https://www.nginx.com/resources/wiki/modules/redis/
   version: 21f8754
   sha256: 21f87540f0a44b23ffa5df16fb3d788bc90803b255ef14f9c26e3847a6f26f46
   description: Build with Redis support
@@ -316,8 +321,8 @@
   description: Build with Secure Link support
 - name: set-misc
   homepage: https://github.com/openresty/set-misc-nginx-module
-  version: '0.32'
-  sha256: f1ad2459c4ee6a61771aa84f77871f4bfe42943a4aa4c30c62ba3f981f52c201
+  version: '0.33'
+  sha256: cd5e2cc834bcfa30149e7511f2b5a2183baf0b70dc091af717a89a64e44a2985
   description: Build with Set Misc support
 - name: slice
   homepage: 
@@ -390,12 +395,12 @@
   sha256: 49a0bd04ac632842e24c5bbb2fdd9ebe3aa6a753efd5b7e71eb273e5973a5cee
   description: Build with UnZip support
 - name: upload
-  homepage: http://wiki.nginx.org/HttpUploadModule
+  homepage: https://www.nginx.com/resources/wiki/modules/upload/
   version: 2.3.0
   sha256: c86e318addb9c88d70fdbd58ff1f6ef6f404a93070f6db8017a1f880c97946c4
   description: Build with Upload support
 - name: upload-progress
-  homepage: http://wiki.nginx.org/HttpUploadProgressModule
+  homepage: https://www.nginx.com/resources/wiki/modules/upload_progress/
   version: 0.9.2
   sha256: b286689355442657650421d8e8398bd4abf9dbbaade65947bb0cb74a349cc497
   description: Build with Upload Progress support
@@ -406,7 +411,7 @@
   description: Build with Order Upstream support
 - name: ustats
   homepage: https://github.com/nginx-modules/ngx_ustats_module
-  version: '0.3'
+  version: 4eb5aad
   sha256: 4eb5aadd2129da80d110d6c5a9f6a13485c0a24b5397d183bd24fcbe03125771
   description: Build with Upstream Statistics (HAProxy style) support
 - name: var-req-speed
@@ -416,8 +421,8 @@
   description: Build with Var Request-Speed support
 - name: vod
   homepage: https://github.com/kaltura/nginx-vod-module
-  version: '1.24'
-  sha256: b3cad8e3047556955fa028bcc68e7af46d19343942cb7984ad25e6f44d614ddf
+  version: '1.29'
+  sha256: 775898874367900f14b6197366501c782e8c86dd2b0c3cc45973abf4e8a9217c
   description: Build with VOD on-the-fly MP4 Repackager support
 - name: vts
   homepage: https://github.com/vozlt/nginx-module-vts
@@ -441,6 +446,6 @@
   description: Build with XSLT support
 - name: xsltproc
   homepage: https://github.com/yoreek/nginx-xsltproc-module
-  version: '0.16'
-  sha256: 9003d5aa7bff157577d1f8fb5ee070ee52544fc53c48bb9aa0bdd092e5f39bcf
+  version: '0.17'
+  sha256: cb9157957dffb28c6d15da437396d146b09304901d9d56fa180b9925b039f5eb
   description: Build with XSLT Transformations support
