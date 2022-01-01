@@ -1,8 +1,8 @@
 class PushStreamNginxModule < Formula
   desc "Pure stream http push technology"
   homepage "https://github.com/wandenberg/nginx-push-stream-module"
-  url "https://github.com/wandenberg/nginx-push-stream-module/archive/0.5.4.tar.gz"
-  sha256 "5253bb8a804ea679e514137a234637298f044c3ef63c053670bf3802ff3535b1"
+  url "https://github.com/wandenberg/nginx-push-stream-module/archive/0.5.5.tar.gz"
+  sha256 "90221413bc70a5eaf689c387aab4817789d460e29decee14d678e04d3a9b6a89"
 
   def install
     pkgshare.install Dir["*"]
