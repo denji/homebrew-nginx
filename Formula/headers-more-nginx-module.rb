@@ -1,8 +1,8 @@
 class HeadersMoreNginxModule < Formula
   desc "Set, add, and clear arbitrary output headers"
   homepage "https://github.com/openresty/headers-more-nginx-module"
-  url "https://github.com/openresty/headers-more-nginx-module/archive/v0.261.tar.gz"
-  sha256 "03d1f5fbecba8565f247d87a38f5e4b6440b0a56d752bdd2b29af2f1c4aea480"
+  url "https://github.com/openresty/headers-more-nginx-module/archive/v0.33.tar.gz"
+  sha256 "a3dcbab117a9c103bc1ea5200fc00a7b7d2af97ff7fd525f16f8ac2632e30fbf"
 
   def install
     pkgshare.install Dir["*"]
