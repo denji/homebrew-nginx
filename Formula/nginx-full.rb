@@ -293,9 +293,13 @@ class NginxFull < Formula
 
     # Install LuaJit
     if build.with?("lua-module")
-      luajit_path = `/usr/local/bin/brew --prefix luajit`.chomp
+      if(File.exist?('/usr/local/bin/brew'))
+        luajit_path = `/usr/local/bin/brew --prefix luajit`.chomp
+      else
+        luajit_path = `/opt/homebrew/bin/brew --prefix luajit`.chomp
+      end
+      ENV["LUAJIT_INC"] = "#{luajit_path}/include/luajit-2.1"
       ENV["LUAJIT_LIB"] = "#{luajit_path}/lib"
-      ENV["LUAJIT_INC"] = "#{luajit_path}/include/luajit-2.0"
     end
 
     if build.head?
