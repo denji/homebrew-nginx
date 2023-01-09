@@ -309,6 +309,12 @@ class NginxFull < Formula
       system "./configure", *args
     end
 
+    if build.with?("njs-module")
+      # nginx Makefile tries to clean and build njs module again
+      # we remove the lines responsible for the problem
+      system "sed", "-e", '\/opt\/homebrew\/share\/njs-nginx-module\/nginx\/..\/build\/libnjs.a:/,+4d', "-i", "''", "objs/Makefile"
+    end
+
     system "make", "install"
     if build.head?
       man8.install "docs/man/nginx.8"
