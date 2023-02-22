@@ -18,6 +18,7 @@ class NginxFull < Formula
   depends_on "libxslt" if build.with?("xsltproc-module") ||
                           build.with?("xslt")
   depends_on "libzip" if build.with?("unzip")
+  depends_on "luajit" if build.with?("lua-module")
   depends_on "pcre"
   depends_on "valgrind" if build.with?("no-pool-nginx")
   depends_on "gd" => :optional
@@ -243,6 +244,10 @@ class NginxFull < Formula
 
     cc_opt += " -I#{Formula["libzip"].opt_lib}/libzip/include" if build.with?("unzip")
 
+    # https://github.com/openresty/lua-nginx-module/issues/1984
+    # module do not support with PCRE2 on nginx 1.21.5
+    ld_opt += " -lpcre" if build.with?("lua-module")
+
     args = %W[
       --prefix=#{prefix}
       --with-http_ssl_module
@@ -292,15 +297,11 @@ class NginxFull < Formula
       args << "--add-module=#{nginx_ext}"
     end
 
-    # Install LuaJit
+    # Install lua-module with luajit
     if build.with?("lua-module")
-      if(File.exist?('/usr/local/bin/brew'))
-        luajit_path = `/usr/local/bin/brew --prefix luajit`.chomp
-      else
-        luajit_path = `/opt/homebrew/bin/brew --prefix luajit`.chomp
-      end
-      ENV["LUAJIT_INC"] = "#{luajit_path}/include/luajit-2.1"
-      ENV["LUAJIT_LIB"] = "#{luajit_path}/lib"
+      luajit_version = Formula["luajit"].pkg_version.to_s.sub(/^(\d+\.\d+).*/, '\1')
+      ENV["LUAJIT_INC"] = "#{Formula["luajit"].opt_include}/luajit-#{luajit_version}"
+      ENV["LUAJIT_LIB"] = "#{Formula["luajit"].opt_lib}"
     end
 
     if build.head?
