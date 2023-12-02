@@ -4,7 +4,7 @@ class OpenrestyDebug < Formula
   VERSION = "1.15.8.3".freeze
   url "https://openresty.org/download/openresty-#{VERSION}.tar.gz"
   sha256 "b68cf3aa7878db16771c96d9af9887ce11f3e96a1e5e68755637ecaff75134a8"
-  revision 1
+  revision 2
 
   option "with-postgresql", "Compile with ngx_http_postgres_module"
   option "with-iconv", "Compile with ngx_http_iconv_module"
@@ -77,31 +77,10 @@ class OpenrestyDebug < Formula
     system "make", "install"
   end
 
-  plist_options manual: "openresty"
-
-  def plist
-    <<~EOS
-      <?xml version="1.0" encoding="UTF-8"?>
-      <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
-      <plist version="1.0">
-        <dict>
-          <key>Label</key>
-          <string>#{plist_name}</string>
-          <key>RunAtLoad</key>
-          <true/>
-          <key>KeepAlive</key>
-          <false/>
-          <key>ProgramArguments</key>
-          <array>
-            <string>#{opt_prefix}/bin/openresty</string>
-            <string>-g</string>
-            <string>daemon off;</string>
-          </array>
-          <key>WorkingDirectory</key>
-          <string>#{HOMEBREW_PREFIX}</string>
-        </dict>
-      </plist>
-    EOS
+  service do
+    run [opt_bin/"openresty", "-g", "daemon off;"]
+    working_dir HOMEBREW_PREFIX
+    keep_alive false
   end
 
   test do
