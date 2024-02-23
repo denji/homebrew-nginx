@@ -42,6 +42,7 @@ class NginxFull < Formula
       ["gunzip",             "http_gunzip_module",        "Build with Gunzip support"],
       ["gzip-static",        "http_gzip_static_module",   "Build with Gzip static support"],
       ["http2",              "http_v2_module",            "Build with HTTP/2 support"],
+      ["http3",              "http_v3_module",            "Build with HTTP/3 support"],
       ["image-filter",       "http_image_filter_module",  "Build with Image Filter support"],
       ["mail",               "mail",                      "Build with Mail support"],
       ["mail-ssl",           "mail_ssl_module",           "Build with Mail SSL/TLS support"],
@@ -380,7 +381,11 @@ class NginxFull < Formula
   end
 
   service do
-    run [opt_bin/"nginx", "-g", "daemon off;"]
+    if OS.linux?
+      run [opt_bin/"nginx", "-g", "'daemon off;'"]
+    else
+      run [opt_bin/"nginx", "-g", "daemon off;"]
+    end
     working_dir HOMEBREW_PREFIX
     keep_alive true
     require_root true
