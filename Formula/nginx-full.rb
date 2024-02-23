@@ -3,8 +3,8 @@ class NginxFull < Formula
   homepage "https://nginx.org/"
   # Use "mainline" releases only (odd minor version number), not "stable"
   # See https://www.nginx.com/blog/nginx-1-12-1-13-released/ for why
-  url "https://nginx.org/download/nginx-1.23.3.tar.gz"
-  sha256 "75cb5787dbb9fae18b14810f91cc4343f64ce4c24e27302136fb52498042ba54"
+  url "https://nginx.org/download/nginx-1.25.4.tar.gz"
+  sha256 "760729901acbaa517996e681ee6ea259032985e37c2768beef80df3a877deed9"
   license "BSD-2-Clause"
   head "http://hg.nginx.org/nginx/", using: :hg
 
@@ -133,7 +133,7 @@ class NginxFull < Formula
   if build.with?("homebrew-libressl")
     depends_on "libressl"
   else
-    depends_on "openssl@1.1"
+    depends_on "openssl@3"
   end
 
   # HTTP2 (backward compatibility for spdy)
@@ -232,8 +232,8 @@ class NginxFull < Formula
       cc_opt += " -I#{Formula["libressl"].include}"
       ld_opt += " -L#{Formula["libressl"].lib}"
     else
-      cc_opt += " -I#{Formula["openssl@1.1"].include}"
-      ld_opt += " -L#{Formula["openssl@1.1"].lib}"
+      cc_opt += " -I#{Formula["openssl@3"].include}"
+      ld_opt += " -L#{Formula["openssl@3"].lib}"
     end
 
     if build.with?("xsltproc-module")
