@@ -104,6 +104,7 @@ class NginxFull < Formula
       "mruby"               => "Build with MRuby support",
       "naxsi"               => "Build with Naxsi support",
       "nchan"               => "Build with Nchan support",
+      "nginx-upstream-check"=> "Build with new healthcheck support",
       "njs"                 => "Build with njs support",
       "notice"              => "Build with HTTP Notice support",
       "php-session"         => "Build with Parse PHP Sessions support",
