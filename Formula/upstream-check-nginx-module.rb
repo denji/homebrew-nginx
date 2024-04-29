@@ -1,4 +1,4 @@
-class UpstreamcheckNginxModule < Formula
+class UpstreamCheckNginxModule < Formula
   desc "upstream health check for nginx"
   homepage "https://github.com/yaoweibin/nginx_upstream_check_module"
   url "https://github.com/yaoweibin/nginx_upstream_check_module/archive/refs/tags/v0.4.0.tar.gz"
