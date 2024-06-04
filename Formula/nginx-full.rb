@@ -382,11 +382,7 @@ class NginxFull < Formula
   end
 
   service do
-    if OS.linux?
-      run [opt_bin/"nginx", "-g", "'daemon off;'"]
-    else
-      run [opt_bin/"nginx", "-g", "daemon off;"]
-    end
+    run [opt_bin/"nginx", "-g", "daemon off;"]
     working_dir HOMEBREW_PREFIX
     keep_alive true
     require_root true
