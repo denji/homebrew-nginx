@@ -1,7 +1,7 @@
 class Mp4H264NginxModule < Formula
   desc "H264 Streaming Module plugin for Nginx"
   homepage "http://h264.code-shop.com/trac/wiki/Mod-H264-Streaming-Nginx-Version2"
-  url "http://h264.code-shop.com/download/nginx_mod_h264_streaming-2.2.7.tar.gz"
+  url "https://github.com/code-shop-com/h264/raw/main/download/nginx_mod_h264_streaming-2.2.7.tar.gz"
   sha256 "6d974ba630cef59de1f60996c66b401264a345d25988a76037c2856cec756c19"
 
   # Fix issue compatibility
