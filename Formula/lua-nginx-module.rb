@@ -1,8 +1,9 @@
 class LuaNginxModule < Formula
-  desc "Embed the power of Lua into Nginx"
+  desc "Embed Lua scripting into nginx (static only - requires ngx-devel-kit)"
   homepage "https://github.com/openresty/lua-nginx-module"
-  url "https://github.com/openresty/lua-nginx-module/archive/v0.10.23.tar.gz"
-  sha256 "aabd9907e8b7077c1b4cf4c1d0426e9b10885c5b0bfa87c85c3a97c33c40b503"
+  license "BSD-2-Clause"
+  url "https://github.com/openresty/lua-nginx-module/archive/v0.10.26.tar.gz"
+  sha256 "a75983287a2bdc5e964ace56a51b215dc2ec996639d4916cd393d6ebba94b565"
   head "https://github.com/openresty/lua-nginx-module.git", branch: "master"
 
   depends_on "luajit"
@@ -13,8 +14,8 @@ class LuaNginxModule < Formula
   end
 
   def post_install
-    # configure script tries to write that file and fails
-    # seems to be empty anyways, this hack makes compile succeed
-    system "touch",  "#{pkgshare}/src/ngx_http_lua_autoconf.h"
+    autoconf_h = pkgshare/"src/ngx_http_lua_autoconf.h"
+    autoconf_h.parent.mkpath
+    FileUtils.touch(autoconf_h) unless autoconf_h.exist?
   end
 end

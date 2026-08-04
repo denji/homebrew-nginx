@@ -1,260 +1,263 @@
 class NginxFull < Formula
   desc "HTTP(S) server, reverse proxy, IMAP/POP3 proxy server"
   homepage "https://nginx.org/"
-  # Use "mainline" releases only (odd minor version number), not "stable"
-  # See https://www.nginx.com/blog/nginx-1-12-1-13-released/ for why
-  url "https://nginx.org/download/nginx-1.27.0.tar.gz"
-  sha256 "b7230e3cf87eaa2d4b0bc56aadc920a960c7873b9991a1b66ffcc08fc650129c"
+  url "https://nginx.org/download/nginx-1.30.0.tar.gz"
+  sha256 "058188c64bf22baecaa72b809a6318a4f9ba623889c554feab03f7cb853ab31b"
   license "BSD-2-Clause"
-  head "http://hg.nginx.org/nginx/", using: :hg
+  head "https://github.com/nginx/nginx.git", branch: "master"
 
-  option "with-homebrew-libressl", "Include LibreSSL instead of OpenSSL via Homebrew"
-
-  depends_on "gd" if build.with?("image-filter")
-  depends_on "icu4c" if build.with?("xsltproc-module")
-  depends_on "libxml2" if build.with?("xsltproc-module") ||
-                          build.with?("xslt") ||
-                          build.with?("dav-ext-module")
-  depends_on "libxslt" if build.with?("xsltproc-module") ||
-                          build.with?("xslt")
-  depends_on "libzip" if build.with?("unzip")
-  depends_on "luajit" if build.with?("lua-module")
-  depends_on "pcre"
-  depends_on "valgrind" if build.with?("no-pool-nginx")
-  depends_on "gd" => :optional
-  depends_on "geoip" => :optional
-  depends_on "gperftools" => :optional
-  depends_on "imlib2" => :optional
-  depends_on "passenger" => :optional
-  depends_on "perl" => :optional
-
-  conflicts_with "nginx", because: "nginx-full symlink with the name for compatibility with nginx"
-
+  # Static core modules
+  # [option, configure-flag, description]
+  # nil flag = handled separately in install
   def self.core_modules
     [
-      ["addition",           "http_addition_module",      "Build with HTTP Addition support"],
-      ["auth-req",           "http_auth_request_module",  "Build with HTTP Auth Request support"],
-      ["debug",              "debug",                     "Build with debug log"],
-      ["degredation",        "http_degradation_module",   "Build with HTTP Degredation support"],
-      ["flv",                "http_flv_module",           "Build with FLV support"],
-      ["geoip",              "http_geoip_module",         "Build with HTTP GeoIP support"],
-      ["google-perftools",   "google_perftools_module",   "Build with Google Performance Tools support"],
-      ["gunzip",             "http_gunzip_module",        "Build with Gunzip support"],
-      ["gzip-static",        "http_gzip_static_module",   "Build with Gzip static support"],
-      ["http2",              "http_v2_module",            "Build with HTTP/2 support"],
-      ["http3",              "http_v3_module",            "Build with HTTP/3 support"],
-      ["image-filter",       "http_image_filter_module",  "Build with Image Filter support"],
-      ["mail",               "mail",                      "Build with Mail support"],
-      ["mail-ssl",           "mail_ssl_module",           "Build with Mail SSL/TLS support"],
-      ["mp4",                "http_mp4_module",           "Build with MP4 support"],
-      ["no-pool-nginx",      nil,                         "Build without nginx-pool (valgrind debug memory)"],
-      ["passenger",          nil,                         "Build with Phusion Passenger support"],
-      ["pcre-jit",           "pcre-jit",                  "Build with JIT in PCRE"],
-      ["perl",               "http_perl_module",          "Build with Perl support"],
-      ["random-index",       "http_random_index_module",  "Build with Random Index support"],
-      ["realip",             "http_realip_module",        "Build with Real IP support"],
-      ["secure-link",        "http_secure_link_module",   "Build with Secure Link support"],
-      ["slice",              "http_slice_module",         "Build with Slice support"],
-      ["status",             "http_stub_status_module",   "Build with Stub Status support"],
-      ["stream",             "stream",                    "Build with TCP/UDP proxy support"],
-      ["stream-ssl",         "stream_ssl_module",         "Build with Stream SSL/TLS support"],
-      ["stream-ssl-preread", "stream_ssl_preread_module", "Build with Stream without terminating SSL/TLS support"],
-      ["stream-geoip",       "stream_geoip_module",       "Build with Stream GeoIP support"],
-      ["stream-realip",      "stream_realip_module",      "Build with Stream RealIP support"],
-      ["sub",                "http_sub_module",           "Build with HTTP Sub support"],
-      ["webdav",             "http_dav_module",           "Build with WebDAV support"],
-      ["xslt",               "http_xslt_module",          "Build with XSLT support"],
+      ["addition",           "http_addition_module",      "HTTP Addition"],
+      ["auth-req",           "http_auth_request_module",  "HTTP Auth Request"],
+      ["debug",              "debug",                     "debug log"],
+      ["degradation",        "http_degradation_module",   "HTTP Degradation"],
+      ["flv",                "http_flv_module",           "FLV"],
+      ["google-perftools",   "google_perftools_module",   "Google Performance Tools"],
+      ["gunzip",             "http_gunzip_module",        "Gunzip"],
+      ["gzip-static",        "http_gzip_static_module",   "Gzip static"],
+      ["http2",              "http_v2_module",            "HTTP/2"],
+      ["image-filter",       "http_image_filter_module",  "Image Filter"],
+      ["mail",               "mail",                      "Mail"],
+      ["mail-ssl",           "mail_ssl_module",           "Mail SSL/TLS"],
+      ["mp4",                "http_mp4_module",           "MP4"],
+      ["no-pool-nginx",      nil,                         "pool disabled (valgrind debug)"],
+      ["passenger",          nil,                         "Phusion Passenger"],
+      ["pcre-jit",           "pcre-jit",                  "PCRE JIT"],
+      ["perl",               "http_perl_module",          "Perl"],
+      ["random-index",       "http_random_index_module",  "Random Index"],
+      ["realip",             "http_realip_module",        "Real IP"],
+      ["secure-link",        "http_secure_link_module",   "Secure Link"],
+      ["slice",              "http_slice_module",         "Slice"],
+      ["status",             "http_stub_status_module",   "Stub Status"],
+      ["stream",             "stream",                    "TCP/UDP proxy"],
+      ["stream-ssl",         "stream_ssl_module",         "Stream SSL/TLS"],
+      ["stream-ssl-preread", "stream_ssl_preread_module", "Stream SSL preread"],
+      ["stream-realip",      "stream_realip_module",      "Stream RealIP"],
+      ["sub",                "http_sub_module",           "HTTP Sub"],
+      ["webdav",             "http_dav_module",           "WebDAV"],
+      ["xslt",               "http_xslt_module",          "XSLT"],
     ]
   end
 
+  # Third-party modules, linked statically into nginx-full via --add-module.
+  #
+  # Some of these also ship a standalone .so from their own formula, so you
+  # do not have to rebuild nginx-full to add or remove them:
+  #   auth-digest, cache-purge, dav-ext, echo, fancyindex, geoip2,
+  #   headers-more, njs, nchan, redis2, rtmp, subs-filter,
+  #   upload-progress, vod, vts, brotli (--HEAD only)
+  # Install that module's formula, then in nginx.conf:
+  #   load_module modules/ngx_http_<name>_module.so;
+  #
+  # NDK-dependent modules (lua, set-misc, array-var, mruby, stream-lua) and
+  # modules that patch nginx internals (no-pool, extended-status, ustats,
+  # tcp-proxy) cannot be dynamic - they are static only, here and everywhere.
   def self.third_party_modules
     {
-      "accept-language"     => "Build with Accept Language support",
-      "accesskey"           => "Build with HTTP Access Key support",
-      "ajp"                 => "Build with AJP-protocol support",
-      "anti-ddos"           => "Build with Anti-DDoS support",
-      "array-var"           => "Build with Array Var support",
-      "auth-digest"         => "Build with Auth Digest support",
-      "auth-ldap"           => "Build with Auth LDAP support",
-      "auth-pam"            => "Build with Auth PAM support",
-      "auto-keepalive"      => "Build with Auto Disable KeepAlive support",
-      "autols"              => "Build with Flexible Auto Index support",
-      "brotli"              => "Build with Brotli compression support",
-      "cache-purge"         => "Build with Cache Purge support",
-      "captcha"             => "Build with Captcha support",
-      "counter-zone"        => "Build with Realtime Counter Zone support",
-      "ctpp2"               => "Build with CT++ support",
-      "dav-ext"             => "Build with HTTP WebDav Extended support",
-      "dosdetector"         => "Build with detecting DoS attacks support",
-      "echo"                => "Build with Echo support",
-      "eval"                => "Build with Eval support",
-      "extended-status"     => "Build with Extended Status support",
-      "fancyindex"          => "Build with Fancy Index support",
-      "geoip2"              => "Build with GeoIP2 support",
-      "headers-more"        => "Build with Headers More support",
-      "healthcheck"         => "Build with Healthcheck support",
-      "http-accounting"     => "Build with HTTP Accounting support",
-      "http-flood-detector" => "Build with Var Flood-Threshold support",
-      "http-remote-passwd"  => "Build with Remote Basic Auth Password support",
-      "log-if"              => "Build with Log-if support",
-      "lua"                 => "Build with LUA support",
-      "mod-zip"             => "Build with HTTP Zip support",
-      "mogilefs"            => "Build with HTTP MogileFS support",
-      "mp4-h264"            => "Build with HTTP MP4/H264 support",
-      "mruby"               => "Build with MRuby support",
-      "naxsi"               => "Build with Naxsi support",
-      "nchan"               => "Build with Nchan support",
-      "upstream-check"      => "Build with upstream health check support",
-      "njs"                 => "Build with njs support",
-      "notice"              => "Build with HTTP Notice support",
-      "php-session"         => "Build with Parse PHP Sessions support",
-      "tarantool"           => "Build with Tarantool upstream support",
-      "push-stream"         => "Build with HTTP Push Stream support",
-      "realtime-req"        => "Build with Realtime Request support",
-      "redis"               => "Build with Redis support",
-      "redis2"              => "Build with Redis2 support",
-      "rtmp"                => "Build with RTMP support",
-      "set-misc"            => "Build with Set Misc support",
-      "small-light"         => "Build with Small Light support",
-      "subs-filter"         => "Build with Substitutions Filter support",
-      "tcp-proxy"           => "Build with TCP Proxy support",
-      "txid"                => "Build with Sortable Unique ID support",
-      "unzip"               => "Build with UnZip support",
-      "upload"              => "Build with Upload support",
-      "upload-progress"     => "Build with Upload Progress support",
-      "upstream-order"      => "Build with Order Upstream support",
-      "ustats"              => "Build with Upstream Statistics (HAProxy style) support",
-      "var-req-speed"       => "Build with Var Request-Speed support",
-      "vod"                 => "Build with VOD on-the-fly MP4 Repackager support",
-      "vts"                 => "Build with virtual host traffic status support",
-      "websockify"          => "Build with Websockify support",
-      "xsltproc"            => "Build with XSLT Transformations support",
+      "accept-language"     => "Accept-Language header parser",
+      "accesskey"           => "HTTP access key enforcement",
+      "ajp"                 => "AJP protocol proxy",
+      "anti-ddos"           => "Anti-DDoS",
+      "array-var"           => "Array variables (requires ngx-devel-kit)",
+      "auth-digest"         => "HTTP Digest Authentication",
+      "auth-ldap"           => "LDAP authentication",
+      "auth-pam"            => "PAM authentication",
+      "auto-keepalive"      => "Auto disable keepalive",
+      "autols"              => "Flexible auto index",
+      "brotli"              => "Brotli compression",
+      "cache-purge"         => "Cache purge",
+      "captcha"             => "Captcha",
+      "counter-zone"        => "Realtime counter zones",
+      "ctpp2"               => "CT++ template engine",
+      "dav-ext"             => "WebDAV PROPFIND/OPTIONS",
+      "dosdetector"         => "DoS detection",
+      "echo"                => "Echo/sleep/exec directives",
+      "eval"                => "Evaluate upstream response into vars",
+      "extended-status"     => "Extended stub status",
+      "fancyindex"          => "Fancy directory index",
+      "geoip2"              => "GeoIP2",
+      "headers-more"        => "Set/clear arbitrary response headers",
+      "healthcheck"         => "Upstream health check",
+      "http-accounting"     => "Per-host traffic accounting",
+      "http-flood-detector" => "HTTP flood detector",
+      "http-remote-passwd"  => "Basic auth password as variable",
+      "log-if"              => "Conditional access logging",
+      "lua"                 => "Lua scripting (requires ngx-devel-kit)",
+      "mod-zip"             => "On-the-fly ZIP archives",
+      "mogilefs"            => "MogileFS client",
+      "mp4-h264"            => "H264 streaming",
+      "mruby"               => "MRuby scripting (requires ngx-devel-kit)",
+      "naxsi"               => "NAXSI WAF",
+      "nchan"               => "Pub/sub server",
+      "njs"                 => "njs scripting",
+      "notice"              => "Maintenance notice pages",
+      "php-session"         => "PHP session parser",
+      "push-stream"         => "HTTP push stream",
+      "realtime-req"        => "Per-vhost realtime request counter",
+      "redis"               => "Redis upstream (keepalive)",
+      "redis2"              => "Redis 2.0 protocol upstream",
+      "rtmp"                => "RTMP media streaming",
+      "set-misc"            => "Set-misc utilities (requires ngx-devel-kit)",
+      "small-light"         => "Dynamic image transforms",
+      "stream-lua"          => "Lua scripting in stream/TCP context",
+      "subs-filter"         => "Regex/string substitution filter",
+      "tarantool"           => "Tarantool upstream",
+      "tcp-proxy"           => "TCP proxy and health check",
+      "txid"                => "Sortable unique request ID",
+      "unzip"               => "Serve files from ZIP archives",
+      "upload"              => "Multipart file upload handler",
+      "upload-progress"     => "Upload progress tracking",
+      "upstream-check"      => "Upstream health check (active)",
+      "upstream-order"      => "Upstream selection order",
+      "ustats"              => "HAProxy-style upstream statistics",
+      "var-req-speed"       => "Request speed variable",
+      "vod"                 => "VOD MP4 repackager",
+      "vts"                 => "Virtual host traffic status",
+      "websockify"          => "WebSocket-to-TCP proxy",
+      "xsltproc"            => "XSLT transformations",
     }
   end
 
-  if build.with?("homebrew-libressl")
-    depends_on "libressl"
-  else
-    depends_on "openssl@3"
-  end
+  # Modules that pull in ngx-devel-kit at build time
+  NDK_USERS = %w[set-misc lua array-var mruby].freeze
 
-  # HTTP2 (backward compatibility for spdy)
-  deprecated_option "with-spdy" => "with-http2" if build.with?("spdy")
+  deprecated_option "with-spdy"        => "with-http2"
+  deprecated_option "with-degredation" => "with-degradation"
 
   core_modules.each do |arr|
-    option "with-#{arr[0]}", arr[2]
+    option "with-#{arr[0]}", "Build with #{arr[2]} module"
   end
+
   third_party_modules.each do |name, desc|
-    option "with-#{name}-module", desc
+    option "with-#{name}-module", "Build with #{desc}"
     depends_on "#{name}-nginx-module" if build.with?("#{name}-module")
   end
 
+  depends_on "ngx-devel-kit" if NDK_USERS.any? { |m| build.with?("#{m}-module") }
+  depends_on "openssl@3"
+  depends_on "pcre2"
+  depends_on "pcre"        if build.with?("lua-module") || build.with?("stream-lua-module")
+  depends_on "luajit"      if build.with?("lua-module") || build.with?("stream-lua-module")
+  depends_on "gd"          if build.with?("image-filter")
+  depends_on "libxml2"     if build.with?("xslt") || build.with?("dav-ext-module")
+  depends_on "libxslt"     if build.with?("xslt")
+  depends_on "libzip"      if build.with?("unzip-module")
+  depends_on "gperftools"  if build.with?("google-perftools")
+  depends_on "passenger"   if build.with?("passenger")
+  depends_on "perl"        if build.with?("perl")
+  depends_on "valgrind"    if build.with?("no-pool-nginx")
+
+  conflicts_with "nginx", because: "nginx-full installs the same binary"
+
+  # Patch-based integrations: these modify nginx internals and cannot be
+  # dynamic modules. The corresponding formula only provides source to pkgshare.
   if build.with?("no-pool-nginx")
-    # https://github.com/openresty/no-pool-nginx
     patch :p2 do
       url "https://raw.githubusercontent.com/openresty/no-pool-nginx/master/nginx-1.11.2-no_pool.patch"
+      sha256 "c0d3b663261c6cbbc02b1919362f351280f63490a18f8044e8d8e53def97c687"
     end
   end
 
   if build.with?("extended-status-module")
     patch do
       url "https://raw.githubusercontent.com/nginx-modules/ngx_http_extended_status_module/master/extended_status-1.10.1.patch"
+      sha256 "d1215d0471d5cf9d52fedc1805d947c439bc8947ec178260a7931316224b435c"
     end
   end
 
   if build.with?("ustats-module")
     patch do
       url "https://raw.githubusercontent.com/nginx-modules/ngx_ustats_module/master/nginx-1.6.1.patch"
+      sha256 "208516348117b470e965abc80e3cd4d0c0d3ee2d21b148b16030d8f9c87dd1d5"
     end
   end
 
   if build.with?("tcp-proxy-module")
     patch do
       url "https://raw.githubusercontent.com/yaoweibin/nginx_tcp_proxy_module/afcab76/tcp_1_8.patch"
+      sha256 "78f6718294c914123fe377141e3b18be1014d79de6e5df20c5187a16fe58109d"
     end
   end
 
-  # env :userpaths
   skip_clean "logs"
 
   def install
     if build.with?("http-flood-detector-module") && build.without?("status")
-      odie "http-flood-detector-nginx-module: Stub Status module is required --with-status"
+      odie "--with-http-flood-detector-module requires --with-status"
     end
 
     if build.with?("dav-ext-module") && build.without?("webdav")
-      odie "dav-ext-nginx-module: WebDav Extended module is required --with-webdav"
+      odie "--with-dav-ext-module requires --with-webdav"
     end
 
-    # small-light needs to run setup script
+    if build.with?("stream-lua-module") && build.without?("stream")
+      odie "--with-stream-lua-module requires --with-stream"
+    end
+
     if build.with?("small-light-module")
       small_light = Formula["small-light-nginx-module"]
-      img_opts = ["with-gd", "with-imlib2"]
-      args = build.used_options.select { |option| img_opts.include?(option.name) }
+      img_opts = build.used_options.select { |o| %w[with-gd with-imlib2].include?(o.name) }
       origin_dir = Dir.pwd
-      Dir.chdir("#{small_light.share}/#{small_light.name}")
-      system "./setup", *args
-      raise "The small-light setup script couldn't generate config file." unless File.exist?("./config")
+      Dir.chdir "#{small_light.share}/#{small_light.name}"
+      system "./setup", *img_opts
+      raise "small-light setup failed to produce config" unless File.exist?("./config")
 
-      Dir.chdir(origin_dir)
+      Dir.chdir origin_dir
     end
 
-    # mruby module needs to prepare compiling mruby
     if build.with?("mruby-module")
       ENV["NGX_MRUBY_LDFLAGS"] = "-lcrypto"
       mruby = Formula["mruby-nginx-module"]
       origin_dir = Dir.pwd
-      Dir.chdir("#{mruby.share}/#{mruby.name}")
-      # The compile flow of ngx_mruby is assumed that build_config.rb is managed with git.
+      Dir.chdir "#{mruby.share}/#{mruby.name}"
       system "git", "init"
       system "git", "submodule", "init"
       system "git", "submodule", "update"
-      Dir.chdir("#{mruby.share}/#{mruby.name}/mruby")
+      Dir.chdir "#{mruby.share}/#{mruby.name}/mruby"
       system "git", "add", "build_config.rb"
-      system "git", "commit", "-m 'build_config.rb'"
-      Dir.chdir("#{mruby.share}/#{mruby.name}")
+      system "git", "commit", "-m", "build_config.rb"
+      Dir.chdir "#{mruby.share}/#{mruby.name}"
       system "./configure", "--with-ngx-src-root=#{buildpath}"
       system "make", "build_mruby"
       system "make", "generate_gems_config"
-      rm_rf(".git")
-      Dir.chdir(origin_dir)
+      rm_rf ".git"
+      Dir.chdir origin_dir
     end
 
-    # Changes default port to 8080
     inreplace "conf/nginx.conf" do |s|
       s.gsub! "listen       80;", "listen       8080;"
       s.gsub! "    #}\n\n}", "    #}\n    include servers/*;\n}"
     end
 
-    pcre = Formula["pcre"]
-    cc_opt = "-I#{HOMEBREW_PREFIX}/include -I#{pcre.include}"
-    ld_opt = "-L#{HOMEBREW_PREFIX}/lib -L#{pcre.lib}"
+    ossl  = Formula["openssl@3"]
+    cc_opt = "-I#{HOMEBREW_PREFIX}/include -I#{ossl.opt_include}"
+    ld_opt = "-L#{HOMEBREW_PREFIX}/lib -L#{ossl.opt_lib}"
 
-    if build.with?("libressl")
-      cc_opt += " -I#{Formula["libressl"].include}"
-      ld_opt += " -L#{Formula["libressl"].lib}"
+    if build.with?("lua-module") || build.with?("stream-lua-module")
+      pcre = Formula["pcre"]
+      cc_opt += " -I#{pcre.opt_include}"
+      ld_opt += " -L#{pcre.opt_lib} -lpcre"
+      luajit    = Formula["luajit"]
+      luajit_ver = luajit.version.to_s.match(/\A(\d+\.\d+)/)[1]
+      ENV["LUAJIT_INC"] = "#{luajit.opt_include}/luajit-#{luajit_ver}"
+      ENV["LUAJIT_LIB"] = luajit.opt_lib.to_s
     else
-      cc_opt += " -I#{Formula["openssl@3"].include}"
-      ld_opt += " -L#{Formula["openssl@3"].lib}"
+      pcre2 = Formula["pcre2"]
+      cc_opt += " -I#{pcre2.opt_include}"
+      ld_opt += " -L#{pcre2.opt_lib}"
     end
 
-    if build.with?("xsltproc-module")
-      icu = Formula["icu4c"]
-      cc_opt += " -I#{icu.opt_include}"
-      ld_opt += " -L#{icu.opt_lib}"
-    end
-
-    cc_opt += " -I#{Formula["libzip"].opt_lib}/libzip/include" if build.with?("unzip")
-
-    # https://github.com/openresty/lua-nginx-module/issues/1984
-    # module do not support with PCRE2 on nginx 1.21.5
-    ld_opt += " -lpcre" if build.with?("lua-module")
+    cc_opt += " -I#{Formula["libzip"].opt_lib}/libzip/include" if build.with?("unzip-module")
 
     args = %W[
       --prefix=#{prefix}
       --with-http_ssl_module
+      --with-compat
       --with-pcre
-      --with-ipv6
       --sbin-path=#{bin}/nginx
       --with-cc-opt=#{cc_opt}
       --with-ld-opt=#{ld_opt}
@@ -268,116 +271,77 @@ class NginxFull < Formula
       --http-scgi-temp-path=#{var}/run/nginx/scgi_temp
       --http-log-path=#{var}/log/nginx/access.log
       --error-log-path=#{var}/log/nginx/error.log
+      --modules-path=#{HOMEBREW_PREFIX}/lib/nginx/modules
     ]
 
-    # Core Modules
     self.class.core_modules.each do |arr|
-      args << "--with-#{arr[1]}" if build.with?(arr[0]) && arr[1]
+      args << "--with-#{arr[1]}" if arr[1] && build.with?(arr[0])
     end
 
-    # Set misc module and mruby module both depend on nginx-devel-kit being compiled in
-    if build.with?("set-misc-module") ||
-       build.with?("mruby-module") ||
-       build.with?("lua-module") ||
-       build.with?("array-var-module")
+    if NDK_USERS.any? { |m| build.with?("#{m}-module") }
       args << "--add-module=#{HOMEBREW_PREFIX}/share/ngx-devel-kit"
     end
 
-    # Third Party Modules
     self.class.third_party_modules.each_key do |name|
-      if build.with?("#{name}-module") && (name != "njs")
-        args << "--add-module=#{HOMEBREW_PREFIX}/share/#{name}-nginx-module"
-      end
+      next unless build.with?("#{name}-module")
+      share_path = name == "njs" \
+        ? "#{HOMEBREW_PREFIX}/share/njs-nginx-module/nginx" \
+        : "#{HOMEBREW_PREFIX}/share/#{name}-nginx-module"
+      args << "--add-module=#{share_path}"
     end
 
-    # The njs module is special since it has a command-line component as well, we have to specify the nginx/ subpath
-    args << "--add-module=#{HOMEBREW_PREFIX}/share/njs-nginx-module/nginx" if build.with?("njs-module")
-
-    # Passenger
     if build.with?("passenger")
       nginx_ext = `#{Formula["passenger"].opt_bin}/passenger-config --nginx-addon-dir`.chomp
       args << "--add-module=#{nginx_ext}"
     end
 
-    # Install lua-module with luajit
-    if build.with?("lua-module")
-      luajit_version = Formula["luajit"].pkg_version.to_s.sub(/^(\d+\.\d+).*/, '\1')
-      ENV["LUAJIT_INC"] = "#{Formula["luajit"].opt_include}/luajit-#{luajit_version}"
-      ENV["LUAJIT_LIB"] = "#{Formula["luajit"].opt_lib}"
-    end
-
-    if build.head?
-      system "./auto/configure", *args
-    else
-      system "./configure", *args
-    end
-
+    system build.head? ? "./auto/configure" : "./configure", *args
     system "make", "install"
-    if build.head?
-      man8.install "docs/man/nginx.8"
-    else
-      man8.install "man/nginx.8"
-    end
+    man8.install build.head? ? "docs/man/nginx.8" : "man/nginx.8"
 
     (etc/"nginx/servers").mkpath
     (var/"run/nginx").mkpath
+    (Pathname.new(HOMEBREW_PREFIX)/"lib/nginx/modules").mkpath
   end
 
   def post_install
-    # nginx's docroot is #{prefix}/html, this isn't useful, so we symlink it
-    # to #{HOMEBREW_PREFIX}/var/www. The reason we symlink instead of patching
-    # is so the user can redirect it easily to something else if they choose.
     html = prefix/"html"
-    dst = var/"www"
+    dst  = var/"www"
 
     if dst.exist?
       html.rmtree
       dst.mkpath
     else
       dst.dirname.mkpath
-      html.rename(dst)
+      html.rename dst
     end
 
     prefix.install_symlink dst => "html"
-
-    # for most of this formula's life the binary has been placed in sbin
-    # and Homebrew used to suggest the user copy the plist for nginx to their
-    # ~/Library/LaunchAgents directory. So we need to have a symlink there
-    # for such cases
     sbin.install_symlink bin/"nginx" if rack.subdirs.any? { |d| d.join("sbin").directory? }
-  end
-
-  def passenger_caveats
-    <<~EOS
-      To activate Phusion Passenger, add this to #{etc}/nginx/nginx.conf, inside the 'http' context:
-        passenger_root #{Formula["passenger"].opt_libexec}/src/ruby_supportlib/phusion_passenger/locations.ini;
-        passenger_ruby /usr/bin/ruby;
-    EOS
   end
 
   def caveats
     s = <<~EOS
-      Docroot is: #{var}/www
+      Docroot:  #{var}/www
+      Config:   #{etc}/nginx/nginx.conf
+      Includes: #{etc}/nginx/servers/
+      Modules:  #{HOMEBREW_PREFIX}/lib/nginx/modules/
+      Port:     8080 (no root required)
 
-      The default port has been set in #{etc}/nginx/nginx.conf to 8080 so that
-      nginx can run without sudo.
+      To load a dynamic module, add before the http block in nginx.conf:
+        load_module modules/ngx_http_<name>_module.so;
 
-      nginx will load all files in #{etc}/nginx/servers/.
-
-      - Tips -
-      Run port 80:
-       $ sudo chown root:wheel #{bin}/nginx
-       $ sudo chmod u+s #{bin}/nginx
-      Reload config:
-       $ nginx -s reload
-      Reopen Logfile:
-       $ nginx -s reopen
-      Stop process:
-       $ nginx -s stop
-      Waiting on exit process
-       $ nginx -s quit
+      To run on port 80 (sets setuid bit once):
+        sudo chown root:wheel #{bin}/nginx && sudo chmod u+s #{bin}/nginx
     EOS
-    s << "\n" << passenger_caveats if build.with?("passenger")
+    if build.with?("passenger")
+      s += <<~EOS
+
+        To activate Phusion Passenger, add inside the http block:
+          passenger_root #{Formula["passenger"].opt_libexec}/src/ruby_supportlib/phusion_passenger/locations.ini;
+          passenger_ruby /usr/bin/ruby;
+      EOS
+    end
     s
   end
 
@@ -391,30 +355,25 @@ class NginxFull < Formula
   end
 
   test do
-    (testpath/"nginx.conf").write <<-EOS
+    (testpath/"nginx.conf").write <<~EOS
       worker_processes 4;
       error_log #{testpath}/error.log;
-      pid #{testpath}/nginx.pid;
-
-      events {
-        worker_connections 1024;
-      }
-
+      pid       #{testpath}/nginx.pid;
+      events { worker_connections 1024; }
       http {
         client_body_temp_path #{testpath}/client_body_temp;
-        fastcgi_temp_path #{testpath}/fastcgi_temp;
-        proxy_temp_path #{testpath}/proxy_temp;
-        scgi_temp_path #{testpath}/scgi_temp;
-        uwsgi_temp_path #{testpath}/uwsgi_temp;
-
+        fastcgi_temp_path     #{testpath}/fastcgi_temp;
+        proxy_temp_path       #{testpath}/proxy_temp;
+        scgi_temp_path        #{testpath}/scgi_temp;
+        uwsgi_temp_path       #{testpath}/uwsgi_temp;
         server {
           listen 8080;
-          root #{testpath};
+          root   #{testpath};
           access_log #{testpath}/access.log;
-          error_log #{testpath}/error.log;
+          error_log  #{testpath}/error.log;
         }
       }
     EOS
-    system "#{bin}/nginx", "-t", "-c", testpath/"nginx.conf"
+    system bin/"nginx", "-t", "-c", testpath/"nginx.conf"
   end
 end

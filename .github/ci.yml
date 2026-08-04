@@ -1,0 +1,59 @@
+name: CI
+
+on:
+  push:
+    branches: [master, main]
+  pull_request:
+    branches: [master, main]
+  workflow_dispatch:
+
+jobs:
+  audit:
+    name: brew audit (${{ matrix.os }})
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [macos-15, macos-14, ubuntu-24.04]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: Homebrew/actions/setup-homebrew@master
+      - name: Register tap
+        run: |
+          TAP_DIR="$(brew --repo)/Library/Taps/denji/homebrew-nginx"
+          mkdir -p "$(dirname "$TAP_DIR")"
+          ln -sf "$GITHUB_WORKSPACE" "$TAP_DIR"
+      - run: brew audit --strict --online denji/nginx/nginx-full
+      - run: brew audit --strict --online denji/nginx/openresty
+
+  style:
+    name: brew style
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - uses: Homebrew/actions/setup-homebrew@master
+      - name: Register tap
+        run: |
+          TAP_DIR="$(brew --repo)/Library/Taps/denji/homebrew-nginx"
+          mkdir -p "$(dirname "$TAP_DIR")"
+          ln -sf "$GITHUB_WORKSPACE" "$TAP_DIR"
+      - run: brew style denji/nginx
+
+  test:
+    name: brew test ${{ matrix.formula }} (${{ matrix.os }})
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        formula: [nginx-full, openresty]
+        os: [macos-15, macos-14, ubuntu-24.04]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: Homebrew/actions/setup-homebrew@master
+      - name: Register tap
+        run: |
+          TAP_DIR="$(brew --repo)/Library/Taps/denji/homebrew-nginx"
+          mkdir -p "$(dirname "$TAP_DIR")"
+          ln -sf "$GITHUB_WORKSPACE" "$TAP_DIR"
+      - run: brew install --build-from-source denji/nginx/${{ matrix.formula }}
+      - run: brew test denji/nginx/${{ matrix.formula }}
